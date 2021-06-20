@@ -6,15 +6,10 @@
   home.username = "traxys";
   home.homeDirectory = "/home/traxys";
 
-  nixpkgs.config = {
-    allowUnfree = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
   };
-
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
 
   home.packages = with pkgs; [
     bitwarden-cli
@@ -26,6 +21,8 @@
     signal-desktop
     rustup
 
+	sway
+
     neovim-nightly
     rust-analyzer
     clang-tools
@@ -35,6 +32,8 @@
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/rnix-lsp/archive/master.tar.gz;
     }))
+
+	exa
   ];
 
   programs = {
@@ -171,7 +170,6 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    package = null;
     config = {
       modifier = "Mod4";
       bars = [{
@@ -220,9 +218,12 @@
           ws10 = "";
         in
         {
+          "Print" = "exec ${pkgs.grim} -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
           "${mod}+Shift+semicolon" = "kill";
           "${mod}+e" = "exec ${menu}";
           "${mod}+Return" = "exec ${terminal}";
+          "${mod}+Shift+e" =
+            "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
           "${mod}+u" = "fullscreen toggle";
           "${mod}+comma" = "layout tabbed";
@@ -306,7 +307,3 @@
   # changes in each release.
   home.stateVersion = "21.11";
 }
-
-
-
-

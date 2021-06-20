@@ -20,3 +20,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent;
 fi
+
+#source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
