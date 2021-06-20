@@ -1,13 +1,16 @@
 { config, pkgs, lib, ... }:
 
+let 
+	localinfo = import ./localinfo.nix;
+in
 {
   imports = [
 	./graphical.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "traxys";
-  home.homeDirectory = "/home/traxys";
+  home.username = localinfo.username;
+  home.homeDirectory = localinfo.homeDir;
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -41,7 +44,7 @@
     git = {
       enable = true;
       userName = "Quentin Boyer";
-      userEmail = "quentin+dev@familleboyer.net";
+      userEmail = localinfo.email;
     };
 
     zoxide = {
