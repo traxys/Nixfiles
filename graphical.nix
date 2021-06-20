@@ -1,5 +1,8 @@
 { pkgs, config, ... }:
 
+let 
+	localinfo = import ./localinfo.nix;
+in
 {
   home.packages = with pkgs; [
     bitwarden
@@ -99,12 +102,12 @@
         command = "waybar";
       }];
       input = {
-        "1:1:AT_Translated_Set_2_keyboard" = {
+        "${localinfo.keyboard}" = {
           xkb_layout = "us";
           xkb_variant = "dvp";
           xkb_options = "compose:102";
         };
-        "2:7:SynPS/2_Synaptics_TouchPad" = {
+        "${localinfo.touchpad}" = {
           dwt = "disable";
         };
       };

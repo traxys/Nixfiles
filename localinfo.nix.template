@@ -1,0 +1,9 @@
+{
+	username = "string";
+	homeDir = "path";
+
+	email = "email";
+
+	keyboard = "null or libinput id";
+	touchpad = "null or libinput id";
+}
