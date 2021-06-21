@@ -30,6 +30,7 @@ in
       url = https://github.com/nix-community/rnix-lsp/archive/master.tar.gz;
     }))
     exa
+    python3
   ];
 
   programs = {
@@ -53,6 +54,7 @@ in
 
     zsh = {
       enable = true;
+      enableCompletion = true;
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" "wd" "rust" ];
@@ -68,18 +70,38 @@ in
             sha256 = "0m102makrfz1ibxq8rx77nngjyhdqrm8hsrr9342zzhq1nf4wxxc";
           };
         }
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.2.0";
+            sha256 = "1gfyrgn23zpwv1vj37gf28hf5z0ka0w5qm6286a7qixwv7ijnrx9";
+          };
+        }
+        {
+          name = "nix-zsh-completions";
+          file = "nix-zsh-completions.plugin.zsh ";
+          src = pkgs.fetchFromGitHub {
+            owner = "spwhitt";
+            repo = "nix-zsh-completions";
+            rev = "0.4.4";
+            sha256 = "1n9whlys95k4wc57cnz3n07p7zpkv796qkmn68a50ygkx6h3afqf";
+          };
+        }
       ];
       initExtra =
         ''
-			export PATH="$PATH:${localinfo.homeDir}/bin"
-          	source ~/.p10k.zsh
-              source ~/.powerlevel10k/powerlevel10k.zsh-theme
-              if [ -f "$HOME/.zvars" ]; then
-                  source "$HOME/.zvars"
-              fi
-            	${pkgs.fortune}/bin/fortune \
-            		| ${pkgs.cowsay}/bin/cowsay \
-            		| ${pkgs.lolcat}/bin/lolcat
+          			export PATH="$PATH:${localinfo.homeDir}/bin"
+                    	source ~/.p10k.zsh
+                        source ~/.powerlevel10k/powerlevel10k.zsh-theme
+                        if [ -f "$HOME/.zvars" ]; then
+                            source "$HOME/.zvars"
+                        fi
+                      	${pkgs.fortune}/bin/fortune \
+                      		| ${pkgs.cowsay}/bin/cowsay \
+                      		| ${pkgs.lolcat}/bin/lolcat
         '';
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat -p";
@@ -119,4 +141,11 @@ in
   # changes in each release.
   home.stateVersion = "21.11";
 }
+
+
+
+
+
+
+
 
