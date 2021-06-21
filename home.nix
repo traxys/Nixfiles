@@ -1,11 +1,11 @@
 { config, pkgs, lib, ... }:
 
-let 
-	localinfo = import ./localinfo.nix;
+let
+  localinfo = import ./localinfo.nix;
 in
 {
   imports = [
-	./graphical.nix
+    ./graphical.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -29,7 +29,7 @@ in
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/rnix-lsp/archive/master.tar.gz;
     }))
-	exa
+    exa
   ];
 
   programs = {
@@ -71,6 +71,7 @@ in
       ];
       initExtra =
         ''
+			export PATH="$PATH:${localinfo.homeDir}/bin"
           	source ~/.p10k.zsh
               source ~/.powerlevel10k/powerlevel10k.zsh-theme
               if [ -f "$HOME/.zvars" ]; then
@@ -102,6 +103,10 @@ in
     };
     ".zprofile".source = ./zprofile;
     ".p10k.zsh".source = ./p10k.zsh;
+    "bin" = {
+      source = ./scripts;
+      recursive = true;
+    };
   };
 
   # This value determines the Home Manager release that your
@@ -114,3 +119,4 @@ in
   # changes in each release.
   home.stateVersion = "21.11";
 }
+
