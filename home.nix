@@ -2,6 +2,12 @@
 
 let
   localinfo = import ./localinfo.nix;
+  pkgCratesIO = { name, version, hash }: pkgs.rustPlatform.buildRustPackage rec {
+    pname = "dotacat";
+    version = "0.2.0";
+    src = fetchTarball "https://static.crates.io/crates/${name}/${name}-${version}.crate";
+    cargoSha256 = hash;
+  };
 in
 {
   imports = [
@@ -31,6 +37,16 @@ in
     }))
     exa
     python3
+    topgrade
+    wl-clipboard
+    (pkgCratesIO {
+      name = "dotacat";
+      version = "0.2.0";
+      hash = "1lnmw0c7m40ysbar8bk6r2jh32w6613457r5wgp418pgy2300kvn";
+    })
+	cargo-edit
+	rsync
+	fd
   ];
 
   programs = {
@@ -101,12 +117,13 @@ in
                         fi
                       	${pkgs.fortune}/bin/fortune \
                       		| ${pkgs.cowsay}/bin/cowsay \
-                      		| ${pkgs.lolcat}/bin/lolcat
+                      		| dotacat
         '';
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat -p";
         ls = "${pkgs.exa}/bin/exa --icons";
         screenRegion = "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - ";
+        py3 = "nix-shell -p python3 python3.pkgs.matplotlib --run python3";
       };
     };
   };
@@ -141,11 +158,3 @@ in
   # changes in each release.
   home.stateVersion = "21.11";
 }
-
-
-
-
-
-
-
-
