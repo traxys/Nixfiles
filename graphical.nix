@@ -15,6 +15,11 @@ in
     sway
   ];
 
+  home.sessionVariables = {
+	MOZ_ENABLE_WAYLAND = "1";
+	XDG_CURRENT_DESKTOP = "sway";
+  };
+
   programs = {
     mako = {
       enable = true;
