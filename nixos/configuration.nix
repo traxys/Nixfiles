@@ -38,11 +38,6 @@
     fwupd.enable = true;
   };
 
-  environment.sessionVariables = {
-    MOZ_ENABLE_WAYLAND = "1";
-    XDG_CURRENT_DESKTOP = "sway";
-  };
-
   fonts.enableDefaultFonts = true;
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "Hack" ]; })
