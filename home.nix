@@ -47,6 +47,7 @@ in
 	cargo-edit
 	rsync
 	fd
+	niv
   ];
 
   programs = {
@@ -124,6 +125,7 @@ in
         ls = "${pkgs.exa}/bin/exa --icons";
         screenRegion = "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - ";
         py3 = "nix-shell -p python3 python3.pkgs.matplotlib --run python3";
+		ssh = "kitty +kitten ssh";
       };
     };
   };

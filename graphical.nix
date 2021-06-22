@@ -8,7 +8,8 @@ in
     bitwarden
     firefox-wayland
     thunderbird
-    discord
+	element-desktop
+    (discord.override { nss = pkgs.nss; })
     spotify
     signal-desktop
 
