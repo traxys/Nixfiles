@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let
+  sensitiveInfo = (import ./sensitive.nix);
+in
 {
   boot = {
     initrd = {
@@ -38,6 +41,21 @@
       eno0.useDHCP = true;
       wlp1s0.useDHCP = true;
     };
+    wireguard.interfaces = {
+      octopi = {
+        ips = [ "10.42.42.4/32" ];
+        privateKeyFile = "/etc/wireguard/zelaptop.key";
+        peers = [
+          {
+            publicKey = sensitiveInfo.octopiPubKey;
+            presharedKeyFile = "/etc/wireguard/octopi-laptop.psk";
+            allowedIPs = [ "10.42.42.1/32" ];
+            endpoint = "${sensitiveInfo.homeUrl}:51820";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
+    };
   };
 
   users.users.traxys = {
@@ -55,6 +73,13 @@
     enable = true;
   };
 }
+
+
+
+
+
+
+
 
 
 
