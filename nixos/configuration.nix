@@ -48,6 +48,7 @@
   nix.autoOptimiseStore = true;
   nix.gc = {
     automatic = true;
+	dates = "weekly";
     options = "--delete-older-than 7d"; # Ajuste comme tu veux, tu peux utiliser +5 pour garder les 5 dernières, etc.
   };
 

@@ -12,12 +12,15 @@
     };
   };
 
-  nixpkgs.config = {
-    package = pkgs.nixFlakes;
-    allowUnfree = true;
+  /* nix = {
+    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+  }; */
+
+  nixpkgs.config = {
+    allowUnfree = true;
   };
 
   nixpkgs.overlays = [
