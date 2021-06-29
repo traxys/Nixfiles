@@ -62,7 +62,7 @@ in
     uid = 1000;
     isNormalUser = true;
     home = "/home/traxys";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "adbusers"];
     shell = pkgs.zsh;
   };
 

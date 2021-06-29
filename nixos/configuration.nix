@@ -11,7 +11,7 @@
       /etc/nixos/hardware-configuration.nix
       ./pkg.nix
       ./home.nix
-	  ./localcfg.nix
+      ./localcfg.nix
     ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -36,7 +36,11 @@
     };
     localtime.enable = true;
     fwupd.enable = true;
+	postgresql = {
+		enable = true;
+	};
   };
+  programs.adb.enable = true;
 
   fonts.enableDefaultFonts = true;
   fonts.fonts = with pkgs; [
@@ -48,8 +52,8 @@
   nix.autoOptimiseStore = true;
   nix.gc = {
     automatic = true;
-	dates = "weekly";
-    options = "--delete-older-than 7d"; # Ajuste comme tu veux, tu peux utiliser +5 pour garder les 5 dernières, etc.
+    dates = "weekly";
+    options = "--delete-older-than 14d"; # Ajuste comme tu veux, tu peux utiliser +5 pour garder les 5 dernières, etc.
   };
 
   # This value determines the NixOS release from which the default
@@ -60,3 +64,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 }
+
