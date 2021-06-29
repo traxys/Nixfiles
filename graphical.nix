@@ -12,6 +12,7 @@ in
     (discord.override { nss = pkgs.nss; })
     spotify
     signal-desktop
+	libreoffice-fresh
 
     sway
   ];
@@ -150,7 +151,7 @@ in
           ws10 = "";
         in
         {
-          "Print" = "exec ${pkgs.grim} -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
+          "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
           "${mod}+Shift+semicolon" = "kill";
           "${mod}+e" = "exec ${menu}";
           "${mod}+Return" = "exec ${terminal}";
