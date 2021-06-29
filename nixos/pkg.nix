@@ -15,9 +15,9 @@
   /* nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
-      experimental-features = nix-command flakes
+    experimental-features = nix-command flakes
     '';
-  }; */
+    }; */
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -26,6 +26,9 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+    (import (builtins.fetchTarball {
+      url = https://github.com/andersk/nixpkgs-mozilla/archive/stdenv.lib.tar.gz;
     }))
   ];
 
@@ -44,4 +47,9 @@
     jq
   ];
 }
+
+
+
+
+
 
