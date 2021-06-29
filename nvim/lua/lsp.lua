@@ -13,8 +13,12 @@ require'lspconfig'.rust_analyzer.setup{
 	on_attach=lsp_status.on_attach,
 	settings = {
 		["rust-analyzer"] = {
+			procMacro = { 
+				enable = true 
+			},
 			cargo = {
-				allFeatures = true
+				allFeatures = true,
+				loadOutDirsFromCheck = true
 			},
 			updates = {
 				channel = "nightly"
@@ -47,6 +51,26 @@ require'lspconfig'.texlab.setup{
 require'lspconfig'.rnix.setup{
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities
+}
+
+require'lspconfig'.dartls.setup{
+	on_attach = lsp_status.on_attach,
+	capabilities = capabilities,
+	cmd = {"dart", vim.fn.expand("$DART_SDK") .. "/snapshots/analysis_server.dart.snapshot", "--lsp"}
+}
+
+require'lspconfig'.vuels.setup{
+	on_attach = lsp_status.on_attach,
+	capabilities = capabilities,
+	config = {
+		vetur = {
+			defaultFormatter = {
+				js = "prettier",
+				ts = "prettier",
+				html = "prettier"
+			}
+		}
+	}
 }
 
 --[[ local system_name
