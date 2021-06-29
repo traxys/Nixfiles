@@ -53,4 +53,5 @@ return require('packer').startup(function()
 	use 'andymass/vim-matchup'
 	use 'b3nj5m1n/kommentary'
 	use 'onsails/lspkind-nvim'
+	use 'editorconfig/editorconfig-vim'
 end)

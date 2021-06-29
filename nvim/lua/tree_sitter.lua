@@ -1,5 +1,8 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"rust", "c", "cpp", "json", "lua", "python", "toml", "latex", "nix"},
+    ensure_installed = {"rust", "c", "cpp", "json", "lua", "python", "toml", "latex", "nix", "vue", "javascript", "dart"},
+	ident = {
+		enable = true
+	},
 	highlight = {
 		enable = true,                 -- false will disable the whole extension
 		disable = {"elixir", "teal"},  -- list of language that will be disabled
