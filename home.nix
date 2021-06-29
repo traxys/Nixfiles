@@ -1,10 +1,15 @@
 { config, pkgs, lib, ... }:
 
 let
+  rustVersion = (pkgs.rustChannelOf { channel = "1.53.0"; }).rust;
+  rsPlatform = pkgs.makeRustPlatform {
+    cargo = rustVersion;
+    rustc = rustVersion;
+  };
   localinfo = import ./localinfo.nix;
-  pkgCratesIO = { name, version, hash }: pkgs.rustPlatform.buildRustPackage rec {
-    pname = "dotacat";
-    version = "0.2.0";
+  pkgCratesIO = { name, version, hash }: rsPlatform.buildRustPackage {
+    pname = name;
+    version = version;
     src = fetchTarball "https://static.crates.io/crates/${name}/${name}-${version}.crate";
     cargoSha256 = hash;
   };
@@ -27,7 +32,18 @@ in
     bitwarden-cli
     rustup
     neovim-nightly
-    rust-analyzer
+    (rsPlatform.buildRustPackage rec {
+      pname = "rust-analyzer";
+      version = "2021-06-21";
+      src = fetchFromGitHub {
+        owner = "rust-analyzer";
+        repo = "rust-analyzer";
+        rev = version;
+        sha256 = "1rm1cij2rc1g7cpdhlkd7zlkqcpwwmlzr1w8qfgjyfb9zi56bglw";
+      };
+      cargoSha256 = "00592sa69sz5f4wi0hdsxgmfmc4yifbyzb839p5jrc9ycxy07073";
+      doCheck = false;
+    })
     clang-tools
     nodePackages.vscode-json-languageserver
     nodePackages.bash-language-server
@@ -44,10 +60,13 @@ in
       version = "0.2.0";
       hash = "1lnmw0c7m40ysbar8bk6r2jh32w6613457r5wgp418pgy2300kvn";
     })
-	cargo-edit
-	rsync
-	fd
-	niv
+    cargo-edit
+    rsync
+    fd
+    niv
+	bintools
+	httpie
+	sqlx-cli
   ];
 
   programs = {
@@ -125,7 +144,8 @@ in
         ls = "${pkgs.exa}/bin/exa --icons";
         screenRegion = "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - ";
         py3 = "nix-shell -p python3 python3.pkgs.matplotlib --run python3";
-		ssh = "kitty +kitten ssh";
+        ssh = "kitty +kitten ssh";
+		ns = "nix-shell";
       };
     };
   };
@@ -160,3 +180,13 @@ in
   # changes in each release.
   home.stateVersion = "21.11";
 }
+
+
+
+
+
+
+
+
+
+
