@@ -36,16 +36,27 @@
     };
     localtime.enable = true;
     fwupd.enable = true;
-	postgresql = {
-		enable = true;
-	};
+    postgresql = {
+      enable = true;
+    };
   };
   programs.adb.enable = true;
+  programs.dconf.enable = true;
 
   fonts.enableDefaultFonts = true;
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" ]; })
-  ];
+  fonts = {
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "Hack" ]; })
+      dejavu_fonts
+    ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "DejaVu" ];
+        sansSerif = [ "DejaVu Sans" ];
+        monospace = [ "Hack" ];
+      };
+    };
+  };
 
   networking.networkmanager.enable = true;
 
@@ -64,4 +75,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 }
+
+
+
+
+
 

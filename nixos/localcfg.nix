@@ -62,17 +62,23 @@ in
     uid = 1000;
     isNormalUser = true;
     home = "/home/traxys";
-    extraGroups = [ "wheel" "networkmanager" "adbusers"];
+    extraGroups = [ "wheel" "networkmanager" "adbusers" ];
     shell = pkgs.zsh;
   };
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
+  services.printing = {
+    enable = true;
+	drivers = [pkgs.hplip];
+  };
+
   hardware.opengl = {
     enable = true;
   };
 }
+
 
 
 
