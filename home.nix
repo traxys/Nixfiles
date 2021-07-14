@@ -32,18 +32,7 @@ in
     bitwarden-cli
     rustup
     neovim-nightly
-    (rsPlatform.buildRustPackage rec {
-      pname = "rust-analyzer";
-      version = "2021-06-21";
-      src = fetchFromGitHub {
-        owner = "rust-analyzer";
-        repo = "rust-analyzer";
-        rev = version;
-        sha256 = "1rm1cij2rc1g7cpdhlkd7zlkqcpwwmlzr1w8qfgjyfb9zi56bglw";
-      };
-      cargoSha256 = "00592sa69sz5f4wi0hdsxgmfmc4yifbyzb839p5jrc9ycxy07073";
-      doCheck = false;
-    })
+    rust-analyzer
     clang-tools
     nodePackages.vscode-json-languageserver
     nodePackages.bash-language-server
@@ -64,10 +53,31 @@ in
     rsync
     fd
     niv
-	bintools
-	httpie
-	sqlx-cli
+    bintools
+    httpie
+    sqlx-cli
+
+    /* (rsPlatform.buildRustPackage rec {
+      pname = "lists_cli";
+      version = "0.1.0";
+      src = fetchFromGitHub {
+      owner = "traxys";
+      repo = "lists";
+      rev = "2b5a1bb";
+      sha256 = "0ma6j96p109sra78cr00bdkyb9c7a9mg6v2vhzy7dpnz2zmr1h93";
+      };
+      cargoSha256 = "18w9xirik80f91fd805xjqvifvpgdsna6y9vwgfq621b8v7xjrkv";
+      }) */
   ];
+
+  services = {
+    syncthing = {
+      enable = true;
+      tray = {
+        enable = true;
+      };
+    };
+  };
 
   programs = {
     home-manager = {
@@ -145,7 +155,7 @@ in
         screenRegion = "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - ";
         py3 = "nix-shell -p python3 python3.pkgs.matplotlib --run python3";
         ssh = "kitty +kitten ssh";
-		ns = "nix-shell";
+        ns = "nix-shell";
       };
     };
   };
@@ -180,6 +190,8 @@ in
   # changes in each release.
   home.stateVersion = "21.11";
 }
+
+
 
 
 

@@ -1,25 +1,48 @@
 { pkgs, config, ... }:
 
-let 
-	localinfo = import ./localinfo.nix;
+let
+  localinfo = import ./localinfo.nix;
 in
 {
   home.packages = with pkgs; [
     bitwarden
-    firefox-wayland
+    #firefox-wayland
     thunderbird
-	element-desktop
+    element-desktop
     (discord.override { nss = pkgs.nss; })
     spotify
     signal-desktop
-	libreoffice-fresh
+    libreoffice-fresh
 
     sway
+    xdg_utils
   ];
 
+  gtk = {
+    enable = true;
+    font = {
+      name = "DejaVu Sans";
+    };
+    theme = {
+      package = pkgs.gnome.gnome_themes_standard;
+      name = "Adwaita";
+    };
+  };
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+      forceWayland = true;
+      extraPolicies = {
+        ExtensionSettings = { };
+      };
+    };
+  };
+
   home.sessionVariables = {
-	MOZ_ENABLE_WAYLAND = "1";
-	XDG_CURRENT_DESKTOP = "sway";
+    MOZ_ENABLE_WAYLAND = "1";
+    XDG_CURRENT_DESKTOP = "sway";
+    BROWSER = "firefox";
   };
 
   programs = {
@@ -151,7 +174,7 @@ in
           ws10 = "";
         in
         {
-          "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
+          "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png";
           "${mod}+Shift+semicolon" = "kill";
           "${mod}+e" = "exec ${menu}";
           "${mod}+Return" = "exec ${terminal}";
@@ -216,3 +239,9 @@ in
     };
   };
 }
+
+
+
+
+
+
