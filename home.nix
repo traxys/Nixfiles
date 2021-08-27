@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  rustVersion = (pkgs.rustChannelOf { channel = "1.53.0"; }).rust;
+  rustVersion = (pkgs.rustChannelOf { channel = "stable"; }).rust;
   rsPlatform = pkgs.makeRustPlatform {
     cargo = rustVersion;
     rustc = rustVersion;
@@ -57,6 +57,13 @@ in
     httpie
     sqlx-cli
 
+    (rsPlatform.buildRustPackage {
+      pname = "rq";
+      version = "0.1.0";
+      src = /home/traxys/Documents/rust/rq;
+      cargoSha256 = "1m70rk5aq14ysq8v95xzwm2lywsd22m4cbkgi617hm2hpg670dm3";
+    })
+
     /* (rsPlatform.buildRustPackage rec {
       pname = "lists_cli";
       version = "0.1.0";
@@ -81,6 +88,10 @@ in
 
   programs = {
     home-manager = {
+      enable = true;
+    };
+
+    starship = {
       enable = true;
     };
 
