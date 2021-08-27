@@ -43,6 +43,7 @@ in
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "sway";
     BROWSER = "firefox";
+	LIBSEAT_BACKEND = "logind";
   };
 
   programs = {
