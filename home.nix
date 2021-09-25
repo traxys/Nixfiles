@@ -56,18 +56,12 @@ in
     bintools
     httpie
     sqlx-cli
-
-    (rsPlatform.buildRustPackage {
-      pname = "rq";
-      version = "0.1.0";
-      src = /home/traxys/Documents/rust/rq;
-      cargoSha256 = "1m70rk5aq14ysq8v95xzwm2lywsd22m4cbkgi617hm2hpg670dm3";
-    })
+	direnv
 
     /* (rsPlatform.buildRustPackage rec {
       pname = "lists_cli";
       version = "0.1.0";
-      src = fetchFromGitHub {
+     src = fetchFromGitHub {
       owner = "traxys";
       repo = "lists";
       rev = "2b5a1bb";
@@ -150,15 +144,16 @@ in
       ];
       initExtra =
         ''
-          			export PATH="$PATH:${localinfo.homeDir}/bin"
-                    	source ~/.p10k.zsh
-                        source ~/.powerlevel10k/powerlevel10k.zsh-theme
-                        if [ -f "$HOME/.zvars" ]; then
-                            source "$HOME/.zvars"
-                        fi
-                      	${pkgs.fortune}/bin/fortune \
-                      		| ${pkgs.cowsay}/bin/cowsay \
-                      		| dotacat
+           export PATH="$PATH:${localinfo.homeDir}/bin"
+           source ~/.p10k.zsh
+           source ~/.powerlevel10k/powerlevel10k.zsh-theme
+		   eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+           if [ -f "$HOME/.zvars" ]; then
+               source "$HOME/.zvars"
+           fi
+            ${pkgs.fortune}/bin/fortune \
+            	| ${pkgs.cowsay}/bin/cowsay \
+            	| dotacat
         '';
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat -p";
