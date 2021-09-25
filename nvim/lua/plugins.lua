@@ -35,7 +35,13 @@ return require('packer').startup(function()
 
 	use { 'bluz71/vim-moonfly-colors' }
 	use { 'hrsh7th/vim-vsnip' }
-	use { 'hrsh7th/nvim-compe' }
+	use { 'hrsh7th/cmp-nvim-lsp' }
+	use { 'hrsh7th/cmp-buffer' }
+	use { 'hrsh7th/cmp-calc' }
+	use { 'hrsh7th/cmp-path' }
+	use { 'kdheepak/cmp-latex-symbols' }
+	use { 'hrsh7th/nvim-cmp' }
+
 
 	use { 'dpelle/vim-Grammalecte' }
 	use { 'dpelle/vim-LanguageTool' }
