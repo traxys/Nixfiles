@@ -7,7 +7,7 @@ in
   home.packages = with pkgs; [
     bitwarden
     #firefox-wayland
-    thunderbird
+    thunderbird-wayland
     element-desktop
     (discord.override { nss = pkgs.nss; })
     spotify
