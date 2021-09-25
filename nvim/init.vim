@@ -46,8 +46,6 @@ let g:grammalecte_disable_rules = "apostrophe_typographique
 let g:languagetool_cmd='/usr/bin/languagetool'
 let g:languagetool_lang="fr"
 
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-
 nnoremap <silent> bp <cmd>Telescope buffers<CR>
 nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>
 nnoremap <silent> gr <cmd>Telescope lsp_references<CR>
