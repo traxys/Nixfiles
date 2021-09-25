@@ -8,8 +8,22 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
 
 require('lspkind').init({})
+local lspconfig = require'lspconfig'
+local configs = require'lspconfig/configs'
+local util = require 'lspconfig/util'
 
-require'lspconfig'.rust_analyzer.setup{
+if not lspconfig.rsh_lsp then
+	configs.rsh_lsp = {
+    	default_config = {
+      		cmd = {'rsh-lsp'},
+      		filetypes = {'rsh'},
+			root_dir = util.path.dirname,
+      		settings = {},
+    	};
+  	}
+end
+
+lspconfig.rust_analyzer.setup{
 	on_attach=lsp_status.on_attach,
 	settings = {
 		["rust-analyzer"] = {
@@ -27,39 +41,42 @@ require'lspconfig'.rust_analyzer.setup{
 	},
 	capabilities = capabilities
 }
-
-require'lspconfig'.jsonls.setup{
+lspconfig.jsonls.setup{
 	on_attach=lsp_status.on_attach,
 	cmd = { "json-languageserver", "--stdio" },
 	capabilities = capabilities
 }
-require'lspconfig'.bashls.setup{
+lspconfig.bashls.setup{
 	on_attach=lsp_status.on_attach,
 	capabilities = capabilities
 }
-require'lspconfig'.clangd.setup{
+lspconfig.rsh_lsp.setup{
+	on_attach=lsp_status.on_attach,
+	capabilities = capabilities
+}
+lspconfig.clangd.setup{
 	on_attach = lsp_status.on_attach,
 	handlers = lsp_status.extensions.clangd.setup(),
 	init_options = { clangdFileStatus = true},
 	capabilities = capabilities
 }
-require'lspconfig'.texlab.setup{
+lspconfig.texlab.setup{
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities
 }
 
-require'lspconfig'.rnix.setup{
+lspconfig.rnix.setup{
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities
 }
 
-require'lspconfig'.dartls.setup{
+lspconfig.dartls.setup{
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities,
 	cmd = {"dart", vim.fn.expand("$DART_SDK") .. "/snapshots/analysis_server.dart.snapshot", "--lsp"}
 }
 
-require'lspconfig'.vuels.setup{
+lspconfig.vuels.setup{
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities,
 	config = {
@@ -72,48 +89,3 @@ require'lspconfig'.vuels.setup{
 		}
 	}
 }
-
---[[ local system_name
-if vim.fn.has("mac") == 1 then
-	system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-	system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-	system_name = "Windows"
-else
-	print("Unsupported system for sumneko")
-end
-
-local sumneko_root_path = "/home/traxys/softs/lua-language-server"
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
-
-require'lspconfig'.sumneko_lua.setup {
-	on_attach=lsp_status.on_attach,
-	capabilities = capabilities,
-	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-	settings = {
-		Lua = {
-			runtime = {
-				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-				version = 'LuaJIT',
-				-- Setup your lua path
-				path = vim.split(package.path, ';'),
-			},
-			diagnostics = {
-				-- Get the language server to recognize the `vim` global
-				globals = {'vim'},
-			},
-			workspace = {
-				-- Make the server aware of Neovim runtime files
-				library = {
-					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
-					[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-				},
-			},
-			-- Do not send telemetry data containing a randomized but unique identifier
-			telemetry = {
-				enable = false,
-			},
-		},
-	},
-} ]]

@@ -64,6 +64,7 @@ nnoremap <silent> mk <cmd>Telescope keymaps<CR>
 command SpellFr setlocal spell spelllang=fr
 
 autocmd BufNewFile,BufRead *.nix set ft=nix
+autocmd BufNewFile,BufRead *.rsh set ft=rsh
 
 "syntax enable
 filetype plugin indent on
