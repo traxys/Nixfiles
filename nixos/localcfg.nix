@@ -58,12 +58,18 @@ in
     };
   };
 
-  users.users.traxys = {
-    uid = 1000;
-    isNormalUser = true;
-    home = "/home/traxys";
-    extraGroups = [ "wheel" "networkmanager" "adbusers" ];
-    shell = pkgs.zsh;
+  users = {
+    users = {
+      traxys = {
+        uid = 1000;
+        isNormalUser = true;
+        home = "/home/traxys";
+        extraGroups = [ "wheel" "networkmanager" "adbusers" ];
+        shell = pkgs.zsh;
+      };
+      localtimed.group = "localtimed";
+    };
+    groups.localtimed = { };
   };
 
   # Set your time zone.
@@ -71,7 +77,7 @@ in
 
   services.printing = {
     enable = true;
-	drivers = [pkgs.hplip];
+    drivers = [ pkgs.hplip ];
   };
 
   hardware.opengl = {
