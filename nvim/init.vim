@@ -1,3 +1,6 @@
+set termguicolors
+colorscheme moonfly
+
 lua require("plugins")
 lua require("misc")
 lua require("tree_sitter")
@@ -5,8 +8,6 @@ lua require("lsp")
 lua require("completion")
 lua require("statusline")
 
-set termguicolors
-colorscheme moonfly
 set number
 set tabstop=4
 set shiftwidth=4
