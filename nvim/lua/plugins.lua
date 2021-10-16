@@ -42,7 +42,6 @@ return require('packer').startup(function()
 	use { 'kdheepak/cmp-latex-symbols' }
 	use { 'hrsh7th/nvim-cmp' }
 
-
 	use { 'dpelle/vim-Grammalecte' }
 	use { 'dpelle/vim-LanguageTool' }
 
@@ -54,7 +53,8 @@ return require('packer').startup(function()
   		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
 
-	use 'glepnir/galaxyline.nvim'
+	-- use 'famiu/feline.nvim'
+	use 'NTBBloodbath/galaxyline.nvim'
 	use 'drmikehenry/vim-headerguard'
 	use 'andymass/vim-matchup'
 	use 'b3nj5m1n/kommentary'

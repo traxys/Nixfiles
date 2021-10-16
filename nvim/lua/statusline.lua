@@ -1,3 +1,59 @@
+--[[ local vi_mode_utils = require 'feline.providers.vi_mode'
+
+local vi_mode_colors = {
+    NORMAL = "#8cc85f",
+    INSERT = "#ff5454",
+    VISUAL = "#ae81ff",
+    OP = "#36c692",
+    BLOCK = "#80a0ff",
+    REPLACE = "#d183e8",
+    ['V-REPLACE'] = "#d183e8",
+    ENTER = "#74b2ff",
+    MORE = "#74b2ff",
+    SELECT = "#de935f",
+    COMMAND = "#8cc85f",
+    SHELL = "#8cc85f",
+    TERM = "#8cc85f",
+    NONE = "#e3c78a"
+}
+
+local function vimode_hl()
+    return {
+        name = vi_mode_utils.get_mode_highlight_name(),
+        fg = vi_mode_utils.get_mode_color()
+    }
+end
+
+local cmps = {
+	vi_mode = {
+		provider = '▊',
+        hl = vimode_hl,
+        right_sep = ' '
+	}
+}
+
+local components = {
+	left = {
+		active = {
+			cmps.vi_mode
+		},
+        inactive = {}
+	},
+	mid = {
+		active = {},
+        inactive = {}
+	},
+	right = {
+		active = {},
+        inactive = {}
+	}
+}
+
+require'feline'.setup {
+	components = components,
+	vi_mode_colors = vi_mode_colors
+} ]]
+
 local gl = require('galaxyline')
 local gls = gl.section
 gl.short_line_list = {'LuaTree','vista','dbui'}
@@ -23,6 +79,8 @@ local buffer_not_empty = function()
 	end
 	return false
 end
+
+local fileinfo = require("galaxyline.providers.fileinfo")
 
 -- Start of line
 gls.left[1] = {
@@ -53,7 +111,7 @@ gls.left[3] ={
 	FileIcon = {
 		provider = 'FileIcon',
 		condition = buffer_not_empty,
-		highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.darkblue},
+		highlight = {fileinfo.get_file_icon_color,colors.darkblue},
 	},
 }
 -- File Name
@@ -82,7 +140,7 @@ gls.left[6] = {
 	}
 }
 
-local vcs = require('galaxyline.provider_vcs')
+local vcs = require("galaxyline.providers.vcs")
 
 local is_file_diff = function ()
 	if vcs.diff_add() ~= nil or vcs.diff_modified() ~= nil or vcs.diff_remove() ~= nil then
