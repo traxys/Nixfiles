@@ -56,19 +56,20 @@ in
     bintools
     httpie
     sqlx-cli
-	direnv
-
-    /* (rsPlatform.buildRustPackage rec {
-      pname = "lists_cli";
-      version = "0.1.0";
-     src = fetchFromGitHub {
-      owner = "traxys";
-      repo = "lists";
-      rev = "2b5a1bb";
-      sha256 = "0ma6j96p109sra78cr00bdkyb9c7a9mg6v2vhzy7dpnz2zmr1h93";
+    direnv
+    (rsPlatform.buildRustPackage rec {
+      pname = "stylua";
+      version = "0.11.0";
+      src = fetchFromGitHub {
+        owner = "johnnymorganz";
+        repo = "stylua";
+        rev = "0caa9a2";
+        sha256 = "1r6jr2ghha6wklm2bwrixmq0r4h5vrvaryrz11q6hpfwpicpdnn1";
       };
-      cargoSha256 = "18w9xirik80f91fd805xjqvifvpgdsna6y9vwgfq621b8v7xjrkv";
-      }) */
+      cargoSha256 = "0v2154qd4m8yqpv0v4ikhymd693p0bbf8vxf7h5bzb4d9vaxxb6m";
+    })
+	codespell
+	shellcheck
   ];
 
   services = {
