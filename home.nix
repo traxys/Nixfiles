@@ -148,16 +148,16 @@ in
       ];
       initExtra =
         ''
-           export PATH="$PATH:${localinfo.homeDir}/bin"
-           source ~/.p10k.zsh
-           source ~/.powerlevel10k/powerlevel10k.zsh-theme
-		   eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-           if [ -f "$HOME/.zvars" ]; then
-               source "$HOME/.zvars"
-           fi
-            ${pkgs.fortune}/bin/fortune \
-            	| ${pkgs.cowsay}/bin/cowsay \
-            	| dotacat
+          export PATH="$PATH:${localinfo.homeDir}/bin"
+          source ~/.p10k.zsh
+          source ~/.powerlevel10k/powerlevel10k.zsh-theme
+          eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
+          if [ -f "$HOME/.zvars" ]; then
+            source "$HOME/.zvars"
+          fi
+          ${pkgs.fortune}/bin/fortune \
+            | ${pkgs.cowsay}/bin/cowsay \
+            | dotacat
         '';
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat -p";
