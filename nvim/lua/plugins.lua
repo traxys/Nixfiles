@@ -60,4 +60,6 @@ return require('packer').startup(function()
 	use 'b3nj5m1n/kommentary'
 	use 'onsails/lspkind-nvim'
 	use 'editorconfig/editorconfig-vim'
+
+	use 'jose-elias-alvarez/null-ls.nvim'
 end)

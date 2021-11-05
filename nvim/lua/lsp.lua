@@ -1,4 +1,15 @@
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("info")
+
+local null_ls = require("null-ls")
+local sources = {
+	--null_ls.builtins.code_actions.gitsigns,
+	null_ls.builtins.formatting.stylua,
+	null_ls.builtins.formatting.trim_whitespace,
+	null_ls.builtins.diagnostics.shellcheck,
+	null_ls.builtins.diagnostics.codespell,
+}
+
+null_ls.config({ sources = sources })
 
 local lsp_status = require('lsp-status')
 lsp_status.register_progress()
@@ -23,6 +34,9 @@ if not lspconfig.rsh_lsp then
   	}
 end
 
+lspconfig["null-ls"].setup{
+	on_attach=lsp_status.on_attach,
+}
 lspconfig.rust_analyzer.setup{
 	on_attach=lsp_status.on_attach,
 	settings = {
