@@ -29,7 +29,7 @@ vim.g.grammalecte_cli_py = "/usr/bin/grammalecte-cli"
 latex_ignore = [[
 	typo_guillemets_typographiques_simples_doubles_ouvrants
 	typo_guillemets_typographiques_simples_doubles_fermants
-	esp_milieu_ligne 
+	esp_milieu_ligne
 ]]
 vim.g.grammalecte_disable_rules = [[ apostrophe_typographique
 	apostrophe_typographique_après_t
@@ -43,7 +43,7 @@ vim.g.grammalecte_disable_rules = [[ apostrophe_typographique
     nbsp_avant_chevrons_fermants1
     unit_nbsp_avant_unités1
     unit_nbsp_avant_unités2
-    unit_nbsp_avant_unités3 
+    unit_nbsp_avant_unités3
     typo_espace_manquant_après2 ]] .. latex_ignore
 
 vim.g.languagetool_cmd = "/usr/bin/languagetool"
