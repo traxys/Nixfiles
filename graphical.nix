@@ -13,6 +13,7 @@ in
     spotify
     signal-desktop
     libreoffice-fresh
+	feh
 
     sway
     xdg_utils
@@ -240,9 +241,3 @@ in
     };
   };
 }
-
-
-
-
-
-
