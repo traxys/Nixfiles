@@ -96,6 +96,9 @@ in
 
     git = {
       enable = true;
+      delta = {
+        enable = true;
+      };
       userName = "Quentin Boyer";
       userEmail = localinfo.email;
     };
