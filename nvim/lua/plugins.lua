@@ -62,4 +62,6 @@ return require('packer').startup(function()
 	use 'editorconfig/editorconfig-vim'
 
 	use 'jose-elias-alvarez/null-ls.nvim'
+	use 'nathom/filetype.nvim'
+	use 'tweekmonster/startuptime.vim'
 end)

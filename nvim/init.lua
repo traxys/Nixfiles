@@ -2,7 +2,6 @@ vim.o.termguicolors = true
 vim.cmd("colorscheme moonfly")
 
 require("plugins")
-require("misc")
 require("tree_sitter")
 require("lsp")
 require("completion")
@@ -67,16 +66,22 @@ vim.api.nvim_set_keymap("n", "mk", "<cmd>Telescope keymaps<CR>", { noremap = tru
 vim.o.omnifunc = "v:lua.vim.lsp.omnifunc"
 vim.o.updatetime = 300
 
+require("nvim-web-devicons").setup({ default = true })
+require("filetype").setup({
+	overrides = {
+		extensions = {
+			nix = "nix",
+			rsh = "rsh",
+		},
+	},
+})
+
 vim.cmd([[
 command SpellFr setlocal spell spelllang=fr
-
-autocmd BufNewFile,BufRead *.nix set ft=nix
-autocmd BufNewFile,BufRead *.rsh set ft=rsh
 
 filetype plugin indent on
 
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
-
 ]])
