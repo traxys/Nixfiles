@@ -6,7 +6,7 @@ local sources = {
 	null_ls.builtins.formatting.stylua,
 	null_ls.builtins.formatting.trim_whitespace,
 	null_ls.builtins.diagnostics.shellcheck,
-	null_ls.builtins.diagnostics.codespell,
+	--null_ls.builtins.diagnostics.codespell,
 }
 
 null_ls.config({ sources = sources })
