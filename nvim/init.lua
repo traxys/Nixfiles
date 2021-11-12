@@ -59,7 +59,7 @@ vim.api.nvim_set_keymap("n", "mn", "<cmd>Telescope man_pages sections=1,3,5<CR>"
 vim.api.nvim_set_keymap("n", "fg", "<cmd>Telescope git_files<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "K ", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "ff", "<cmd>lua vim.lsp.buf.formatting_seq_sync()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-s>", "<cmd>Telescope spell_suggest<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "mk", "<cmd>Telescope keymaps<CR>", { noremap = true, silent = true })
 
