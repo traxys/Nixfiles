@@ -77,7 +77,11 @@ in
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplip ];
+    drivers = [ pkgs.hplip pkgs.gutenprint pkgs.cnijfilter2 ];
+  };
+  services.avahi = {
+    nssmdns = true;
+    enable = true;
   };
 
   hardware.opengl = {
