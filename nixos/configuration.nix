@@ -60,6 +60,10 @@
 
   networking.networkmanager.enable = true;
 
+  networking.firewall.allowedTCPPorts = [
+    8080
+  ];
+
   nix.autoOptimiseStore = true;
   nix.gc = {
     automatic = true;
