@@ -6,7 +6,8 @@ in
 {
   home.packages = with pkgs; [
     bitwarden
-    #firefox-wayland
+    firefox-wayland
+	/* firefox */
     thunderbird-wayland
     element-desktop
     (discord.override { nss = pkgs.nss; })
@@ -30,7 +31,7 @@ in
     };
   };
 
-  programs.firefox = {
+  /* programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
       forceWayland = true;
@@ -38,7 +39,7 @@ in
         ExtensionSettings = { };
       };
     };
-  };
+  }; */
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
