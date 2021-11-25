@@ -1,4 +1,15 @@
-{ config, pkgs, lib, ... }:
+{ config
+, pkgs
+, lib
+, dotacat
+, stylua
+, naersk-lib
+, fast-syntax-highlighting
+, zsh-nix-shell
+, nix-zsh-completions
+, powerlevel10k
+, ...
+}:
 
 let
   rustVersion = (pkgs.rustChannelOf { channel = "stable"; }).rust;
@@ -7,12 +18,6 @@ let
     rustc = rustVersion;
   };
   localinfo = import ./localinfo.nix;
-  pkgCratesIO = { name, version, hash }: rsPlatform.buildRustPackage {
-    pname = name;
-    version = version;
-    src = fetchTarball "https://static.crates.io/crates/${name}/${name}-${version}.crate";
-    cargoSha256 = hash;
-  };
 in
 {
   imports = [
@@ -37,17 +42,18 @@ in
     nodePackages.vscode-json-languageserver
     nodePackages.bash-language-server
     nixpkgs-fmt
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/rnix-lsp/archive/master.tar.gz;
-    }))
+    rnix-lsp
     exa
     python3
     topgrade
     wl-clipboard
-    (pkgCratesIO {
-      name = "dotacat";
-      version = "0.2.0";
-      hash = "1lnmw0c7m40ysbar8bk6r2jh32w6613457r5wgp418pgy2300kvn";
+    (naersk-lib.buildPackage {
+      pname = "dotacat";
+      root = dotacat;
+    })
+    (naersk-lib.buildPackage {
+      pname = "stylua";
+      root = stylua;
     })
     cargo-edit
     rsync
@@ -57,19 +63,12 @@ in
     httpie
     sqlx-cli
     direnv
-    (rsPlatform.buildRustPackage rec {
-      pname = "stylua";
-      version = "0.11.0";
-      src = fetchFromGitHub {
-        owner = "johnnymorganz";
-        repo = "stylua";
-        rev = "0caa9a2";
-        sha256 = "1r6jr2ghha6wklm2bwrixmq0r4h5vrvaryrz11q6hpfwpicpdnn1";
-      };
-      cargoSha256 = "0v2154qd4m8yqpv0v4ikhymd693p0bbf8vxf7h5bzb4d9vaxxb6m";
-    })
     codespell
     shellcheck
+	ripgrep
+	file
+	jq
+	wget
   ];
 
   services = {
@@ -118,32 +117,17 @@ in
         {
           name = "fast-syntax-highlighting";
           file = "fast-syntax-highlighting.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "zdharma";
-            repo = "fast-syntax-highlighting";
-            rev = "817916dfa907d179f0d46d8de355e883cf67bd97";
-            sha256 = "0m102makrfz1ibxq8rx77nngjyhdqrm8hsrr9342zzhq1nf4wxxc";
-          };
+          src = fast-syntax-highlighting;
         }
         {
           name = "zsh-nix-shell";
           file = "nix-shell.plugin.zsh";
-          src = pkgs.fetchFromGitHub {
-            owner = "chisui";
-            repo = "zsh-nix-shell";
-            rev = "v0.4.0";
-            sha256 = "1gfyrgn23zpwv1vj37gf28hf5z0ka0w5qm6286a7qixwv7ijnrx9";
-          };
+          src = zsh-nix-shell;
         }
         {
           name = "nix-zsh-completions";
           file = "nix-zsh-completions.plugin.zsh ";
-          src = pkgs.fetchFromGitHub {
-            owner = "spwhitt";
-            repo = "nix-zsh-completions";
-            rev = "0.4.4";
-            sha256 = "1n9whlys95k4wc57cnz3n07p7zpkv796qkmn68a50ygkx6h3afqf";
-          };
+          src = nix-zsh-completions;
         }
       ];
       initExtra =
@@ -175,12 +159,7 @@ in
       recursive = true;
     };
     ".powerlevel10k" = {
-      source = pkgs.fetchFromGitHub {
-        owner = "romkatv";
-        repo = "powerlevel10k";
-        rev = "v1.15.0";
-        sha256 = "1b3j2riainx3zz4irww72z0pb8l8ymnh1903zpsy5wmjgb0wkcwq";
-      };
+      source = powerlevel10k;
     };
     ".zprofile".source = ./zprofile;
     ".p10k.zsh".source = ./p10k.zsh;
