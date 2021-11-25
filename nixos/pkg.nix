@@ -12,12 +12,12 @@
     };
   };
 
-  /* nix = {
+  nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
-    experimental-features = nix-command flakes
+      experimental-features = nix-command flakes
     '';
-    }; */
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -34,9 +34,9 @@
 
   /* nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
-      nativeOnly = true;
+    nativeOnly = true;
     };
-  }; */
+    }; */
 
   programs.steam.enable = true;
 
