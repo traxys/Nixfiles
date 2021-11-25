@@ -68,8 +68,8 @@ in
       };
       cargoSha256 = "0v2154qd4m8yqpv0v4ikhymd693p0bbf8vxf7h5bzb4d9vaxxb6m";
     })
-	codespell
-	shellcheck
+    codespell
+    shellcheck
   ];
 
   services = {
