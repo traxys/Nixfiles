@@ -1,11 +1,11 @@
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+--[[ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.rsh = {
 	install_info = {
 		url = "https://github.com/traxys/tree-sitter-rsh/", -- local path or git repo
 		files = { "src/parser.c" },
 	},
 }
-
+ ]]
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"rust",
@@ -20,7 +20,7 @@ require("nvim-treesitter.configs").setup({
 		"vue",
 		"javascript",
 		"dart",
-		"rsh",
+		--"rsh",
 	},
 	ident = {
 		enable = true,

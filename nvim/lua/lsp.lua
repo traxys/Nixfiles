@@ -9,8 +9,6 @@ local sources = {
 	--null_ls.builtins.diagnostics.codespell,
 }
 
-null_ls.config({ sources = sources })
-
 local lsp_status = require("lsp-status")
 lsp_status.register_progress()
 
@@ -23,7 +21,7 @@ local lspconfig = require("lspconfig")
 local configs = require("lspconfig/configs")
 local util = require("lspconfig/util")
 
-if not lspconfig.rsh_lsp then
+--[[ if not lspconfig.rsh_lsp then
 	configs.rsh_lsp = {
 		default_config = {
 			cmd = { "rsh-lsp" },
@@ -32,9 +30,10 @@ if not lspconfig.rsh_lsp then
 			settings = {},
 		},
 	}
-end
+end ]]
 
-lspconfig["null-ls"].setup({
+null_ls.setup({
+	sources = sources,
 	on_attach = lsp_status.on_attach,
 })
 lspconfig.rust_analyzer.setup({
@@ -64,10 +63,10 @@ lspconfig.bashls.setup({
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities,
 })
-lspconfig.rsh_lsp.setup({
+--[[ lspconfig.rsh_lsp.setup({
 	on_attach = lsp_status.on_attach,
 	capabilities = capabilities,
-})
+}) ]]
 lspconfig.clangd.setup({
 	on_attach = lsp_status.on_attach,
 	handlers = lsp_status.extensions.clangd.setup(),
