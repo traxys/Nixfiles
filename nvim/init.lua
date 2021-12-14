@@ -76,12 +76,14 @@ require("filetype").setup({
 	},
 })
 
+--autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
 vim.cmd([[
 command SpellFr setlocal spell spelllang=fr
 
 filetype plugin indent on
 
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold * lua vim.diagnostic.open_float()
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
 ]])
