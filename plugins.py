@@ -31,6 +31,7 @@ plugins = [
     "jose-elias-alvarez/null-ls.nvim",
     "nathom/filetype.nvim",
     "tweekmonster/startuptime.vim",
+    "kyazdani42/nvim-tree.lua",
 ]
 
 inputs = ""

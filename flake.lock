@@ -600,6 +600,22 @@
         "type": "github"
       }
     },
+    "nvim-tree.lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1639338723,
+        "narHash": "sha256-B3YzoO2DxirRMWir0jNJuKkOhErMn6bLkXdqpvYdKwA=",
+        "owner": "kyazdani42",
+        "repo": "nvim-tree.lua",
+        "rev": "f408781a463c2edc3a49091b1bca5a18f790ee3d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kyazdani42",
+        "repo": "nvim-tree.lua",
+        "type": "github"
+      }
+    },
     "nvim-treesitter": {
       "flake": false,
       "locked": {
@@ -745,6 +761,7 @@
         "nvim-cmp": "nvim-cmp",
         "nvim-lightbulb": "nvim-lightbulb",
         "nvim-lspconfig": "nvim-lspconfig",
+        "nvim-tree.lua": "nvim-tree.lua",
         "nvim-treesitter": "nvim-treesitter",
         "nvim-web-devicons": "nvim-web-devicons",
         "plantuml-syntax": "plantuml-syntax",
