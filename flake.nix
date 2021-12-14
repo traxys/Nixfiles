@@ -164,6 +164,10 @@
         url = "github:tweekmonster/startuptime.vim";
         flake = false;
       };
+      "nvim-tree.lua" = {
+        url = "github:kyazdani42/nvim-tree.lua";
+        flake = false;
+      };
     };
 
   outputs = { home-manager, nixpkgs, ... }@inputs: {
@@ -320,6 +324,10 @@
                 {
                   name = "startuptime.vim";
                   path = inputs."startuptime.vim";
+                }
+                {
+                  name = "nvim-tree.lua";
+                  path = inputs."nvim-tree.lua";
                 }
               ];
             };

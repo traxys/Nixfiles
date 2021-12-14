@@ -6,7 +6,13 @@ require("lsp")
 require("completion")
 require("statusline")
 
-require('gitsigns').setup()
+require("gitsigns").setup()
+require("nvim-tree").setup({
+	auto_close = true,
+	diagnostics = {
+		enable = true,
+	},
+})
 
 vim.o.number = true
 vim.o.tabstop = 4
@@ -55,6 +61,7 @@ vim.api.nvim_set_keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", { norema
 vim.api.nvim_set_keymap("n", "gW", "<cmd>Telescope lsp_workspace_symbols<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gF", "<cmd>Telescope lsp_document_symbols<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "ft", "<cmd>Telescope file_browser<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "fT", "<cmd>NvimTreeToggle<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "ge", "<cmd>Telescope diagnostics bufnr=0<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gE", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "mn", "<cmd>Telescope man_pages sections=1,3,5<CR>", { noremap = true, silent = true })
