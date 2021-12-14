@@ -1,11 +1,12 @@
 vim.o.termguicolors = true
 vim.cmd("colorscheme moonfly")
 
-require("plugins")
 require("tree_sitter")
 require("lsp")
 require("completion")
 require("statusline")
+
+require('gitsigns').setup()
 
 vim.o.number = true
 vim.o.tabstop = 4

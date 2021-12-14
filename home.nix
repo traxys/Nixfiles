@@ -8,6 +8,7 @@
 , zsh-nix-shell
 , nix-zsh-completions
 , powerlevel10k
+, nvim-plugins
 , ...
 }:
 
@@ -17,6 +18,16 @@ let
     cargo = rustVersion;
     rustc = rustVersion;
   };
+  plugin_path = ".local/share/nvim/site/pack/nix/start/";
+  plugin-files = builtins.listToAttrs (map
+    ({ name, path }: {
+      name = "${plugin_path}/${name}";
+      value = {
+        source = path;
+        recursive = true;
+      };
+    })
+    nvim-plugins);
   localinfo = import ./localinfo.nix;
 in
 {
@@ -65,10 +76,10 @@ in
     direnv
     codespell
     shellcheck
-	ripgrep
-	file
-	jq
-	wget
+    ripgrep
+    file
+    jq
+    wget
   ];
 
   services = {
@@ -167,7 +178,7 @@ in
       source = ./scripts;
       recursive = true;
     };
-  };
+  } // plugin-files;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
