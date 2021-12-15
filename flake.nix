@@ -208,6 +208,7 @@
       thinkpad-nixos = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
+          ./hostconfig/thinkpad-nixos/nixos.nix
           self.nixosModules.minimal
           self.nixosModules.personal-cli
           self.nixosModules.personal-gui
