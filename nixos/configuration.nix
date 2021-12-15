@@ -58,6 +58,12 @@
     };
   };
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   networking.networkmanager.enable = true;
   programs.noisetorch.enable = true;
 
@@ -71,8 +77,6 @@
     dates = "weekly";
     options = "--delete-older-than 14d"; # Ajuste comme tu veux, tu peux utiliser +5 pour garder les 5 dernières, etc.
   };
-
-  security.pam.services.swaylock = {};
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
