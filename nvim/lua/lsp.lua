@@ -1,4 +1,4 @@
-vim.lsp.set_log_level("info")
+--vim.lsp.set_log_level("info")
 
 local null_ls = require("null-ls")
 local sources = {
