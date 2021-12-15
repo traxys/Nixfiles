@@ -210,6 +210,7 @@
         modules = [
           ./hostconfig/thinkpad-nixos/extra_info.nix
           ./hostconfig/thinkpad-nixos/nixos.nix
+          ./hostconfig/thinkpad-nixos/hardware-configuration.nix
           self.nixosModules.minimal
           self.nixosModules.personal-cli
           self.nixosModules.personal-gui
