@@ -59,6 +59,7 @@
   };
 
   networking.networkmanager.enable = true;
+  programs.noisetorch.enable = true;
 
   networking.firewall.allowedTCPPorts = [
     8080
