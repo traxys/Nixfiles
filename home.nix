@@ -106,11 +106,25 @@ in
 
     git = {
       enable = true;
-      delta = {
-        enable = true;
-      };
       userName = "Quentin Boyer";
       userEmail = localinfo.email;
+      delta = {
+        enable = true;
+        options = {
+          line-numbers = true;
+          syntax-theme = "Dracula";
+          plus-style = "auto \"#121bce\"";
+          plus-emph-style = "auto \"#6083eb\"";
+        };
+      };
+      extraConfig = {
+        diff = {
+          algorithm = "histogram";
+        };
+        core = {
+          excludesfile = "${localinfo.homeDir}/.gitignore";
+        };
+      };
     };
 
     zoxide = {
@@ -174,6 +188,7 @@ in
     };
     ".zprofile".source = ./zprofile;
     ".p10k.zsh".source = ./p10k.zsh;
+    ".gitignore".source = ./gitignore;
     "bin" = {
       source = ./scripts;
       recursive = true;
