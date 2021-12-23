@@ -80,6 +80,8 @@ in
     file
     jq
     wget
+	cargo-flamegraph
+	linuxPackages_latest.perf
   ];
 
   services = {
