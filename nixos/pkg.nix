@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  ashmem = config.boot.kernelPackages.callPackage ./anbox.nix { name = "ashmem"; };
+  binder = config.boot.kernelPackages.callPackage ./anbox.nix { name = "binder"; };
+in
 {
   xdg = {
     portal = {
@@ -18,6 +22,9 @@
       experimental-features = nix-command flakes
     '';
   };
+
+  boot.extraModulePackages = [ ashmem binder ];
+  boot.kernelModules = [ "ashmem_linux" "binder_linux" ];
 
   nixpkgs.config = {
     allowUnfree = true;

@@ -58,6 +58,10 @@
     };
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  /* nixpkgs.config.allowBroken = true; */
+  virtualisation.waydroid.enable = true;
+
   security.pam.services.swaylock = {
     text = ''
       auth include login
