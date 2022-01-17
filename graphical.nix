@@ -23,10 +23,16 @@
     vlc
     spotify
 
+    # Libreoffice
+    libreoffice
+    hunspell
+    hunspellDicts.fr-any
+    hyphen
+
     # Misc progs
     bitwarden
     libreoffice-fresh
-	kdeconnect
+    kdeconnect
 
     # Misc utils
     wl-clipboard
