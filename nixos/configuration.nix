@@ -10,7 +10,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./pkg.nix
-       #./home.nix
+      #./home.nix
       ./localcfg.nix
     ];
 

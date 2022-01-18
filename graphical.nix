@@ -7,17 +7,17 @@ in
   home.packages = with pkgs; [
     bitwarden
     firefox-wayland
-	/* firefox */
+    /* firefox */
     thunderbird-wayland
     element-desktop
     (discord.override { nss = pkgs.nss; })
     spotify
     signal-desktop
     libreoffice-fresh
-	feh
-	(tor-browser-bundle-bin.override {
-		useHardenedMalloc = false;
-	})
+    feh
+    (tor-browser-bundle-bin.override {
+      useHardenedMalloc = false;
+    })
 
     sway
     xdg_utils
@@ -37,18 +37,18 @@ in
   /* programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-      forceWayland = true;
-      extraPolicies = {
-        ExtensionSettings = { };
-      };
+    forceWayland = true;
+    extraPolicies = {
+    ExtensionSettings = { };
     };
-  }; */
+    };
+    }; */
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "sway";
     BROWSER = "firefox";
-	LIBSEAT_BACKEND = "logind";
+    LIBSEAT_BACKEND = "logind";
   };
 
   programs = {
