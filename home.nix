@@ -82,6 +82,7 @@ in
     wget
 	cargo-flamegraph
 	linuxPackages_latest.perf
+	unzip
   ];
 
   services = {
