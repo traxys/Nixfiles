@@ -22,9 +22,9 @@ stdenv.mkDerivation rec {
 
   buildPhase = "make INSTALL_MOD_PATH=$out";
   installPhase = ''
-  	    modDir=$out/lib/modules/${kernel.modDirVersion}/kernel/updates/
-		mkdir -p $modDir
-		mv ${name}_linux.ko $modDir/.
+        modDir=$out/lib/modules/${kernel.modDirVersion}/kernel/updates/
+    mkdir -p $modDir
+    mv ${name}_linux.ko $modDir/.
   '';
 
   /* makeFlags = [
