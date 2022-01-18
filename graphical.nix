@@ -27,7 +27,7 @@ in
       name = "DejaVu Sans";
     };
     theme = {
-      package = pkgs.gnome.gnome_themes_standard;
+      package = pkgs.gnome.gnome-themes-extra;
       name = "Adwaita";
     };
   };
