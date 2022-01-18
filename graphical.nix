@@ -15,6 +15,7 @@ in
     signal-desktop
     libreoffice-fresh
 	feh
+	torbrowser
 
     sway
     xdg_utils
