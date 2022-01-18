@@ -15,7 +15,9 @@ in
     signal-desktop
     libreoffice-fresh
 	feh
-	torbrowser
+	(tor-browser-bundle-bin.override {
+		useHardenedMalloc = false;
+	})
 
     sway
     xdg_utils
