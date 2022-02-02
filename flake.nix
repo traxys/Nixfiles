@@ -4,8 +4,10 @@
   inputs =
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-      home-manager.url = "github:nix-community/home-manager";
-      neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+      home-manager = {
+        url = "github:nix-community/home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       nixpkgs-mozilla = {
         url = "github:mozilla/nixpkgs-mozilla";
         flake = false;
@@ -14,12 +16,18 @@
         url = "git+https://gitlab.scd31.com/stephen/dotacat.git";
         flake = false;
       };
-      rnix-lsp.url = "github:nix-community/rnix-lsp";
+      rnix-lsp = {
+        url = "github:nix-community/rnix-lsp";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       stylua = {
         url = "github:johnnymorganz/stylua";
         flake = false;
       };
-      naersk.url = "github:nix-community/naersk";
+      naersk = {
+        url = "github:nix-community/naersk";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       fast-syntax-highlighting = {
         url = "github:z-shell/fast-syntax-highlighting";
         flake = false;
