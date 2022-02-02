@@ -18,6 +18,8 @@ in
     (tor-browser-bundle-bin.override {
       useHardenedMalloc = false;
     })
+    pavucontrol
+    vlc
 
     sway
     xdg_utils
