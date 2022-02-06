@@ -12,18 +12,12 @@ let
   };
 in
 {
-  home.sessionVariables = {
-    RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
-  };
-
   home.packages = with pkgs; [
     bitwarden-cli
-    rustup
     nodePackages.vscode-json-languageserver
     exa
     python3
     topgrade
-    cargo-edit
     rsync
     fd
     niv
@@ -60,35 +54,11 @@ in
       enable = true;
     };
 
-    git = {
-      enable = true;
-      userName = "Quentin Boyer";
-      userEmail = config.extraInfo.email;
-      delta = {
-        enable = true;
-        options = {
-          line-numbers = true;
-          syntax-theme = "Dracula";
-          plus-style = "auto \"#121bce\"";
-          plus-emph-style = "auto \"#6083eb\"";
-        };
-      };
-      extraConfig = {
-        diff = {
-          algorithm = "histogram";
-        };
-        core = {
-          excludesfile = "${config.home.homeDirectory}/.gitignore";
-        };
-      };
-    };
-
     zoxide = {
       enable = true;
     };
   };
   home.file = {
-    ".gitignore".source = ./gitignore;
     "bin" = {
       source = ./scripts;
       recursive = true;
