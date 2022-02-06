@@ -23,7 +23,6 @@ in
     exa
     python3
     topgrade
-    wl-clipboard
     cargo-edit
     rsync
     fd
