@@ -6,7 +6,7 @@
   };
 
   home.packages = with pkgs; [
-	rustup
-	cargo-edit
+    rustup
+    cargo-edit
   ];
 }
