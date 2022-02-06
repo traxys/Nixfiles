@@ -10,17 +10,8 @@ let
     cargo = rustVersion;
     rustc = rustVersion;
   };
-  localinfo = import ./localinfo.nix;
 in
 {
-  imports = [
-    ./graphical.nix
-  ];
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = localinfo.username;
-  home.homeDirectory = localinfo.homeDir;
-
   home.sessionVariables = {
     RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
   };
@@ -76,7 +67,7 @@ in
     git = {
       enable = true;
       userName = "Quentin Boyer";
-      userEmail = localinfo.email;
+      userEmail = config.extraInfo.email;
       delta = {
         enable = true;
         options = {
@@ -91,7 +82,7 @@ in
           algorithm = "histogram";
         };
         core = {
-          excludesfile = "${localinfo.homeDir}/.gitignore";
+          excludesfile = "${config.home.homeDirectory}/.gitignore";
         };
       };
     };
