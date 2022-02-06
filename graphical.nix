@@ -1,8 +1,5 @@
 { pkgs, config, ... }:
 
-let
-  localinfo = import ./localinfo.nix;
-in
 {
   home.packages = with pkgs; [
     bitwarden
@@ -35,16 +32,6 @@ in
       name = "Adwaita";
     };
   };
-
-  /* programs.firefox = {
-    enable = true;
-    package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-    forceWayland = true;
-    extraPolicies = {
-    ExtensionSettings = { };
-    };
-    };
-    }; */
 
   home.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
@@ -139,16 +126,27 @@ in
       bars = [{
         command = "waybar";
       }];
-      input = {
-        "${localinfo.keyboard}" = {
-          xkb_layout = "us";
-          xkb_variant = "dvp";
-          xkb_options = "compose:102";
-        };
-        "${localinfo.touchpad}" = {
-          dwt = "disable";
-        };
-      };
+      input =
+        let
+          inputs = config.extraInfo.inputs;
+          inputsCfg = [
+            (if inputs.keyboard != null then {
+              name = inputs.keyboard;
+              value =
+                {
+                  xkb_layout = "us";
+                  xkb_variant = "dvp";
+                  xkb_options = "compose:102";
+                };
+
+            } else null)
+            (if inputs.touchpad != null then {
+              name = inputs.touchpad;
+              value = { dwt = "disable"; };
+            } else null)
+          ];
+        in
+        builtins.listToAttrs inputsCfg;
       fonts = {
         names = [ "Hack Nerd Font" ];
         style = "Regular";

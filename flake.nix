@@ -40,8 +40,11 @@
             home-manager.users.traxys = { config, lib, pkgs, ... }: {
               imports = [
                 ./home.nix
+                ./graphical.nix
+                ./extra_info.nix
+                ./localinfo.nix
                 inputs.zsh-traxys.home-managerModule."${system}"
-				inputs.hm-nvim-traxys.home-managerModule."${system}"
+                inputs.hm-nvim-traxys.home-managerModule."${system}"
               ];
             };
             # Optionally, use home-manager.extraSpecialArgs to pass

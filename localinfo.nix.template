@@ -1,9 +1,11 @@
 {
-	username = "string";
-	homeDir = "path";
+  home.username = "traxys";
+  home.homeDirectory = "/home/traxys";
 
-	email = "email";
+  extraInfo.email = "some@email";
 
-	keyboard = "null or libinput id";
-	touchpad = "null or libinput id";
+  extraInfo.inputs = {
+    keyboard = "1:1:AT_Translated_Set_2_keyboard";
+    touchpad = "2:7:SynPS/2_Synaptics_TouchPad";
+  };
 }
