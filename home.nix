@@ -1,8 +1,6 @@
 { config
 , pkgs
 , lib
-, stylua
-, naersk-lib
 , ...
 }:
 
@@ -24,28 +22,17 @@ in
   home.homeDirectory = localinfo.homeDir;
 
   home.sessionVariables = {
-    EDITOR = "nvim";
     RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
   };
 
   home.packages = with pkgs; [
     bitwarden-cli
     rustup
-    neovimTraxys
-    rust-analyzer
-    clang-tools
     nodePackages.vscode-json-languageserver
-    nodePackages.bash-language-server
-    nixpkgs-fmt
-    rnix-lsp
     exa
     python3
     topgrade
     wl-clipboard
-    (naersk-lib.buildPackage {
-      pname = "stylua";
-      root = stylua;
-    })
     cargo-edit
     rsync
     fd
@@ -55,7 +42,6 @@ in
     sqlx-cli
     direnv
     codespell
-    shellcheck
     ripgrep
     file
     jq

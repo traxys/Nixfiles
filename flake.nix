@@ -12,20 +12,8 @@
         url = "github:mozilla/nixpkgs-mozilla";
         flake = false;
       };
-      rnix-lsp = {
-        url = "github:nix-community/rnix-lsp";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      stylua = {
-        url = "github:johnnymorganz/stylua";
-        flake = false;
-      };
-      naersk = {
-        url = "github:nix-community/naersk";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      nvim-traxys = {
-        url = "github:traxys/nvim-flake";
+      hm-nvim-traxys = {
+        url = "github:traxys/home-manager-nvim-flake";
         inputs.nixpkgs.follows = "nixpkgs";
       };
       zsh-traxys = {
@@ -40,7 +28,7 @@
         modules = [
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
-              inputs.nvim-traxys.overlay."${system}"
+              inputs.hm-nvim-traxys.overlay."${system}"
               (import inputs.nixpkgs-mozilla)
             ];
           })
@@ -53,12 +41,8 @@
               imports = [
                 ./home.nix
                 inputs.zsh-traxys.home-managerModule."${system}"
+				inputs.hm-nvim-traxys.home-managerModule."${system}"
               ];
-            };
-            home-manager.extraSpecialArgs = {
-              rnix-lsp = inputs.rnix-lsp;
-              stylua = inputs.stylua;
-              naersk-lib = inputs.naersk.lib."${system}";
             };
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
