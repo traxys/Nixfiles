@@ -47,7 +47,7 @@ in
     jq
     wget
     cargo-flamegraph
-    linuxPackages_latest.perf
+    linuxPackages.perf
     unzip
   ];
 

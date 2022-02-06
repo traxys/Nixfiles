@@ -58,7 +58,7 @@
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
   /* nixpkgs.config.allowBroken = true; */
   virtualisation.waydroid.enable = true;
 
