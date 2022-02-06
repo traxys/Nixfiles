@@ -1,13 +1,8 @@
 { config
 , pkgs
 , lib
-, dotacat
 , stylua
 , naersk-lib
-, fast-syntax-highlighting
-, zsh-nix-shell
-, nix-zsh-completions
-, powerlevel10k
 , ...
 }:
 
@@ -47,10 +42,6 @@ in
     python3
     topgrade
     wl-clipboard
-    (naersk-lib.buildPackage {
-      pname = "dotacat";
-      root = dotacat;
-    })
     (naersk-lib.buildPackage {
       pname = "stylua";
       root = stylua;
@@ -122,60 +113,8 @@ in
     zoxide = {
       enable = true;
     };
-
-    zsh = {
-      enable = true;
-      enableCompletion = true;
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" "wd" "rust" ];
-      };
-      plugins = [
-        {
-          name = "fast-syntax-highlighting";
-          file = "fast-syntax-highlighting.plugin.zsh";
-          src = fast-syntax-highlighting;
-        }
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = zsh-nix-shell;
-        }
-        {
-          name = "nix-zsh-completions";
-          file = "nix-zsh-completions.plugin.zsh ";
-          src = nix-zsh-completions;
-        }
-      ];
-      initExtra =
-        ''
-          export PATH="$PATH:${localinfo.homeDir}/bin"
-          source ~/.p10k.zsh
-          source ~/.powerlevel10k/powerlevel10k.zsh-theme
-          eval "$(${pkgs.direnv}/bin/direnv hook zsh)"
-          if [ -f "$HOME/.zvars" ]; then
-            source "$HOME/.zvars"
-          fi
-          ${pkgs.fortune}/bin/fortune \
-            | ${pkgs.cowsay}/bin/cowsay \
-            | dotacat
-        '';
-      shellAliases = {
-        cat = "${pkgs.bat}/bin/bat -p";
-        ls = "${pkgs.exa}/bin/exa --icons";
-        screenRegion = "${pkgs.slurp}/bin/slurp | ${pkgs.grim}/bin/grim -g - ";
-        py3 = "nix-shell -p python3 python3.pkgs.matplotlib --run python3";
-        ssh = "kitty +kitten ssh";
-        ns = "nix-shell";
-      };
-    };
   };
   home.file = {
-    ".powerlevel10k" = {
-      source = powerlevel10k;
-    };
-    ".zprofile".source = ./zprofile;
-    ".p10k.zsh".source = ./p10k.zsh;
     ".gitignore".source = ./gitignore;
     "bin" = {
       source = ./scripts;
