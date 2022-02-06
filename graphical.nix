@@ -2,31 +2,31 @@
 
 {
   home.packages = with pkgs; [
-	# Browser
+    # Browser
     firefox-wayland
     (tor-browser-bundle-bin.override {
       useHardenedMalloc = false;
     })
 
-	# IM
+    # IM
     element-desktop
     (discord.override { nss = pkgs.nss; })
     signal-desktop
 
-	# Mail
+    # Mail
     thunderbird-wayland
 
-	# Media
+    # Media
     pavucontrol
     vlc
     spotify
 
-	# Misc progs
+    # Misc progs
     bitwarden
     libreoffice-fresh
 
-	# Misc utils
-	wl-clipboard
+    # Misc utils
+    wl-clipboard
     xdg_utils
     feh
   ];

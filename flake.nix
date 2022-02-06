@@ -43,9 +43,9 @@
                 ./graphical.nix
                 ./extra_info.nix
                 ./localinfo.nix
-				./wm
-				./rustdev.nix
-				./git
+                ./wm
+                ./rustdev.nix
+                ./git
                 inputs.zsh-traxys.home-managerModule."${system}"
                 inputs.hm-nvim-traxys.home-managerModule."${system}"
               ];

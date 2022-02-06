@@ -33,7 +33,7 @@ in
     cargo-flamegraph
     linuxPackages.perf
     unzip
-	tokei
+    tokei
   ];
 
   services = {
