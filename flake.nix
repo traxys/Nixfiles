@@ -12,8 +12,8 @@
         url = "github:mozilla/nixpkgs-mozilla";
         flake = false;
       };
-      hm-nvim-traxys = {
-        url = "github:traxys/home-manager-nvim-flake";
+      nvim-traxys = {
+        url = "github:traxys/nvim-flake";
         inputs.nixpkgs.follows = "nixpkgs";
       };
       zsh-traxys = {
@@ -28,7 +28,7 @@
         modules = [
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
-              inputs.hm-nvim-traxys.overlay."${system}"
+              inputs.nvim-traxys.overlay."${system}"
               (import inputs.nixpkgs-mozilla)
             ];
           })
@@ -47,7 +47,7 @@
                 ./rustdev.nix
                 ./git
                 inputs.zsh-traxys.home-managerModule."${system}"
-                inputs.hm-nvim-traxys.home-managerModule."${system}"
+                inputs.nvim-traxys.home-managerModule."${system}"
               ];
             };
             # Optionally, use home-manager.extraSpecialArgs to pass
