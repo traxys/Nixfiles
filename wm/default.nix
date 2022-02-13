@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [ ./terminal ];
 
   home.packages = with pkgs; [
     sway
@@ -21,6 +22,37 @@
     MOZ_ENABLE_WAYLAND = "1";
     XDG_CURRENT_DESKTOP = "sway";
     LIBSEAT_BACKEND = "logind";
+  };
+
+  terminal = {
+    enable = true;
+    kind = "foot";
+
+    colors = {
+      background = "000000";
+      foreground = "ffffff";
+
+      black = {
+        normal = "000000";
+        bright = "545454";
+      };
+      red = { normal = "ff5555"; };
+      green = { normal = "55ff55"; };
+      yellow = { normal = "ffff55"; };
+      blue = { normal = "5555ff"; };
+      magenta = { normal = "ff55ff"; };
+      cyan = { normal = "55ffff"; };
+      white = {
+        normal = "bbbbbb";
+        bright = "ffffff";
+      };
+
+      selectionForeground = "000000";
+    };
+    font = {
+      family = "Hack Nerd Font Mono";
+      size = 7;
+    };
   };
 
   programs = {
@@ -140,7 +172,6 @@
         { command = "wdumpkeys >> ~/.keydump"; }
       ];
       menu = "${pkgs.wofi}/bin/wofi --show drun,run --allow-images";
-      terminal = "${pkgs.kitty}/bin/kitty";
       keybindings =
         let
           mod = config.wayland.windowManager.sway.config.modifier;
