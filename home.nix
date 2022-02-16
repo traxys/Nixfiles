@@ -34,6 +34,7 @@ in
     linuxPackages.perf
     unzip
     tokei
+	gcc11
   ];
 
   services = {
