@@ -115,7 +115,6 @@
         self.hmModules.minimal
         ./home.nix
         ./extra_info.nix
-        ./localinfo.nix
         ./rustdev.nix
         ./git
       ];
@@ -200,6 +199,7 @@
               imports =
                 commonHmModules
                 ++ [
+				  ./hostconfig/ZeNixComputa/hm.nix
                   self.hmModules.personal-cli
                   self.hmModules.personal-gui
                   self.hmModules.gaming
