@@ -13,7 +13,7 @@ let
   cCfg = cfg.colors;
 in
 {
-  imports = [ ./foot.nix ];
+  imports = [ ./foot.nix ./kitty.nix ];
 
   options = {
     terminal = {
@@ -23,7 +23,7 @@ in
         description = "Manage terminal";
       };
       kind = mkOption {
-        type = types.enum [ "foot" ];
+        type = types.enum [ "foot" "kitty" ];
         default = "foot";
         description = "The terminal to be used";
       };
