@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  sensitiveInfo = (import ./sensitive.nix);
-in
 {
   boot = {
     initrd = {
@@ -35,28 +32,24 @@ in
     };
   };
 
-  networking = {
-    hostName = "ZeNixLaptop";
-    interfaces = {
-      eno0.useDHCP = true;
-      wlp1s0.useDHCP = true;
-    };
-    wireguard.interfaces = {
-      octopi = {
-        ips = [ "10.42.42.4/32" ];
-        privateKeyFile = "/etc/wireguard/zelaptop.key";
-        peers = [
-          {
-            publicKey = sensitiveInfo.octopiPubKey;
-            presharedKeyFile = "/etc/wireguard/octopi-laptop.psk";
-            allowedIPs = [ "10.42.42.1/32" ];
-            endpoint = "${sensitiveInfo.homeUrl}:51820";
-            persistentKeepalive = 25;
-          }
-        ];
-      };
-    };
+/*
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+	layout = "us";
+	xkbVariant = "dvp";
+	libinput.enable = true;
+    desktopManager.session = [
+      {
+        name = "home-manager";
+        start = ''
+			${pkgs.runtimeShell} $HOME/.hm-xsession-dbg&
+			waitPID=$!
+		'';
+      }
+    ];
   };
+*/
 
   users = {
     users = {
