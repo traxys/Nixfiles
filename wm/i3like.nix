@@ -3,7 +3,7 @@
 with builtins;
 with lib;
 {
-  imports = [ ./i3.nix ];
+  imports = [ ./i3.nix ./sway.nix ];
 
   options = {
     wm = {
