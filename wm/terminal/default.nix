@@ -27,6 +27,10 @@ in
         default = "foot";
         description = "The terminal to be used";
       };
+      command = mkOption {
+        type = types.str;
+        description = "The command used to launch the terminal";
+      };
       colors = {
         background = mkColor;
         foreground = mkColor;
