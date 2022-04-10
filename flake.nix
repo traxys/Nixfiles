@@ -110,7 +110,16 @@
 
     overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
 
-    nixosConfigurations = {
+    nixosConfigurations = let
+      commonHmModules = [
+        self.hmModules.minimal
+        ./home.nix
+        ./extra_info.nix
+        ./localinfo.nix
+        ./rustdev.nix
+        ./git
+      ];
+    in {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
@@ -140,17 +149,59 @@
               pkgs,
               ...
             }: {
-              imports = [
-                self.hmModules.minimal
-                self.hmModules.personal-cli
-                self.hmModules.personal-gui
-                self.hmModules.gaming
-                ./home.nix
-                ./extra_info.nix
-                ./localinfo.nix
-                ./rustdev.nix
-                ./git
-              ];
+              imports =
+                commonHmModules
+                ++ [
+                  self.hmModules.personal-cli
+                  self.hmModules.personal-gui
+                  self.hmModules.gaming
+                ];
+            };
+            home-manager.extraSpecialArgs = {
+              flake = self;
+            };
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
+      };
+
+      ZeNixComputa = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        modules = [
+          ./hostconfig/ZeNixComputa/extra_info.nix
+          self.nixosModules.minimal
+          self.nixosModules.personal-cli
+          self.nixosModules.personal-gui
+          self.nixosModules.gaming
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [
+              inputs.nur.overlay
+              inputs.rust-overlay.overlays.default
+              inputs.nix-alien.overlay
+              inputs.nix-gaming.overlays.default
+              inputs.comma.overlays.default
+              (final: prev: pkgList system prev.callPackage)
+            ];
+          })
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.traxys = {
+              config,
+              lib,
+              pkgs,
+              ...
+            }: {
+              imports =
+                commonHmModules
+                ++ [
+                  self.hmModules.personal-cli
+                  self.hmModules.personal-gui
+                  self.hmModules.gaming
+                ];
             };
             home-manager.extraSpecialArgs = {
               flake = self;
