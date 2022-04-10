@@ -10,6 +10,7 @@ in
 
 {
   config = mkIf (cfg.enable && cfg.kind == "foot") {
+  	terminal.command = mkDefault "${pkgs.foot}/bin/foot";
     programs.foot = {
       enable = true;
       settings = {
@@ -54,6 +55,6 @@ in
         };
       };
     };
-    wayland.windowManager.sway.config.terminal = "${pkgs.foot}/bin/foot";
+    wayland.windowManager.sway.config.terminal = "${config.terminal.command}";
   };
 }

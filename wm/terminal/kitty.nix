@@ -10,6 +10,7 @@ in
 
 {
   config = mkIf (cfg.enable && cfg.kind == "kitty") {
+    terminal.command = mkDefault "${pkgs.kitty}/bin/kitty";
     programs.kitty = {
       enable = true;
       font = {
@@ -53,7 +54,7 @@ in
           selection_foreground = colorCfg cCfg.selectionForeground;
         };
     };
-    wayland.windowManager.sway.config.terminal = "${pkgs.kitty}/bin/kitty";
-    xsession.windowManager.i3.config.terminal = "${pkgs.kitty}/bin/kitty";
+    wayland.windowManager.sway.config.terminal = "${config.terminal.command}";
+    xsession.windowManager.i3.config.terminal = "${config.terminal.command}";
   };
 }
