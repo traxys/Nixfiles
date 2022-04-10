@@ -4,6 +4,8 @@
   inputs =
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
+      nixpkgs-master.url = "github:nixos/nixpkgs";
       home-manager = {
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -30,6 +32,11 @@
             nixpkgs.overlays = [
               inputs.nvim-traxys.overlay."${system}"
               (import inputs.nixpkgs-mozilla)
+              (final: prev: {
+                zathura = inputs.nixpkgs-master.legacyPackages."${system}".zathura;
+				firefox = inputs.nixpkgs-stable.legacyPackages."${system}".firefox;
+				lutris = inputs.nixpkgs-stable.legacyPackages."${system}".lutris;
+              })
             ];
           })
           ./nixos/configuration.nix
