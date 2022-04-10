@@ -16,7 +16,7 @@
 
   terminal = {
     enable = true;
-    kind = "kitty";
+    kind = "foot";
 
     colors = {
       background = "000000";
@@ -48,7 +48,7 @@
   wm = let mod = config.wm.modifier; in
     {
       enable = true;
-      kind = "i3";
+      kind = "sway";
       modifier = "Mod4";
 
       font = {
@@ -91,6 +91,8 @@
         { command = "firefox"; }
         { command = "element-desktop"; }
         { command = "thunderbird"; }
+        { command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
+        { command = "hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"; }
       ];
 
       workspaces = {
@@ -126,6 +128,8 @@
       };
 
       keybindings = {
+        "${mod}+Shift+l" = "exec ${pkgs.swaylock-fancy}/bin/swaylock-fancy";
+
         # Media Keys
         "XF86AudioRaiseVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ '+10%'";
         "XF86AudioLowerVolume" = "exec ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ '-10%'";

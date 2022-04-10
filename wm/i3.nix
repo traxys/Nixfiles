@@ -4,39 +4,7 @@ with builtins;
 with lib;
 let
   cfg = config.wm;
-
-  addKeyIf = cond: keybinds: newkey: if cond then newkey // keybinds else keybinds;
-  keybindSolo = keys: submod: addKeyIf submod.enable keys {
-    "${submod.keybind}" = "exec ${submod.command}";
-  };
-  keydefs = [ cfg.printScreen cfg.menu cfg.exit ];
-  keybindingsKeydef = foldl' keybindSolo cfg.keybindings keydefs;
-
-  mod = cfg.modifier;
-  ws_def = cfg.workspaces.definitions;
-  get_ws = ws: getAttr ws ws_def;
-  workspaceFmt = name:
-    let key = (get_ws name).key; in
-    {
-      "${mod}+${key}" = "workspace ${name}";
-      "${mod}+${cfg.workspaces.moveModifier}+${key}" = "move container to workspace ${name}";
-    };
-
-  keybindings = (foldl' (x: y: x // y) { } (map workspaceFmt (attrNames ws_def)))
-    // keybindingsKeydef;
-
-  workspaceAssign = name:
-    {
-      workspace = name;
-      output = (get_ws name).output;
-    };
-
-  workspaceOutputAssign = map workspaceAssign (filter (ws: (get_ws ws).output != null) (attrNames ws_def));
-
-  classAssign = name: {
-    "${name}" = map (app: { class = "${app}"; }) ((get_ws name).assign);
-  };
-  assigns = foldl' (x: y: x // y) { } (map classAssign (attrNames ws_def));
+  common = import ./i3like-utils.nix { inherit config; };
 
   startupNotifications =
     if cfg.notifications.enable then [{
@@ -117,17 +85,14 @@ in
       enable = true;
       windowManager.i3 = {
         enable = true;
-        config = let mkFont = mod: {
-          names = [ mod.name ];
-          style = mod.style;
-          size = mod.size;
-        }; in
-          {
-            inherit keybindings startup workspaceOutputAssign assigns;
-            fonts = mkFont cfg.font;
+        config = {
+			keybindings = common.keybindings;
+			workspaceOutputAssign = common.workspaceOutputAssign;
+			assigns = common.assigns;
+            fonts = common.mkFont cfg.font;
             modifier = cfg.modifier;
             bars = [{
-              fonts = mkFont cfg.bar.font;
+              fonts = common.mkFont cfg.bar.font;
               statusCommand = "${config.programs.i3status-rust.package}/bin/i3status-rs ${config.home.homeDirectory}/.config/i3status-rust/config-bottom.toml";
             }];
           };
