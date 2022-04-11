@@ -19,7 +19,7 @@ in
 
     home.packages = with pkgs; [
       sway
-    ];
+    ] ++ (if cfg.wallpaper != null then [ pkgs.swaybg ] else [ ]);
 
     home.sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
@@ -104,8 +104,13 @@ in
     wm.menu.command = mkDefault "${pkgs.wofi}/bin/wofi --show drun,run --allow-images";
     wm.exit.command = mkDefault "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
+
+
     wayland.windowManager.sway = {
       enable = true;
+      extraConfig = mkIf (cfg.wallpaper != null) ''
+        		output "*" bg ${cfg.wallpaper} fill
+        	  '';
       config = {
         inherit startup;
         modifier = cfg.modifier;
@@ -138,8 +143,8 @@ in
           titlebar = true;
         };
         keybindings = common.keybindings;
-		workspaceOutputAssign = common.workspaceOutputAssign;
-		assigns = common.assigns;
+        workspaceOutputAssign = common.workspaceOutputAssign;
+        assigns = common.assigns;
       };
 
     };

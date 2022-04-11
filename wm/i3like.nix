@@ -135,6 +135,11 @@ with lib;
         });
       };
 
+      wallpaper = mkOption {
+        type = types.nullOr types.path;
+        description = "wallpaper";
+      };
+
       workspaces = {
         definitions = mkOption {
           type = types.attrsOf (types.submodule {
