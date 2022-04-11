@@ -64,6 +64,8 @@
         };
       };
 
+      wallpaper = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
+
       printScreen = {
         enable = true;
         keybind = "Print";

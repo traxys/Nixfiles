@@ -13,7 +13,14 @@ let
       always = true;
     }] else [ ];
 
-  startup = startupNotifications ++ cfg.startup;
+  wallpaperSet =
+    if cfg.wallpaper != null then [{
+      command = "${pkgs.feh}/bin/feh --bg-scale ${cfg.wallpaper}";
+      always = true;
+      notification = false;
+    }] else [ ];
+
+  startup = startupNotifications ++ wallpaperSet ++ cfg.startup;
 in
 {
   config = mkIf (cfg.enable && cfg.kind == "i3") {
@@ -86,16 +93,17 @@ in
       windowManager.i3 = {
         enable = true;
         config = {
-			keybindings = common.keybindings;
-			workspaceOutputAssign = common.workspaceOutputAssign;
-			assigns = common.assigns;
-            fonts = common.mkFont cfg.font;
-            modifier = cfg.modifier;
-            bars = [{
-              fonts = common.mkFont cfg.bar.font;
-              statusCommand = "${config.programs.i3status-rust.package}/bin/i3status-rs ${config.home.homeDirectory}/.config/i3status-rust/config-bottom.toml";
-            }];
-          };
+          inherit startup;
+          keybindings = common.keybindings;
+          workspaceOutputAssign = common.workspaceOutputAssign;
+          assigns = common.assigns;
+          fonts = common.mkFont cfg.font;
+          modifier = cfg.modifier;
+          bars = [{
+            fonts = common.mkFont cfg.bar.font;
+            statusCommand = "${config.programs.i3status-rust.package}/bin/i3status-rs ${config.home.homeDirectory}/.config/i3status-rust/config-bottom.toml";
+          }];
+        };
       };
       scriptPath = ".hm-xsession";
     };
