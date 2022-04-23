@@ -12,6 +12,8 @@
         url = "github:mozilla/nixpkgs-mozilla";
         flake = false;
       };
+	  nix-alien.url = "github:thiagokokada/nix-alien";
+	  nix-ld.url = "github:Mic92/nix-ld/main";
       nvim-traxys = {
         url = "github:traxys/nvim-flake";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +31,7 @@
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
               inputs.nvim-traxys.overlay."${system}"
+			  inputs.nix-alien.overlay
               (import inputs.nixpkgs-mozilla)
               (final: prev: {
               })
