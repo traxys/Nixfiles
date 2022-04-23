@@ -1082,11 +1082,11 @@
         "zsh-nix-shell": "zsh-nix-shell"
       },
       "locked": {
-        "lastModified": 1650732759,
-        "narHash": "sha256-WL2rhiaByhF3AQUlBqD+QcaeSymkqGNqS9PJTsIB6DM=",
+        "lastModified": 1650733953,
+        "narHash": "sha256-3nxAHsPMr7BjmTAtJnw5CU0zGHqg2siwD8med6erZBE=",
         "owner": "traxys",
         "repo": "zsh-flake",
-        "rev": "758a3ff2d86a6b6eb2bc956fba798b30275c2a57",
+        "rev": "abf6d2a6befc5a1e50eec3421ed8fce1fd19a801",
         "type": "github"
       },
       "original": {
