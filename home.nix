@@ -24,7 +24,6 @@ in
     bintools
     httpie
     sqlx-cli
-    direnv
     codespell
     ripgrep
     file
@@ -45,6 +44,12 @@ in
   };
 
   programs = {
+  	direnv = {
+		enable = true;
+		nix-direnv.enable = true;
+		enableZshIntegration = true;
+	};
+
     home-manager = {
       enable = true;
     };
@@ -66,6 +71,12 @@ in
       source = ./scripts;
       recursive = true;
     };
+  };
+
+  programs.zsh = {
+	shellAliases = {
+		new-direnv = "nix flake new -t github:nix-community/nix-direnv";
+	};
   };
 
   # This value determines the Home Manager release that your
