@@ -35,6 +35,7 @@ in
     unzip
     tokei
 	gcc11
+	nix-alien
   ];
 
   services = {
