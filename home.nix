@@ -118,6 +118,7 @@ in {
     initExtraBeforeCompInit = ''
       fpath+="$HOME/.zfunc"
     '';
+    envExtra = "export EDITOR=nvim";
     shellAliases = {
       new-direnv = "nix flake new -t github:nix-community/nix-direnv";
     };
