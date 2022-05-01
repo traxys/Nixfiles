@@ -1,37 +1,40 @@
 {
   description = "NixOS configuration";
 
-  inputs =
-    {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-      home-manager = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      nixpkgs-mozilla = {
-        url = "github:mozilla/nixpkgs-mozilla";
-        flake = false;
-      };
-	  nix-alien.url = "github:thiagokokada/nix-alien";
-	  nix-ld.url = "github:Mic92/nix-ld/main";
-      nvim-traxys = {
-        url = "github:traxys/nvim-flake";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      zsh-traxys = {
-        url = "github:traxys/zsh-flake";
-      };
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-mozilla = {
+      url = "github:mozilla/nixpkgs-mozilla";
+      flake = false;
+    };
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-ld.url = "github:Mic92/nix-ld/main";
+    nvim-traxys = {
+      url = "github:traxys/nvim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zsh-traxys = {
+      url = "github:traxys/zsh-flake";
+    };
+  };
 
-  outputs = { home-manager, nixpkgs, ... }@inputs: {
+  outputs = {
+    home-manager,
+    nixpkgs,
+    ...
+  } @ inputs: {
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
-          ({ pkgs, ... }: {
+          ({pkgs, ...}: {
             nixpkgs.overlays = [
               inputs.nvim-traxys.overlay."${system}"
-			  inputs.nix-alien.overlay
+              inputs.nix-alien.overlay
               (import inputs.nixpkgs-mozilla)
               (final: prev: {
               })
@@ -42,7 +45,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.traxys = { config, lib, pkgs, ... }: {
+            home-manager.users.traxys = {
+              config,
+              lib,
+              pkgs,
+              ...
+            }: {
               imports = [
                 ./home.nix
                 ./graphical.nix

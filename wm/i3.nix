@@ -1,28 +1,38 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with builtins;
-with lib;
-let
+with lib; let
   cfg = config.wm;
-  common = import ./i3like-utils.nix { inherit config; };
+  common = import ./i3like-utils.nix {inherit config;};
 
   startupNotifications =
-    if cfg.notifications.enable then [{
-      command = "${config.services.dunst.package}/bin/dunst";
-      notification = false;
-      always = true;
-    }] else [ ];
+    if cfg.notifications.enable
+    then [
+      {
+        command = "${config.services.dunst.package}/bin/dunst";
+        notification = false;
+        always = true;
+      }
+    ]
+    else [];
 
   wallpaperSet =
-    if cfg.wallpaper != null then [{
-      command = "${pkgs.feh}/bin/feh --bg-scale ${cfg.wallpaper}";
-      always = true;
-      notification = false;
-    }] else [ ];
+    if cfg.wallpaper != null
+    then [
+      {
+        command = "${pkgs.feh}/bin/feh --bg-scale ${cfg.wallpaper}";
+        always = true;
+        notification = false;
+      }
+    ]
+    else [];
 
   startup = startupNotifications ++ wallpaperSet ++ cfg.startup;
-in
-{
+in {
   config = mkIf (cfg.enable && cfg.kind == "i3") {
     programs = {
       i3status-rust = {
@@ -99,14 +109,15 @@ in
           assigns = common.assigns;
           fonts = common.mkFont cfg.font;
           modifier = cfg.modifier;
-          bars = [{
-            fonts = common.mkFont cfg.bar.font;
-            statusCommand = "${config.programs.i3status-rust.package}/bin/i3status-rs ${config.home.homeDirectory}/.config/i3status-rust/config-bottom.toml";
-          }];
+          bars = [
+            {
+              fonts = common.mkFont cfg.bar.font;
+              statusCommand = "${config.programs.i3status-rust.package}/bin/i3status-rs ${config.home.homeDirectory}/.config/i3status-rust/config-bottom.toml";
+            }
+          ];
         };
       };
       scriptPath = ".hm-xsession";
     };
-
   };
 }

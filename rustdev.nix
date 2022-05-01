@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home.sessionVariables = {
     RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
   };

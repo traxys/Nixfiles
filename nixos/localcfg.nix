@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   boot = {
     initrd = {
       luks.devices = {
@@ -32,24 +34,24 @@
     };
   };
 
-/*
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
-	layout = "us";
-	xkbVariant = "dvp";
-	libinput.enable = true;
-    desktopManager.session = [
-      {
-        name = "home-manager";
-        start = ''
-			${pkgs.runtimeShell} $HOME/.hm-xsession-dbg&
-			waitPID=$!
-		'';
-      }
-    ];
-  };
-*/
+  /*
+    services.xserver = {
+      enable = true;
+      videoDrivers = [ "nvidia" ];
+   layout = "us";
+   xkbVariant = "dvp";
+   libinput.enable = true;
+      desktopManager.session = [
+        {
+          name = "home-manager";
+          start = ''
+   		${pkgs.runtimeShell} $HOME/.hm-xsession-dbg&
+   		waitPID=$!
+   	'';
+        }
+      ];
+    };
+   */
 
   users = {
     users = {
@@ -57,12 +59,12 @@
         uid = 1000;
         isNormalUser = true;
         home = "/home/traxys";
-        extraGroups = [ "wheel" "networkmanager" "adbusers" ];
+        extraGroups = ["wheel" "networkmanager" "adbusers"];
         shell = pkgs.zsh;
       };
       localtimed.group = "localtimed";
     };
-    groups.localtimed = { };
+    groups.localtimed = {};
   };
 
   # Set your time zone.
@@ -70,7 +72,7 @@
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplip pkgs.gutenprint pkgs.cnijfilter2 ];
+    drivers = [pkgs.hplip pkgs.gutenprint pkgs.cnijfilter2];
   };
   services.avahi = {
     nssmdns = true;

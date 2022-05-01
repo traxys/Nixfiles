@@ -1,17 +1,15 @@
-{ config
-, pkgs
-, lib
-, ...
-}:
-
-let
-  rustVersion = (pkgs.rustChannelOf { channel = "stable"; }).rust;
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  rustVersion = (pkgs.rustChannelOf {channel = "stable";}).rust;
   rsPlatform = pkgs.makeRustPlatform {
     cargo = rustVersion;
     rustc = rustVersion;
   };
-in
-{
+in {
   home.packages = with pkgs; [
     bitwarden-cli
     nodePackages.vscode-json-languageserver
@@ -33,8 +31,8 @@ in
     linuxPackages.perf
     unzip
     tokei
-	gcc11
-	nix-alien
+    gcc11
+    nix-alien
   ];
 
   services = {
@@ -44,11 +42,11 @@ in
   };
 
   programs = {
-  	direnv = {
-		enable = true;
-		nix-direnv.enable = true;
-		enableZshIntegration = true;
-	};
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+    };
 
     home-manager = {
       enable = true;
@@ -74,9 +72,9 @@ in
   };
 
   programs.zsh = {
-	shellAliases = {
-		new-direnv = "nix flake new -t github:nix-community/nix-direnv";
-	};
+    shellAliases = {
+      new-direnv = "nix flake new -t github:nix-community/nix-direnv";
+    };
   };
 
   # This value determines the Home Manager release that your

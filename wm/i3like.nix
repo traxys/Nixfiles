@@ -1,9 +1,12 @@
-{ config, lib, pkgs, ... }:
-
-with builtins;
-with lib;
 {
-  imports = [ ./i3.nix ./sway.nix ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with builtins;
+with lib; {
+  imports = [./i3.nix ./sway.nix];
 
   options = {
     wm = {
@@ -13,7 +16,7 @@ with lib;
         description = "Manage window Manager";
       };
       kind = mkOption {
-        type = types.enum [ "i3" "sway" ];
+        type = types.enum ["i3" "sway"];
         default = "sway";
         description = "WM to use";
       };
@@ -156,12 +159,12 @@ with lib;
               assign = mkOption {
                 type = types.listOf types.str;
                 description = "Assign class elements";
-                default = [ ];
+                default = [];
               };
             };
           });
           description = "Workspace descriptions";
-          default = { };
+          default = {};
         };
         moveModifier = mkOption {
           type = types.str;

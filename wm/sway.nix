@@ -1,25 +1,36 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-with builtins;
-let
+with builtins; let
   cfg = config.wm;
-  common = import ./i3like-utils.nix { inherit config; };
+  common = import ./i3like-utils.nix {inherit config;};
 
   startupNotifications =
-    if cfg.notifications.enable then [{
-      command = "${pkgs.mako}/bin/mako";
-      always = true;
-    }] else [ ];
+    if cfg.notifications.enable
+    then [
+      {
+        command = "${pkgs.mako}/bin/mako";
+        always = true;
+      }
+    ]
+    else [];
 
   startup = startupNotifications ++ cfg.startup;
-in
-{
+in {
   config = mkIf (cfg.enable && cfg.kind == "sway") {
-
-    home.packages = with pkgs; [
-      sway
-    ] ++ (if cfg.wallpaper != null then [ pkgs.swaybg ] else [ ]);
+    home.packages = with pkgs;
+      [
+        sway
+      ]
+      ++ (
+        if cfg.wallpaper != null
+        then [pkgs.swaybg]
+        else []
+      );
 
     home.sessionVariables = {
       MOZ_ENABLE_WAYLAND = "1";
@@ -47,7 +58,7 @@ in
               "sway/workspaces"
               "sway/mode"
             ];
-            modules-center = [ "sway/window" ];
+            modules-center = ["sway/window"];
             modules-right = [
               "cpu"
               "memory"
@@ -60,9 +71,9 @@ in
             modules = {
               "sway/workspaces" = {
                 persistent_workspaces = {
-                  "" = [ ];
-                  "" = [ ];
-                  "1:" = [ ];
+                  "" = [];
+                  "" = [];
+                  "1:" = [];
                 };
                 numeric-first = true;
               };
@@ -89,7 +100,7 @@ in
               };
               "battery" = {
                 format = "{capacity}% {icon}";
-                format-icons = [ "" "" "" "" "" ];
+                format-icons = ["" "" "" "" ""];
               };
               "clock" = {
                 format-alt = "{:%a, %d. %b  %H:%M}";
@@ -104,39 +115,44 @@ in
     wm.menu.command = mkDefault "${pkgs.wofi}/bin/wofi --show drun,run --allow-images";
     wm.exit.command = mkDefault "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
-
-
     wayland.windowManager.sway = {
       enable = true;
       extraConfig = mkIf (cfg.wallpaper != null) ''
-        		output "*" bg ${cfg.wallpaper} fill
-        	  '';
+        output "*" bg ${cfg.wallpaper} fill
+      '';
       config = {
         inherit startup;
         modifier = cfg.modifier;
-        bars = [{
-          command = "waybar";
-        }];
-        input =
-          let
-            inputs = config.extraInfo.inputs;
-            inputsCfg = [
-              (if inputs.keyboard != null then {
+        bars = [
+          {
+            command = "waybar";
+          }
+        ];
+        input = let
+          inputs = config.extraInfo.inputs;
+          inputsCfg = [
+            (
+              if inputs.keyboard != null
+              then {
                 name = inputs.keyboard;
-                value =
-                  {
-                    xkb_layout = "us";
-                    xkb_variant = "dvp";
-                    xkb_options = "compose:102";
-                  };
-
-              } else null)
-              (if inputs.touchpad != null then {
+                value = {
+                  xkb_layout = "us";
+                  xkb_variant = "dvp";
+                  xkb_options = "compose:102";
+                };
+              }
+              else null
+            )
+            (
+              if inputs.touchpad != null
+              then {
                 name = inputs.touchpad;
-                value = { dwt = "disable"; };
-              } else null)
-            ];
-          in
+                value = {dwt = "disable";};
+              }
+              else null
+            )
+          ];
+        in
           builtins.listToAttrs inputsCfg;
         fonts = common.mkFont cfg.font;
         window = {
@@ -146,7 +162,6 @@ in
         workspaceOutputAssign = common.workspaceOutputAssign;
         assigns = common.assigns;
       };
-
     };
 
     home.file = {
