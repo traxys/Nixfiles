@@ -382,11 +382,11 @@
         "stylua": "stylua"
       },
       "locked": {
-        "lastModified": 1651354010,
-        "narHash": "sha256-DlZdatzmlwYAd2ctRqEQOAFUsI2+bhxYHBgZZpkEa/w=",
+        "lastModified": 1651396014,
+        "narHash": "sha256-Aj7//cTdmQiHW+T+ztFjlIuh380mvGvcu/I+yMlJFt8=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "8fc8d6402e23c8eea6669a0ac7b8d4c40fdccc84",
+        "rev": "ae71bc28c7facaf62f9057dae0380d9e1c2e3ec9",
         "type": "github"
       },
       "original": {
