@@ -1,9 +1,11 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-with builtins;
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib;
+with builtins; {
   options = {
     extraInfo.email = mkOption {
       type = types.nullOr types.str;

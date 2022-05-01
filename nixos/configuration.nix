@@ -1,18 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./pkg.nix
-      #./home.nix
-      ./localcfg.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./pkg.nix
+    #./home.nix
+    ./localcfg.nix
+  ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -47,20 +47,22 @@
   fonts.enableDefaultFonts = true;
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" ]; })
+      (nerdfonts.override {fonts = ["Hack"];})
       dejavu_fonts
     ];
     fontconfig = {
       defaultFonts = {
-        serif = [ "DejaVu" ];
-        sansSerif = [ "DejaVu Sans" ];
-        monospace = [ "Hack" ];
+        serif = ["DejaVu"];
+        sansSerif = ["DejaVu Sans"];
+        monospace = ["Hack"];
       };
     };
   };
 
   boot.kernelPackages = pkgs.linuxPackages;
-  /* nixpkgs.config.allowBroken = true; */
+  /*
+   nixpkgs.config.allowBroken = true;
+   */
   virtualisation.waydroid.enable = true;
 
   security.pam.services.swaylock = {
