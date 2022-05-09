@@ -66,10 +66,35 @@
    */
   virtualisation.waydroid.enable = true;
 
-  security.pam.services.swaylock = {
-    text = ''
-      auth include login
-    '';
+  virtualisation = {
+    waydroid.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu.swtpm.enable = true;
+      qemu.ovmf = {
+        enable = true;
+        package = pkgs.OVMFFull;
+      };
+    };
+    podman = {
+      enable = true;
+    };
+    docker = {
+      enable = true;
+    };
+  };
+
+  security.pam = {
+    yubico = {
+      enable = true;
+      debug = false;
+      mode = "challenge-response";
+    };
+    services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
   };
 
   networking.networkmanager.enable = true;
