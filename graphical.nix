@@ -26,6 +26,7 @@
     # Misc progs
     bitwarden
     libreoffice-fresh
+	kdeconnect
 
     # Misc utils
     wl-clipboard

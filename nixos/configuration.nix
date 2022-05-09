@@ -74,9 +74,27 @@
   networking.networkmanager.enable = true;
   programs.noisetorch.enable = true;
 
-  networking.firewall.allowedTCPPorts = [
-    8080
-  ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      8080
+      8085
+      7878
+      3724
+    ];
+
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+  };
 
   nix.settings.auto-optimise-store = true;
   nix.gc = {
