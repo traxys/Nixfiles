@@ -20,6 +20,10 @@
     zsh-traxys = {
       url = "github:traxys/zsh-flake";
     };
+    xdg-ninja = {
+      url = "github:traxys/xdg-ninja";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -37,6 +41,21 @@
               inputs.nix-alien.overlay
               (import inputs.nixpkgs-mozilla)
               (final: prev: {
+                xdg-ninja = with pkgs;
+                  stdenv.mkDerivation rec {
+                    pname = "xdg-ninja";
+                    version = "0.1";
+                    src = inputs.xdg-ninja;
+                    installPhase = ''
+                      mkdir -p $out/bin
+                      cp xdg-ninja.sh $out/bin
+                      cp -r programs $out/bin
+                      wrapProgram $out/bin/xdg-ninja.sh \
+                      	--prefix PATH : ${lib.makeBinPath [bash jq glow]}
+                    '';
+                    buildInputs = [jq glow bash];
+                    nativeBuildInputs = [makeWrapper];
+                  };
               })
             ];
           })
