@@ -29,7 +29,7 @@
   environment.pathsToLink = [ "/share/zsh" ];
   security.rtkit.enable = true;
   services = {
-  	flatpak.enable = true;
+    flatpak.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -75,7 +75,7 @@
       qemu.swtpm.enable = true;
       qemu.ovmf = {
         enable = true;
-        package = pkgs.OVMFFull;
+        packages = [pkgs.OVMFFull];
       };
     };
     podman = {
