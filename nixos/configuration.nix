@@ -36,7 +36,8 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    localtime.enable = true;
+    localtimed.enable = true;
+	geoclue2.enable = true;
     fwupd.enable = true;
     postgresql = {
       enable = true;
