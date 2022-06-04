@@ -25,7 +25,8 @@
     font = "Lat2-Terminus16";
     keyMap = "dvorak-programmer";
   };
-
+  
+  environment.pathsToLink = [ "/share/zsh" ];
   security.rtkit.enable = true;
   services = {
   	flatpak.enable = true;
