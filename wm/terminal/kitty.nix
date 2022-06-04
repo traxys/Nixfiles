@@ -25,6 +25,8 @@ in {
           then "#${color.bright}"
           else colorCfgNormal color;
       in {
+	  	confirm_os_window_close = 0;
+
         background = colorCfg cCfg.background;
         foreground = colorCfg cCfg.foreground;
 
