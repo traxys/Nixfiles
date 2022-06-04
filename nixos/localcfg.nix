@@ -62,7 +62,10 @@
         extraGroups = ["wheel" "networkmanager" "adbusers"];
         shell = pkgs.zsh;
       };
-      localtimed.group = "localtimed";
+      localtimed = {
+        group = "localtimed";
+        isSystemUser = true;
+      };
     };
     groups.localtimed = {};
   };
