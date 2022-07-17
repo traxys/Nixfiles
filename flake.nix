@@ -21,6 +21,11 @@
       flake = false;
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
+    naersk.url = "github:nix-community/naersk";
+    kabalist = {
+      url = "github:traxys/kabalist";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -53,6 +58,10 @@
                     buildInputs = [jq glow bash];
                     nativeBuildInputs = [makeWrapper];
                   };
+                kabalist_cli = inputs.naersk.lib."${system}".buildPackage {
+                  cargoBuildOptions = opts: opts ++ ["--package=kabalist_cli"];
+                  root = inputs.kabalist;
+                };
               })
             ];
           })

@@ -34,6 +34,8 @@ in {
     gcc11
     nix-alien
 	xdg-ninja
+    bc
+    kabalist_cli
   ];
 
   services = {
@@ -70,15 +72,19 @@ in {
       source = ./scripts;
       recursive = true;
     };
+    ".zfunc" = {
+      source = ./zfunc;
+      recursive = true;
+    };
   };
 
   programs.zsh = {
+    initExtraBeforeCompInit = ''
+      fpath+="$HOME/.zfunc"
+    '';
     shellAliases = {
       new-direnv = "nix flake new -t github:nix-community/nix-direnv";
     };
-	initExtra = ''
-		fpath+="$HOME/.zfunc"
-	'';
   };
 
   # This value determines the Home Manager release that your
