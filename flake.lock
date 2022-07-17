@@ -131,11 +131,11 @@
     "kabalist": {
       "flake": false,
       "locked": {
-        "lastModified": 1658067642,
-        "narHash": "sha256-h3eHpVqKNZ3Ox6px4w8Vl6ewaWB8k7YgmS0Bx7N9psc=",
+        "lastModified": 1658075978,
+        "narHash": "sha256-JqsHVbX1h5kQ5saexXN16AkpB+NE5Ltw9FPXUhzuKcA=",
         "owner": "traxys",
         "repo": "kabalist",
-        "rev": "19fd995f481af3294ff919b2078aa2cf97fe4a5f",
+        "rev": "b4fb0c1edb75faa36126c5a805137bb0230febd8",
         "type": "github"
       },
       "original": {
