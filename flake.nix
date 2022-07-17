@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-mozilla = {
-      url = "github:mozilla/nixpkgs-mozilla";
-      flake = false;
-    };
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-ld.url = "github:Mic92/nix-ld/main";
     nvim-traxys = {
@@ -24,6 +20,7 @@
       url = "github:traxys/xdg-ninja";
       flake = false;
     };
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = {
@@ -37,9 +34,9 @@
         modules = [
           ({pkgs, ...}: {
             nixpkgs.overlays = [
+              inputs.rust-overlay.overlays.default
               inputs.nvim-traxys.overlay."${system}"
               inputs.nix-alien.overlay
-              (import inputs.nixpkgs-mozilla)
               (final: prev: {
                 xdg-ninja = with pkgs;
                   stdenv.mkDerivation rec {

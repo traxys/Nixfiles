@@ -76,6 +76,9 @@ in {
     shellAliases = {
       new-direnv = "nix flake new -t github:nix-community/nix-direnv";
     };
+	initExtra = ''
+		fpath+="$HOME/.zfunc"
+	'';
   };
 
   # This value determines the Home Manager release that your
