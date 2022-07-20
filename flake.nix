@@ -26,6 +26,7 @@
       url = "github:traxys/kabalist";
       flake = false;
     };
+    comma.url = "github:nix-community/comma";
   };
 
   outputs = {
@@ -42,6 +43,7 @@
               inputs.rust-overlay.overlays.default
               inputs.nvim-traxys.overlay."${system}"
               inputs.nix-alien.overlay
+              inputs.comma.overlays.default
               (final: prev: {
                 xdg-ninja = with pkgs;
                   stdenv.mkDerivation rec {
