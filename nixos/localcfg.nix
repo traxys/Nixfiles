@@ -59,7 +59,18 @@
         uid = 1000;
         isNormalUser = true;
         home = "/home/traxys";
-        extraGroups = ["wheel" "networkmanager" "adbusers"];
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "adbusers"
+          "libvirtd"
+          "kvm"
+          "qemu-libvirtd"
+          "docker"
+          "http"
+          "scanner"
+          "lp"
+        ];
         shell = pkgs.zsh;
       };
       localtimed = {
@@ -77,6 +88,7 @@
     enable = true;
     drivers = [pkgs.hplip pkgs.gutenprint pkgs.cnijfilter2];
   };
+  hardware.sane.enable = true;
   services.avahi = {
     nssmdns = true;
     enable = true;
