@@ -45,6 +45,7 @@
 
   home.sessionVariables = {
     BROWSER = "firefox";
+	GTK_USE_PORTAL = 1;
   };
 
   programs = {

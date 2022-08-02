@@ -14,7 +14,6 @@ in {
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
-      gtkUsePortal = true;
     };
   };
 
