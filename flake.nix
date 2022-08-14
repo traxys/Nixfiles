@@ -27,6 +27,7 @@
       flake = false;
     };
     comma.url = "github:nix-community/comma";
+    raclette.url = "github:traxys/raclette";
   };
 
   outputs = {
@@ -64,6 +65,7 @@
                   cargoBuildOptions = opts: opts ++ ["--package=kabalist_cli"];
                   root = inputs.kabalist;
                 };
+                raclette = inputs.raclette.defaultPackage."${system}";
               })
             ];
           })

@@ -37,6 +37,7 @@ in {
     bc
     kabalist_cli
     comma
+    raclette
   ];
 
   services = {
