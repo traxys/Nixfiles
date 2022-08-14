@@ -14,9 +14,9 @@
   ];
 
   home.file = {
-	".zfunc/_cargo".text = ''
-  		#compdef cargo
-    	source $(rustc --print sysroot)/share/zsh/site-functions/_cargo
-	'';
+    ".zfunc/_cargo".text = ''
+      #compdef cargo
+      	source $(rustc --print sysroot)/share/zsh/site-functions/_cargo
+    '';
   };
 }

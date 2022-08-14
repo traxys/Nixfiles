@@ -25,8 +25,8 @@
     font = "Lat2-Terminus16";
     keyMap = "dvorak-programmer";
   };
-  
-  environment.pathsToLink = [ "/share/zsh" ];
+
+  environment.pathsToLink = ["/share/zsh"];
   security.rtkit.enable = true;
   services = {
     flatpak.enable = true;
@@ -37,7 +37,7 @@
       pulse.enable = true;
     };
     localtimed.enable = true;
-	geoclue2.enable = true;
+    geoclue2.enable = true;
     fwupd.enable = true;
     postgresql = {
       enable = true;
@@ -64,8 +64,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages;
   /*
-   nixpkgs.config.allowBroken = true;
-   */
+  nixpkgs.config.allowBroken = true;
+  */
   virtualisation.waydroid.enable = true;
 
   virtualisation = {
