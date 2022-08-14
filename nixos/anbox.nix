@@ -34,12 +34,12 @@ in
     '';
 
     /*
-      makeFlags = [
-     "KERNELRELEASE=${kernel.modDirVersion}"
-     "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
-     "INSTALL_MOD_PATH=$(out)"
-     ];
-     */
+     makeFlags = [
+    "KERNELRELEASE=${kernel.modDirVersion}"
+    "KERNEL_DIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+    "INSTALL_MOD_PATH=$(out)"
+    ];
+    */
 
     meta = with lib; {
       description = "Kernel module for anbox - ${name}";

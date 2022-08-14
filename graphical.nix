@@ -40,12 +40,14 @@
     feh
   ];
 
-  /* environment.pathsToLink = [ "/share/hunspell" "/share/myspell" "/share/hyphen" ];
-    environment.variables.DICPATH = "/run/current-system/sw/share/hunspell:/run/current-system/sw/share/hyphen"; */
+  /*
+   environment.pathsToLink = [ "/share/hunspell" "/share/myspell" "/share/hyphen" ];
+  environment.variables.DICPATH = "/run/current-system/sw/share/hunspell:/run/current-system/sw/share/hyphen";
+  */
 
   home.sessionVariables = {
     BROWSER = "firefox";
-	GTK_USE_PORTAL = 1;
+    GTK_USE_PORTAL = 1;
   };
 
   programs = {

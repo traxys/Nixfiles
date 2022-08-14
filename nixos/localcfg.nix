@@ -35,23 +35,23 @@
   };
 
   /*
-    services.xserver = {
-      enable = true;
-      videoDrivers = [ "nvidia" ];
-   layout = "us";
-   xkbVariant = "dvp";
-   libinput.enable = true;
-      desktopManager.session = [
-        {
-          name = "home-manager";
-          start = ''
-   		${pkgs.runtimeShell} $HOME/.hm-xsession-dbg&
-   		waitPID=$!
-   	'';
-        }
-      ];
-    };
-   */
+   services.xserver = {
+     enable = true;
+     videoDrivers = [ "nvidia" ];
+  layout = "us";
+  xkbVariant = "dvp";
+  libinput.enable = true;
+     desktopManager.session = [
+       {
+         name = "home-manager";
+         start = ''
+  		${pkgs.runtimeShell} $HOME/.hm-xsession-dbg&
+  		waitPID=$!
+  	'';
+       }
+     ];
+   };
+  */
 
   users = {
     users = {
