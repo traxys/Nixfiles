@@ -25,5 +25,11 @@ with builtins; {
         default = null;
       };
     };
+
+    extraInfo.outputs = mkOption {
+      type = types.attrsOf (types.attrsOf types.str);
+      description = "Description of the outputs";
+      default = {};
+    };
   };
 }
