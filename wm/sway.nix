@@ -154,6 +154,7 @@ in {
             );
         in
           builtins.listToAttrs inputsCfg;
+        output = config.extraInfo.outputs;
         fonts = common.mkFont cfg.font;
         window = {
           titlebar = true;
