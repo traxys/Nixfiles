@@ -40,6 +40,7 @@
     wl-clipboard
     xdg-utils
     feh
+	wdisplays
   ];
 
   /*
