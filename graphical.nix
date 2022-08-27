@@ -22,6 +22,8 @@
     pavucontrol
     vlc
     spotify
+	krita
+	gromit-mpx
 
     # Libreoffice
     libreoffice
