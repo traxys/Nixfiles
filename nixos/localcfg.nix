@@ -52,6 +52,7 @@
      ];
    };
   */
+  hardware.opentabletdriver.enable = true;
 
   users = {
     users = {
