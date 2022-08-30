@@ -636,11 +636,11 @@
         "tree-sitter-lalrpop": "tree-sitter-lalrpop"
       },
       "locked": {
-        "lastModified": 1661870204,
-        "narHash": "sha256-NdmIeFdMS7KTjm2yHgZjpXQ/8iUgSze0iUvIGemHN78=",
+        "lastModified": 1661888951,
+        "narHash": "sha256-7BRiRt0vaf9dRpJDywH013DC8BLJaup5HOIdET2zNDY=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "8da21071e75cb950271639edbd23fab67d9b805d",
+        "rev": "4865c4ca409bd9a332774c5c82d95d715ce5f5f4",
         "type": "github"
       },
       "original": {
