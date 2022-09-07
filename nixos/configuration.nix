@@ -29,6 +29,7 @@
   environment.pathsToLink = ["/share/zsh"];
   security.rtkit.enable = true;
   services = {
+    privoxy.enable = true;
     flatpak.enable = true;
     pipewire = {
       enable = true;
