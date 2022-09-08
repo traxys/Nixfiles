@@ -198,11 +198,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1662583828,
-        "narHash": "sha256-5rlP4RhAJX+n2Jd1S6vlDksOu9Wsodzv+DeKHTI/m9o=",
+        "lastModified": 1662627907,
+        "narHash": "sha256-eKgAeloXr7gAjKjcOaiywAuVe9M4f73lMHDKuAZW1XE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "22113a3ae3c8410c682324e1ac3d0b995ceaf82a",
+        "rev": "340ec22f6f2e9c52e2b555e48ab44ee8c53e0275",
         "type": "github"
       },
       "original": {
@@ -636,11 +636,11 @@
         "tree-sitter-lalrpop": "tree-sitter-lalrpop"
       },
       "locked": {
-        "lastModified": 1662586182,
-        "narHash": "sha256-EMna9dP+YfDbKaR1yUwavRFtMtOOuB0LwZNFvPtcSxo=",
+        "lastModified": 1662641275,
+        "narHash": "sha256-DK0ovSyPRZnmy7QQdM/VtYahZpfljgeriPHCE9NeZ90=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "bd4e5a5328652b044cf2f7fdaff4430bb327f567",
+        "rev": "d0383a0ef706d93724082a8c4a827776ed1cb390",
         "type": "github"
       },
       "original": {
@@ -1377,11 +1377,11 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1662519741,
-        "narHash": "sha256-SrtSAMkTri4KseXliYfOjz9qqGAlX/L+ZZDHAMkYfh0=",
+        "lastModified": 1662606081,
+        "narHash": "sha256-UYThoBVUWNc+oXE/0EKRBoaLcVJETSU0arKsLbKPGrQ=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "fae4c3204fb45876f8b54ab1e982de8896269868",
+        "rev": "10ecf9db483f157d86e03edbae0ba48f613abfa4",
         "type": "github"
       },
       "original": {
