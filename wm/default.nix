@@ -156,6 +156,11 @@
       "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
       "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify previous";
 
+	  # Gromit
+	  "Ctrl+Shift+I" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -a";
+	  "Ctrl+Shift+D" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -q";
+	  "Ctrl+Shift+H" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -c";
+
       # Focus
       "${mod}+Left" = "focus left";
       "${mod}+Right" = "focus right";
