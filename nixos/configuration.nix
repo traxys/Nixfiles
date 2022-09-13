@@ -46,6 +46,7 @@
   programs.adb.enable = true;
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
+  hardware.opentabletdriver.enable = true;
 
   fonts.enableDefaultFonts = true;
   fonts = {
