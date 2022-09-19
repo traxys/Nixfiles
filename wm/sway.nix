@@ -153,7 +153,7 @@ in {
               inputs.keyboard
             );
         in
-          builtins.listToAttrs inputsCfg;
+          builtins.listToAttrs (builtins.filter (s: s != null) inputsCfg);
         output = config.extraInfo.outputs;
         fonts = common.mkFont cfg.font;
         window = {
