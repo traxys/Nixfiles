@@ -166,7 +166,7 @@
       "${mod}+comma" = "layout tabbed";
 
       # Misc
-      "${mod}+Shift+colon" = "kill";
+      "${mod}+Shift+semicolon" = "kill";
       "${mod}+Shift+J" = "reload";
       "${mod}+Return" = "exec ${config.terminal.command}";
       "${mod}+p" = "mode resize";
