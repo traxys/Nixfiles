@@ -32,7 +32,7 @@ in {
     unzip
     tokei
     gcc11
-    nix-alien
+    #nix-alien
     xdg-ninja
     bc
     kabalist_cli
