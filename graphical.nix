@@ -34,11 +34,11 @@
     # Misc progs
     bitwarden
     libreoffice-fresh
-    kdeconnect
+	plasma5Packages.kdeconnect-kde
 
     # Misc utils
     wl-clipboard
-    xdg_utils
+    xdg-utils
     feh
   ];
 

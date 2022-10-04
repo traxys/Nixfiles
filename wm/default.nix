@@ -58,7 +58,7 @@
     font = {
       name = "Hack Nerd Font";
       style = "Regular";
-      size = 12.0;
+      size = 14.0;
     };
     bar = {
       font = {
@@ -100,7 +100,7 @@
       {command = "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK";}
       {command = "hash dbus-update-activation-environment 2>/dev/null && dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK";}
       {
-        command = "${pkgs.kdeconnect}/libexec/kdeconnectd";
+        command = "${pkgs.plasma5Packages.kdeconnect-kde}/libexec/kdeconnectd";
         always = true;
       }
     ];
