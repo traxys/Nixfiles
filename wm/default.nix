@@ -171,6 +171,7 @@
       "${mod}+Return" = "exec ${config.terminal.command}";
       "${mod}+p" = "mode resize";
       "${mod}+Shift+P" = "restart";
+      "${mod}+Shift+S" = "exec ~/bin/ssh-picker";
     };
   };
 }
