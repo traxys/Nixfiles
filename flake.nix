@@ -28,6 +28,11 @@
     };
     comma.url = "github:nix-community/comma";
     raclette.url = "github:traxys/raclette";
+    poetry2nix.url = "github:nix-community/poetry2nix";
+    oscclip = {
+      url = "github:rumpelsepp/oscclip";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -45,7 +50,11 @@
               inputs.nvim-traxys.overlay."${system}"
               inputs.nix-alien.overlay
               inputs.comma.overlays.default
+			  inputs.poetry2nix.overlay
               (final: prev: {
+                oscclip = prev.poetry2nix.mkPoetryApplication {
+                  projectDir = inputs.oscclip;
+                };
                 xdg-ninja = with pkgs;
                   stdenv.mkDerivation rec {
                     pname = "xdg-ninja";
