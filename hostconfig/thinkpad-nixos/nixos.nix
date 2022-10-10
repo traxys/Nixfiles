@@ -34,6 +34,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  virtualisation.containers = {
+    enable = true;
+    registries = {
+      search = ["registry.sf.bds.atos.net" "docker.io" "quay.io"];
+    };
+  };
+
   systemd.services.roaming_proxy = {
     description = "Roaming Http Proxy";
     serviceConfig = {
