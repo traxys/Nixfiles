@@ -48,7 +48,12 @@ in {
         cyan = mkColorPair;
         white = mkColorPair;
 
-        selectionForeground = mkColor;
+		urls = mkColor;
+
+		selection = {
+			background = mkColor;
+			foreground = mkColor;
+		};
       };
       font = {
         size = mkOption {

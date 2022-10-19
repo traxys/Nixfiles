@@ -22,25 +22,30 @@
     kind = "foot";
 
     colors = {
-      background = "000000";
-      foreground = "ffffff";
+      background = "1a1b26";
+      foreground = "c0caf5";
 
       black = {
-        normal = "000000";
-        bright = "545454";
+        normal = "15161e";
+        bright = "414868";
       };
-      red = {normal = "ff5555";};
-      green = {normal = "55ff55";};
-      yellow = {normal = "ffff55";};
-      blue = {normal = "5555ff";};
-      magenta = {normal = "ff55ff";};
-      cyan = {normal = "55ffff";};
+      red = {normal = "f7768e";};
+      green = {normal = "9ece6a";};
+      yellow = {normal = "e0af68";};
+      blue = {normal = "7aa2f7";};
+      magenta = {normal = "bb9af7";};
+      cyan = {normal = "7dcfff";};
       white = {
-        normal = "bbbbbb";
-        bright = "ffffff";
+        normal = "a9b1d6";
+        bright = "c0caf5";
       };
 
-      selectionForeground = "000000";
+      urls = "73daca";
+
+      selection = {
+        foreground = "c0caf5";
+        background = "33467c";
+      };
     };
     font = {
       family = "Hack Nerd Font Mono";
