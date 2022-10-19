@@ -49,7 +49,10 @@ in {
           regular7 = colorCfgNormal cCfg.white;
           bright7 = colorCfgBright cCfg.white;
 
-          selection-foreground = colorCfg cCfg.selectionForeground;
+		  urls = colorCfg cCfg.urls;
+
+          selection-foreground = colorCfg cCfg.selection.foreground;
+		  selection-background = colorCfg cCfg.selection.background;
         };
         main = {
           font = "${cfg.font.family}:size=${toString cfg.font.size}";
