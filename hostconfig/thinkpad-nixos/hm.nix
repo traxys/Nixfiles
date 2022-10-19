@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     bear
     chromium
@@ -27,6 +31,11 @@
     "Microsoft Teams"
     "Chromium-browser"
   ];
+
+  programs.git = {
+    userName = "Quentin Boyer";
+    userEmail = config.extraInfo.email;
+  };
 
   home.sessionVariables = {
     OPENSC_SO = "${pkgs.opensc}";
