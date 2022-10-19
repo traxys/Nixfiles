@@ -50,7 +50,7 @@
               inputs.nvim-traxys.overlay."${system}"
               inputs.nix-alien.overlay
               inputs.comma.overlays.default
-			  inputs.poetry2nix.overlay
+              inputs.poetry2nix.overlay
               (final: prev: {
                 oscclip = prev.poetry2nix.mkPoetryApplication {
                   projectDir = inputs.oscclip;

@@ -38,7 +38,7 @@ in {
     kabalist_cli
     comma
     raclette
-	oscclip
+    oscclip
   ];
 
   services = {
