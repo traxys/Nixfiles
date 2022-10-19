@@ -237,6 +237,7 @@
             }: {
               imports = [
                 ./hostconfig/thinkpad-nixos/extra_info.nix
+                ./hostconfig/thinkpad-nixos/hm.nix
                 self.hmModules.minimal
                 self.hmModules.personal-cli
                 self.hmModules.personal-gui
