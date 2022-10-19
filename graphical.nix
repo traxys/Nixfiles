@@ -22,8 +22,8 @@
     pavucontrol
     vlc
     spotify
-	krita
-	gromit-mpx
+    krita
+    gromit-mpx
 
     # Libreoffice
     libreoffice
@@ -34,7 +34,7 @@
     # Misc progs
     bitwarden
     libreoffice-fresh
-	plasma5Packages.kdeconnect-kde
+    plasma5Packages.kdeconnect-kde
 
     # Misc utils
     wl-clipboard

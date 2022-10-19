@@ -27,7 +27,7 @@
     };
     aliases = {
       ri = "rebase -i";
-	  amend = "commit --amend";
+      amend = "commit --amend";
     };
   };
 
