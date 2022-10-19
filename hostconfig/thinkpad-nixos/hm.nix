@@ -8,6 +8,8 @@
     jira-cli-go
     libfabric
     opensc
+    pcsclite
+    pcsctools
     python39Packages.clustershell
     shellcheck
     shfmt
@@ -25,6 +27,15 @@
     "Microsoft Teams"
     "Chromium-browser"
   ];
+
+  home.sessionVariables = {
+    OPENSC_SO = "${pkgs.opensc}";
+  };
+
+  home.file = {
+    "libs/opensc-pkcs11.so".source = "${pkgs.opensc}/lib/opensc-pkcs11.so";
+    "libs/libpcsclite.so.1".source = "${pkgs.pcsclite}/lib/libpcsclite.so.1";
+  };
 
   programs.zsh.shellAliases = {
     gemail = "git send-email --to='dl-bxi-sw-ll-patches@***REMOVED***'";
