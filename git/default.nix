@@ -25,6 +25,10 @@
         excludesfile = "${config.home.homeDirectory}/.gitignore";
       };
     };
+    aliases = {
+      ri = "rebase -i";
+	  amend = "commit --amend";
+    };
   };
 
   home.file = {
