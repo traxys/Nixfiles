@@ -31,6 +31,6 @@
         '';
       };
 
-      defaultPackage = nearsk'.buildPackage ./.;
+      defaultPackage = naersk'.buildPackage ./.;
     });
 }
