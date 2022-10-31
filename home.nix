@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  flake,
   ...
 }: let
   rustVersion = (pkgs.rustChannelOf {channel = "stable";}).rust;
@@ -45,6 +46,10 @@ in {
     syncthing = {
       enable = true;
     };
+  };
+
+  nix.registry = {
+    "my".flake = flake;
   };
 
   programs = {
