@@ -40,6 +40,12 @@
     nixpkgs,
     ...
   } @ inputs: {
+    templates = {
+      rust = {
+        path = ./templates/rust;
+        description = "My rust template using rust-overlay and direnv";
+      };
+    };
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
