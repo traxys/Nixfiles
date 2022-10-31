@@ -36,6 +36,7 @@
   };
 
   outputs = {
+    self,
     home-manager,
     nixpkgs,
     ...
@@ -107,6 +108,7 @@
                 inputs.nvim-traxys.home-managerModule."${system}"
               ];
             };
+            home-manager.extraSpecialArgs = {flake = self;};
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
