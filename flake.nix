@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,9 +75,11 @@
         modules = [
           ({pkgs, ...}: {
             nixpkgs.overlays = [
+              inputs.nur.overlay
               inputs.rust-overlay.overlays.default
               inputs.nvim-traxys.overlay."${system}"
               inputs.nix-alien.overlay
+              inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
               inputs.poetry2nix.overlay
               (final: prev:
