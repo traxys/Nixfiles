@@ -16,21 +16,28 @@
     zsh-traxys = {
       url = "github:traxys/zsh-flake";
     };
-    xdg-ninja = {
-      url = "github:traxys/xdg-ninja";
-      flake = false;
-    };
     rust-overlay.url = "github:oxalica/rust-overlay";
     naersk.url = "github:nix-community/naersk";
+    comma.url = "github:nix-community/comma";
+    raclette.url = "github:traxys/raclette";
+    poetry2nix.url = "github:nix-community/poetry2nix";
+    nur.url = "github:nix-community/NUR";
+
+    # Extra Package Sources
+    simulationcraft = {
+      url = "github:simulationcraft/simc";
+      flake = false;
+    };
+    oscclip = {
+      url = "github:rumpelsepp/oscclip";
+      flake = false;
+    };
     kabalist = {
       url = "github:traxys/kabalist";
       flake = false;
     };
-    comma.url = "github:nix-community/comma";
-    raclette.url = "github:traxys/raclette";
-    poetry2nix.url = "github:nix-community/poetry2nix";
-    oscclip = {
-      url = "github:rumpelsepp/oscclip";
+    xdg-ninja = {
+      url = "github:b3nj5m1n/xdg-ninja";
       flake = false;
     };
   };
@@ -40,13 +47,27 @@
     home-manager,
     nixpkgs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    sources =
+      {
+        inherit (inputs) oscclip xdg-ninja simulationcraft kabalist;
+      }
+      // (nixpkgs.legacyPackages.x86_64-linux.callPackage ./_sources/generated.nix {});
+  in {
     templates = {
       rust = {
         path = ./templates/rust;
         description = "My rust template using rust-overlay and direnv";
       };
     };
+    packages.x86_64-linux = let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    in
+      import ./pkgs/default.nix {
+        inherit sources;
+        callPackage = pkgs.callPackage;
+        naersk = inputs.naersk.lib.x86_64-linux;
+      };
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -58,29 +79,13 @@
               inputs.nix-alien.overlay
               inputs.comma.overlays.default
               inputs.poetry2nix.overlay
+              (final: prev:
+                import ./pkgs/default.nix {
+                  inherit sources;
+                  callPackage = prev.callPackage;
+                  naersk = inputs.naersk.lib."${system}";
+                })
               (final: prev: {
-                oscclip = prev.poetry2nix.mkPoetryApplication {
-                  projectDir = inputs.oscclip;
-                };
-                xdg-ninja = with pkgs;
-                  stdenv.mkDerivation rec {
-                    pname = "xdg-ninja";
-                    version = "0.1";
-                    src = inputs.xdg-ninja;
-                    installPhase = ''
-                      mkdir -p $out/bin
-                      cp xdg-ninja.sh $out/bin
-                      cp -r programs $out/bin
-                      wrapProgram $out/bin/xdg-ninja.sh \
-                      	--prefix PATH : ${lib.makeBinPath [bash jq glow]}
-                    '';
-                    buildInputs = [jq glow bash];
-                    nativeBuildInputs = [makeWrapper];
-                  };
-                kabalist_cli = inputs.naersk.lib."${system}".buildPackage {
-                  cargoBuildOptions = opts: opts ++ ["--package=kabalist_cli"];
-                  root = inputs.kabalist;
-                };
                 raclette = inputs.raclette.defaultPackage."${system}";
               })
             ];
