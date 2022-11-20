@@ -40,6 +40,7 @@ in {
     comma
     raclette
     oscclip
+	nvfetcher
   ];
 
   services = {
