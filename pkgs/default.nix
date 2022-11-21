@@ -12,4 +12,5 @@
     inherit naersk;
     kabalist-src = sources.kabalist;
   };
+  jira-cli = callPackage ./jira-cli.nix {jira-src = sources.jira-cli;};
 }
