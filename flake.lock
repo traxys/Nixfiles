@@ -1509,7 +1509,6 @@
         "raclette": "raclette",
         "rust-overlay": "rust-overlay_2",
         "simulationcraft": "simulationcraft",
-        "xdg-ninja": "xdg-ninja",
         "zsh-traxys": "zsh-traxys"
       }
     },
@@ -1641,22 +1640,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "xdg-ninja": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1668972409,
-        "narHash": "sha256-spAzZKlsxMjU8ShhU6pjNNdFjCgrA5P4nB1PNMH0KTg=",
-        "owner": "b3nj5m1n",
-        "repo": "xdg-ninja",
-        "rev": "e6b831c56380c7a5bfde5afa12838d014f42b242",
-        "type": "github"
-      },
-      "original": {
-        "owner": "b3nj5m1n",
-        "repo": "xdg-ninja",
         "type": "github"
       }
     },
