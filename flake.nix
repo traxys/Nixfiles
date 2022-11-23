@@ -21,7 +21,6 @@
     naersk.url = "github:nix-community/naersk";
     comma.url = "github:nix-community/comma";
     raclette.url = "github:traxys/raclette";
-    poetry2nix.url = "github:nix-community/poetry2nix";
     nur.url = "github:nix-community/NUR";
 
     # Extra Package Sources
@@ -77,7 +76,6 @@
               inputs.nix-alien.overlay
               inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
-              inputs.poetry2nix.overlay
               (final: prev:
                 import ./pkgs/default.nix {
                   inherit sources;
