@@ -37,10 +37,6 @@
       url = "github:traxys/kabalist";
       flake = false;
     };
-    xdg-ninja = {
-      url = "github:b3nj5m1n/xdg-ninja";
-      flake = false;
-    };
   };
 
   outputs = {
@@ -51,7 +47,7 @@
   } @ inputs: let
     sources =
       {
-        inherit (inputs) oscclip xdg-ninja simulationcraft kabalist;
+        inherit (inputs) oscclip simulationcraft kabalist;
       }
       // (nixpkgs.legacyPackages.x86_64-linux.callPackage ./_sources/generated.nix {});
   in {
