@@ -59,10 +59,13 @@
     packages.x86_64-linux = let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
-      import ./pkgs/default.nix {
+      (import ./pkgs/default.nix {
         inherit sources;
         callPackage = pkgs.callPackage;
         naersk = inputs.naersk.lib.x86_64-linux;
+      })
+      // {
+        raclette = inputs.raclette.defaultPackage.x86_64-linux;
       };
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
