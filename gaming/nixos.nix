@@ -6,6 +6,8 @@
   programs.steam.enable = true;
   hardware.steam-hardware.enable = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
   security.wrappers = {
     gamescope = {
       owner = "root";

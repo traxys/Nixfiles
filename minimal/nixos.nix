@@ -1,11 +1,12 @@
 {extraInfo}: {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [extraInfo];
 
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages;
 
   programs.nix-ld.enable = true;
 
