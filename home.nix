@@ -40,7 +40,8 @@ in {
     comma
     raclette
     oscclip
-	nvfetcher
+    nvfetcher
+    hbw
   ];
 
   services = {
