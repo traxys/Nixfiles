@@ -7,6 +7,7 @@
   wowup = callPackage ./wowup.nix {};
   simulationcraft = callPackage ./simulationcraft.nix {simulationcraft-src = sources.simulationcraft;};
   proton-ge = callPackage ./proton-ge.nix {proton-ge-src = sources.proton-ge;};
+  hbw = callPackage ./hbw {};
   kabalist_cli = callPackage ./kabalist.nix {
     inherit naersk;
     kabalist-src = sources.kabalist;
