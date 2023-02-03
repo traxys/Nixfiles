@@ -12,6 +12,7 @@
   };
 in {
   home.packages = with pkgs; [
+    neovimTraxys
     bitwarden-cli
     nodePackages.vscode-json-languageserver
     exa

@@ -75,7 +75,6 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nvim-traxys.overlay."${system}"
               inputs.nix-alien.overlay
               inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
@@ -87,6 +86,7 @@
                 })
               (final: prev: {
                 raclette = inputs.raclette.defaultPackage."${system}";
+                neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
               })
             ];
           })
@@ -110,7 +110,6 @@
                 ./rustdev.nix
                 ./git
                 inputs.zsh-traxys.home-managerModule."${system}"
-                inputs.nvim-traxys.home-managerModule."${system}"
               ];
             };
             home-manager.extraSpecialArgs = {flake = self;};
