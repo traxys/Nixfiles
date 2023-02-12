@@ -49,6 +49,16 @@
         inherit (inputs) oscclip simulationcraft kabalist;
       }
       // (nixpkgs.legacyPackages.x86_64-linux.callPackage ./_sources/generated.nix {});
+
+    pkgList = system: callPackage:
+      (import ./pkgs/default.nix {
+        inherit sources callPackage;
+        naersk = inputs.naersk.lib."${system}";
+      })
+      // {
+        raclette = inputs.raclette.defaultPackage."${system}";
+        neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
+      };
   in {
     templates = {
       rust = {
@@ -56,17 +66,7 @@
         description = "My rust template using rust-overlay and direnv";
       };
     };
-    packages.x86_64-linux = let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in
-      (import ./pkgs/default.nix {
-        inherit sources;
-        callPackage = pkgs.callPackage;
-        naersk = inputs.naersk.lib.x86_64-linux;
-      })
-      // {
-        raclette = inputs.raclette.defaultPackage.x86_64-linux;
-      };
+    packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -78,16 +78,7 @@
               inputs.nix-alien.overlay
               inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
-              (final: prev:
-                import ./pkgs/default.nix {
-                  inherit sources;
-                  callPackage = prev.callPackage;
-                  naersk = inputs.naersk.lib."${system}";
-                })
-              (final: prev: {
-                raclette = inputs.raclette.defaultPackage."${system}";
-                neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
-              })
+              (final: prev: pkgList system prev.callPackage)
             ];
           })
           ./nixos/configuration.nix
