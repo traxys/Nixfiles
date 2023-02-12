@@ -36,6 +36,7 @@
       url = "github:traxys/kabalist";
       flake = false;
     };
+    roaming_proxy.url = "github:traxys/roaming_proxy";
   };
 
   outputs = {
@@ -58,6 +59,7 @@
       // {
         raclette = inputs.raclette.defaultPackage."${system}";
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
+		roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
       };
   in {
     templates = {
