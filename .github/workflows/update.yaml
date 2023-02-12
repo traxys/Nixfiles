@@ -20,7 +20,7 @@ jobs:
         uses: DeterminateSystems/update-flake-lock@v16
         with:
           pr-title: "Update flake.lock"
-      # - uses: peter-evans/enable-pull-request-automerge@v2
-      #   with:
-      #     pull-request-number: ${{ steps.update.outputs.pull-request-number }}
-      #     merge-method: rebase
+      - uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          pull-request-number: ${{ steps.update.outputs.pull-request-number }}
+          merge-method: rebase
