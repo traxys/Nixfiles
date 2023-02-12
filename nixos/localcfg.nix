@@ -78,7 +78,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Paris";
+  # time.timeZone = "Europe/Paris";
 
   services.printing = {
     enable = true;
