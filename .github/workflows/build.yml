@@ -1,6 +1,10 @@
 name: "Build"
 on:
   push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * MON' # runs weekly on Monday at 00:00
+
 jobs:
   tests:
     runs-on: ubuntu-latest
