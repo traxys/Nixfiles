@@ -74,12 +74,7 @@
         ];
         shell = pkgs.zsh;
       };
-      localtimed = {
-        group = "localtimed";
-        isSystemUser = true;
-      };
     };
-    groups.localtimed = {};
   };
 
   # Set your time zone.
