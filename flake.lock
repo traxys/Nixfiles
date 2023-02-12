@@ -93,6 +93,22 @@
         "type": "github"
       }
     },
+    "flake-compat_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673956053,
+        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -416,16 +432,17 @@
     },
     "nix-alien": {
       "inputs": {
+        "flake-compat": "flake-compat_2",
         "flake-utils": "flake-utils",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1676080902,
-        "narHash": "sha256-N2l9xzpQKrJt3LkTKnOVdTzi3iGY2F9G+Xm46ZUqvuE=",
+        "lastModified": 1676218129,
+        "narHash": "sha256-hLD+r40SqJZQ8AyQanJG8+hnn34qzSM1z2UwTnY06H0=",
         "owner": "thiagokokada",
         "repo": "nix-alien",
-        "rev": "ef49d63169919886697e4f47e8f090e659b4f575",
+        "rev": "9b12c1e9c02caefd9414739fd19334ef6bdfad2c",
         "type": "github"
       },
       "original": {
@@ -749,11 +766,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1676204408,
-        "narHash": "sha256-AaDm6PVTfiuNaf+2U9cEmnqeDm2mj/CZRKUePoOyXS0=",
+        "lastModified": 1676216696,
+        "narHash": "sha256-mIg6ooQ3xtD5ULG4E/RwQqKdxIssYfSZHScXxloK3uI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2f199ce2679c6a7937da78f8d85613d035f09986",
+        "rev": "5ad9d0fcec2e3d26b0caa65e119025ef804d5a11",
         "type": "github"
       },
       "original": {
@@ -1122,11 +1139,11 @@
     "simulationcraft": {
       "flake": false,
       "locked": {
-        "lastModified": 1676204989,
-        "narHash": "sha256-Jjbh6t/sdzi9cHybv3xu9l1E93yWMuH6LcSizgTKz+4=",
+        "lastModified": 1676211921,
+        "narHash": "sha256-FjOHkzOXELY6tDBllmIfTvK9LoN4m+oKNEifqUqZ/58=",
         "owner": "simulationcraft",
         "repo": "simc",
-        "rev": "d7988621450f4f6e9b7daf52b20a272af212cd2a",
+        "rev": "6fd46d3c39eb98cd4df4a270c855ed864c518399",
         "type": "github"
       },
       "original": {
