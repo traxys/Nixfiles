@@ -1,7 +1,3 @@
 [proton-ge]
 src.github = "GloriousEggroll/proton-ge-custom"
 fetch.url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/$ver/$ver.tar.gz"
-
-[jira-cli]
-src.github = "ankitpokhrel/jira-cli"
-fetch.url = "https://github.com/ankitpokhrel/jira-cli/archive/refs/tags/$ver.tar.gz"
