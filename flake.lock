@@ -823,11 +823,11 @@
         "plugin:vim-matchup": "plugin:vim-matchup"
       },
       "locked": {
-        "lastModified": 1676223970,
-        "narHash": "sha256-PM703qIGLHO+xIAXPdVWs3/F4q3fKw0alXksOxE+D/M=",
+        "lastModified": 1676227273,
+        "narHash": "sha256-IdlAaQOzwi3Uv37veK69QFiAGhz3B4mSl7/j7YBvlu4=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "59e50ccced3faa48320f4151a881f29f0ab6ebf9",
+        "rev": "8b0c919684cbb2c193dfff8270190e13e6029019",
         "type": "github"
       },
       "original": {
