@@ -1,0 +1,19 @@
+name: "Build"
+on:
+  push:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v17
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: cachix/cachix-action@v11
+        with:
+          name: traxys
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - run: >
+          nix flake show --json |
+          jq -r '.packages."x86_64-linux" | keys | .[]' | 
+          xargs -I'{}' nix build '.#{}'
