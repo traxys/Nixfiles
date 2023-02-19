@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * MON' # runs weekly on Monday at 00:00
+    - cron: '0 12 * * SUN' # runs weekly on Sunday at 12:00
 
 jobs:
   tests:
