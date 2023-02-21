@@ -13,5 +13,20 @@
             "url": "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-49/GE-Proton7-49.tar.gz"
         },
         "version": "GE-Proton7-49"
+    },
+    "warcraftlogs": {
+        "cargoLocks": null,
+        "date": null,
+        "extract": null,
+        "name": "warcraftlogs",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "name": null,
+            "sha256": "sha256-FmPqXyAo3zRO1UppxYe8YG7MG+Uli+TVr9y8IeGAoVQ=",
+            "type": "url",
+            "url": "https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v6.0.1/Warcraft-Logs-Uploader-6.0.1.AppImage"
+        },
+        "version": "6.0.1"
     }
 }

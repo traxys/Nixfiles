@@ -9,4 +9,12 @@
       sha256 = "sha256-T+7R+zFMd0yQ0v7/WGym2kzMMulUmATS/LCEQS8whiw=";
     };
   };
+  warcraftlogs = {
+    pname = "warcraftlogs";
+    version = "6.0.1";
+    src = fetchurl {
+      url = "https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v6.0.1/Warcraft-Logs-Uploader-6.0.1.AppImage";
+      sha256 = "sha256-FmPqXyAo3zRO1UppxYe8YG7MG+Uli+TVr9y8IeGAoVQ=";
+    };
+  };
 }

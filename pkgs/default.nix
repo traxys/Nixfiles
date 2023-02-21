@@ -12,4 +12,5 @@
     inherit naersk;
     kabalist-src = sources.kabalist;
   };
+  warcraftlogs = callPackage ./warcraftlogs.nix {warcraftlogs-src = sources.warcraftlogs;};
 }
