@@ -18,7 +18,7 @@ jobs:
           name: traxys
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - run: >
-          export NIXPKGS_ALLOW_UNFREE=1
+          NIXPKGS_ALLOW_UNFREE=1
           nix flake show --json |
           jq -r '.packages."x86_64-linux" | keys | .[]' | 
           xargs -I'{}' nix build --impure '.#{}'
