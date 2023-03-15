@@ -822,15 +822,16 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1678490751,
-        "narHash": "sha256-emDSiyDv0iE4glxRYtN/0CAUAkO45gd1c5UihdrI76A=",
-        "owner": "pta2002",
+        "lastModified": 1678918977,
+        "narHash": "sha256-H8Z/lH2FcwSaUORdqxHDdcGHkDPM7qzudAiP42fIJHk=",
+        "owner": "traxys",
         "repo": "nixvim",
-        "rev": "8b21fd587287ae145758c9d133900fcf8e32ec35",
+        "rev": "b9a311c91e2d2995f2c207537e519d6d20820ca1",
         "type": "github"
       },
       "original": {
-        "owner": "pta2002",
+        "owner": "traxys",
+        "ref": "dev",
         "repo": "nixvim",
         "type": "github"
       }
@@ -873,6 +874,7 @@
         "plugin:indent-blankline-nvim": "plugin:indent-blankline-nvim",
         "plugin:lspkind-nvim": "plugin:lspkind-nvim",
         "plugin:lualine-nvim": "plugin:lualine-nvim",
+        "plugin:netman-nvim": "plugin:netman-nvim",
         "plugin:noice-nvim": "plugin:noice-nvim",
         "plugin:nui-nvim": "plugin:nui-nvim",
         "plugin:null-ls-nvim": "plugin:null-ls-nvim",
@@ -894,11 +896,11 @@
         "plugin:vim-matchup": "plugin:vim-matchup"
       },
       "locked": {
-        "lastModified": 1678495500,
-        "narHash": "sha256-mPlPoAP1Tqz0QMehxRv8VAbiLjp/nErX2mncszcW4gg=",
+        "lastModified": 1678919706,
+        "narHash": "sha256-udRnb44aGQqZMsIvs/hBq4zKqst5zTvxWHzuTkcA/BE=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "33a9e62c3dbcdc70426a48c4dcc99748cc9d6e7a",
+        "rev": "41ce704f46c8b3c2cdc931092f953695eb30e4f2",
         "type": "github"
       },
       "original": {
@@ -1160,6 +1162,22 @@
       "original": {
         "owner": "nvim-lualine",
         "repo": "lualine.nvim",
+        "type": "github"
+      }
+    },
+    "plugin:netman-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1677808344,
+        "narHash": "sha256-oRjBjVmO/7bmgyf9ltthRrwZBD5SLD757GklSjw1bJs=",
+        "owner": "miversen33",
+        "repo": "netman.nvim",
+        "rev": "1ef50efcbe88f8293e97946af37243a20873bb1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miversen33",
+        "repo": "netman.nvim",
         "type": "github"
       }
     },
