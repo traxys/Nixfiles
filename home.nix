@@ -62,6 +62,7 @@ in {
         titlesec
         ;
     })
+	man-pages
   ];
 
   services = {
