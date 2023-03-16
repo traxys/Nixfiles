@@ -43,6 +43,25 @@ in {
     oscclip
     nvfetcher
     hbw
+    gnumake
+    gdb
+    pandoc
+    # Usefull for pandoc to latex
+    (texlive.combine {
+      inherit
+        (texlive)
+        scheme-medium
+        fncychap
+        wrapfig
+        capt-of
+        framed
+        upquote
+        needspace
+        tabulary
+        varwidth
+        titlesec
+        ;
+    })
   ];
 
   services = {
