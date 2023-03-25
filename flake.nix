@@ -14,9 +14,9 @@
       url = "github:traxys/nvim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zsh-traxys = {
-      url = "github:traxys/zsh-flake";
-    };
+    # zsh-traxys = {
+    #   url = "github:traxys/zsh-flake";
+    # };
     rust-overlay.url = "github:oxalica/rust-overlay";
     naersk.url = "github:nix-community/naersk";
     comma.url = "github:nix-community/comma";
@@ -37,6 +37,22 @@
       flake = false;
     };
     roaming_proxy.url = "github:traxys/roaming_proxy";
+    dotacat = {
+      url = "git+https://gitlab.scd31.com/stephen/dotacat.git";
+      flake = false;
+    };
+    zsh-nix-shell = {
+      url = "github:chisui/zsh-nix-shell";
+      flake = false;
+    };
+    powerlevel10k = {
+      url = "github:romkatv/powerlevel10k";
+      flake = false;
+    };
+    fast-syntax-highlighting = {
+      url = "github:zdharma-continuum/fast-syntax-highlighting";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -47,7 +63,7 @@
   } @ inputs: let
     sources =
       {
-        inherit (inputs) oscclip simulationcraft kabalist;
+        inherit (inputs) oscclip simulationcraft kabalist dotacat;
       }
       // (nixpkgs.legacyPackages.x86_64-linux.callPackage ./_sources/generated.nix {});
 
