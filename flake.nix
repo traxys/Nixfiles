@@ -82,6 +82,16 @@
       };
     };
     packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
+
+    hmModules = {
+      minimal = import ./minimal {
+        inherit inputs;
+        flake = self;
+      };
+    };
+
+    overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
+
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -115,12 +125,11 @@
                 ./wm
                 ./rustdev.nix
                 ./git
-                ./minimal
+                self.hmModules.minimal
               ];
             };
             home-manager.extraSpecialArgs = {
               flake = self;
-              inputs = self.inputs;
             };
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix

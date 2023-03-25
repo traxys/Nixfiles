@@ -1,7 +1,8 @@
 {
-  pkgs,
   inputs,
   flake,
+}: {
+  pkgs,
   lib,
   config,
   ...
@@ -19,7 +20,7 @@
       file
       gdb
       gnumake
-	  jq
+      jq
       man-pages
       neovimTraxys
       nix-zsh-completions
@@ -27,9 +28,9 @@
       pandoc
       raclette
       ripgrep
-	  rsync
+      rsync
       tokei
-	  unzip
+      unzip
       wget
 
       # Useful for pandoc to latex
