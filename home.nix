@@ -12,57 +12,26 @@
   };
 in {
   home.packages = with pkgs; [
-    neovimTraxys
     bitwarden-cli
     nodePackages.vscode-json-languageserver
     exa
     python3
     topgrade
-    rsync
-    fd
     niv
     bintools
     httpie
     sqlx-cli
     codespell
-    ripgrep
-    file
-    jq
-    wget
     cargo-flamegraph
     linuxPackages.perf
-    unzip
     tokei
     gcc11
     #nix-alien
     xdg-ninja
     bc
     kabalist_cli
-    comma
-    raclette
-    oscclip
     nvfetcher
     hbw
-    gnumake
-    gdb
-    pandoc
-    # Usefull for pandoc to latex
-    (texlive.combine {
-      inherit
-        (texlive)
-        scheme-medium
-        fncychap
-        wrapfig
-        capt-of
-        framed
-        upquote
-        needspace
-        tabulary
-        varwidth
-        titlesec
-        ;
-    })
-	man-pages
   ];
 
   services = {
@@ -71,30 +40,8 @@ in {
     };
   };
 
-  nix.registry = {
-    "my".flake = flake;
-  };
-
   programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      enableZshIntegration = true;
-    };
-
-    home-manager = {
-      enable = true;
-    };
-
     starship = {
-      enable = true;
-    };
-
-    bat = {
-      enable = true;
-    };
-
-    zoxide = {
       enable = true;
     };
 
@@ -138,7 +85,6 @@ in {
     initExtraBeforeCompInit = ''
       fpath+="$HOME/.zfunc"
     '';
-    envExtra = "export EDITOR=nvim";
     shellAliases = {
       new-direnv = "nix flake new -t github:nix-community/nix-direnv";
     };
