@@ -12,6 +12,10 @@
     default = "";
   };
 
+  imports = [
+    inputs.nix-index-database.hmModules.nix-index
+  ];
+
   config = {
     home.packages = with pkgs; [
       bat

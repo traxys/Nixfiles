@@ -20,6 +20,9 @@
     raclette.url = "github:traxys/raclette";
     nur.url = "github:nix-community/NUR";
 
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     # Extra Package Sources
     simulationcraft = {
       url = "github:simulationcraft/simc";
