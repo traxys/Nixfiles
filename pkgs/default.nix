@@ -13,4 +13,8 @@
     kabalist-src = sources.kabalist;
   };
   warcraftlogs = callPackage ./warcraftlogs.nix {warcraftlogs-src = sources.warcraftlogs;};
+  dotacat = callPackage ./dotacat.nix {
+    inherit naersk;
+    dotacatSrc = sources.dotacat;
+  };
 }
