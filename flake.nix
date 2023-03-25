@@ -14,9 +14,6 @@
       url = "github:traxys/nvim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # zsh-traxys = {
-    #   url = "github:traxys/zsh-flake";
-    # };
     rust-overlay.url = "github:oxalica/rust-overlay";
     naersk.url = "github:nix-community/naersk";
     comma.url = "github:nix-community/comma";
@@ -75,7 +72,7 @@
       // {
         raclette = inputs.raclette.defaultPackage."${system}";
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
-		roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
+        roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
       };
   in {
     templates = {
@@ -118,10 +115,13 @@
                 ./wm
                 ./rustdev.nix
                 ./git
-                inputs.zsh-traxys.home-managerModule."${system}"
+                ./minimal
               ];
             };
-            home-manager.extraSpecialArgs = {flake = self;};
+            home-manager.extraSpecialArgs = {
+              flake = self;
+              inputs = self.inputs;
+            };
             # Optionally, use home-manager.extraSpecialArgs to pass
             # arguments to home.nix
           }
