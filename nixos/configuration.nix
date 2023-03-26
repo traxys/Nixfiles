@@ -3,8 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {pkgs, ...}: {
   imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
     ./localcfg.nix
     ./cachix.nix
   ];

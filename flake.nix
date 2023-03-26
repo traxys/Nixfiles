@@ -170,6 +170,8 @@
         system = "x86_64-linux";
         modules = [
           ./hostconfig/ZeNixComputa/extra_info.nix
+		  ./hostconfig/ZeNixComputa/hardware-configuration.nix
+		  ./hostconfig/ZeNixComputa/nixos.nix
           self.nixosModules.minimal
           self.nixosModules.personal-cli
           self.nixosModules.personal-gui
