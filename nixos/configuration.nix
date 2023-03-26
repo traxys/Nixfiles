@@ -24,23 +24,13 @@
   services = {
     tzupdate.enable = true;
     privoxy.enable = true;
-    flatpak.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
     localtimed.enable = true;
     geoclue2.enable = true;
     postgresql = {
       enable = true;
     };
   };
-  programs.adb.enable = true;
-  programs.dconf.enable = true;
   programs.nix-ld.enable = true;
-  hardware.opentabletdriver.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages;
   /*
@@ -50,21 +40,6 @@
   virtualisation = {
     waydroid.enable = true;
   };
-
-  security.pam = {
-    yubico = {
-      enable = true;
-      debug = false;
-      mode = "challenge-response";
-    };
-    services.swaylock = {
-      text = ''
-        auth include login
-      '';
-    };
-  };
-
-  programs.noisetorch.enable = true;
 
   networking.firewall = {
     allowedTCPPorts = [

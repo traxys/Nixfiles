@@ -94,6 +94,7 @@
         flake = self;
       };
       personal-cli = import ./personal-cli/hm.nix;
+      personal-gui = import ./personal-gui/hm.nix;
     };
 
     nixosModules = {
@@ -101,6 +102,7 @@
         inherit extraInfo;
       };
       personal-cli = import ./personal-cli/nixos.nix;
+      personal-gui = import ./personal-gui/nixos.nix;
     };
 
     overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
@@ -112,6 +114,7 @@
           ./hostconfig/ZeNixComputa/extra_info.nix
           self.nixosModules.minimal
           self.nixosModules.personal-cli
+          self.nixosModules.personal-gui
           ({pkgs, ...}: {
             nixpkgs.overlays = [
               inputs.nur.overlay
@@ -136,11 +139,11 @@
               imports = [
                 self.hmModules.minimal
                 self.hmModules.personal-cli
+                self.hmModules.personal-gui
                 ./home.nix
                 ./graphical.nix
                 ./extra_info.nix
                 ./localinfo.nix
-                ./wm
                 ./rustdev.nix
                 ./git
               ];

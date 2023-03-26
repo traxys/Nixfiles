@@ -52,7 +52,6 @@
      ];
    };
   */
-  hardware.opentabletdriver.enable = true;
 
   users = {
     users = {
@@ -60,10 +59,7 @@
         uid = 1000;
         extraGroups = [
           "wheel"
-          "adbusers"
           "http"
-          "scanner"
-          "lp"
         ];
       };
     };
@@ -71,18 +67,4 @@
 
   # Set your time zone.
   # time.timeZone = "Europe/Paris";
-
-  services.printing = {
-    enable = true;
-    drivers = [pkgs.hplip pkgs.gutenprint pkgs.cnijfilter2];
-  };
-  hardware.sane.enable = true;
-  services.avahi = {
-    nssmdns = true;
-    enable = true;
-  };
-
-  hardware.opengl = {
-    enable = true;
-  };
 }
