@@ -62,12 +62,6 @@ in {
               format = ":{1m}";
             }
             {
-              block = "nvidia_gpu";
-              label = "1050 Ti";
-              show_memory = true;
-              show_temperature = true;
-            }
-            {
               block = "sound";
               driver = "pulseaudio";
             }

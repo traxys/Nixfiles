@@ -7,6 +7,12 @@
     userEmail = config.extraInfo.email;
   };
 
+  wm.workspaces.definitions = {
+    "2:".output = "HDMI-A-1";
+    "".output = "DP-2";
+    "".output = "DP-2";
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
