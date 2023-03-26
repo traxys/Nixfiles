@@ -95,6 +95,7 @@
       };
       personal-cli = import ./personal-cli/hm.nix;
       personal-gui = import ./personal-gui/hm.nix;
+      gaming = import ./gaming/hm.nix;
     };
 
     nixosModules = {
@@ -104,6 +105,7 @@
       personal-cli = import ./personal-cli/nixos.nix;
       personal-gui = import ./personal-gui/nixos.nix;
       roaming = import ./roaming/nixos.nix;
+      gaming = import ./gaming/nixos.nix;
     };
 
     overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
@@ -116,6 +118,7 @@
           self.nixosModules.minimal
           self.nixosModules.personal-cli
           self.nixosModules.personal-gui
+          self.nixosModules.gaming
           ({pkgs, ...}: {
             nixpkgs.overlays = [
               inputs.nur.overlay
@@ -141,6 +144,7 @@
                 self.hmModules.minimal
                 self.hmModules.personal-cli
                 self.hmModules.personal-gui
+                self.hmModules.gaming
                 ./home.nix
                 ./graphical.nix
                 ./extra_info.nix
