@@ -12,7 +12,7 @@
     ./pkg.nix
     #./home.nix
     ./localcfg.nix
-	./cachix.nix
+    ./cachix.nix
   ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -22,10 +22,7 @@
 
   security.rtkit.enable = true;
   services = {
-    tzupdate.enable = true;
     privoxy.enable = true;
-    localtimed.enable = true;
-    geoclue2.enable = true;
     postgresql = {
       enable = true;
     };

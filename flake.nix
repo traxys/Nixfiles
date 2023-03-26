@@ -103,6 +103,7 @@
       };
       personal-cli = import ./personal-cli/nixos.nix;
       personal-gui = import ./personal-gui/nixos.nix;
+      roaming = import ./roaming/nixos.nix;
     };
 
     overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
