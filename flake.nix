@@ -110,12 +110,7 @@
 
     overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
 
-    nixosConfigurations = let
-      commonHmModules = [
-        self.hmModules.minimal
-        ./home.nix
-      ];
-    in {
+    nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
@@ -145,13 +140,12 @@
               pkgs,
               ...
             }: {
-              imports =
-                commonHmModules
-                ++ [
-                  self.hmModules.personal-cli
-                  self.hmModules.personal-gui
-                  self.hmModules.gaming
-                ];
+              imports = [
+                self.hmModules.minimal
+                self.hmModules.personal-cli
+                self.hmModules.personal-gui
+                self.hmModules.gaming
+              ];
             };
             home-manager.extraSpecialArgs = {
               flake = self;
@@ -193,15 +187,14 @@
               pkgs,
               ...
             }: {
-              imports =
-                commonHmModules
-                ++ [
-                  ./hostconfig/ZeNixComputa/hm.nix
-                  ./hostconfig/ZeNixComputa/extra_info.nix
-                  self.hmModules.personal-cli
-                  self.hmModules.personal-gui
-                  self.hmModules.gaming
-                ];
+              imports = [
+                self.hmModules.minimal
+                ./hostconfig/ZeNixComputa/hm.nix
+                ./hostconfig/ZeNixComputa/extra_info.nix
+                self.hmModules.personal-cli
+                self.hmModules.personal-gui
+                self.hmModules.gaming
+              ];
             };
             home-manager.extraSpecialArgs = {
               flake = self;
