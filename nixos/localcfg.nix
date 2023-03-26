@@ -60,12 +60,7 @@
         uid = 1000;
         extraGroups = [
           "wheel"
-          "networkmanager"
           "adbusers"
-          "libvirtd"
-          "kvm"
-          "qemu-libvirtd"
-          "docker"
           "http"
           "scanner"
           "lp"
