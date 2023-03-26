@@ -5,6 +5,10 @@
 }: {
   imports = [extraInfo];
 
+  boot.kernelPackages = pkgs.linuxPackages;
+
+  programs.nix-ld.enable = true;
+
   users.users."${config.extraInfo.username}" = {
     isNormalUser = true;
     home = "/home/${config.extraInfo.username}";
