@@ -77,6 +77,8 @@
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
       };
+
+    extraInfo = import ./extra_info.nix;
   in {
     templates = {
       rust = {
@@ -87,9 +89,15 @@
     packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
 
     hmModules = {
-      minimal = import ./minimal {
+      minimal = import ./minimal/hm.nix {
         inherit inputs;
         flake = self;
+      };
+    };
+
+    nixosModules = {
+      minimal = import ./minimal/nixos.nix {
+        inherit extraInfo;
       };
     };
 
@@ -99,6 +107,8 @@
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
+          ./hostconfig/ZeNixComputa/extra_info.nix
+          self.nixosModules.minimal
           ({pkgs, ...}: {
             nixpkgs.overlays = [
               inputs.nur.overlay
@@ -121,6 +131,7 @@
               ...
             }: {
               imports = [
+                self.hmModules.minimal
                 ./home.nix
                 ./graphical.nix
                 ./extra_info.nix
@@ -128,7 +139,6 @@
                 ./wm
                 ./rustdev.nix
                 ./git
-                self.hmModules.minimal
               ];
             };
             home-manager.extraSpecialArgs = {

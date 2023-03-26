@@ -17,13 +17,6 @@ in {
     };
   };
 
-  nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
   # boot.extraModulePackages = [ ashmem binder ];
   # boot.kernelModules = [ "ashmem_linux" "binder_linux" ];
 

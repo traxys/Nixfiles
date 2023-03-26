@@ -145,7 +145,5 @@
     home.file = {
       ".zprofile".source = ./zprofile;
     };
-
-    home.stateVersion = "21.11";
   };
 }

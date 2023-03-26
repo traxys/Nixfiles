@@ -1,16 +1,15 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{lib, ...}:
 with lib;
 with builtins; {
   options = {
     extraInfo.email = mkOption {
-      type = types.nullOr types.str;
+      type = types.str;
       description = "Email address";
-      default = null;
+    };
+
+    extraInfo.username = mkOption {
+      type = types.str;
+      description = "Username to deploy the configuration as";
     };
 
     extraInfo.inputs = {
