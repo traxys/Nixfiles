@@ -1,6 +1,7 @@
 {
   inputs,
   flake,
+  extraInfo,
 }: {
   pkgs,
   lib,
@@ -14,6 +15,7 @@
 
   imports = [
     inputs.nix-index-database.hmModules.nix-index
+    extraInfo
   ];
 
   config = {
