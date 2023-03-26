@@ -146,7 +146,6 @@
                 self.hmModules.personal-gui
                 self.hmModules.gaming
                 ./home.nix
-                ./graphical.nix
                 ./extra_info.nix
                 ./localinfo.nix
                 ./rustdev.nix
