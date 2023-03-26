@@ -57,7 +57,13 @@
     };
   };
 
-  users.users.traxys.uid = 1000;
+  users.users = {
+    traxys.uid = 1000;
+    guest = {
+      isNormalUser = true;
+      home = "/home/guest";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
