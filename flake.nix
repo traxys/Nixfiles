@@ -90,7 +90,7 @@
 
     hmModules = {
       minimal = import ./minimal/hm.nix {
-        inherit inputs;
+        inherit inputs extraInfo;
         flake = self;
       };
       personal-cli = import ./personal-cli/hm.nix;
@@ -197,6 +197,7 @@
                 commonHmModules
                 ++ [
                   ./hostconfig/ZeNixComputa/hm.nix
+                  ./hostconfig/ZeNixComputa/extra_info.nix
                   self.hmModules.personal-cli
                   self.hmModules.personal-gui
                   self.hmModules.gaming
