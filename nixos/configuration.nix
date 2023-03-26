@@ -20,14 +20,6 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "dvorak-programmer";
-  };
-
-  environment.pathsToLink = ["/share/zsh"];
   security.rtkit.enable = true;
   services = {
     tzupdate.enable = true;
@@ -50,21 +42,6 @@
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
   hardware.opentabletdriver.enable = true;
-
-  fonts.enableDefaultFonts = true;
-  fonts = {
-    fonts = with pkgs; [
-      (nerdfonts.override {fonts = ["Hack"];})
-      dejavu_fonts
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = ["DejaVu"];
-        sansSerif = ["DejaVu Sans"];
-        monospace = ["Hack"];
-      };
-    };
-  };
 
   boot.kernelPackages = pkgs.linuxPackages;
   /*
@@ -126,13 +103,6 @@
         to = 1764;
       }
     ];
-  };
-
-  nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d"; # Ajuste comme tu veux, tu peux utiliser +5 pour garder les 5 dernières, etc.
   };
 
   # This value determines the NixOS release from which the default

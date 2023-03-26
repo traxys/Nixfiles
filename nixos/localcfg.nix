@@ -58,8 +58,6 @@
     users = {
       traxys = {
         uid = 1000;
-        isNormalUser = true;
-        home = "/home/traxys";
         extraGroups = [
           "wheel"
           "networkmanager"
@@ -72,7 +70,6 @@
           "scanner"
           "lp"
         ];
-        shell = pkgs.zsh;
       };
     };
   };
