@@ -114,10 +114,7 @@
       moveModifier = "Shift";
       definitions = {
         "1:" = {key = "ampersand";};
-        "2:" = {
-          key = "bracketleft";
-          output = "DP-0";
-        };
+        "2:" = {key = "bracketleft";};
         "3:" = {key = "braceleft";};
         "4" = {key = "braceright";};
         "5" = {key = "parenleft";};
@@ -125,12 +122,10 @@
         "7" = {key = "asterisk";};
         "" = {
           key = "parenright";
-          output = "HDMI-0";
           assign = ["Spotify"];
         };
         "" = {
           key = "w";
-          output = "HDMI-0";
           assign = [
             "Element"
             "Signal"
@@ -139,7 +134,6 @@
         };
         "" = {
           key = "m";
-          output = "HDMI-0";
           assign = ["Thunderbird"];
         };
       };
