@@ -10,10 +10,6 @@ in {
   # boot.extraModulePackages = [ ashmem binder ];
   # boot.kernelModules = [ "ashmem_linux" "binder_linux" ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   /*
    nixpkgs.config.packageOverrides = pkgs: {
   steam = pkgs.steam.override {
@@ -21,6 +17,4 @@ in {
   };
   };
   */
-
-  programs.steam.enable = true;
 }
