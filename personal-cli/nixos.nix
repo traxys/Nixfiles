@@ -5,6 +5,8 @@
 }: {
   environment.systemPackages = [config.boot.kernelPackages.perf];
 
+  services.privoxy.enable = true;
+
   services.fwupd.enable = true;
   services.openssh.enable = true;
   virtualisation = {
