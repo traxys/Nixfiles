@@ -114,9 +114,6 @@
       commonHmModules = [
         self.hmModules.minimal
         ./home.nix
-        ./extra_info.nix
-        ./rustdev.nix
-        ./git
       ];
     in {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
@@ -169,8 +166,8 @@
         system = "x86_64-linux";
         modules = [
           ./hostconfig/ZeNixComputa/extra_info.nix
-		  ./hostconfig/ZeNixComputa/hardware-configuration.nix
-		  ./hostconfig/ZeNixComputa/nixos.nix
+          ./hostconfig/ZeNixComputa/hardware-configuration.nix
+          ./hostconfig/ZeNixComputa/nixos.nix
           self.nixosModules.minimal
           self.nixosModules.personal-cli
           self.nixosModules.personal-gui
@@ -199,7 +196,7 @@
               imports =
                 commonHmModules
                 ++ [
-				  ./hostconfig/ZeNixComputa/hm.nix
+                  ./hostconfig/ZeNixComputa/hm.nix
                   self.hmModules.personal-cli
                   self.hmModules.personal-gui
                   self.hmModules.gaming
