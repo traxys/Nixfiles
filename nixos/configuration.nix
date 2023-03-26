@@ -33,7 +33,6 @@
     };
     localtimed.enable = true;
     geoclue2.enable = true;
-    fwupd.enable = true;
     postgresql = {
       enable = true;
     };
@@ -50,21 +49,6 @@
 
   virtualisation = {
     waydroid.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu.swtpm.enable = true;
-      qemu.ovmf = {
-        enable = true;
-        packages = [pkgs.OVMFFull];
-      };
-    };
-    podman = {
-      enable = true;
-    };
-    docker = {
-      enable = true;
-	  storageDriver = "btrfs";
-    };
   };
 
   security.pam = {
@@ -80,7 +64,6 @@
     };
   };
 
-  networking.networkmanager.enable = true;
   programs.noisetorch.enable = true;
 
   networking.firewall = {

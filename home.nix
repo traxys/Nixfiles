@@ -12,7 +12,6 @@
   };
 in {
   home.packages = with pkgs; [
-    bitwarden-cli
     nodePackages.vscode-json-languageserver
     exa
     python3
@@ -24,21 +23,9 @@ in {
     codespell
     cargo-flamegraph
     linuxPackages.perf
-    tokei
     gcc11
-    #nix-alien
-    xdg-ninja
     bc
-    kabalist_cli
-    nvfetcher
-    hbw
   ];
-
-  services = {
-    syncthing = {
-      enable = true;
-    };
-  };
 
   programs = {
     starship = {
@@ -52,10 +39,6 @@ in {
     };
   };
   home.file = {
-    "bin" = {
-      source = ./scripts;
-      recursive = true;
-    };
     "bin/ssh-picker" = let
       ssh_hosts = builtins.attrNames config.programs.ssh.matchBlocks;
       ssh_specific = builtins.filter (h: !(lib.strings.hasInfix "*" h)) ssh_hosts;
@@ -75,16 +58,9 @@ in {
       '';
       executable = true;
     };
-    ".zfunc" = {
-      source = ./zfunc;
-      recursive = true;
-    };
   };
 
   programs.zsh = {
-    initExtraBeforeCompInit = ''
-      fpath+="$HOME/.zfunc"
-    '';
     shellAliases = {
       new-direnv = "nix flake new -t github:nix-community/nix-direnv";
     };
