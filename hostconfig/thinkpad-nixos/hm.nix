@@ -68,4 +68,6 @@
   programs.zsh.shellAliases = {
     gemail = "git send-email --to='dl-bxi-sw-ll-patches@***REMOVED***'";
   };
+
+  home.stateVersion = "21.11";
 }
