@@ -14,6 +14,7 @@
     isNormalUser = true;
     home = "/home/${config.extraInfo.username}";
     shell = pkgs.zsh;
+	extraGroups = ["wheel"];
   };
 
   programs.zsh.enable = true;
