@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   boot.initrd = {
     luks.devices = {
       root = {
@@ -33,6 +33,23 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+
+  systemd.services.roaming_proxy = {
+    description = "Roaming Http Proxy";
+    serviceConfig = {
+      ExecStart = "${pkgs.roaming_proxy}/bin/roaming_proxy --config ${./roaming.toml}";
+      Restart = "on-failure";
+    };
+    wantedBy = ["default.target"];
+  };
+  systemd.services.roaming_proxy.enable = true;
+
+  security.sudo.extraConfig = ''Defaults env_keep += "*_proxy *_PROXY"'';
+  networking.proxy = {
+    httpProxy = "http://localhost:8100";
+    httpsProxy = "http://localhost:8100";
+    noProxy = "127.0.0.1,localhost,10.197.128.229,20.79.200.10,integration.frec.bull.fr,172.16.118.8";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
