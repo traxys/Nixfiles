@@ -13,6 +13,8 @@
     efi.canTouchEfiVariables = true;
   };
 
+  boot.kernelParams = ["intel_iommu=on" "iommu=pt"];
+
   networking = {
     hostName = "thinkpad-nixos";
     interfaces = {
