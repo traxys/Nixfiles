@@ -1,6 +1,12 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "${config.extraInfo.username}";
   home.homeDirectory = "/home/${config.extraInfo.username}";
+
+  home.packages = with pkgs; [teams];
 
   programs.git = {
     userName = "traxys";
