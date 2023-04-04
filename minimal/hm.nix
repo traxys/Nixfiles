@@ -38,6 +38,7 @@
       tokei
       unzip
       wget
+	  frg
 
       # Useful for pandoc to latex
       (texlive.combine {

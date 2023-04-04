@@ -17,4 +17,5 @@
     inherit naersk;
     dotacatSrc = sources.dotacat;
   };
+  frg = callPackage ./frg.nix {};
 }
