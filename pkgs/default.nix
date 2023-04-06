@@ -18,4 +18,5 @@
     dotacatSrc = sources.dotacat;
   };
   frg = callPackage ./frg.nix {};
+  lemminx-bin = callPackage ./lemminx-bin.nix {};
 }
