@@ -13,6 +13,7 @@
     nvim-traxys = {
       url = "github:traxys/nvim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+	  inputs.nixfiles.follows = "/";
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
     naersk.url = "github:nix-community/naersk";
