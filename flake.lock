@@ -785,11 +785,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1681564885,
-        "narHash": "sha256-dU7rg1a91Fp/X0bhVGS6Y4kM62tovAanrPrOkpa9ZYw=",
+        "lastModified": 1681643287,
+        "narHash": "sha256-KpnuNlGSidMCF4/Wqc994ZsKpyvdWMtD6A7nS5i8izs=",
         "owner": "pta2002",
         "repo": "nixvim",
-        "rev": "121566a267e0a9f4030e50838b1ba4c38cd6c6c5",
+        "rev": "75a5e45b2b85a17e2c4b5f1e8d86f0552dff6abe",
         "type": "github"
       },
       "original": {
@@ -867,11 +867,11 @@
         "plugin:vim-snippets": "plugin:vim-snippets"
       },
       "locked": {
-        "lastModified": 1681569933,
-        "narHash": "sha256-f8R+yNmKiVt4AUaiIy1C8Oo0EQc9GSh4GlS9HCvKfRU=",
+        "lastModified": 1681729965,
+        "narHash": "sha256-J+1D2c3X20Oap4m3iRC3SiRfCXzXBJ2au81dVrEvYcQ=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "31fe361abe9ad0f5582b5029cb2657a22a233e5f",
+        "rev": "9c7bbf0067c4a3c1048d2af5b5b50958493ce2ef",
         "type": "github"
       },
       "original": {
