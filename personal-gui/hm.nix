@@ -41,6 +41,7 @@
     wdisplays
     wl-clipboard
     xdg-utils
+    fzf
   ];
 
   home.sessionVariables = {
@@ -70,5 +71,15 @@
       '';
       executable = true;
     };
+  };
+
+  xdg.desktopEntries.zklist = {
+    name = "zklist";
+    exec = ''${pkgs.foot}/bin/foot nvim "+ZkNotes"'';
+  };
+
+  xdg.desktopEntries.zksearch = {
+    name = "zksearch";
+    exec = ''${pkgs.foot}/bin/foot nvim "+ZkNotes { match = { vim.fn.input('Search: ') } }"'';
   };
 }
