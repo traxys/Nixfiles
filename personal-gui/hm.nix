@@ -47,6 +47,7 @@
   home.sessionVariables = {
     BROWSER = "firefox";
     GTK_USE_PORTAL = 1;
+    NIXOS_OZONE_WL = 1;
   };
 
   programs.zathura.enable = true;
