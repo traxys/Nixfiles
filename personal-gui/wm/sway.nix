@@ -38,14 +38,18 @@ in {
       LIBSEAT_BACKEND = "logind";
     };
 
-    programs = {
-      mako = mkIf cfg.notifications.enable {
-        enable = true;
-        font = cfg.notifications.font;
-        margin = "20,20,5,5";
-        defaultTimeout = cfg.notifications.defaultTimeout;
-      };
+    services.mako = mkIf cfg.notifications.enable {
+      enable = true;
+      font = cfg.notifications.font;
+      margin = "20,20,5,5";
+      defaultTimeout = cfg.notifications.defaultTimeout;
+      extraConfig = ''
+        [mode=do-not-disturb]
+        invisible=1
+      '';
+    };
 
+    programs = {
       waybar = {
         enable = true;
         style = builtins.readFile ./waybar.css;
