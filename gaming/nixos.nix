@@ -3,7 +3,10 @@
     allowUnfree = true;
   };
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
   hardware.steam-hardware.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
