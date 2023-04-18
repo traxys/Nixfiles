@@ -19,12 +19,10 @@
     shfmt
     slack
     sshfs
-    teams
   ];
 
   wm.startup = [
-    {command = "teams";}
-    {command = "chromium --new-window teams.microsoft.com";}
+    {command = "chromium --app=http://teams.microsoft.com";}
   ];
 
   wm.workspaces.definitions."".assign = [
@@ -60,6 +58,11 @@
       '';
       executable = true;
     };
+  };
+
+  xdg.desktopEntries.teams = {
+    name = "teams";
+    exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
   };
 
   programs.zsh.shellAliases = {
