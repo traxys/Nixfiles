@@ -785,11 +785,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1681643287,
-        "narHash": "sha256-KpnuNlGSidMCF4/Wqc994ZsKpyvdWMtD6A7nS5i8izs=",
+        "lastModified": 1682101773,
+        "narHash": "sha256-/H9R0GfgR0ApycChQSKu5NuaT4w76zo02aKl27pz2aQ=",
         "owner": "pta2002",
         "repo": "nixvim",
-        "rev": "75a5e45b2b85a17e2c4b5f1e8d86f0552dff6abe",
+        "rev": "9c8bee9da6070ea8b1a95fc5133ed1d88b9b959a",
         "type": "github"
       },
       "original": {
@@ -864,14 +864,16 @@
         "plugin:tokyonight-nvim": "plugin:tokyonight-nvim",
         "plugin:trouble-nvim": "plugin:trouble-nvim",
         "plugin:vim-matchup": "plugin:vim-matchup",
-        "plugin:vim-snippets": "plugin:vim-snippets"
+        "plugin:vim-snippets": "plugin:vim-snippets",
+        "plugin:which-key-nvim": "plugin:which-key-nvim",
+        "plugin:zk-nvim": "plugin:zk-nvim"
       },
       "locked": {
-        "lastModified": 1681729965,
-        "narHash": "sha256-J+1D2c3X20Oap4m3iRC3SiRfCXzXBJ2au81dVrEvYcQ=",
+        "lastModified": 1682102244,
+        "narHash": "sha256-xkephwXNGgLyquM70kPvNilJEQzMDWOCK9A9WcUAYUE=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "9c7bbf0067c4a3c1048d2af5b5b50958493ce2ef",
+        "rev": "223bb34bc206f6a1d51fc8f4f25cb7fa66f49e74",
         "type": "github"
       },
       "original": {
@@ -1581,6 +1583,38 @@
       "original": {
         "owner": "honza",
         "repo": "vim-snippets",
+        "type": "github"
+      }
+    },
+    "plugin:which-key-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681746771,
+        "narHash": "sha256-YRkwLCcJJE9QXOPhCdWIWfMBEgse0Me66JLGzm8Jz9c=",
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "rev": "f82ca7fbaf4718303dbaf83dc28303fee16cf4d2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "type": "github"
+      }
+    },
+    "plugin:zk-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681562726,
+        "narHash": "sha256-BnPG0VOSeUhorzjmTTIGpOUm41klFnX+xgxdEMHFYSQ=",
+        "owner": "mickael-menu",
+        "repo": "zk-nvim",
+        "rev": "275578853dc76d282ee5b31f86cd3a4f02d91f2f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mickael-menu",
+        "repo": "zk-nvim",
         "type": "github"
       }
     },
