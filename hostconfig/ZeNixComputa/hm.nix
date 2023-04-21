@@ -17,6 +17,8 @@
     "".output = "DP-2";
   };
 
+  services.mako.output = "DP-2";
+
   xdg.desktopEntries.teams = {
   	name = "teams";
 	exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
