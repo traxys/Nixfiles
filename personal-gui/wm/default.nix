@@ -175,7 +175,7 @@
       "${mod}+Return" = "exec ${config.terminal.command}";
       "${mod}+p" = "mode resize";
       "${mod}+Shift+P" = "restart";
-      "${mod}+Shift+S" = "exec ~/bin/ssh-picker";
+      "${mod}+Shift+S" = "exec ${config.programs.rofi.package}/bin/rofi -show ssh";
     };
   };
 }

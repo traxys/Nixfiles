@@ -89,7 +89,6 @@ in {
     };
 
     wm.printScreen.command = mkDefault "${pkgs.maim}/bin/maim -s | ${pkgs.xclip}/bin/xclip -selection clipboard -t image/png";
-    wm.menu.command = mkDefault "${pkgs.rofi}/bin/rofi -modi drun#run#ssh -show drun";
     wm.exit.command = mkDefault "\"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'\"";
 
     xsession = {

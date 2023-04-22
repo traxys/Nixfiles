@@ -86,6 +86,7 @@ with lib; {
         command = mkOption {
           type = types.str;
           description = "Command to launch the menu";
+		  default = "${config.programs.rofi.package}/bin/rofi -show drun -show-icons";
         };
       };
 
