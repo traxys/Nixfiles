@@ -38,6 +38,8 @@ in {
       LIBSEAT_BACKEND = "logind";
     };
 
+	programs.rofi.package = pkgs.rofi-wayland;
+
     services.mako = mkIf cfg.notifications.enable {
       enable = true;
       font = cfg.notifications.font;
@@ -116,7 +118,6 @@ in {
     };
 
     wm.printScreen.command = mkDefault "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png";
-    wm.menu.command = mkDefault "${pkgs.wofi}/bin/wofi --show drun,run --allow-images";
     wm.exit.command = mkDefault "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
 
     wayland.windowManager.sway = {
@@ -166,13 +167,6 @@ in {
         keybindings = common.keybindings;
         workspaceOutputAssign = common.workspaceOutputAssign;
         assigns = common.assigns;
-      };
-    };
-
-    home.file = {
-      ".config/wofi/" = {
-        source = ./wofi;
-        recursive = true;
       };
     };
   };
