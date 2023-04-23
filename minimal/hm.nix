@@ -38,7 +38,7 @@
       tokei
       unzip
       wget
-	  frg
+      frg
 
       # Useful for pandoc to latex
       (texlive.combine {
@@ -132,8 +132,34 @@
         source ${./p10k.zsh}
         source ${inputs.powerlevel10k}/powerlevel10k.zsh-theme
         if [ -f "$HOME/.zvars" ]; then
-        	source "$HOME/.zvars"
+          source "$HOME/.zvars"
         fi
+
+        if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+           SESSION_TYPE=remote/ssh
+        else
+          case $(ps -o comm= -p "$PPID") in
+            sshd|*/sshd) SESSION_TYPE=remote/ssh;;
+          esac
+        fi
+
+        if [[ $SESSION_TYPE = remote/ssh ]]; then
+          title_prefix="$(whoami)@$(hostname) - "
+        fi
+
+        DISABLE_AUTO_TITLE="true"
+
+        preexec() {
+          cmd=$1
+          if [[ -n $cmd ]]; then
+            print -Pn "\e]0;$title_prefix$cmd\a"
+          fi
+        }
+
+        precmd() {
+          dir=$(pwd | sed "s:$HOME:~:")
+          print -Pn "\e]0;$(whoami)@$(hostname):$dir\a"
+        }
 
         ${pkgs.fortune}/bin/fortune \
           | ${pkgs.cowsay}/bin/cowsay \
