@@ -5,7 +5,6 @@
 }: {
   home.packages = with pkgs; [
     bear
-    chromium
     clang-analyzer
     clang-tools
     cppcheck
