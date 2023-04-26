@@ -38,6 +38,6 @@
   # };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/3d5336f6-63c8-47ef-9led-8e605e4fb875";}
+    {device = "/dev/disk/by-uuid/3d5336f6-63c8-47ef-91ed-8e605e4fb875";}
   ];
 }
