@@ -18,7 +18,7 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/62ddc566-fac0-4461-be44-0deb96c40b34";
+    device = "/dev/disk/by-uuid/618a4ff8-5bbc-4d61-8c0f-0d963ac0931b";
     fsType = "btrfs";
   };
 
@@ -28,18 +28,14 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/564B-4D0E";
+    device = "/dev/disk/by-uuid/477A-15F5";
     fsType = "vfat";
   };
-  fileSystems."/longstorage" = {
-    device = "/dev/disk/by-uuid/15a593ec-7197-46f8-aeeb-004f1f3322e2";
-    fsType = "btrfs";
-  };
 
-  fileSystems."/oldhome" = {
-    device = "/dev/disk/by-uuid/611ae8bc-1f5a-4be8-86b6-fae42d183c0f";
-    fsType = "ext4";
-  };
+  # fileSystems."/longstorage" = {
+  #   device = "/dev/disk/by-uuid/15a593ec-7197-46f8-aeeb-004f1f3322e2";
+  #   fsType = "btrfs";
+  # };
 
   swapDevices = [
     {device = "/dev/disk/by-uuid/91c2f707-02a2-4b0b-a683-42d70751e5b9";}

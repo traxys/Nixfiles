@@ -2,34 +2,6 @@
   boot.initrd = {
     enable = true;
     availableKernelModules = ["amdgpu" "r8169"];
-    luks = {
-      yubikeySupport = true;
-
-      devices = let
-        yubikey = {
-          slot = 2;
-          twoFactor = false;
-          storage.device = "/dev/disk/by-uuid/564B-4D0E";
-        };
-      in {
-        nixos-root = {
-          device = "/dev/disk/by-uuid/cca61c58-e022-47ad-b9fd-9af9d2fa8abb";
-          preLVM = true;
-        };
-        nixos-home = {
-          device = "/dev/disk/by-uuid/c21561bf-5714-4cd2-8f37-d5880f76910d";
-          preLVM = true;
-        };
-        long-storage = {
-          device = "/dev/disk/by-uuid/670bf56f-fd3d-4127-b598-6bde4d2f2c27";
-          preLVM = true;
-        };
-        old-ssd = {
-          device = "/dev/disk/by-uuid/35326fe8-b0ce-4939-bdf1-5b3e180ed057";
-          preLVM = true;
-        };
-      };
-    };
 
     # secrets = {
     #   "/etc/secrets/initrd/keyfile" = "/etc/secrets/initrd/keyfile";
