@@ -29,6 +29,8 @@
     };
   };
 
+  time.timeZone = "Europe/Paris";
+
   users.users = {
     traxys.uid = 1000;
     guest = {
