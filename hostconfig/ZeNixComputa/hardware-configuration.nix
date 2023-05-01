@@ -32,10 +32,10 @@
     fsType = "vfat";
   };
 
-  # fileSystems."/longstorage" = {
-  #   device = "/dev/disk/by-uuid/15a593ec-7197-46f8-aeeb-004f1f3322e2";
-  #   fsType = "btrfs";
-  # };
+  fileSystems."/longstorage" = {
+    device = "/dev/disk/by-uuid/15a593ec-7197-46f8-aeeb-004f1f3322e2";
+    fsType = "btrfs";
+  };
 
   swapDevices = [
     {device = "/dev/disk/by-uuid/3d5336f6-63c8-47ef-91ed-8e605e4fb875";}
