@@ -15,7 +15,7 @@
       qemu.swtpm.enable = true;
       qemu.ovmf = {
         enable = true;
-        packages = [pkgs.OVMFFull];
+        packages = [pkgs.OVMFFull.fd];
       };
     };
 
