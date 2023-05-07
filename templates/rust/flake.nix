@@ -26,9 +26,7 @@
       devShell = pkgs.mkShell {
         nativeBuildInputs = [rust];
         RUST_PATH = "${rust}";
-        shellHook = ''
-          alias rstddoc="firefox ${rust}/share/doc/rust/html/std/index.html"
-        '';
+        RUST_DOC_PATH = "${rust}/share/doc/rust/html/std/index.html";
       };
 
       defaultPackage = naersk'.buildPackage ./.;
