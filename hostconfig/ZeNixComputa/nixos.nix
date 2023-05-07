@@ -25,7 +25,10 @@
   networking = {
     hostName = "ZeNixComputa";
     interfaces = {
-      enp4s0.useDHCP = true;
+      enp4s0 = {
+        useDHCP = true;
+        wakeOnLan.enable = true;
+      };
     };
   };
 
