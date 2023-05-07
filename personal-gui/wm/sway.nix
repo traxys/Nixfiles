@@ -38,7 +38,7 @@ in {
       LIBSEAT_BACKEND = "logind";
     };
 
-	programs.rofi.package = pkgs.rofi-wayland;
+    programs.rofi.package = pkgs.rofi-wayland;
 
     services.mako = mkIf cfg.notifications.enable {
       enable = true;
@@ -74,7 +74,10 @@ in {
               "clock"
               "tray"
             ];
-            modules = {
+            modules = let
+              is = "<span font='20' rise='-3000' line_height='0.7'>";
+              ie = "</span>";
+            in {
               "sway/workspaces" = {
                 persistent_workspaces = {
                   "" = [];
@@ -88,24 +91,24 @@ in {
                 format-wifi = "{essid} ({signalStrength}%) ";
               };
               cpu = {
-                format = " {load}";
+                format = "${is}${ie} {load}";
               };
               memory = {
-                format = " {used:.0f}G/{total:.0f}G";
+                format = "${is}${ie} {used:.0f}G/{total:.0f}G";
               };
               "sway/window" = {
                 max-length = 50;
               };
               "disk#home" = {
                 path = "/home";
-                format = " {free}";
+                format = "${is}${ie} {free}";
               };
               "disk#root" = {
                 path = "/";
                 format = " {percentage_free}%";
               };
               "battery" = {
-                format = "{capacity}% {icon}";
+                format = "{capacity}% ${is}{icon}${ie}";
                 format-icons = ["" "" "" "" ""];
               };
               "clock" = {
