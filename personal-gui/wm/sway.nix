@@ -88,7 +88,7 @@ in {
                 format-wifi = "{essid} ({signalStrength}%) ";
               };
               cpu = {
-                format = "﬙ {load}";
+                format = " {load}";
               };
               memory = {
                 format = " {used:.0f}G/{total:.0f}G";
