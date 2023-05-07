@@ -1,0 +1,17 @@
+[package]
+name = "todo_change_name"
+version = "0.1.0"
+authors = ["traxys <quentin@familleboyer.net>"]
+edition = "2021"
+
+[dependencies]
+perseus = { version = "0.4", features = ["hydrate"] }
+serde = { version = "1.0.162", features = ["derive"] }
+serde_json = "1.0.96"
+sycamore = "^0.8.1"
+
+[target.'cfg(engine)'.dependencies]
+tokio = { version = "1", features = ["macros", "rt", "rt-multi-thread"] }
+perseus-axum = { version = "=0.4.0", features = ["dflt-server"] }
+
+[target.'cfg(client)'.dependencies]
