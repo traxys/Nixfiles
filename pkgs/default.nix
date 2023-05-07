@@ -2,7 +2,7 @@
   callPackage,
   sources,
   naersk,
-}: {
+}: rec {
   oscclip = callPackage ./oscclip.nix {oscclip-src = sources.oscclip;};
   wowup = callPackage ./wowup.nix {};
   simulationcraft = callPackage ./simulationcraft.nix {simulationcraft-src = sources.simulationcraft;};
@@ -19,4 +19,6 @@
   };
   frg = callPackage ./frg.nix {};
   lemminx-bin = callPackage ./lemminx-bin.nix {};
+  bonnie = callPackage ./bonnie {};
+  perseus-cli = callPackage ./perseus {inherit bonnie;};
 }
