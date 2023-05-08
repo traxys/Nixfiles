@@ -14,7 +14,7 @@
     isNormalUser = true;
     home = "/home/${config.extraInfo.username}";
     shell = pkgs.zsh;
-	extraGroups = ["wheel"];
+    extraGroups = ["wheel"];
   };
 
   programs.zsh.enable = true;
@@ -56,7 +56,6 @@
   };
   nix.gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
+    options = "--delete-older-than 7d";
   };
 }
