@@ -49,10 +49,13 @@
     ensureUsers = [
       {
         name = "traxys";
-        ensurePermissions = {"DATABASE \"list\"" = "ALL PRIVILEGES";};
+        ensurePermissions = {
+          "DATABASE \"list\"" = "ALL PRIVILEGES";
+          "DATABASE \"regalade\"" = "ALL PRIVILEGES";
+        };
       }
     ];
-    ensureDatabases = ["list"];
+    ensureDatabases = ["list" "regalade"];
   };
 
   # This value determines the NixOS release from which the default
