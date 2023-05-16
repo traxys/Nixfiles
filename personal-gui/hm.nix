@@ -42,6 +42,7 @@
     wl-clipboard
     xdg-utils
     fzf
+    waypipe
   ];
 
   home.sessionVariables = {
