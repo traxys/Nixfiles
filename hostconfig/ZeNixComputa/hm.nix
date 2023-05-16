@@ -11,6 +11,10 @@
     userEmail = config.extraInfo.email;
   };
 
+  wm.startup = [
+    {command = "${pkgs.wayvnc}/bin/waync 127.0.0.1 5800";}
+  ];
+
   wm.workspaces.definitions = {
     "2:".output = "HDMI-A-1";
     "".output = "DP-2";
