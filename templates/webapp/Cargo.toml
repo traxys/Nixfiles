@@ -1,0 +1,22 @@
+[package]
+name = "todo_change_name"
+version = "0.1.0"
+authors = ["traxys <quentin@familleboyer.net>"]
+edition = "2021"
+
+[workspace]
+members = [".", "api", "app"]
+
+[dependencies]
+anyhow = "1.0.71"
+axum = "0.6.18"
+base64 = "0.21.0"
+config = "0.13.3"
+jwt-simple = "0.11.5"
+serde = { version = "1.0.163", features = ["derive"] }
+tokio = { version = "1", features = ["macros", "rt", "rt-multi-thread"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.17"
+api = { path = "./api" }
+thiserror = "1.0.40"
+tower-http = { version = "0.4.0", features = ["cors", "fs"] }
