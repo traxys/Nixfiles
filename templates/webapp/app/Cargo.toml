@@ -1,0 +1,13 @@
+[package]
+name = "app"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+api = { version = "0.1.0", path = "../api" }
+console_log = { version = "1.0.0", features = ["color"] }
+log = "0.4.17"
+yew = { version = "0.20.0", features = ["csr"] }
+yew-router = "0.17.0"
