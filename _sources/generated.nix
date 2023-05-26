@@ -3,18 +3,18 @@
 {
   proton-ge = {
     pname = "proton-ge";
-    version = "GE-Proton7-49";
+    version = "GE-Proton8-3";
     src = fetchurl {
-      url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-49/GE-Proton7-49.tar.gz";
-      sha256 = "sha256-T+7R+zFMd0yQ0v7/WGym2kzMMulUmATS/LCEQS8whiw=";
+      url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-3/GE-Proton8-3.tar.gz";
+      sha256 = "sha256-JYGwb0LhIs6B2/OHiU+mJ/dAAS+Dg+MrVksAsn6IS9g=";
     };
   };
   warcraftlogs = {
     pname = "warcraftlogs";
-    version = "6.0.1";
+    version = "6.0.2";
     src = fetchurl {
-      url = "https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v6.0.1/Warcraft-Logs-Uploader-6.0.1.AppImage";
-      sha256 = "sha256-FmPqXyAo3zRO1UppxYe8YG7MG+Uli+TVr9y8IeGAoVQ=";
+      url = "https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v6.0.2/Warcraft-Logs-Uploader-6.0.2.AppImage";
+      sha256 = "sha256-b1Lt8ssL+Isd/Twv6ef3AK4/BkxWA/TtleameONo/2Q=";
     };
   };
 }
