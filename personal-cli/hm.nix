@@ -7,7 +7,7 @@
     nvfetcher
     tokei
     xdg-ninja
-	zk
+    zk
   ];
 
   services.syncthing.enable = true;
