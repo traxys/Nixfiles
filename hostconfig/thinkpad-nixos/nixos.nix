@@ -13,6 +13,12 @@
     efi.canTouchEfiVariables = true;
   };
 
+  environment.systemPackages = [
+    (pkgs.davmail.overrideAttrs (old: {
+      nativeBuildInputs = old.nativeBuildInputs ++ [pkgs.swt];
+    }))
+  ];
+
   boot.kernelParams = ["intel_iommu=on" "iommu=pt"];
 
   networking = {
