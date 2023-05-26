@@ -230,7 +230,6 @@
           notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \)
         '';
       in ''
-        notmuch tag -new -unread -- tag:new and from:quentin.boyer@atos.net
         notmuch tag +work -- tag:new and 'path:work/**'
         notmuch tag +inflight -- tag:new and from:quentin.boyer@atos.net and subject:'/^\[PATCH/'
         notmuch tag +review -- tag:new and not from:quentin.boyer@atos.net and subject:'/^\[PATCH/'
@@ -238,6 +237,7 @@
         ${mkProject "bxi3" ["bxi3"]}
         ${mkProject "libs2" ["bxi-jenkins-libs2"]}
         ${mkProject "hps" ["bxi-hps"]}
+        notmuch tag -new -unread -- tag:new and from:quentin.boyer@atos.net
         notmuch tag +inbox +unread -new -- tag:new
       '';
     };
