@@ -10,7 +10,7 @@
     lutris
     simulationcraft
     warcraftlogs
-    wine-ge
+    wine-tkg
     winetricks
     wowup
     xivlauncher
@@ -18,8 +18,8 @@
 
   home.file = {
     ".config/heroic/tools/wine/wine-system" = {
-      source = pkgs.wine-ge;
-      recursive = true;
+      source = pkgs.wine-tkg;
+      #recursive = true;
     };
   };
 
