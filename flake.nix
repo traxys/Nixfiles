@@ -133,9 +133,9 @@
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
               inputs.nix-alien.overlay
-              inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
+              (final: prev: inputs.nix-gaming.packages."${system}")
             ];
           })
           ./nixos/configuration.nix
@@ -180,9 +180,9 @@
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
               inputs.nix-alien.overlay
-              inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
+              (final: prev: inputs.nix-gaming.packages."${system}")
             ];
           })
           ./nixos/configuration.nix
@@ -228,9 +228,9 @@
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
               inputs.nix-alien.overlay
-              inputs.nix-gaming.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
+              (final: prev: inputs.nix-gaming.packages."${system}")
             ];
           })
           ./nixos/configuration.nix
