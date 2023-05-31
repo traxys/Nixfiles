@@ -221,7 +221,7 @@
     enable = true;
     new.tags = ["new"];
     hooks = {
-      preNew = "mbsync --all";
+      preNew = "${pkgs.isync}/bin/mbsync --all";
       postNew = let
         mkProjectMatch = project: "subject:'/PATCH\\s${project}/'";
         mkProjectMatches = labels: lib.concatStringsSep " or " (builtins.map mkProjectMatch labels);
@@ -282,6 +282,26 @@
         };
       };
     };
+  };
+
+  systemd.user.services.notmuch-new = {
+    Unit = {Description = "notmuch synchronization";};
+
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.notmuch}/bin/notmuch new";
+    };
+  };
+
+  systemd.user.timers.notmuch = {
+    Unit = {Description = "notmuch synchronization";};
+
+    Timer = {
+      OnCalendar = "*:0/5";
+      Unit = "notmuch-new.service";
+    };
+
+    Install = {WantedBy = ["default.target"];};
   };
 
   xdg.desktopEntries.teams = {
