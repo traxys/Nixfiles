@@ -75,16 +75,18 @@
           ;
         from = "Quentin Boyer <quentin.boyer@***REMOVED***>";
         outgoing = "msmtpq --read-envelope-from --read-recipients";
-        default = "Inbox";
+        default = "inbox";
         postpone = "Drafts";
         source = "notmuch://~/Maildir";
         query-map = "${pkgs.writeText "querymap" ''
-          Inbox=path:work/Inbox/**
-          bxi3=tag:bxi3
-          libs2=tag:libs2
+          inbox=tag:inbox
           inflight=thread:{tag:inflight}
           review=thread:{tag:review}
-          btf=tag:btf
+          _unread=tag:unread
+
+          patches/bxi3=tag:bxi3
+          patches/btf=tag:btf
+          patches/libs2=tag:libs2
         ''}";
       };
     };
@@ -149,6 +151,11 @@
 
         "tdi" = ":tag -inflight<Enter>:select 0<Enter>";
         "tdr" = ":tag -review<Enter>:select 0<Enter>";
+
+        "zI" = ":cf inbox<Enter>";
+        "zi" = ":cf inflight<Enter>";
+        "zr" = ":cf review<Enter>";
+        "zT" = ":cf tag:";
       };
 
       view = {
