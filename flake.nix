@@ -62,15 +62,16 @@
     nixpkgs,
     ...
   } @ inputs: let
-    sources =
+    sources = system:
       {
         inherit (inputs) oscclip simulationcraft kabalist dotacat;
       }
-      // (nixpkgs.legacyPackages.x86_64-linux.callPackage ./_sources/generated.nix {});
+      // (nixpkgs.legacyPackages."${system}".callPackage ./_sources/generated.nix {});
 
     pkgList = system: callPackage:
       (import ./pkgs/default.nix {
-        inherit sources callPackage;
+        inherit callPackage;
+        sources = sources system;
         naersk = inputs.naersk.lib."${system}";
       })
       // {
@@ -96,6 +97,7 @@
       };
     };
     packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
+    packages.aarch64-linux = pkgList "aarch64-linux" nixpkgs.legacyPackages.aarch64-linux.callPackage;
 
     hmModules = {
       minimal = import ./minimal/hm.nix {
@@ -118,6 +120,7 @@
     };
 
     overlays.x86_64-linux = final: prev: pkgList "x86_64-linux" prev.callPackage;
+    overlays.aarch64-linux = final: prev: pkgList "aarch64-linux" prev.callPackage;
 
     nixosConfigurations = {
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
