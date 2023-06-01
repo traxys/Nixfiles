@@ -13,6 +13,7 @@
 
   wm.startup = [
     {command = "${pkgs.wayvnc}/bin/waync 127.0.0.1 5800";}
+    {command = "${pkgs.ckb-next}/bin/ckb-next -b";}
   ];
 
   wm.workspaces.definitions = {
