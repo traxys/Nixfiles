@@ -149,12 +149,16 @@
         "N" = ":prev-result<Enter>";
         "<Esc>" = ":clear<Enter>";
 
+        "v" = ":mark -t<Enter>";
+        "V" = ":mark -v<Enter>";
+
         "tdi" = ":tag -inflight<Enter>:select 0<Enter>";
         "tdr" = ":tag -review<Enter>:select 0<Enter>";
 
         "zI" = ":cf inbox<Enter>";
         "zi" = ":cf inflight<Enter>";
         "zr" = ":cf review<Enter>";
+        "zu" = ":cf _unread<Enter>";
         "zT" = ":cf tag:";
       };
 
