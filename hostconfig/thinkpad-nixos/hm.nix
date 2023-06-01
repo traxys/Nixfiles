@@ -75,7 +75,7 @@
           ;
         from = "Quentin Boyer <quentin.boyer@***REMOVED***>";
         outgoing = "msmtpq --read-envelope-from --read-recipients";
-        default = "inbox";
+        default = "_unread";
         postpone = "Drafts";
         source = "notmuch://~/Maildir";
         query-map = "${pkgs.writeText "querymap" ''
