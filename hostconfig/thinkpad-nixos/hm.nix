@@ -2,7 +2,9 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  workAddr = "quentin.boyer@***REMOVED***";
+in {
   home.packages = with pkgs; [
     bear
     clang-analyzer
@@ -73,7 +75,7 @@
           check-mail-cmd
           check-mail-timeout
           ;
-        from = "Quentin Boyer <quentin.boyer@***REMOVED***>";
+        from = "Quentin Boyer <${workAddr}>";
         outgoing = "msmtpq --read-envelope-from --read-recipients";
         default = "_unread";
         postpone = "Drafts";
@@ -256,7 +258,7 @@
 
   accounts.email = {
     accounts.work = rec {
-      address = "quentin.boyer@***REMOVED***";
+      address = workAddr;
       imap = {
         host = "localhost";
         port = 1143;
@@ -327,7 +329,7 @@
         #!/usr/bin/env sh
 
         # shellcheck disable=SC2029
-        ssh nwadmin "/usr/sbin/sendmail -r quentin.boyer@***REMOVED*** $*"
+        ssh nwadmin "/usr/sbin/sendmail -r ${workAddr} $*"
         exit $?
       '';
     in ''git send-email --sendmail-cmd="${nwadminSendmail}" --to="dl-bxi-sw-ll-patches@***REMOVED***"'';
