@@ -80,6 +80,7 @@ in {
         default = "_unread";
         postpone = "Drafts";
         source = "notmuch://~/Maildir";
+        address-book-cmd = "${pkgs.notmuch-addrlookup}/bin/notmuch-addrlookup --format=aerc %s";
         query-map = "${pkgs.writeText "querymap" ''
           inbox=tag:inbox and not tag:spammy
           inflight=thread:{tag:inflight}
