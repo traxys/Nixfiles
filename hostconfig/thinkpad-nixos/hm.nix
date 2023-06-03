@@ -256,13 +256,13 @@ in {
         notmuch tag +work -- tag:new and 'path:work/**'
         notmuch tag +inflight -- tag:new and from:${workAddr} and subject:'/^\[PATCH/'
         notmuch tag +review -- tag:new and not from:${workAddr} and subject:'/^\[PATCH/'
-        notmuch tag -unread -- tag:new and from:${workAddr}
+        notmuch tag -unread +me -- tag:new and from:${workAddr}
         notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
         ${mkProject "btf" ["bxi-test-frameworks" "bxi-frameworks"]}
         ${mkProject "bxi3" ["bxi3"]}
         ${mkProject "libs2" ["bxi-jenkins-libs2"]}
         ${mkProject "hps" ["bxi-hps"]}
-        notmuch tag +inbox +unread -new -- tag:new
+        notmuch tag +inbox +unread -new -- tag:new and not tag:me
       '';
     };
   };
