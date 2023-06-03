@@ -81,7 +81,7 @@ in {
         postpone = "Drafts";
         source = "notmuch://~/Maildir";
         query-map = "${pkgs.writeText "querymap" ''
-          inbox=tag:inbox
+          inbox=tag:inbox and not tag:spammy
           inflight=thread:{tag:inflight}
           review=thread:{tag:review}
           _unread=tag:unread
@@ -242,15 +242,25 @@ in {
         mkProject = tag: labels: ''
           notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \)
         '';
+
+        spammyFilters = [
+          "subject:'[confluence] Recommended in Confluence for Boyer, Quentin'"
+          "subject:'[PCI-SIG]'"
+          "from:enterprisedb.com"
+          "from:GIGA@atos.net"
+        ];
+
+        spammySearch = lib.concatStringsSep " or " spammyFilters;
       in ''
         notmuch tag +work -- tag:new and 'path:work/**'
-        notmuch tag +inflight -- tag:new and from:quentin.boyer@atos.net and subject:'/^\[PATCH/'
-        notmuch tag +review -- tag:new and not from:quentin.boyer@atos.net and subject:'/^\[PATCH/'
+        notmuch tag +inflight -- tag:new and from:${workAddr} and subject:'/^\[PATCH/'
+        notmuch tag +review -- tag:new and not from:${workAddr} and subject:'/^\[PATCH/'
+        notmuch tag -unread -- tag:new and from:${workAddr}
+        notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
         ${mkProject "btf" ["bxi-test-frameworks" "bxi-frameworks"]}
         ${mkProject "bxi3" ["bxi3"]}
         ${mkProject "libs2" ["bxi-jenkins-libs2"]}
         ${mkProject "hps" ["bxi-hps"]}
-        notmuch tag -new -unread -- tag:new and from:quentin.boyer@atos.net
         notmuch tag +inbox +unread -new -- tag:new
       '';
     };
