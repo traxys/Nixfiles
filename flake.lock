@@ -45,22 +45,6 @@
         "type": "github"
       }
     },
-    "dotacat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1674819296,
-        "narHash": "sha256-y+u9PO01W+IzBatGHZpgOD7cRKjdeuy4/VX7/V9cu3Q=",
-        "ref": "refs/heads/master",
-        "rev": "f3b7e7816bed6b84123e066c57cf4003d77a85f1",
-        "revCount": 31,
-        "type": "git",
-        "url": "https://gitlab.scd31.com/stephen/dotacat.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://gitlab.scd31.com/stephen/dotacat.git"
-      }
-    },
     "fast-syntax-highlighting": {
       "flake": false,
       "locked": {
@@ -941,22 +925,6 @@
         "type": "github"
       }
     },
-    "oscclip": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1685688144,
-        "narHash": "sha256-SCozOb6fbExYF81GZlZApHv1XmufXDUcUllqQ/gd+cY=",
-        "owner": "rumpelsepp",
-        "repo": "oscclip",
-        "rev": "bb9d35e1b27bd6f61627000dfcc03534514c3eb3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rumpelsepp",
-        "repo": "oscclip",
-        "type": "github"
-      }
-    },
     "plugin:clangd_extensions-nvim": {
       "flake": false,
       "locked": {
@@ -1794,7 +1762,6 @@
     "root": {
       "inputs": {
         "comma": "comma",
-        "dotacat": "dotacat",
         "fast-syntax-highlighting": "fast-syntax-highlighting",
         "home-manager": "home-manager",
         "kabalist": "kabalist",
@@ -1806,7 +1773,6 @@
         "nixpkgs": "nixpkgs_6",
         "nur": "nur",
         "nvim-traxys": "nvim-traxys",
-        "oscclip": "oscclip",
         "powerlevel10k": "powerlevel10k",
         "raclette": "raclette",
         "roaming_proxy": "roaming_proxy",
