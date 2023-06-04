@@ -161,6 +161,8 @@
           print -Pn "\e]0;$(whoami)@$(hostname):$dir\a"
         }
 
+        zmodload zsh/zpty
+
         ${pkgs.fortune}/bin/fortune \
           | ${pkgs.cowsay}/bin/cowsay \
           | ${pkgs.dotacat}/bin/dotacat
