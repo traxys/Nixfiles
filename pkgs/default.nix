@@ -12,10 +12,6 @@
     kabalist-src = sources.kabalist;
   };
   warcraftlogs = callPackage ./warcraftlogs.nix {warcraftlogs-src = sources.warcraftlogs;};
-  dotacat = callPackage ./dotacat.nix {
-    inherit naersk;
-    dotacatSrc = sources.dotacat;
-  };
   frg = callPackage ./frg.nix {};
   lemminx-bin = callPackage ./lemminx-bin.nix {};
   bonnie = callPackage ./bonnie {};

@@ -29,19 +29,11 @@
       url = "github:simulationcraft/simc";
       flake = false;
     };
-    oscclip = {
-      url = "github:rumpelsepp/oscclip";
-      flake = false;
-    };
     kabalist = {
       url = "github:traxys/kabalist";
       flake = false;
     };
     roaming_proxy.url = "github:traxys/roaming_proxy";
-    dotacat = {
-      url = "git+https://gitlab.scd31.com/stephen/dotacat.git";
-      flake = false;
-    };
     zsh-nix-shell = {
       url = "github:chisui/zsh-nix-shell";
       flake = false;
@@ -64,7 +56,7 @@
   } @ inputs: let
     sources = system:
       {
-        inherit (inputs) oscclip simulationcraft kabalist dotacat;
+        inherit (inputs) simulationcraft kabalist;
       }
       // (nixpkgs.legacyPackages."${system}".callPackage ./_sources/generated.nix {});
 
