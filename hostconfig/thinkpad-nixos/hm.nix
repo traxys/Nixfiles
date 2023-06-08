@@ -90,6 +90,7 @@ in {
           patches/bxi3=tag:bxi3
           patches/btf=tag:btf
           patches/libs2=tag:libs2
+          patches/doc=tag:doc
         ''}";
       };
     };
@@ -262,6 +263,7 @@ in {
         ${mkProject "bxi3" ["bxi3"]}
         ${mkProject "libs2" ["bxi-jenkins-libs2"]}
         ${mkProject "hps" ["bxi-hps"]}
+        ${mkProject "doc" ["bxi-doc"]}
         notmuch tag +inbox +unread -new -- tag:new and not tag:me
       '';
     };
