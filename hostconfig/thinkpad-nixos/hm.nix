@@ -4,6 +4,13 @@
   ...
 }: let
   workAddr = "quentin.boyer@***REMOVED***";
+  projects = {
+    btf = ["bxi-test-frameworks" "bxi-frameworks"];
+    bxi3 = ["bxi3"];
+    libs2 = ["bxi-jenkins-libs2"];
+    hps = ["bxi-hps"];
+    doc = ["bxi-doc"];
+  };
 in {
   home.packages = with pkgs; [
     bear
@@ -81,16 +88,18 @@ in {
         postpone = "Drafts";
         source = "notmuch://~/Maildir";
         address-book-cmd = "${pkgs.notmuch-addrlookup}/bin/notmuch-addrlookup --format=aerc %s";
-        query-map = "${pkgs.writeText "querymap" ''
+        query-map = let
+          mkPatchDir = name: "patches/${name}=tag:${name}";
+          patchDirs = builtins.concatStringsSep "\n" (builtins.map mkPatchDir (
+            builtins.attrNames projects
+          ));
+        in "${pkgs.writeText "querymap" ''
           inbox=tag:inbox and not tag:spammy
           inflight=thread:{tag:inflight}
           review=thread:{tag:review}
           _unread=tag:unread
 
-          patches/bxi3=tag:bxi3
-          patches/btf=tag:btf
-          patches/libs2=tag:libs2
-          patches/doc=tag:doc
+          ${patchDirs}
         ''}";
       };
     };
@@ -246,6 +255,10 @@ in {
           notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \) and not tag:me
         '';
 
+        projectFilters =
+          builtins.concatStringsSep "\n"
+          (lib.attrsets.mapAttrsToList mkProject projects);
+
         spammyFilters = [
           "subject:'[confluence] Recommended in Confluence for Boyer, Quentin'"
           "subject:'[PCI-SIG]'"
@@ -260,11 +273,7 @@ in {
         notmuch tag +review -- tag:new and not from:${workAddr} and subject:'/^\[PATCH/'
         notmuch tag -unread +me -- tag:new and from:${workAddr}
         notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
-        ${mkProject "btf" ["bxi-test-frameworks" "bxi-frameworks"]}
-        ${mkProject "bxi3" ["bxi3"]}
-        ${mkProject "libs2" ["bxi-jenkins-libs2"]}
-        ${mkProject "hps" ["bxi-hps"]}
-        ${mkProject "doc" ["bxi-doc"]}
+        ${projectFilters}
         notmuch tag +inbox +unread -new -- tag:new and not tag:me
         notmuch tag +inbox -unread -new -- tag:new and tag:me
       '';
