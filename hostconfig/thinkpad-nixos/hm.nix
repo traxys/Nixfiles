@@ -10,6 +10,18 @@
     libs2 = ["bxi-jenkins-libs2"];
     hps = ["bxi-hps"];
     doc = ["bxi-doc"];
+    container = ["bxi-containers"];
+    flash-tools = ["bxi-flash-tools"];
+    gpumap = ["gpumap"];
+    ofi = ["libfabric-bxi-portals"];
+    lustre = ["lustre-ptl4lnd"];
+    ptlnet = ["ptlnet"];
+    openshmem = ["sandia-openshmem"];
+    bxi-base = ["bxi-base"];
+    bxi2-portals = ["bxi-portals"];
+    bxi2-mod = ["bxi-module"];
+    bxi2-ptltest = ["bxi-portals-tests"];
+    bxicomm = ["bxicomm"];
   };
 in {
   home.packages = with pkgs; [
@@ -247,7 +259,7 @@ in {
     hooks = {
       preNew = "${pkgs.isync}/bin/mbsync --all";
       postNew = let
-        mkProjectMatch = project: "subject:'/PATCH\\s${project}/'";
+        mkProjectMatch = project: "subject:'/PATCH\\s${project}\\s/'";
         mkProjectMatches = labels: lib.concatStringsSep " or " (builtins.map mkProjectMatch labels);
 
         mkProject = tag: labels: ''
