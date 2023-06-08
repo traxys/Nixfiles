@@ -242,7 +242,8 @@ in {
         mkProjectMatches = labels: lib.concatStringsSep " or " (builtins.map mkProjectMatch labels);
 
         mkProject = tag: labels: ''
-          notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \)
+          notmuch tag +${tag} -unread -new -- tag:new and \( ${mkProjectMatches labels} \) and tag:me
+          notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \) and not tag:me
         '';
 
         spammyFilters = [
@@ -265,6 +266,7 @@ in {
         ${mkProject "hps" ["bxi-hps"]}
         ${mkProject "doc" ["bxi-doc"]}
         notmuch tag +inbox +unread -new -- tag:new and not tag:me
+        notmuch tag +inbox -unread -new -- tag:new and tag:me
       '';
     };
   };
