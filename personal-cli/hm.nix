@@ -8,6 +8,9 @@
     tokei
     xdg-ninja
     zk
+    nixpkgs-fmt
+    nixpkgs-review
+    nix-init
   ];
 
   services.syncthing.enable = true;
