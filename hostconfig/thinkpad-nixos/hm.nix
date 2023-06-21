@@ -109,7 +109,7 @@ in {
           inbox=tag:inbox and not tag:spammy
           inflight=thread:{tag:inflight}
           review=thread:{tag:review}
-          _unread=tag:unread
+          _unread=thread:{tag:unread}
 
           ${patchDirs}
         ''}";
