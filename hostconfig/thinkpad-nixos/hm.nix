@@ -34,7 +34,7 @@ in {
     opensc
     pcsclite
     pcsctools
-    python39Packages.clustershell
+    python3Packages.clustershell
     shellcheck
     shfmt
     slack
