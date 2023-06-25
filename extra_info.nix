@@ -13,11 +13,6 @@ with builtins; {
     };
 
     extraInfo.inputs = {
-      keyboard = mkOption {
-        type = types.listOf types.str;
-        description = "Sway keyboard identifier";
-        default = [];
-      };
       touchpad = mkOption {
         type = types.nullOr types.str;
         description = "Sway touchpad identifier";
