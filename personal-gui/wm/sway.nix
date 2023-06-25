@@ -74,6 +74,7 @@ in {
               "battery"
               "clock"
               "tray"
+              "pulseaudio"
             ];
             modules = let
               is = "<span font='20' rise='-3000' line_height='0.7'>";
