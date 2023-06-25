@@ -139,28 +139,23 @@ in {
         ];
         input = let
           inputs = config.extraInfo.inputs;
-          inputsCfg =
-            [
-              (
-                if inputs.touchpad != null
-                then {
-                  name = inputs.touchpad;
-                  value = {dwt = "disable";};
-                }
-                else null
-              )
-            ]
-            ++ (
-              builtins.map (k: {
-                name = k;
-                value = {
-                  xkb_layout = "us";
-                  xkb_variant = "dvp";
-                  xkb_options = "compose:102";
-                };
-              })
-              inputs.keyboard
-            );
+          inputsCfg = [
+            (
+              if inputs.touchpad != null
+              then {
+                name = inputs.touchpad;
+                value = {dwt = "disable";};
+              }
+              else null
+            )
+            {
+              name = "type:keyboard";
+              value = {
+                xkb_layout = "us(dvp),us";
+                xkb_options = "compose:102";
+              };
+            }
+          ];
         in
           builtins.listToAttrs (builtins.filter (s: s != null) inputsCfg);
         output = config.extraInfo.outputs;

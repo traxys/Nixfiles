@@ -150,10 +150,14 @@
       "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
       "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify previous";
 
-	  # Gromit
-	  "Ctrl+Shift+I" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -a";
-	  "Ctrl+Shift+D" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -q";
-	  "Ctrl+Shift+H" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -c";
+      # Gromit
+      "Ctrl+Shift+I" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -a";
+      "Ctrl+Shift+D" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -q";
+      "Ctrl+Shift+H" = "exec ${pkgs.gromit-mpx}/bin/gromit-mpx -c";
+
+      # Change keyboard layout
+      "${mod}+dollar" = "input type:keyboard xkb_switch_layout next"; # Dvorak
+      "${mod}+grave" = "input type:keyboard xkb_switch_layout next"; # Qwerty
 
       # Focus
       "${mod}+Left" = "focus left";
