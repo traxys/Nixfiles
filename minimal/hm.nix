@@ -19,6 +19,23 @@
   ];
 
   config = {
+    home.sessionVariables = rec {
+      XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
+      XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
+      XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";
+      XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
+      CARGO_HOME = "${XDG_DATA_HOME}/cargo";
+      DOCKER_CONFIG = "${XDG_CONFIG_HOME}/docker";
+      GRADLE_USER_HOME = "${XDG_DATA_HOME}/gradle";
+      XCOMPOSECACHE = "${XDG_CACHE_HOME}/X11/xcompose";
+      NODE_REPL_HISTORY = "${XDG_DATA_HOME}/node_repl_history";
+      NUGET_PACKAGES = "${XDG_CACHE_HOME}/NuGetPackages";
+      PSQL_HISTORY = "${XDG_DATA_HOME}/psql_history";
+      PYTHONSTARTUP = "${XDG_CONFIG_HOME}/python/pythonrc";
+      RUSTUP_HOME = "${XDG_DATA_HOME}/rustup";
+      WINEPREFIX = "${XDG_DATA_HOME}/wine";
+    };
+
     home.packages = with pkgs; [
       bat
       comma
@@ -175,6 +192,25 @@
 
     home.file = {
       ".zprofile".source = ./zprofile;
+      ".config/python/pythonrc".text = ''
+        import os
+        import atexit
+        import readline
+
+        history = os.path.join(os.environ['XDG_CACHE_HOME'], 'python_history')
+        try:
+          readline.read_history_file(history)
+        except OSError:
+          pass
+
+        def write_history():
+          try:
+            readline.write_history_file(history)
+          except OSError:
+            pass
+
+        atexit.register(write_history)
+      '';
     };
   };
 }
