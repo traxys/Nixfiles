@@ -17,7 +17,9 @@
       (pkgs.writeShellScriptBin "gpt" ''
         #!/usr/bin/env bash
 
-        if [ -n "$2" ]; then
+        if [[ "$1" = "--" ]]; then
+          shift
+        elif [[ -n "$2" ]]; then
             VER=" $1"
             shift
         fi
