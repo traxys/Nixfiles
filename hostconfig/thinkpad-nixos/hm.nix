@@ -111,6 +111,7 @@ in {
           inflight=thread:{tag:inflight}
           review=thread:{tag:review}
           _unread=thread:{tag:unread}
+          _todo=thread:{tag:todo}
 
           ${patchDirs}
         ''}";
@@ -180,11 +181,13 @@ in {
 
         "tdi" = ":tag -inflight<Enter>:select 0<Enter>";
         "tdr" = ":tag -review<Enter>:select 0<Enter>";
+        "tdt" = ":tag -todo<Enter>:select 0<Enter>";
 
         "zI" = ":cf inbox<Enter>";
         "zi" = ":cf inflight<Enter>";
         "zr" = ":cf review<Enter>";
         "zu" = ":cf _unread<Enter>";
+        "zt" = ":cf _todo<Enter>";
         "zT" = ":cf tag:";
       };
 
