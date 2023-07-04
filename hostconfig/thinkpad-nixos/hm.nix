@@ -53,7 +53,7 @@ in {
 
   programs.git = {
     userName = "Quentin Boyer";
-    userEmail = config.extraInfo.email;
+    userEmail = config.workAddr;
   };
 
   home.sessionVariables = {
