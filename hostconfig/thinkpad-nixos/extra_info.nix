@@ -1,5 +1,5 @@
 {
-  extraInfo.email = "quentin.boyer@atos.net";
+  extraInfo.email = "quentin.boyer@eviden.com";
 
   extraInfo.username = "traxys";
 

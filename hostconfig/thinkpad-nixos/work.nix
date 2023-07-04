@@ -11,7 +11,7 @@
   };
 
   config = {
-    workAddr = "quentin.boyer@atos.net";
+    workAddr = "quentin.boyer@eviden.com";
 
     home.packages = [
       (pkgs.writeShellScriptBin "gpt" ''
