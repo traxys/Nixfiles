@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  workAddr = "quentin.boyer@atos.net";
   projects = {
     btf = ["bxi-test-frameworks" "bxi-frameworks"];
     bxi3 = ["bxi3"];
@@ -24,6 +23,8 @@
     bxicomm = ["bxicomm"];
   };
 in {
+  imports = [./work.nix];
+
   home.packages = with pkgs; [
     bear
     clang-analyzer
@@ -94,7 +95,7 @@ in {
           check-mail-cmd
           check-mail-timeout
           ;
-        from = "Quentin Boyer <${workAddr}>";
+        from = "Quentin Boyer <${config.workAddr}>";
         outgoing = "msmtpq --read-envelope-from --read-recipients";
         default = "_unread";
         postpone = "Drafts";
@@ -281,9 +282,9 @@ in {
         spammySearch = lib.concatStringsSep " or " spammyFilters;
       in ''
         notmuch tag +work -- tag:new and 'path:work/**'
-        notmuch tag +inflight -- tag:new and from:${workAddr} and subject:'/^\[PATCH/'
-        notmuch tag +review -- tag:new and not from:${workAddr} and subject:'/^\[PATCH/'
-        notmuch tag -unread +me -- tag:new and from:${workAddr}
+        notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
+        notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
+        notmuch tag -unread +me -- tag:new and from:${config.workAddr}
         notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
         ${projectFilters}
         notmuch tag +inbox +unread -new -- tag:new and not tag:me
@@ -294,7 +295,7 @@ in {
 
   accounts.email = {
     accounts.work = rec {
-      address = workAddr;
+      address = config.workAddr;
       imap = {
         host = "localhost";
         port = 1143;
@@ -359,17 +360,6 @@ in {
     exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
   };
 
-  programs.zsh.shellAliases = {
-    gemail = let
-      nwadminSendmail = pkgs.writeScript "nwadmin-sendmail" ''
-        #!/usr/bin/env sh
-
-        # shellcheck disable=SC2029
-        ssh nwadmin "/usr/sbin/sendmail -r ${workAddr} $*"
-        exit $?
-      '';
-    in ''git send-email --sendmail-cmd="${nwadminSendmail}" --to="dl-bxi-sw-ll-patches@atos.net"'';
-  };
 
   home.stateVersion = "21.11";
 }
