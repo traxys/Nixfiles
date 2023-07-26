@@ -57,7 +57,7 @@ in {
       };
       font = {
         size = mkOption {
-          type = types.int;
+          type = types.number;
           default = 12;
           description = "terminal font size";
         };
