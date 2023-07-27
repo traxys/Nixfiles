@@ -56,6 +56,7 @@
       unzip
       wget
       frg
+      nix-output-monitor
 
       # Useful for pandoc to latex
       (texlive.combine {
