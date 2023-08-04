@@ -63,6 +63,9 @@
   #   forward-socks5 = "/ localhost:9080 .";
   # };
 
+  services.tailscale.enable = true;
+  systemd.services.tailscaled.serviceConfig.Environment = ["http_proxy=http://localhost:8100"];
+
   security.sudo.extraConfig = ''Defaults env_keep += "*_proxy *_PROXY"'';
   networking.proxy = {
     httpProxy = "http://localhost:8100";
