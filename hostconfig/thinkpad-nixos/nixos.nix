@@ -17,6 +17,7 @@
     (pkgs.davmail.overrideAttrs (old: {
       nativeBuildInputs = old.nativeBuildInputs ++ [pkgs.swt];
     }))
+    pkgs.virtiofsd
   ];
 
   boot.kernelParams = ["intel_iommu=on" "iommu=pt"];
