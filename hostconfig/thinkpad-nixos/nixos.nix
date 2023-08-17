@@ -59,9 +59,9 @@
   };
   systemd.services.roaming_proxy.enable = true;
 
-  services.privoxy.settings = {
-    forward-socks5 = "/ localhost:9080 .";
-  };
+  # services.privoxy.settings = {
+  #   forward-socks5 = "/ localhost:9080 .";
+  # };
 
   security.sudo.extraConfig = ''Defaults env_keep += "*_proxy *_PROXY"'';
   networking.proxy = {
