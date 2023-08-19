@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-traxys.url = "github:traxys/nixpkgs";
     nix-gaming.url = "github:fufexan/nix-gaming";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -52,6 +53,7 @@
     self,
     home-manager,
     nixpkgs,
+    nixpkgs-traxys,
     ...
   } @ inputs: let
     sources = system:
@@ -70,6 +72,7 @@
         raclette = inputs.raclette.defaultPackage."${system}";
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
+        inherit (nixpkgs-traxys.legacyPackages."${system}") djlint;
       };
 
     extraInfo = import ./extra_info.nix;

@@ -636,6 +636,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-traxys": {
+      "locked": {
+        "lastModified": 1692440269,
+        "narHash": "sha256-hGUw17UrcJ9U4wjD6f9gXy4/MnRRfs2kf+Gv9QyoDac=",
+        "owner": "traxys",
+        "repo": "nixpkgs",
+        "rev": "56cf520222eb7720d22f7f731819ceb7337c7212",
+        "type": "github"
+      },
+      "original": {
+        "owner": "traxys",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_10": {
       "locked": {
         "lastModified": 1662096612,
@@ -1776,6 +1791,7 @@
         "nix-index-database": "nix-index-database_2",
         "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_6",
+        "nixpkgs-traxys": "nixpkgs-traxys",
         "nur": "nur",
         "nvim-traxys": "nvim-traxys",
         "powerlevel10k": "powerlevel10k",
