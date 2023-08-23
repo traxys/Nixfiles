@@ -58,7 +58,7 @@ in {
 
   home.sessionVariables = {
     OPENSC_SO = "${pkgs.opensc}";
-    EMAIL_CONN_TEST = "s";
+    EMAIL_CONN_TEST = "x";
   };
 
   home.file = {
