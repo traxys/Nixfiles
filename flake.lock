@@ -654,15 +654,16 @@
     },
     "nixpkgs-traxys": {
       "locked": {
-        "lastModified": 1692472116,
-        "narHash": "sha256-Cyax3F3kcGarz0lTmG9wCXcBmlshSRHgRpl0O2G405Q=",
+        "lastModified": 1692884435,
+        "narHash": "sha256-ykp+yuy2FpK4oMlbCCeLBVAKa4pjqu24yUox7kgMpXY=",
         "owner": "traxys",
         "repo": "nixpkgs",
-        "rev": "8652b2d60ebfe7fa7d743daa699753137958284b",
+        "rev": "c335eeb76ffdeb38fe295b86f0bbf71a4e558a4a",
         "type": "github"
       },
       "original": {
         "owner": "traxys",
+        "ref": "inflight",
         "repo": "nixpkgs",
         "type": "github"
       }
