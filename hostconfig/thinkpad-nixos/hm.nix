@@ -82,6 +82,8 @@ in {
     };
   };
 
+  terminal.font.size = 10.5;
+
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
   programs.aerc = {
