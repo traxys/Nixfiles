@@ -26,6 +26,8 @@
     };
   };
 
+  services.tailscale.enable = true;
+
   networking.networkmanager.enable = true;
 
   users.users."${config.extraInfo.username}".extraGroups = [
