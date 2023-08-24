@@ -62,8 +62,11 @@
   hardware.cpu.amd.updateMicrocode = true;
 
   nix.extraOptions = ''
+    keep-outputs = true
     keep-derivations = true
   '';
+
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
