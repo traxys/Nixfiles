@@ -30,7 +30,7 @@
         wakeOnLan.enable = true;
       };
     };
-    firewall.allowedTCPPorts = [8080 8085];
+    firewall.allowedTCPPorts = [8080 8085 5201];
   };
 
   time.timeZone = "Europe/Paris";
