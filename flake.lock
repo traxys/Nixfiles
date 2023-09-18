@@ -1752,11 +1752,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1695027765,
-        "narHash": "sha256-7JQsjbn3O5D4CE1mA8dT2QOioCAe8IGy9ZHPUUZxUHg=",
+        "lastModified": 1695039493,
+        "narHash": "sha256-f5vJFniJQWgNCGQilyy3vdJPK8vfAsb2zNI8XgfrWq0=",
         "owner": "traxys",
         "repo": "raclette",
-        "rev": "a092f0919efe22f595c9d0bb5dec7274040cc5ad",
+        "rev": "1dbc7fbf2b53616dda1cbc0e90672ca0dda9159c",
         "type": "github"
       },
       "original": {
