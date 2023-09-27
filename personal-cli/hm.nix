@@ -19,6 +19,11 @@
     fpath+="$HOME/.zfunc"
   '';
 
+  services.nextcloud-client = {
+    enable = true;
+    startInBackground = true;
+  };
+
   home.file = {
     bin = {
       source = ./scripts;
