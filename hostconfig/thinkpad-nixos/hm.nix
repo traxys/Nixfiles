@@ -301,7 +301,7 @@ in {
 
   accounts.email = {
     accounts.work = rec {
-      address = config.workAddr;
+      address = "quentin.boyer@atos.net";
       imap = {
         host = "localhost";
         port = 1143;
