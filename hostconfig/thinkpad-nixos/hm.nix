@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: let
   projects = {
@@ -364,7 +365,4 @@ in {
     name = "teams";
     exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
   };
-
-
-  home.stateVersion = "21.11";
 }
