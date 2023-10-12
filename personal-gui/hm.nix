@@ -19,7 +19,7 @@
     signal-desktop
 
     # Mail
-    thunderbird-wayland
+    thunderbird
 
     # Media
     gromit-mpx
