@@ -260,5 +260,31 @@
         ];
       };
     };
+
+    homeConfigurations."boyerq@thinkpad-nixos" = home-manager.lib.homeManagerConfiguration {
+      modules = [
+        self.hmModules.minimal
+        self.hmModules.work
+        self.hmModules.personal-cli
+        self.hmModules.personal-gui
+        ./hostconfig/thinkpad-nixos/extra_info.nix
+        ./hostconfig/thinkpad-nixos/hm.nix
+      ];
+
+      pkgs = import nixpkgs rec {
+        system = "x86_64-linux";
+
+        overlays = [
+          inputs.nur.overlay
+          inputs.rust-overlay.overlays.default
+          inputs.nix-alien.overlays.default
+          inputs.comma.overlays.default
+          (final: prev: pkgList system prev.callPackage)
+          (final: prev: inputs.nix-gaming.packages."${system}")
+        ];
+
+        config.allowUnfree = true;
+      };
+    };
   };
 }
