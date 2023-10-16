@@ -365,4 +365,10 @@ in {
     name = "teams";
     exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
   };
+
+  home.homeDirectory = "/home/boyerq";
+  home.username = "boyerq";
+  home.stateVersion = "21.11";
+
+  wayland.windowManager.sway.extraConfig = "exec /usr/libexec/polkit-gnome-authentication-agent-1";
 }
