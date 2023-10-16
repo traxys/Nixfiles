@@ -131,7 +131,7 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nix-alien.overlay
+              inputs.nix-alien.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
               (final: prev: inputs.nix-gaming.packages."${system}")
@@ -178,7 +178,7 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nix-alien.overlay
+              inputs.nix-alien.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
               (final: prev: inputs.nix-gaming.packages."${system}")
@@ -226,7 +226,7 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nix-alien.overlay
+              inputs.nix-alien.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
               (final: prev: inputs.nix-gaming.packages."${system}")
