@@ -59,7 +59,6 @@
     ./ZeNixLaptop
     ./ZeNixComputa
     ./minus
-    ./thinkpad-nixos
     ./gandalf
     ./fabrial
   ];

@@ -167,7 +167,7 @@
             {
               nixos.expr = ''${getFlake}.nixosConfigurations.ZeNixComputa.options'';
               nixvim.expr = ''${getFlake}.packages.${pkgs.stdenv.hostPlatform.system}.neovimTraxys.options'';
-              home-manager.expr = ''${getFlake}.homeConfigurations."boyerq@thinkpad-nixos".options'';
+              home-manager.expr = ''${getFlake}.homeConfigurations."boyerq@fabrial".options'';
             };
         };
       };

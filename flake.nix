@@ -147,7 +147,7 @@
               de = import ./de/hm.nix;
               personal-gui = import ./personal-gui/hm.nix;
               gaming = import ./gaming/hm.nix;
-              work = import ./hostconfig/thinkpad-nixos/work.nix;
+              work = import ./hostconfig/fabrial/work.nix;
             };
 
             nixosModules = {
