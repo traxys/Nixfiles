@@ -122,10 +122,12 @@ in {
     };
     extraConfig = {
       general.unsafe-accounts-conf = true;
+
       ui = {
         mouse-enabled = true;
         threading-enabled = true;
       };
+
       filters = {
         "text/plain" = "colorize";
         "text/calendar" = "calendar";
@@ -133,6 +135,10 @@ in {
         "message/rfc822" = "colorize";
         "text/html" = "html | colorize";
         "subject,~^\\[PATCH" = "delta";
+      };
+
+      openers = {
+        "x-scheme-handler/http*" = "firefox";
       };
     };
     extraBinds = {
