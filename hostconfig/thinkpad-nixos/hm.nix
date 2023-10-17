@@ -371,4 +371,7 @@ in {
   home.stateVersion = "21.11";
 
   wayland.windowManager.sway.extraConfig = "exec /usr/libexec/polkit-gnome-authentication-agent-1";
+  wm.keybindings = {
+    "${config.wm.modifier}+Shift+l" = lib.mkForce "exec /usr/bin/swaylock";
+  };
 }
