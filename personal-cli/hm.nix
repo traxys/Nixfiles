@@ -10,6 +10,7 @@
     nixpkgs-fmt
     nixpkgs-review
     nix-init
+    mujmap
   ];
 
   services.syncthing.enable = true;

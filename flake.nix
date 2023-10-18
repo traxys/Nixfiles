@@ -47,6 +47,7 @@
       url = "github:zdharma-continuum/fast-syntax-highlighting";
       flake = false;
     };
+    mujmap.url = "github:elizagamedev/mujmap";
   };
 
   outputs = {
@@ -73,6 +74,7 @@
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
         inherit (nixpkgs-traxys.legacyPackages."${system}") djlint groovy-language-server;
+        inherit (inputs.mujmap.packages."${system}") mujmap;
       };
 
     extraInfo = import ./extra_info.nix;
