@@ -87,7 +87,15 @@
     };
 
     programs.home-manager.enable = true;
-    programs.bat.enable = true;
+    programs.bat = {
+      enable = true;
+      syntaxes = {
+        meson = {
+          src = inputs.meson-syntax;
+          file = "meson.sublime-syntax";
+        };
+      };
+    };
     programs.zoxide.enable = true;
 
     programs.git = {
