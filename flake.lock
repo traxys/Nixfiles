@@ -447,6 +447,22 @@
         "type": "github"
       }
     },
+    "meson-syntax": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1691862289,
+        "narHash": "sha256-9ymNLS3JL0BJj4Md0Wrt13JkzAml0Bs0ROXW8Fwus20=",
+        "owner": "Monochrome-Sauce",
+        "repo": "sublime-meson",
+        "rev": "7a2f29c0f245863473f7521ec7c73b0309dcbf34",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Monochrome-Sauce",
+        "repo": "sublime-meson",
+        "type": "github"
+      }
+    },
     "mujmap": {
       "inputs": {
         "cargo2nix": "cargo2nix",
@@ -1904,6 +1920,7 @@
         "fast-syntax-highlighting": "fast-syntax-highlighting",
         "home-manager": "home-manager",
         "kabalist": "kabalist",
+        "meson-syntax": "meson-syntax",
         "mujmap": "mujmap",
         "naersk": "naersk_2",
         "nix-alien": "nix-alien",

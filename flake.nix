@@ -26,6 +26,10 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     # Extra Package Sources
+    meson-syntax = {
+      url = "github:Monochrome-Sauce/sublime-meson";
+      flake = false;
+    };
     simulationcraft = {
       url = "github:simulationcraft/simc";
       flake = false;
