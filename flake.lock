@@ -1112,11 +1112,11 @@
         "plugin:zk-nvim": "plugin:zk-nvim"
       },
       "locked": {
-        "lastModified": 1698592427,
-        "narHash": "sha256-4bc39S5Ig0ihAR7UwhYWf+WmYtyAYapN0yxoCBSsoFI=",
+        "lastModified": 1698593535,
+        "narHash": "sha256-ysBzMXsZY5fj3iWJZzBKcgAa3o/MToLxJmur7RWprys=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "b9024ef81f1b05d2c4a347ef1d49b19a319df8e6",
+        "rev": "2d73fdd96430e34a2362e41bcfaaafd658ebf1bd",
         "type": "github"
       },
       "original": {
