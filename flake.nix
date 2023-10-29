@@ -9,7 +9,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-alien.url = "github:thiagokokada/nix-alien";
     nix-ld.url = "github:Mic92/nix-ld/main";
     nvim-traxys = {
       url = "github:traxys/nvim-flake";
@@ -67,7 +66,18 @@
       }
       // (nixpkgs.legacyPackages."${system}".callPackage ./_sources/generated.nix {});
 
-    pkgList = system: callPackage:
+    # TODO: track nixos/nixpkgs#263599
+    pkgList = system: callPackage: let
+      nixpkgs-freecad =
+        import (nixpkgs.legacyPackages.${system}.fetchFromGitHub {
+          owner = "andir";
+          repo = "nixpkgs";
+          rev = "084890f7f50d23eb48a9a4b75b8a7893d5a01026";
+          hash = "sha256-q7Y/KNKsny6Ey5kMIdXS1xhV2R9u94qTek2Uy7HzN+U=";
+        }) {
+          inherit system;
+        };
+    in
       (import ./pkgs/default.nix {
         inherit callPackage;
         sources = sources system;
@@ -77,6 +87,7 @@
         raclette = inputs.raclette.defaultPackage."${system}";
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
+        inherit (nixpkgs-freecad) freecad;
         inherit (nixpkgs-traxys.legacyPackages."${system}") groovy-language-server;
         inherit (inputs.mujmap.packages."${system}") mujmap;
       };
@@ -137,7 +148,6 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nix-alien.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
               (final: prev: inputs.nix-gaming.packages."${system}")
@@ -184,7 +194,6 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nix-alien.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
               (final: prev: inputs.nix-gaming.packages."${system}")
@@ -232,7 +241,6 @@
             nixpkgs.overlays = [
               inputs.nur.overlay
               inputs.rust-overlay.overlays.default
-              inputs.nix-alien.overlays.default
               inputs.comma.overlays.default
               (final: prev: pkgList system prev.callPackage)
               (final: prev: inputs.nix-gaming.packages."${system}")
@@ -283,7 +291,6 @@
         overlays = [
           inputs.nur.overlay
           inputs.rust-overlay.overlays.default
-          inputs.nix-alien.overlays.default
           inputs.comma.overlays.default
           (final: prev: pkgList system prev.callPackage)
           (final: prev: inputs.nix-gaming.packages."${system}")
