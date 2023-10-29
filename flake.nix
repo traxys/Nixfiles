@@ -77,7 +77,7 @@
         raclette = inputs.raclette.defaultPackage."${system}";
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
-        inherit (nixpkgs-traxys.legacyPackages."${system}") djlint groovy-language-server;
+        inherit (nixpkgs-traxys.legacyPackages."${system}") groovy-language-server;
         inherit (inputs.mujmap.packages."${system}") mujmap;
       };
 
