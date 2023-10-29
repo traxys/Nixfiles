@@ -3,7 +3,6 @@
     bitwarden-cli
     hbw
     kabalist_cli
-    nix-alien
     tokei
     xdg-ninja
     zk
