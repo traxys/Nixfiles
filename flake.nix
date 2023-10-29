@@ -4,22 +4,45 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-traxys.url = "github:traxys/nixpkgs/inflight";
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-ld.url = "github:Mic92/nix-ld/main";
+    nix-ld = {
+      url = "github:Mic92/nix-ld/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvim-traxys = {
       url = "github:traxys/nvim-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixfiles.follows = "/";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    naersk.url = "github:nix-community/naersk";
-    comma.url = "github:nix-community/comma";
-    raclette.url = "github:traxys/raclette";
-    nur.url = "github:nix-community/NUR";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    naersk = {
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    comma = {
+      url = "github:nix-community/comma";
+      inputs.naersk.follows = "naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    raclette = {
+      url = "github:traxys/raclette";
+      inputs.naersk.follows = "naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +60,11 @@
       url = "github:traxys/kabalist";
       flake = false;
     };
-    roaming_proxy.url = "github:traxys/roaming_proxy";
+    roaming_proxy = {
+      url = "github:traxys/roaming_proxy";
+      inputs.naersk.follows = "naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zsh-nix-shell = {
       url = "github:chisui/zsh-nix-shell";
       flake = false;
@@ -50,7 +77,10 @@
       url = "github:zdharma-continuum/fast-syntax-highlighting";
       flake = false;
     };
-    mujmap.url = "github:elizagamedev/mujmap";
+    mujmap = {
+      url = "github:elizagamedev/mujmap";
+      #inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
