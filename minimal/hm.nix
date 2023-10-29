@@ -34,6 +34,9 @@
       PYTHONSTARTUP = "${XDG_CONFIG_HOME}/python/pythonrc";
       RUSTUP_HOME = "${XDG_DATA_HOME}/rustup";
       WINEPREFIX = "${XDG_DATA_HOME}/wine";
+
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      MANROFFOPT = "-c";
     };
 
     home.packages = with pkgs; [
@@ -57,6 +60,7 @@
       wget
       frg
       nix-output-monitor
+      bat-extras.prettybat
 
       # Useful for pandoc to latex
       (texlive.combine {
