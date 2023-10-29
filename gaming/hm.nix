@@ -6,7 +6,8 @@
 }: {
   home.packages = with pkgs; [
     bottles
-    heroic
+    # TODO: heroic is broken (see nixos/nixpkgs#264156)
+    # heroic
     lutris
     simulationcraft
     warcraftlogs
