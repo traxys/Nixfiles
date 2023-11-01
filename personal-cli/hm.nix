@@ -24,6 +24,27 @@
     startInBackground = true;
   };
 
+  programs.fioul = {
+    enable = true;
+
+    settings = {
+      default = {
+        nominatim = "https://nom.familleboyer.net";
+        server = "https://fioul.familleboyer.net";
+        cache_duration = "6months";
+      };
+
+      display = {
+        fuels = ["Diesel"];
+        dates = false;
+      };
+
+      sort = {
+        fuel = "Diesel";
+      };
+    };
+  };
+
   home.file = {
     bin = {
       source = ./scripts;

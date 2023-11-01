@@ -81,6 +81,7 @@
       url = "github:elizagamedev/mujmap";
       #inputs.nixpkgs.follows = "nixpkgs";
     };
+    fioul.url = "github:traxys/fioul";
   };
 
   outputs = {
@@ -247,6 +248,7 @@
                 self.hmModules.personal-cli
                 self.hmModules.personal-gui
                 self.hmModules.gaming
+                inputs.fioul.homeManagerModules.default
               ];
             };
             home-manager.extraSpecialArgs = {
