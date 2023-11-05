@@ -1,0 +1,16 @@
+[package]
+name = "webserver-template"
+version = "0.1.0"
+authors = ["traxys <quentin@familleboyer.net>"]
+edition = "2021"
+
+[dependencies]
+axum = "0.6.20"
+envious = "0.2.2"
+serde = { version = "1.0.190", features = ["derive"] }
+tera = "1.19.1"
+thiserror = "1.0.50"
+tokio = { version = "1.33.0", features = ["rt", "macros"] }
+tower-http = { version = "0.4.4", features = ["trace"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
