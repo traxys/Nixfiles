@@ -126,6 +126,10 @@
         path = ./templates/webapp;
         description = "A template for a web application (frontend + backend)";
       };
+      webserver = {
+        path = ./templates/webserver;
+        description = "A template for a web server (using templates for the frontend)";
+      };
     };
     packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
     packages.aarch64-linux = pkgList "aarch64-linux" nixpkgs.legacyPackages.aarch64-linux.callPackage;
