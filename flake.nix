@@ -295,6 +295,7 @@
                 self.hmModules.minimal
                 self.hmModules.personal-cli
                 self.hmModules.personal-gui
+                inputs.fioul.homeManagerModules.default
               ];
             };
             home-manager.extraSpecialArgs = {
@@ -313,6 +314,7 @@
         self.hmModules.work
         self.hmModules.personal-cli
         self.hmModules.personal-gui
+        inputs.fioul.homeManagerModules.default
         ./hostconfig/thinkpad-nixos/extra_info.nix
         ./hostconfig/thinkpad-nixos/hm.nix
       ];
