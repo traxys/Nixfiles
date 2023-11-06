@@ -933,11 +933,11 @@
         "plugin:zk-nvim": "plugin:zk-nvim"
       },
       "locked": {
-        "lastModified": 1699147864,
-        "narHash": "sha256-U/JdVnfBGu6mi8596CsC96B1rwajoZenuqjy+qYedBw=",
+        "lastModified": 1699269163,
+        "narHash": "sha256-+VThIw7nI+8bCGdSx1ZxY4UqILYqeNNF/ORoeFq9WzA=",
         "owner": "traxys",
         "repo": "nvim-flake",
-        "rev": "881bd89d4666f4303611b5a0049a0dcfe5b3dd8c",
+        "rev": "30e742e964a661a8e089205af19edaee5c155fe3",
         "type": "github"
       },
       "original": {
