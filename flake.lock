@@ -464,6 +464,22 @@
         "type": "github"
       }
     },
+    "jq-zsh-plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1675076157,
+        "narHash": "sha256-YEpywDJMx/Zg/CKYfq+kX2m1rn0SQ5TtmtNIkjV4xHQ=",
+        "owner": "reegnz",
+        "repo": "jq-zsh-plugin",
+        "rev": "e61804e35a593ada9c4d23ee5c957d08974ac382",
+        "type": "github"
+      },
+      "original": {
+        "owner": "reegnz",
+        "repo": "jq-zsh-plugin",
+        "type": "github"
+      }
+    },
     "kabalist": {
       "flake": false,
       "locked": {
@@ -1794,6 +1810,7 @@
         "fast-syntax-highlighting": "fast-syntax-highlighting",
         "fioul": "fioul",
         "home-manager": "home-manager",
+        "jq-zsh-plugin": "jq-zsh-plugin",
         "kabalist": "kabalist",
         "meson-syntax": "meson-syntax",
         "mujmap": "mujmap",
