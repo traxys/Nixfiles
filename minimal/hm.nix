@@ -154,6 +154,11 @@
           file = "nix-shell.plugin.zsh";
           src = inputs.zsh-nix-shell;
         }
+        {
+          name = "jq-zsh-plugin";
+          file = "jq.plugin.zsh";
+          src = inputs.jq-zsh-plugin;
+        }
       ];
 
       envExtra = "export EDITOR=nvim";

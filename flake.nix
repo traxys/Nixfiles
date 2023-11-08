@@ -77,6 +77,10 @@
       url = "github:zdharma-continuum/fast-syntax-highlighting";
       flake = false;
     };
+    jq-zsh-plugin = {
+      url = "github:reegnz/jq-zsh-plugin";
+      flake = false;
+    };
     mujmap = {
       url = "github:elizagamedev/mujmap";
       #inputs.nixpkgs.follows = "nixpkgs";
