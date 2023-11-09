@@ -1,0 +1,8 @@
+[package]
+name = "todo_change_name"
+version = "0.1.0"
+authors = ["traxys <quentin@familleboyer.net>"]
+edition = "2021"
+
+[dependencies]
+iced = "0.10.0"
