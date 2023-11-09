@@ -134,6 +134,10 @@
         path = ./templates/webserver;
         description = "A template for a web server (using templates for the frontend)";
       };
+      gui = {
+        path = ./templates/gui;
+        description = "A template for rust GUI applications";
+      };
     };
     packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
     packages.aarch64-linux = pkgList "aarch64-linux" nixpkgs.legacyPackages.aarch64-linux.callPackage;
