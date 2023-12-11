@@ -321,7 +321,7 @@ in {
 
   accounts.email = {
     accounts.work = rec {
-      address = "quentin.boyer@atos.net";
+      address = "quentin.boyer@eviden.com";
       imap = {
         host = "localhost";
         port = 1143;
