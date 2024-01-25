@@ -13,7 +13,6 @@
   };
   warcraftlogs = callPackage ./warcraftlogs.nix {warcraftlogs-src = sources.warcraftlogs;};
   frg = callPackage ./frg.nix {};
-  lemminx-bin = callPackage ./lemminx-bin.nix {};
   bonnie = callPackage ./bonnie {};
   perseus-cli = callPackage ./perseus {inherit bonnie;};
 }
