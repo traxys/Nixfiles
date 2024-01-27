@@ -43,6 +43,7 @@
     xdg-utils
     fzf
     waypipe
+    glaurung
   ];
 
   home.sessionVariables = {

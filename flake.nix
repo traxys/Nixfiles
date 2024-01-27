@@ -52,6 +52,7 @@
       url = "github:Monochrome-Sauce/sublime-meson";
       flake = false;
     };
+    glaurung.url = "git+https://gitea.familleboyer.net/traxys/Glaurung";
     simulationcraft = {
       url = "github:simulationcraft/simc";
       flake = false;
@@ -108,6 +109,7 @@
         naersk = inputs.naersk.lib."${system}";
       })
       // {
+        glaurung = inputs.glaurung.defaultPackage."${system}";
         raclette = inputs.raclette.defaultPackage."${system}";
         neovimTraxys = inputs.nvim-traxys.packages."${system}".nvim;
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
