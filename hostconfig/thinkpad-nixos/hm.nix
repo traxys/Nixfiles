@@ -55,6 +55,17 @@ in {
   programs.git = {
     userName = "Quentin Boyer";
     userEmail = config.workAddr;
+    includes = [
+      {
+        condition = "gitdir:~/Perso/";
+        contents = {
+          user = {
+            email = "quentin@familleboyer.net";
+            name = "traxys";
+          };
+        };
+      }
+    ];
   };
 
   home.sessionVariables = {
