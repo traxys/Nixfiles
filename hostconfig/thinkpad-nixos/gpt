@@ -28,13 +28,16 @@ Options:
 
   -s/--send
     Send the patches directly
+
+  -d/--diff <version>
+    Perform the interdiff with the supplied version
 EOF
 }
 
 ARGS=$(
 	getopt \
-		--options 'hb:c:C:v:s' \
-		--longoptions 'help,branch:,ci:,component:,no-ci,version,force,send' \
+		--options 'hb:c:C:v:sd:' \
+		--longoptions 'help,branch:,ci:,component:,no-ci,version,force,send,diff:' \
 		-- "${@}"
 ) || {
 	printf "\nUsage: "
@@ -46,6 +49,7 @@ eval "set -- ${ARGS}"
 unset branch
 unset component
 unset version
+unset interdiff
 warn_ci=1
 force=0
 send=0
@@ -85,6 +89,10 @@ while true; do
 	-s | --send)
 		send=1
 		shift
+		;;
+	-d | --diff)
+		interdiff="$2"
+		shift 2
 		;;
 	--)
 		shift
@@ -139,7 +147,31 @@ if [[ -n $version ]]; then
 	version_args+=(-v "$version")
 fi
 
-git format-patch -o "$version_dir" "${version_args[@]}" --subject-prefix="PATCH $component" --cover-letter "$@"
+if [[ -n $interdiff ]]; then
+	tmp_dir=$(mktemp -d)
+	git worktree add --detach "$tmp_dir" origin/master
+
+	git -C "$tmp_dir" switch -c __patch_old
+	git -C "$tmp_dir" am "$branch_dir/$interdiff"/*.patch --empty=drop
+
+	git format-patch \
+		-o "$version_dir" \
+		"${version_args[@]}" \
+		--subject-prefix="PATCH $component" \
+		--cover-letter \
+		--interdiff=__patch_old \
+		"$@"
+
+	git worktree remove "$tmp_dir"
+	git branch -D __patch_old
+else
+	git format-patch \
+		-o "$version_dir" \
+		"${version_args[@]}" \
+		--subject-prefix="PATCH $component" \
+		--cover-letter \
+		"$@"
+fi
 
 sed -i "s|\*\*\* BLURB HERE \*\*\*|Branch: $branch\nCI: $ci_link\n\*\*\* BLURB HERE\*\*\*|" "$version_dir"/*cover-letter.patch
 
