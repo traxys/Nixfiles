@@ -14,19 +14,7 @@
     workAddr = "quentin.boyer@eviden.com";
 
     home.packages = [
-      (pkgs.writeShellScriptBin "gpt" ''
-        #!/usr/bin/env bash
-
-        if [[ "$1" = "--" ]]; then
-          shift
-        elif [[ -n "$2" ]]; then
-            VER=" $1"
-            shift
-        fi
-
-        DIR="$(basename "$(git rev-parse --show-toplevel)")"
-        git format-patch --subject-prefix="PATCH $DIR$VER" "$@"
-      '')
+      (pkgs.writeShellScriptBin "gpt" (builtins.readFile ./gpt))
       (pkgs.writeShellScriptBin "nwadminSendmail" ''
         #!/usr/bin/env sh
         # shellcheck disable=SC2029
