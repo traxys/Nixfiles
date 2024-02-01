@@ -1,0 +1,152 @@
+#!/usr/bin/env bash
+
+usage() {
+	cat <<EOF
+gpt <args> -- <git format-patch args>
+
+Options:
+  -h/--help
+    Display this help message and exit
+
+  -b/--branch <branch>
+    Branch to use (defaults to the current branch)
+
+  -c/--ci <job number>
+    Jenkins job number
+
+  -v/--version <version number>
+    Version of the patch
+
+  --force
+    Override the current version of the patchset
+
+  --no-ci
+  	Silence the CI warning
+
+  -C/--component <component>
+    Component name. Defaults to the name of the git repo.
+
+  -s/--send
+    Send the patches directly
+EOF
+}
+
+ARGS=$(
+	getopt \
+		--options 'hb:c:C:v:s' \
+		--longoptions 'help,branch:,ci:,component:,no-ci,version,force,send' \
+		-- "${@}"
+) || {
+	printf "\nUsage: "
+	usage
+	exit
+}
+eval "set -- ${ARGS}"
+
+unset branch
+unset component
+unset version
+warn_ci=1
+force=0
+send=0
+unset ci_job
+
+while true; do
+	case "${1}" in
+	-h | --help)
+		usage
+		exit 0
+		;;
+	-b | --branch)
+		branch=$2
+		shift 2
+		;;
+	-c | --ci)
+		warn_ci=0
+		ci_job=$2
+		shift 2
+		;;
+	-v | --version)
+		version=$2
+		shift 2
+		;;
+	--no-ci)
+		warn_ci=0
+		shift
+		;;
+	-C | --component)
+		component=$2
+		shift 2
+		;;
+	--force)
+		force=1
+		shift
+		;;
+	-s | --send)
+		send=1
+		shift
+		;;
+	--)
+		shift
+		break
+		;;
+	*)
+		exit 1
+		;;
+	esac
+done
+
+if [[ $warn_ci = 1 ]]; then
+	echo "WARNING! CI was not provided" >&2
+fi
+
+if [[ -z $branch ]]; then
+	branch=$(git branch --show-current)
+fi
+
+if [[ -z $component ]]; then
+	remote_url=$(git remote get-url origin)
+	repo="${remote_url#https://***REMOVED***/scm/bril/}"
+	component="${repo%.git}"
+fi
+
+echo "component: ${component}" >&2
+echo "branch: ${branch}" >&2
+echo "version: ${version:-1}"
+
+if [[ -n $ci_job ]]; then
+	ci_link="https://sf.bds.***REMOVED***/jenkins/job/BRIL/job/${component}/job/${branch}/${ci_job}"
+	echo "CI: ${ci_link}" >&2
+fi
+
+repo_root=$(git rev-parse --show-toplevel)
+branch_dir="$repo_root/.patches/$component/$branch"
+mkdir -p "$branch_dir"
+
+version_dir="$branch_dir/${version:-1}"
+
+if [[ -d $version_dir ]]; then
+	if [[ $force = 0 ]]; then
+		echo "WARNING: patchset $version_dir already exists" >&2
+		exit 1
+	else
+		rm "$version_dir"/*.patch
+	fi
+fi
+
+version_args=()
+if [[ -n $version ]]; then
+	version_args+=(-v "$version")
+fi
+
+git format-patch -o "$version_dir" "${version_args[@]}" --subject-prefix="PATCH $component" --cover-letter "$@"
+
+sed -i "s|\*\*\* BLURB HERE \*\*\*|Branch: $branch\nCI: $ci_link\n\*\*\* BLURB HERE\*\*\*|" "$version_dir"/*cover-letter.patch
+
+nvim "$version_dir"/*cover-letter.patch
+
+if [[ $send = 1 ]]; then
+	git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@***REMOVED***" "$version_dir"
+else
+	echo "Wrote patches to: $version_dir"
+fi
