@@ -43,6 +43,7 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    gsm.url = "github:traxys/git-series-manager";
 
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -317,6 +318,7 @@
         self.hmModules.personal-cli
         self.hmModules.personal-gui
         inputs.fioul.homeManagerModules.default
+        inputs.gsm.homeManagerModules.default
         ./hostconfig/thinkpad-nixos/extra_info.nix
         ./hostconfig/thinkpad-nixos/hm.nix
       ];
