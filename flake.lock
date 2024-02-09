@@ -509,11 +509,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1707470371,
-        "narHash": "sha256-ktikdRnvdqbRtyGN8Z/26wWov19oyiBUmMyzqXFb2x4=",
+        "lastModified": 1707472991,
+        "narHash": "sha256-yDATjyysoD4T5/ft9a3/ji7X1Aa/yrpAJn+E68/z/4I=",
         "owner": "traxys",
         "repo": "git-series-manager",
-        "rev": "3ec49e023025764d039c1aa4338d8078ff33e661",
+        "rev": "40b30459ca685426d60ef399cd59a72c8f9a1e10",
         "type": "github"
       },
       "original": {
