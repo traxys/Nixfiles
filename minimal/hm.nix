@@ -118,10 +118,17 @@
 
       excludes = ''
         .cache
+        .patches
         compile_commands.json
       '';
 
       extraConfig = {
+        rerere = {
+          enabled = true;
+          autoUpdate = true;
+        };
+        branch.sort = "-committerdate";
+        column.ui = "auto";
         diff = {
           algorithm = "histogram";
         };
@@ -131,6 +138,7 @@
       };
 
       aliases = {
+        fpush = "push --force-with-lease";
         ri = "rebase -i";
         amend = "commit --amend";
       };
