@@ -127,6 +127,7 @@
           enabled = true;
           autoUpdate = true;
         };
+        rebase.autosquash = true;
         branch.sort = "-committerdate";
         column.ui = "auto";
         diff = {
@@ -140,6 +141,7 @@
       aliases = {
         fpush = "push --force-with-lease";
         ri = "rebase -i";
+        fix = "commit --fixup";
         amend = "commit --amend";
       };
     };
