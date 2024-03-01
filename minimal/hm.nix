@@ -144,6 +144,9 @@
         ri = "rebase -i";
         fix = "commit --fixup";
         amend = "commit --amend";
+        rib = "!git ri $(git bb) $@";
+        bb = "config --local --default master custom.base-branch";
+        set-bb = "config --local custom.base-branch";
       };
     };
 
