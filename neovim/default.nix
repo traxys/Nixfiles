@@ -22,6 +22,29 @@
     autoGroups.BigFileOptimizer = {};
     autoCmd = [
       {
+        event = ["BufNewFile" "BufRead"];
+        pattern = ["meson.build" "meson_options.txt" "meson.options"];
+        callback = let
+          settings = {
+          };
+        in
+          helpers.mkRaw ''
+            function(args)
+              local match = vim.fs.find(
+                {"meson_options.txt", "meson.options", ".git"},
+                {path = args.file, upward = true}
+              )[1]
+              local root_dir = match and vim.fn.fnamemodify(match, ":p:h") or nil
+              vim.lsp.start({
+                name = "mesonlsp",
+                cmd = {"${lib.getExe pkgs.mesonlsp}", "--lsp"},
+                root_dir = root_dir,
+                settings = ${helpers.toLuaObject settings},
+              })
+            end
+          '';
+      }
+      {
         event = "BufReadPost";
         pattern = [
           "*.md"
@@ -492,26 +515,6 @@
           };
           settings = {
             logLevel = 1;
-            languages.meson = [
-              (helpers.mkRaw (helpers.toLuaObject {
-                prefix = "muon-fmt";
-                formatCommand = "muon fmt -";
-                formatStdin = true;
-              }))
-              (helpers.mkRaw (helpers.toLuaObject {
-                prefix = "muon-analyze";
-                lintSource = "efm/muon-analyze";
-                lintCommand = "muon analyze -l";
-                lintWorkspace = true;
-                lintStdin = false;
-                LintIgnoreExitCode = true;
-                rootMarkers = ["meson_options.txt" ".git"];
-                lintFormats = [
-                  "%f:%l:%c: %trror %m"
-                  "%f:%l:%c: %tarning %m"
-                ];
-              }))
-            ];
           };
         };
         taplo.enable = true;
