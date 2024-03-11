@@ -61,10 +61,6 @@
     ensureUsers = [
       {
         name = "traxys";
-        ensurePermissions = {
-          "DATABASE \"list\"" = "ALL PRIVILEGES";
-          "DATABASE \"regalade\"" = "ALL PRIVILEGES";
-        };
       }
     ];
     ensureDatabases = ["list" "regalade"];
