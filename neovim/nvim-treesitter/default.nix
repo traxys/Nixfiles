@@ -1,7 +1,7 @@
 {
   lib,
   upstream,
-  nvim-treesitter,
+  vimPlugins,
   neovimUtils,
   nurl,
   python3,
@@ -14,7 +14,7 @@
       neovim-unwrapped = upstream;
     })
     .makeNeovimConfig {
-      plugins = [nvim-treesitter];
+      plugins = [vimPlugins.nvim-treesitter];
     };
 in
   stdenv.mkDerivation {
@@ -29,7 +29,7 @@ in
       mkdir -p $out/bin
       cat $src > $out/bin/update-nvim-treesitter
       chmod +x $out/bin/update-nvim-treesitter
-      wrapProgram $out/bin/update-nvim-treesitter --set NVIM_TREESITTER "${nvim-treesitter}" --prefix PATH : ${
+      wrapProgram $out/bin/update-nvim-treesitter --set NVIM_TREESITTER "${vimPlugins.nvim-treesitter}" --prefix PATH : ${
         lib.makeBinPath [
           (wrapNeovimUnstable upstream neovimTs)
           nurl
