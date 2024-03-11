@@ -364,27 +364,32 @@
 
           nixvim' = inputs.nixvim.legacyPackages."${system}";
           neovimNightly = inputs.neovim-flake.packages."${system}".neovim;
-        in
-          callPackage ({pkgs}: let
-            neovimPkgs = (pkgs.extend neovimPlugins).extend (final: prev: {
-              vimPlugins = prev.vimPlugins.extend (final': prev': {
-                nvim-treesitter = prev'.nvim-treesitter.overrideAttrs (
-                  prev.callPackage ./neovim/nvim-treesitter/override.nix {} final' prev'
-                );
+        in {
+          inherit
+            (callPackage ({pkgs}: let
+              neovimPkgs = (pkgs.extend neovimPlugins).extend (final: prev: {
+                vimPlugins = prev.vimPlugins.extend (final': prev': {
+                  nvim-treesitter = prev'.nvim-treesitter.overrideAttrs (
+                    prev.callPackage ./neovim/nvim-treesitter/override.nix {} final' prev'
+                  );
+                });
               });
-            });
-          in {
-            neovimTraxys = nixvim'.makeNixvimWithModule {
-              module = {
-                imports = [./neovim];
-                package = neovimNightly;
+            in {
+              neovimTraxys = nixvim'.makeNixvimWithModule {
+                module = {
+                  imports = [./neovim];
+                  package = neovimNightly;
+                };
+                pkgs = neovimPkgs;
               };
-              pkgs = neovimPkgs;
-            };
-            update-nvim-treesitter = neovimPkgs.callPackage ./neovim/nvim-treesitter {
-              upstream = neovimNightly;
-            };
-          }) {}
+              update-nvim-treesitter = neovimPkgs.callPackage ./neovim/nvim-treesitter {
+                upstream = neovimNightly;
+              };
+            }) {})
+            neovimTraxys
+            update-nvim-treesitter
+            ;
+        }
       );
 
     extraInfo = import ./extra_info.nix;
