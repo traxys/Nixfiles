@@ -208,6 +208,8 @@
           print -Pn "\e]0;$(whoami)@$(hostname):$dir\a"
         }
 
+        compdef batman=man
+
         zmodload zsh/zpty
 
         ${pkgs.fortune}/bin/fortune \
