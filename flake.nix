@@ -306,20 +306,23 @@
       }
       // (nixpkgs.legacyPackages."${system}".callPackage ./_sources/generated.nix {});
 
-    pkgList = system: callPackage:
-      (import ./pkgs/default.nix {
-        inherit callPackage;
-        sources = sources system;
-        naersk = inputs.naersk.lib."${system}";
-      })
-      // {
-        glaurung = inputs.glaurung.defaultPackage."${system}";
-        raclette = inputs.raclette.defaultPackage."${system}";
-        roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
+    pkgList = system: callPackage: let
+      packages =
+        (import ./pkgs/default.nix {
+          inherit callPackage;
+          sources = sources system;
+          naersk = inputs.naersk.lib."${system}";
+        })
+        // {
+          glaurung = inputs.glaurung.defaultPackage."${system}";
+          raclette = inputs.raclette.defaultPackage."${system}";
+          roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
 
-        inherit (nixpkgs-traxys.legacyPackages."${system}") groovy-language-server;
-        inherit (inputs.mujmap.packages."${system}") mujmap;
-      }
+          inherit (nixpkgs-traxys.legacyPackages."${system}") groovy-language-server;
+          inherit (inputs.mujmap.packages."${system}") mujmap;
+        };
+    in
+      packages
       // (
         let
           inputsMatching = with builtins;
@@ -334,25 +337,27 @@
                 (name: _: (match "${prefix}:.*" name) != null)
                 inputs);
 
-          neovimPlugins = final: prev: {
-            vimPlugins = prev.vimPlugins.extend (final': prev':
-              (nixpkgs.lib.mapAttrs (
-                pname: src:
-                  prev'."${pname}".overrideAttrs (old: {
-                    version = src.shortRev;
-                    inherit src;
-                  })
-              ) (inputsMatching "plugin"))
-              // (
-                nixpkgs.lib.mapAttrs (
+          neovimPlugins = final: prev:
+            {
+              vimPlugins = prev.vimPlugins.extend (final': prev':
+                (nixpkgs.lib.mapAttrs (
                   pname: src:
-                    prev.vimUtils.buildVimPlugin {
-                      inherit pname src;
+                    prev'."${pname}".overrideAttrs (old: {
                       version = src.shortRev;
-                    }
-                ) (inputsMatching "new-plugin")
-              ));
-          };
+                      inherit src;
+                    })
+                ) (inputsMatching "plugin"))
+                // (
+                  nixpkgs.lib.mapAttrs (
+                    pname: src:
+                      prev.vimUtils.buildVimPlugin {
+                        inherit pname src;
+                        version = src.shortRev;
+                      }
+                  ) (inputsMatching "new-plugin")
+                ));
+            }
+            // packages;
 
           nixvim' = inputs.nixvim.legacyPackages."${system}";
           neovimNightly = inputs.neovim-flake.packages."${system}".neovim;
