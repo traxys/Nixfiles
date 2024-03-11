@@ -16,11 +16,6 @@
       url = "github:Mic92/nix-ld/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvim-traxys = {
-      url = "github:traxys/nvim-flake";
-      inputs.nixfiles.follows = "/";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -321,9 +316,6 @@
         glaurung = inputs.glaurung.defaultPackage."${system}";
         raclette = inputs.raclette.defaultPackage."${system}";
         roaming_proxy = inputs.roaming_proxy.defaultPackage."${system}";
-        update-nvim-treesitter = callPackage ./neovim/nvim-treesitter {
-          inherit (self.packages."${system}") nvim-treesitter upstream;
-        };
 
         inherit (nixpkgs-traxys.legacyPackages."${system}") groovy-language-server;
         inherit (inputs.mujmap.packages."${system}") mujmap;
