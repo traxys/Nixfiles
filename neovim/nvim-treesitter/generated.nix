@@ -50,12 +50,12 @@
   };
   arduino = buildGrammar {
     language = "arduino";
-    version = "0.0.0+rev=72eee09";
+    version = "0.0.0+rev=e3a0a7f";
     src = fetchFromGitHub {
       owner = "ObserverOfTime";
       repo = "tree-sitter-arduino";
-      rev = "72eee09b501f42a039b757c969a9f32e2b61d2a7";
-      hash = "sha256-u/5rhk0JmGKIN72Xg6L3bM5Ji8iSaFo3HOZTR6qOm7s=";
+      rev = "e3a0a7f60e544afc478b72cdda7ffc0f2f889db0";
+      hash = "sha256-WdGCnZSMxyNJJYHB5H5Atc9EW2/0oB22/OWyxTrQHT8=";
     };
     meta.homepage = "https://github.com/ObserverOfTime/tree-sitter-arduino";
   };
@@ -127,12 +127,12 @@
   };
   beancount = buildGrammar {
     language = "beancount";
-    version = "0.0.0+rev=1f19abf";
+    version = "0.0.0+rev=6c665e7";
     src = fetchFromGitHub {
       owner = "polarmutex";
       repo = "tree-sitter-beancount";
-      rev = "1f19abf1e162e1828013cb5434c6cf30f4054e80";
-      hash = "sha256-yb6z5iLMoK1wWCS9laA1muRVLssFwnyAg4SKWVsti0s=";
+      rev = "6c665e7cf15d76a1687959643868a78fb381458d";
+      hash = "sha256-hVFPt+ndXx38SH/e/dORz226SQwDNu1j4cinvJLhkTM=";
     };
     meta.homepage = "https://github.com/polarmutex/tree-sitter-beancount";
   };
@@ -1663,24 +1663,24 @@
   };
   ocaml = buildGrammar {
     language = "ocaml";
-    version = "0.0.0+rev=9965d20";
+    version = "0.0.0+rev=712d9bf";
     src = fetchFromGitHub {
       owner = "tree-sitter";
       repo = "tree-sitter-ocaml";
-      rev = "9965d208337d88bbf1a38ad0b0fe49e5f5ec9677";
-      hash = "sha256-9Y/eZNsKkz8RKjMn5RIAPITkDQTWdSc/fBXzxMg1ViQ=";
+      rev = "712d9bfa1d537c5899dde5538767ed2d8bb37a93";
+      hash = "sha256-l4hchr03Jrsat863K8wfBeHo1o9dw0T3RAl4MMWKIHA=";
     };
     location = "ocaml";
     meta.homepage = "https://github.com/tree-sitter/tree-sitter-ocaml";
   };
   ocaml_interface = buildGrammar {
     language = "ocaml_interface";
-    version = "0.0.0+rev=9965d20";
+    version = "0.0.0+rev=712d9bf";
     src = fetchFromGitHub {
       owner = "tree-sitter";
       repo = "tree-sitter-ocaml";
-      rev = "9965d208337d88bbf1a38ad0b0fe49e5f5ec9677";
-      hash = "sha256-9Y/eZNsKkz8RKjMn5RIAPITkDQTWdSc/fBXzxMg1ViQ=";
+      rev = "712d9bfa1d537c5899dde5538767ed2d8bb37a93";
+      hash = "sha256-l4hchr03Jrsat863K8wfBeHo1o9dw0T3RAl4MMWKIHA=";
     };
     location = "interface";
     meta.homepage = "https://github.com/tree-sitter/tree-sitter-ocaml";
@@ -2453,12 +2453,12 @@
   };
   swift = buildGrammar {
     language = "swift";
-    version = "0.0.0+rev=eebf8bc";
+    version = "0.0.0+rev=7e5b912";
     src = fetchFromGitHub {
       owner = "alex-pinkus";
       repo = "tree-sitter-swift";
-      rev = "eebf8bc3f8d4204124c59ff48b1a19417bbf99df";
-      hash = "sha256-ha/T0xV1mCGOeaeCruIeIgrhd9Wv9no+JdsWQ4PEf2g=";
+      rev = "7e5b912761c9abca60996b1250f40be1f46cf39a";
+      hash = "sha256-PdYlQCmet+OGKTfi8D9VW0OPx/fOrUNbSBjKM/FF6YE=";
     };
     generate = true;
     meta.homepage = "https://github.com/alex-pinkus/tree-sitter-swift";
@@ -2813,12 +2813,12 @@
   };
   vim = buildGrammar {
     language = "vim";
-    version = "0.0.0+rev=bc1364d";
+    version = "0.0.0+rev=052279c";
     src = fetchFromGitHub {
       owner = "neovim";
       repo = "tree-sitter-vim";
-      rev = "bc1364d922952138957a62105171ed68e73fbb6c";
-      hash = "sha256-5h1GYjyYMJd5GS0zXh0LP1wBs60fYohpFv89gcdZ4vU=";
+      rev = "052279cd5e1d73b075640c64cef97e7bdcd32611";
+      hash = "sha256-EoiMqMcBl5bC1Irs2flA2F5nHN6VTZdv6hdCrqoTAcY=";
     };
     meta.homepage = "https://github.com/neovim/tree-sitter-vim";
   };
@@ -2868,12 +2868,12 @@
   };
   wing = buildGrammar {
     language = "wing";
-    version = "0.0.0+rev=4a9f821";
+    version = "0.0.0+rev=dbe7de9";
     src = fetchFromGitHub {
       owner = "winglang";
       repo = "wing";
-      rev = "4a9f8210586aa2903dd839538cf5dccc614e6f94";
-      hash = "sha256-A8V7HAQvOfigWpI36Av/+eAwis/DZ4jKBe2rPS+K5AY=";
+      rev = "dbe7de9dff20725577393fc9ff0c2e7853091164";
+      hash = "sha256-RX6llWwxo8wAkzl52DhNenMGbIE+9B/bzo4A/E3vMAc=";
     };
     location = "libs/tree-sitter-wing";
     generate = true;
