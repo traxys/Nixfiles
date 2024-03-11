@@ -2,8 +2,6 @@ name: "Build"
 on:
   push:
   workflow_dispatch:
-  schedule:
-    - cron: '0 12 * * SUN' # runs weekly on Sunday at 12:00
 
 jobs:
   tests:
