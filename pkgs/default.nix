@@ -15,4 +15,5 @@
   frg = callPackage ./frg.nix {};
   bonnie = callPackage ./bonnie {};
   perseus-cli = callPackage ./perseus {inherit bonnie;};
+  mesonlsp = callPackage ./mesonlsp.nix {};
 }
