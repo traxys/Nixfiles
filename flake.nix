@@ -412,6 +412,10 @@
       };
     };
     packages.x86_64-linux = pkgList "x86_64-linux" nixpkgs.legacyPackages.x86_64-linux.callPackage;
+    checks.x86_64-linux.launch = inputs.nixvim.lib.x86_64-linux.check.mkTestDerivationFromNvim {
+      nvim = self.packages.x86_64-linux.neovimTraxys;
+      name = "Neovim configuration";
+    };
     packages.aarch64-linux = pkgList "aarch64-linux" nixpkgs.legacyPackages.aarch64-linux.callPackage;
 
     hmModules = {
