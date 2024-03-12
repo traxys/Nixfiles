@@ -340,6 +340,7 @@
           {name = "path";}
           {name = "buffer";}
           {name = "calc";}
+          {name = "git";}
         ];
       };
 
@@ -655,6 +656,8 @@
 
     extraConfigLuaPost = ''
       require("luasnip.loaders.from_snipmate").lazy_load()
+
+      require("cmp_git").setup({})
 
       vim.api.nvim_create_user_command("LtexLangChangeLanguage", function(data)
           local language = data.fargs[1]
