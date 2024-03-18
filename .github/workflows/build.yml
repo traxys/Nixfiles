@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  tests:
+  load_packages:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v20
@@ -15,9 +16,18 @@ jobs:
         with:
           name: traxys
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - shell: bash -eo pipefail {0}
-        run: >
-          nix flake show --json |
-          jq -r '.packages."x86_64-linux" | keys | .[]' | 
-          NIXPKGS_ALLOW_UNFREE=1 xargs -I'{}' bash -c "echo '::group::{}'; nix build --impure '.#{}'; echo '::endgroup::'"
+      - id: load-packages
+        run: echo "::set-output name=matrix::$(nix flake show --json | jq '.packages."x86_64-linux" | keys')"
+
+    outputs:
+      matrix: ${{ steps.load-packages.outputs.matrix }}
+
+  build:
+    runs-on: ubuntu-latest
+    needs: load_packages
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.load_packages.outputs.matrix) }}
+    steps:
+      - run: NIXPKGS_ALLOW_UNFREE=1 nix build --impure '.#${{ matrix.package }}'
       - run: nix build .#checks.x86_64-linux.launch
