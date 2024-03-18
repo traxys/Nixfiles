@@ -17,7 +17,7 @@ jobs:
           name: traxys
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - id: load-packages
-        run: echo "::set-output name=matrix::$(nix flake show --json | jq '.packages."x86_64-linux" | keys')"
+        run: echo "::set-output name=matrix::$(nix flake show --json | jq -c '.packages."x86_64-linux" | keys')"
 
     outputs:
       matrix: ${{ steps.load-packages.outputs.matrix }}
