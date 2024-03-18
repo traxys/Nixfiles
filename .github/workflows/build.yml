@@ -19,5 +19,5 @@ jobs:
         run: >
           nix flake show --json |
           jq -r '.packages."x86_64-linux" | keys | .[]' | 
-          NIXPKGS_ALLOW_UNFREE=1 xargs -I'{}' nix build --impure '.#{}'
+          NIXPKGS_ALLOW_UNFREE=1 xargs -I'{}' bash -c "echo '::group::{}'; nix build --impure '.#{}'; echo '::endgroup::'"
       - run: nix build .#checks.x86_64-linux.launch
