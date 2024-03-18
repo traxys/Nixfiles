@@ -30,5 +30,13 @@ jobs:
       matrix:
         package: ${{ fromJson(needs.load_packages.outputs.matrix) }}
     steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - uses: cachix/cachix-action@v12
+        with:
+          name: traxys
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - run: NIXPKGS_ALLOW_UNFREE=1 nix build --impure '.#${{ matrix.package }}'
       - run: nix build .#checks.x86_64-linux.launch
