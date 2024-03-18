@@ -18,7 +18,7 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - id: load-packages
         run: >
-          { echo -n "name="; nix flake show --json | jq -c '.packages."x86_64-linux" | keys' } >> $GITHUB_OUTPUT
+          "name=$(nix flake show --json | jq -c '.packages."x86_64-linux" | keys')" >> $GITHUB_OUTPUT
 
     outputs:
       matrix: ${{ steps.load-packages.outputs.matrix }}
