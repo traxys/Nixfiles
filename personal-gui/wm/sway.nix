@@ -80,6 +80,16 @@ in {
               is = "<span font='20' rise='-3000' line_height='0.7'>";
               ie = "</span>";
             in {
+              "custom/khal" = {
+                format = "{}";
+                tooltip = true;
+                interval = 300;
+                format-icons = {
+                  default = "";
+                };
+                exec = "${lib.getExe pkgs.python3} ${./waybar-khal.py}";
+                return-type = "json";
+              };
               "sway/workspaces" = {
                 persistent_workspaces = {
                   "" = [];
