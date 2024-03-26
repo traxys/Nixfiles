@@ -139,6 +139,12 @@ label:focus {
     color: #000000;
 }
 
+#custom-khal {
+  padding-bottom: 0;
+  border-bottom: 3px solid #209050;
+  border-top: 2px solid transparent;
+}
+
 #memory {
     background-color: #9b59b6;
 }

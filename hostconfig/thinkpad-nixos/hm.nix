@@ -319,43 +319,68 @@ in {
     };
   };
 
-  accounts.email = {
-    accounts.work = rec {
-      address = "quentin.boyer@***REMOVED***";
-      imap = {
-        host = "localhost";
-        port = 1143;
-        tls.enable = false;
-      };
-      mbsync = {
-        enable = true;
-        create = "maildir";
-        subFolders = "Verbatim";
-        extraConfig.account = {
-          AuthMechs = "LOGIN";
-          Timeout = 60;
-        };
-      };
-      passwordCommand = "echo foobar";
-      notmuch.enable = true;
-      msmtp = {
-        enable = true;
-        extraConfig.auth = "plain";
-      };
-      primary = true;
-      realName = "Quentin Boyer";
-      userName = address;
-      smtp = {
-        host = "localhost";
-        port = 1025;
-        tls.enable = false;
-      };
+  services.vdirsyncer.enable = true;
+  programs.vdirsyncer.enable = true;
+  programs.khal.enable = true;
 
-      aerc = {
-        enable = true;
-        extraAccounts = {
-          check-mail-cmd = "notmuch new";
-          check-mail-timeout = "60s";
+  programs.zsh.shellAliases = {
+    "khal-today" = "khal list today today -f '{start-time}-{end-time}: {title}'";
+  };
+
+  accounts = {
+    calendar = {
+      basePath = ".calendar";
+      accounts.work = {
+        primary = true;
+        remote = {
+          url = "http://localhost:1080/users/${config.workAddr}/calendar/";
+          type = "caldav";
+          userName = "${config.workAddr}";
+          passwordCommand = ["echo" "foobar"];
+        };
+        khal.enable = true;
+        vdirsyncer.enable = true;
+      };
+    };
+
+    email = {
+      accounts.work = rec {
+        address = "quentin.boyer@***REMOVED***";
+        imap = {
+          host = "localhost";
+          port = 1143;
+          tls.enable = false;
+        };
+        mbsync = {
+          enable = true;
+          create = "maildir";
+          subFolders = "Verbatim";
+          extraConfig.account = {
+            AuthMechs = "LOGIN";
+            Timeout = 60;
+          };
+        };
+        passwordCommand = "echo foobar";
+        notmuch.enable = true;
+        msmtp = {
+          enable = true;
+          extraConfig.auth = "plain";
+        };
+        primary = true;
+        realName = "Quentin Boyer";
+        userName = address;
+        smtp = {
+          host = "localhost";
+          port = 1025;
+          tls.enable = false;
+        };
+
+        aerc = {
+          enable = true;
+          extraAccounts = {
+            check-mail-cmd = "notmuch new";
+            check-mail-timeout = "60s";
+          };
         };
       };
     };
