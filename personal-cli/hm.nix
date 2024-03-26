@@ -1,4 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  bwPass = pkgs.writeShellScript "bw-pass" ''
+    ${lib.getExe pkgs.bitwarden-cli} get item $@ | ${lib.getExe pkgs.jq} -r .login.password
+  '';
+  bwUser = pkgs.writeShellScript "bw-user" ''
+    ${lib.getExe pkgs.bitwarden-cli} get item $@ | ${lib.getExe pkgs.jq} -r .login.username
+  '';
+in {
   home.packages = with pkgs; [
     bitwarden-cli
     hbw
@@ -41,6 +52,35 @@
 
       sort = {
         fuel = "Diesel";
+      };
+    };
+  };
+
+  programs.khal.enable = true;
+  programs.vdirsyncer.enable = true;
+  services.vdirsyncer.enable = true;
+
+  accounts.calendar = {
+    basePath = ".calendar";
+    accounts.personal = let
+      bwId = "07619222-49eb-4d66-ad8c-ca7c81a9868d";
+    in {
+      primary = true;
+      primaryCollection = "QC";
+      remote = {
+        type = "caldav";
+        url = "https://nextcloud.familleboyer.net/remote.php";
+        passwordCommand = ["${bwPass}" bwId];
+      };
+      vdirsyncer = {
+        enable = true;
+        collections = ["from a"];
+        userNameCommand = ["${bwUser}" bwId];
+        metadata = ["color" "displayname"];
+      };
+      khal = {
+        type = "discover";
+        enable = true;
       };
     };
   };
