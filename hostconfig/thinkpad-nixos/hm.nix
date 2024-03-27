@@ -325,6 +325,7 @@ in {
 
   traxys.waybar.modules."custom/khal".enable = true;
   traxys.waybar.modules."disk#root".enable = false;
+  traxys.waybar.modules."battery".enable = true;
   traxys.waybar.modules."network#wifi" = {
     enable = true;
     interface = "wlp4s0";
