@@ -56,7 +56,10 @@ in {
     };
   };
 
-  programs.khal.enable = true;
+  programs.khal = {
+    locale.timeformat = "%H:%M";
+    enable = true;
+  };
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
 
