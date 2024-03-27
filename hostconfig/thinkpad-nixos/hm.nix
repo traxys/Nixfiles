@@ -319,17 +319,16 @@ in {
     };
   };
 
-  services.vdirsyncer.enable = true;
-  programs.vdirsyncer.enable = true;
-  programs.khal.enable = true;
-
   programs.zsh.shellAliases = {
     "khal-today" = "khal list today today -f '{start-time}-{end-time}: {title}'";
   };
 
+  traxys.waybar.modules."custom/khal".enable = true;
+
   accounts = {
     calendar = {
-      basePath = ".calendar";
+      accounts.personal.primary = lib.mkForce false;
+
       accounts.work = {
         primary = true;
         remote = {
