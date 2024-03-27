@@ -343,7 +343,10 @@ in {
           userName = "${config.workAddr}";
           passwordCommand = ["echo" "foobar"];
         };
-        khal.enable = true;
+        khal = {
+          enable = true;
+          color = "light green";
+        };
         vdirsyncer.enable = true;
       };
     };
