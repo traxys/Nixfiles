@@ -82,6 +82,23 @@ in {
         Left
         */
 
+        "custom/khal" = moduleOpt {
+          enable = false;
+          side = "left";
+          priority = 5;
+          settings = {
+            format = "{}";
+            tooltip = true;
+            interval = 300;
+            format-icons = {
+              default = "";
+            };
+            exec = "${lib.getExe pkgs.python3} ${./waybar-khal.py}";
+            return-type = "json";
+          };
+        };
+
+
         "network#wifi" = moduleOpt {
           side = "left";
           enable = false;
@@ -168,21 +185,6 @@ in {
           settings = {
             format = "{capacity}% ${is}{icon}${ie}";
             format-icons = ["" "" "" "" ""];
-          };
-        };
-
-        "custom/khal" = moduleOpt {
-          enable = false;
-          priority = 55;
-          settings = {
-            format = "{}";
-            tooltip = true;
-            interval = 300;
-            format-icons = {
-              default = "";
-            };
-            exec = "${lib.getExe pkgs.python3} ${./waybar-khal.py}";
-            return-type = "json";
           };
         };
 
