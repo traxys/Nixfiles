@@ -21,7 +21,10 @@ for line in lines:
 output = "\n".join(new_lines).strip()
 
 if "Today" in output:
-    data["text"] = " " + output.split("\n")[1]
+    next_meeting = output.split("\n")[1]
+    if len(next_meeting) >= 30:
+        next_meeting = next_meeting[0:27] + "..."
+    data["text"] = " " + next_meeting
 else:
     data["text"] = ""
 data["tooltip"] = output
