@@ -324,6 +324,11 @@ in {
   };
 
   traxys.waybar.modules."custom/khal".enable = true;
+  traxys.waybar.modules."disk#root".enable = false;
+  traxys.waybar.modules."network#wifi" = {
+    enable = true;
+    interface = "wlp4s0";
+  };
 
   accounts = {
     calendar = {
