@@ -111,6 +111,7 @@ in {
           settings = {
             inherit (config.traxys.waybar.modules."network#wifi") interface;
             format-wifi = "{essid} ({signalStrength}%) ";
+            format-disconnected = "";
           };
         };
 
