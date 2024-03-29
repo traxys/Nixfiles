@@ -15,5 +15,6 @@
   frg = callPackage ./frg.nix {};
   bonnie = callPackage ./bonnie {};
   perseus-cli = callPackage ./perseus {inherit bonnie;};
+  flex-launcher = callPackage ./flex-launcher.nix {};
   mesonlsp = callPackage ./mesonlsp.nix {};
 }
