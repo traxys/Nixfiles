@@ -15,6 +15,8 @@
     winetricks
     wowup
     xivlauncher
+    obs-studio
+    pulseaudio
   ];
 
   home.file = {
