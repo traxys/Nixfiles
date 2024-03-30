@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs";
     nixpkgs-traxys.url = "github:traxys/nixpkgs/inflight";
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
@@ -39,6 +40,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gsm.url = "github:traxys/git-series-manager";
+    attic.url = "github:zhaofengli/attic";
 
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -320,6 +322,7 @@
 
           inherit (nixpkgs-traxys.legacyPackages."${system}") groovy-language-server;
           inherit (inputs.mujmap.packages."${system}") mujmap;
+          inherit (inputs.attic.packages."${system}") attic;
         };
     in
       packages

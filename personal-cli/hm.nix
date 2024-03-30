@@ -21,6 +21,7 @@ in {
     nixpkgs-review
     nix-init
     mujmap
+    attic
   ];
 
   services.syncthing.enable = true;
