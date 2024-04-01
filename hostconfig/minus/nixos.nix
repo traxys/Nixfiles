@@ -23,10 +23,6 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
   services.xserver = {
     layout = "us";
     xkbVariant = "dvp";
@@ -47,6 +43,10 @@
     description = "Quentin";
     extraGroups = ["networkmanager" "wheel"];
   };
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.bigscreen.enable = true;
 
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "traxys";
