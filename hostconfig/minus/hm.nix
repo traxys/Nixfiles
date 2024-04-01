@@ -8,6 +8,9 @@
 
   home.packages = with pkgs; [
     jellyfin-media-player
+    freetube
+    spotify
+    streamlink-twitch-gui-bin
   ];
 
   home.sessionVariables = {
@@ -15,7 +18,6 @@
     QT_QPA_PLATFORM = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
     NIXOS_OZONE_WL = 1;
-    BROWSER = "firefox";
   };
 
   home.stateVersion = "23.11";
