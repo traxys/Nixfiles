@@ -587,6 +587,52 @@
           }
         ];
       };
+
+      minus = nixpkgs.lib.nixosSystem rec {
+        system = "x86_64-linux";
+        modules = [
+          ./hostconfig/minus/extra_info.nix
+          ./hostconfig/minus/hardware-configuration.nix
+          ./hostconfig/minus/nixos.nix
+          self.nixosModules.minimal
+          self.nixosModules.personal-cli
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [
+              inputs.nur.overlay
+              inputs.rust-overlay.overlays.default
+              inputs.comma.overlays.default
+              (final: prev: pkgList system prev.callPackage)
+              (final: prev: inputs.nix-gaming.packages."${system}")
+            ];
+          })
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          ({config, ...}: {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${config.extraInfo.username} = {
+              config,
+              lib,
+              pkgs,
+              ...
+            }: {
+              imports = [
+                ./hostconfig/minus/extra_info.nix
+                ./hostconfig/minus/hm.nix
+                self.hmModules.minimal
+                self.hmModules.personal-cli
+                self.hmModules.personal-gui
+                inputs.fioul.homeManagerModules.default
+              ];
+            };
+            home-manager.extraSpecialArgs = {
+              flake = self;
+            };
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          })
+        ];
+      };
     };
 
     homeConfigurations."boyerq@thinkpad-nixos" = home-manager.lib.homeManagerConfiguration {
