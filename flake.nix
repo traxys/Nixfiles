@@ -621,7 +621,6 @@
                 ./hostconfig/minus/hm.nix
                 self.hmModules.minimal
                 self.hmModules.personal-cli
-                self.hmModules.personal-gui
                 inputs.fioul.homeManagerModules.default
               ];
             };
