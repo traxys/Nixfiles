@@ -44,18 +44,26 @@
     extraGroups = ["networkmanager" "wheel"];
   };
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.kodi = {
+  services.flatpak.enable = true;
+  hardware.steam-hardware.enable = true;
+  programs.steam = {
     enable = true;
-    package = pkgs.kodi.withPackages (p:
+  };
+
+  environment.systemPackages = [
+    (pkgs.kodi.withPackages (p:
       with p; [
         jellyfin
         youtube
-        inputstream-adaptative
+        inputstream-adaptive
+        steam-launcher
         netflix
-      ]);
-  };
+      ]))
+  ];
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.bigscreen.enable = true;
 
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "traxys";
