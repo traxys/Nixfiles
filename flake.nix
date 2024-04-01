@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs";
     nixpkgs-traxys.url = "github:traxys/nixpkgs/inflight";
+    nixpkgs-sunshine.url = "github:devusb/nixpkgs?ref=sunshine-module";
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -494,6 +495,9 @@
 
       ZeNixComputa = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit (inputs) nixpkgs-sunshine;
+        };
         modules = [
           ./hostconfig/ZeNixComputa/extra_info.nix
           ./hostconfig/ZeNixComputa/hardware-configuration.nix

@@ -1020,6 +1020,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-sunshine": {
+      "locked": {
+        "lastModified": 1711847268,
+        "narHash": "sha256-SLTEJSykimcVTtye8jETxPWMbDdg2yMNFZTL9H3pBkg=",
+        "owner": "devusb",
+        "repo": "nixpkgs",
+        "rev": "c44ca352868d7c9e8ce5b1b90d7df28a28643be6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devusb",
+        "ref": "sunshine-module",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-traxys": {
       "locked": {
         "lastModified": 1692884435,
@@ -2147,6 +2163,7 @@
         "nix-ld": "nix-ld",
         "nixpkgs": "nixpkgs_12",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-sunshine": "nixpkgs-sunshine",
         "nixpkgs-traxys": "nixpkgs-traxys",
         "nixvim": "nixvim",
         "nur": "nur",
