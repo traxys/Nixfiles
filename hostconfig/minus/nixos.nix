@@ -51,6 +51,9 @@
     package = pkgs.kodi.withPackages (p:
       with p; [
         jellyfin
+        youtube
+        inputstream-adaptative
+        netflix
       ]);
   };
 
