@@ -13,6 +13,15 @@
     streamlink-twitch-gui-bin
   ];
 
+  services.spotifyd = {
+    enable = true;
+    settings.global = {
+      use_mpris = true;
+      bitrate = 320;
+      device_type = "t_v";
+    };
+  };
+
   home.sessionVariables = {
     SDL_VIDEODRIVER = "wayland";
     QT_QPA_PLATFORM = "wayland";
