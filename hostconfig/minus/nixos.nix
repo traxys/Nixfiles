@@ -8,6 +8,7 @@
 
   networking.hostName = "minus";
   networking.networkmanager.enable = true;
+  networking.interfaces.enps10.wakeOnLan.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
 
