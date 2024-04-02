@@ -8,6 +8,8 @@
 
   networking.hostName = "minus";
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [1234];
+  networking.firewall.allowedUDPPorts = [5353];
   networking.interfaces.enps10.wakeOnLan.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
