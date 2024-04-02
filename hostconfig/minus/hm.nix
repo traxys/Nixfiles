@@ -19,6 +19,7 @@
       use_mpris = true;
       bitrate = 320;
       device_type = "t_v";
+      zeroconf_port = 1234;
     };
   };
 
