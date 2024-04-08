@@ -54,6 +54,7 @@
   };
 
   environment.systemPackages = [
+    pkgs.moonlight-qt
     (pkgs.kodi.withPackages (p:
       with p; [
         jellyfin
