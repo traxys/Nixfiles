@@ -81,6 +81,7 @@
 
   services.openssh.enable = true;
   system.stateVersion = "23.11";
+  hardware.xpadneo.enable = true;
 
   hardware.bluetooth.enable = true;
 
