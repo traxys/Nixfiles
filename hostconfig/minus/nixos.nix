@@ -81,5 +81,7 @@
   services.openssh.enable = true;
   system.stateVersion = "23.11";
 
+  hardware.bluetooth.enable = true;
+
   hardware.enableRedistributableFirmware = true;
 }
