@@ -26,7 +26,7 @@
     programs.git-series-manager = {
       enable = true;
       settings = {
-        sendmail_args = ["--sendmail-cmd=nwadminSendmail" "--to=dl-bxi-sw-ll-patches@atos.net"];
+        sendmail_args = ["--sendmail-cmd=nwadminSendmail" "--to=dl-bxi-sw-ll-patches@eviden.com"];
         repo_url_base = "https://bitbucketbdsfr.fsc.atos-services.net/scm/bril/";
         ci_url = "https://sf.bds.atos.net/jenkins/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
         editor = "nvim";
@@ -34,7 +34,7 @@
     };
 
     programs.zsh.shellAliases = {
-      gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@atos.net"'';
+      gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@eviden.com"'';
     };
   };
 }
