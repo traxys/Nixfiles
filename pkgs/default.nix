@@ -17,4 +17,5 @@
   perseus-cli = callPackage ./perseus {inherit bonnie;};
   flex-launcher = callPackage ./flex-launcher.nix {};
   mesonlsp = callPackage ./mesonlsp {};
+  push-to-talk = callPackage ./push-to-talk.nix {};
 }
