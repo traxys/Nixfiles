@@ -452,7 +452,8 @@
       ZeNixLaptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
-          ./hostconfig/ZeNixComputa/extra_info.nix
+          ./hostconfig/ZeNixLaptop/extra_info.nix
+          ./hostconfig/ZeNixLaptop/nixos.nix
           self.nixosModules.minimal
           self.nixosModules.personal-cli
           self.nixosModules.personal-gui
@@ -478,10 +479,13 @@
               ...
             }: {
               imports = [
+                ./hostconfig/ZeNixLaptop/extra_info.nix
+                ./hostconfig/ZeNixLaptop/hm.nix
                 self.hmModules.minimal
                 self.hmModules.personal-cli
                 self.hmModules.personal-gui
                 self.hmModules.gaming
+                inputs.fioul.homeManagerModules.default
               ];
             };
             home-manager.extraSpecialArgs = {
