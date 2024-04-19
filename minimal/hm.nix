@@ -59,6 +59,7 @@
       nix-output-monitor
       bat-extras.prettybat
       just
+      bottom
 
       # Useful for pandoc to latex
       (texlive.combine {
