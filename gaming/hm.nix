@@ -28,7 +28,7 @@
 
   home.activation = {
     proton-ge = lib.hm.dag.entryAfter ["writeBoundary"] ''
-      target="${config.home.homeDirectory}/.steam/root/compatibilitytools.d/Proton-${pkgs.proton-ge.version}"
+      target="${config.home.homeDirectory}/.steam/root/compatibilitytools.d/Proton-${lib.getVersion pkgs.proton-ge}"
       if ! [ -d "$target" ]; then
         cp -R ${pkgs.proton-ge} "$target"
         chmod -R u+w "$target"
