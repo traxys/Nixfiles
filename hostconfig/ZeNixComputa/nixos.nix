@@ -1,13 +1,8 @@
 {
   pkgs,
-  nixpkgs-sunshine,
   lib,
   ...
 }: {
-  imports = [
-    "${nixpkgs-sunshine}/nixos/modules/services/networking/sunshine.nix"
-  ];
-
   boot.initrd = {
     enable = true;
     availableKernelModules = ["amdgpu" "r8169"];
@@ -31,11 +26,11 @@
     "video=DP-2:1920x1080@75"
   ];
 
-  services.sunshine = {
-    enable = true;
-    openFirewall = true;
-    capSysAdmin = true;
-  };
+  # services.sunshine = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   capSysAdmin = true;
+  # };
 
   networking = {
     hostName = "ZeNixComputa";
