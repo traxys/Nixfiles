@@ -5,21 +5,20 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "wowup-cf";
-  version = "2.9.2";
+  version = "2.11.1";
 
   src = fetchurl {
     url = "https://github.com/WowUp/WowUp.CF/releases/download/v${version}/WowUp-CF-${version}.AppImage";
-    sha256 = "sha256-8R6H6ctmVrJgkvthyXGrp1mkthBlr08y1pYIoEkrB7w=";
+    sha256 = "sha256-jc9e+0zPJufZaIMhQ8nSFJwKFikuTyDLAxBWaOHf9qI=";
   };
 
   extraInstallCommands = let
     appimageContents = appimageTools.extractType2 {inherit pname version src;};
   in ''
-  	mv $out/bin/${pname}-${version} $out/bin/${pname}
-    install -m 444 -D ${appimageContents}/wowup-cf.desktop $out/share/applications/wowup-cf.desktop
-    substituteInPlace $out/share/applications/wowup-cf.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
-    install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/512x512/apps/wowup-cf.png \
-		$out/share/icons/hicolor/512x512/apps/wowup-cf.png
+      install -m 444 -D ${appimageContents}/wowup-cf.desktop $out/share/applications/wowup-cf.desktop
+      substituteInPlace $out/share/applications/wowup-cf.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
+      install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/512x512/apps/wowup-cf.png \
+    $out/share/icons/hicolor/512x512/apps/wowup-cf.png
   '';
 
   meta = with lib; {
