@@ -26,11 +26,11 @@
     "video=DP-2:1920x1080@75"
   ];
 
-  # services.sunshine = {
-  #   enable = true;
-  #   openFirewall = true;
-  #   capSysAdmin = true;
-  # };
+  services.sunshine = {
+    enable = true;
+    openFirewall = true;
+    capSysAdmin = true;
+  };
 
   networking = {
     hostName = "ZeNixComputa";
