@@ -48,13 +48,14 @@
   };
 
   services.flatpak.enable = true;
-  hardware.steam-hardware.enable = true;
+  #hardware.steam-hardware.enable = true;
   programs.steam = {
     enable = true;
   };
 
   environment.systemPackages = [
     pkgs.moonlight-qt
+    pkgs.jstest-gtk
     (pkgs.kodi.withPackages (p:
       with p; [
         jellyfin
@@ -66,8 +67,11 @@
   ];
 
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.bigscreen.enable = true;
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    wayland = true;
+  };
+  services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "traxys";
