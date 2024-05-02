@@ -353,15 +353,8 @@
 
     plugins.telescope = {
       enable = true;
-      enabledExtensions = ["ui-select"];
-      extensionConfig = {
-        ui-select = {
-          __raw = ''
-              require("telescope.themes").get_dropdown {
-              -- even more opts
-            }
-          '';
-        };
+      extensions = {
+        ui-select.enable = true;
       };
       extraOptions = {
         defaults.layout_strategy = "vertical";
