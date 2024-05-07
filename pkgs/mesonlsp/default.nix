@@ -12,7 +12,8 @@
   libuuid,
   libpkgconf,
   libunwind,
-  python3
+  python3,
+  tomlplusplus,
 }: let
   ada = fetchFromGitHub {
     owner = "ada-url";
@@ -54,8 +55,8 @@
   muon = fetchFromGitHub {
     owner = "JCWasmx86";
     repo = "muon";
-    rev = "e7d0aae70c695a1adec81b9a05429474ee5c1bc1";
-    hash = "sha256-dsvxqSr+Hl5GKYj55MU0o4lHzgPbykuf6sQ/9h+bBPQ=";
+    rev = "62af239";
+    hash = "sha256-k883mKwuP35f0WtwX8ybl9uYbvA3y6Vxtv2EJMpZDEs=";
   };
 in
   stdenv.mkDerivation rec {
@@ -65,8 +66,8 @@ in
     src = fetchFromGitHub {
       owner = "JCWasmx86";
       repo = "mesonlsp";
-      rev = "fb28856";
-      hash = "sha256-dHtKSQ+/oq5NzqIhXJ7luVBQ2V7Ec6ikLwlYMzaem80=";
+      rev = "refs/tags/v${version}";
+      hash = "sha256-pN8MCqrRfVpmM8KWa7HPTghoegplM4bP/HRVJVs05iE=";
     };
 
     postUnpack = ''
@@ -81,6 +82,10 @@ in
     '';
 
     mesonFlags = ["-Dbenchmarks=false"];
+
+    patches = [
+      ./build_flags.patch
+    ];
 
     postPatch = ''
       patchShebangs .
@@ -101,6 +106,7 @@ in
     ];
 
     buildInputs = [
+      tomlplusplus
       nlohmann_json
       curl
       libarchive

@@ -1,0 +1,37 @@
+diff --git a/meson.build b/meson.build
+index ff0f0c3e..82c4fbe8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -34,7 +34,11 @@ if buildtype != 'plain'
+     ]
+ 
+     if cc.get_id() == 'gcc'
+-        extra_flags += [
++        extra_c_flags += [
++            '-Wshadow=local',
++            '-fstack-clash-protection',
++        ]
++        extra_cxx_flags += [
+             '-Wshadow=local',
+             '-fstack-clash-protection',
+         ]
+@@ -44,7 +48,8 @@ if buildtype != 'plain'
+         extra_flags += [
+             '-frecord-gcc-switches',
+         ]
+-        extra_flags += cc.get_supported_arguments('-mshstk', '-fcf-protection=full')
++        extra_c_flags += cc.get_supported_arguments('-mshstk', '-fcf-protection=full')
++        extra_cxx_flags += cxx.get_supported_arguments('-mshstk', '-fcf-protection=full')
+     endif
+ 
+     global_link_args = host_machine.system() == 'windows' ? [] : ['-rdynamic']
+@@ -54,7 +59,8 @@ if buildtype != 'plain'
+         global_link_args += ['-Wl,-ld_classic']
+     endif
+ 
+-    add_global_arguments(extra_flags, language: ['c', 'cpp'])
++    add_global_arguments(extra_flags + extra_c_flags, language: ['c'])
++    add_global_arguments(extra_flags + extra_cxx_flags, language: ['cpp'])
+     add_global_link_arguments(global_link_args, language: ['c', 'cpp'])
+ endif
+ 
