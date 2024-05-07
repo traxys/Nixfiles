@@ -60,7 +60,7 @@
 in
   stdenv.mkDerivation rec {
     pname = "mesonlsp";
-    version = "unstable-2024-03-11";
+    version = "4.2.2";
 
     src = fetchFromGitHub {
       owner = "JCWasmx86";
