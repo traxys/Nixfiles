@@ -1,11 +1,17 @@
 {
   stdenv,
-  proton-ge-src,
+  fetchFromGitHub,
 }:
-stdenv.mkDerivation {
-  inherit (proton-ge-src) pname src version;
+stdenv.mkDerivation rec {
+  pname = "proton-ge";
+  version = "8-3";
 
-  nativeBuildInputs = [];
+  src = fetchFromGitHub {
+    owner = "GloriousEggroll";
+    repo = "proton-ge-custom";
+    rev = "refs/tags/GE-Proton${version}";
+    hash = "sha256-ma+f+UrKrXluPAvv7v5x/X22eZJsS4sen2x5EVtRZ5M=";
+  };
 
   installPhase = ''
     mkdir -p $out
