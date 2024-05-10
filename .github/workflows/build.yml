@@ -40,3 +40,16 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - run: NIXPKGS_ALLOW_UNFREE=1 nix build --impure '.#${{ matrix.package }}'
       - run: nix build .#checks.x86_64-linux.launch
+
+  # This allows us to have a branch protection with matrix
+  build-status:
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: always()
+    steps:
+      - name: Successful build
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+      - name: Failing build
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
