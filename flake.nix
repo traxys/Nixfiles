@@ -302,17 +302,14 @@
     nixpkgs-traxys,
     ...
   } @ inputs: let
-    sources = system:
-      {
-        inherit (inputs) simulationcraft kabalist;
-      }
-      // (nixpkgs.legacyPackages."${system}".callPackage ./_sources/generated.nix {});
+    sources = {
+      inherit (inputs) simulationcraft kabalist;
+    };
 
     pkgList = system: callPackage: let
       packages =
         (import ./pkgs/default.nix {
-          inherit callPackage;
-          sources = sources system;
+          inherit callPackage sources;
           naersk = inputs.naersk.lib."${system}";
         })
         // {

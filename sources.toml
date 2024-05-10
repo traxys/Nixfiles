@@ -1,8 +1,0 @@
-[proton-ge]
-src.github = "GloriousEggroll/proton-ge-custom"
-fetch.url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/$ver/$ver.tar.gz"
-
-[warcraftlogs]
-src.github = "RPGLogs/Uploaders-warcraftlogs"
-src.prefix = "v"
-fetch.url = "https://github.com/RPGLogs/Uploaders-warcraftlogs/releases/download/v$ver/Warcraft-Logs-Uploader-$ver.AppImage"
