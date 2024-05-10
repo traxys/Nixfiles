@@ -4,13 +4,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "proton-ge";
-  version = "8-3";
+  version = "9-4";
 
   src = fetchFromGitHub {
     owner = "GloriousEggroll";
     repo = "proton-ge-custom";
     rev = "refs/tags/GE-Proton${version}";
-    hash = "sha256-ma+f+UrKrXluPAvv7v5x/X22eZJsS4sen2x5EVtRZ5M=";
+    hash = "sha256-tg+ElIoPhchedHwofRArZ0ds9xF1LSrIFTBxoFm4btg=";
   };
 
   installPhase = ''
