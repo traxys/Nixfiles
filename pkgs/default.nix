@@ -11,7 +11,7 @@
     inherit naersk;
     kabalist-src = sources.kabalist;
   };
-  warcraftlogs = callPackage ./warcraftlogs.nix {warcraftlogs-src = sources.warcraftlogs;};
+  warcraftlogs = callPackage ./warcraftlogs.nix {};
   frg = callPackage ./frg.nix {};
   bonnie = callPackage ./bonnie {};
   perseus-cli = callPackage ./perseus {inherit bonnie;};
