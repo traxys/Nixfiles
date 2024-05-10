@@ -5,7 +5,7 @@
 }: rec {
   wowup = callPackage ./wowup.nix {};
   simulationcraft = callPackage ./simulationcraft.nix {simulationcraft-src = sources.simulationcraft;};
-  proton-ge = callPackage ./proton-ge.nix {proton-ge-src = sources.proton-ge;};
+  proton-ge = callPackage ./proton-ge.nix {};
   hbw = callPackage ./hbw {};
   kabalist_cli = callPackage ./kabalist.nix {
     inherit naersk;
