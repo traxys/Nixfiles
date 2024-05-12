@@ -40,8 +40,8 @@
         wakeOnLan.enable = true;
       };
     };
-    firewall.allowedTCPPorts = [8080 8085 5201 7777 24642];
-    firewall.allowedUDPPorts = [24642];
+    firewall.allowedTCPPorts = [8080 8085 5201 7777 24642 80 443 843 38202 38203];
+    firewall.allowedUDPPorts = [24642 80 443 843 38202 38203];
   };
 
   time.timeZone = "Europe/Paris";
