@@ -15,7 +15,7 @@
 
   config = {
     colorschemes.tokyonight = {
-      style = "night";
+      settings.style = "night";
       enable = true;
     };
 
@@ -90,7 +90,7 @@
       mapleader = " ";
     };
 
-    options = {
+    opts = {
       termguicolors = true;
       number = true;
       tabstop = 4;
@@ -356,7 +356,7 @@
       extensions = {
         ui-select.enable = true;
       };
-      extraOptions = {
+      settings = {
         defaults.layout_strategy = "vertical";
       };
     };
@@ -447,7 +447,7 @@
     };
     plugins.headerguard.enable = true;
 
-    plugins.comment-nvim = {
+    plugins.comment = {
       enable = true;
     };
 
@@ -460,10 +460,12 @@
     plugins.indent-blankline = {
       enable = true;
 
-      scope = {
-        enabled = true;
+      settings = {
+        scope = {
+          enabled = true;
 
-        showStart = true;
+          show_start = true;
+        };
       };
     };
 
@@ -722,7 +724,7 @@
     };
 
     files."ftplugin/nix.lua" = {
-      options = {
+      opts = {
         tabstop = 2;
         shiftwidth = 2;
         expandtab = true;
