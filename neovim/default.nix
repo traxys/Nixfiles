@@ -4,7 +4,8 @@
   helpers,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./modules/commands.nix
 
@@ -19,15 +20,22 @@
       enable = true;
     };
 
-    autoGroups.BigFileOptimizer = {};
+    autoGroups.BigFileOptimizer = { };
     autoCmd = [
       {
-        event = ["BufNewFile" "BufRead"];
-        pattern = ["meson.build" "meson_options.txt" "meson.options"];
-        callback = let
-          settings = {
-          };
-        in
+        event = [
+          "BufNewFile"
+          "BufRead"
+        ];
+        pattern = [
+          "meson.build"
+          "meson_options.txt"
+          "meson.options"
+        ];
+        callback =
+          let
+            settings = { };
+          in
           helpers.mkRaw ''
             function(args)
               local match = vim.fs.find(
@@ -98,7 +106,11 @@
       scrolloff = 7;
       signcolumn = "yes";
       cmdheight = 2;
-      cot = ["menu" "menuone" "noselect"];
+      cot = [
+        "menu"
+        "menuone"
+        "noselect"
+      ];
       updatetime = 100;
       colorcolumn = "100";
       # Too many false positives
@@ -123,21 +135,18 @@
       };
     };
 
-    keymaps = let
-      modeKeys = mode:
-        lib.attrsets.mapAttrsToList (key: action:
-          {
-            inherit key mode;
-          }
-          // (
-            if builtins.isString action
-            then {inherit action;}
-            else action
-          ));
-      nm = modeKeys ["n"];
-      vs = modeKeys ["v"];
-    in
-      helpers.keymaps.mkKeymaps {options.silent = true;} (nm {
+    keymaps =
+      let
+        modeKeys =
+          mode:
+          lib.attrsets.mapAttrsToList (
+            key: action:
+            { inherit key mode; } // (if builtins.isString action then { inherit action; } else action)
+          );
+        nm = modeKeys [ "n" ];
+        vs = modeKeys [ "v" ];
+      in
+      helpers.keymaps.mkKeymaps { options.silent = true; } (nm {
         "ft" = "<cmd>Neotree<CR>";
         "fG" = "<cmd>Neotree git_status<CR>";
         "fR" = "<cmd>Neotree remote<CR>";
@@ -170,13 +179,11 @@
           options.desc = "history";
         };
       })
-      ++ (vs {
-        "<leader>zf" = "'<,'>ZkMatch<CR>";
-      })
+      ++ (vs { "<leader>zf" = "'<,'>ZkMatch<CR>"; })
       ++ [
         {
           key = "<leader>rn";
-          mode = ["n"];
+          mode = [ "n" ];
           action = ''
             function()
             	return ":IncRename " .. vim.fn.expand("<cword>")
@@ -196,15 +203,16 @@
     plugins.efmls-configs = {
       enable = true;
 
-      toolPackages.mdformat = pkgs.mdformat.withPlugins (ps:
-        with ps; [
+      toolPackages.mdformat = pkgs.mdformat.withPlugins (
+        ps: with ps; [
           # TODO: broken with update of mdformat
           # mdformat-gfm
           mdformat-frontmatter
           mdformat-footnote
           mdformat-tables
           mdit-py-plugins
-        ]);
+        ]
+      );
 
       setup = {
         sh = {
@@ -219,7 +227,10 @@
           linter = "cppcheck";
         };
         markdown = {
-          formatter = ["cbfmt" "mdformat"];
+          formatter = [
+            "cbfmt"
+            "mdformat"
+          ];
         };
         python = {
           formatter = "black";
@@ -231,10 +242,13 @@
           formatter = "stylua";
         };
         html = {
-          formatter = ["prettier" (helpers.mkRaw "djlint_fmt")];
+          formatter = [
+            "prettier"
+            (helpers.mkRaw "djlint_fmt")
+          ];
         };
         htmldjango = {
-          formatter = [(helpers.mkRaw "djlint_fmt")];
+          formatter = [ (helpers.mkRaw "djlint_fmt") ];
           linter = "djlint";
         };
         json = {
@@ -335,19 +349,17 @@
         };
 
         sources = [
-          {name = "luasnip";}
-          {name = "nvim_lsp";}
-          {name = "path";}
-          {name = "buffer";}
-          {name = "calc";}
-          {name = "git";}
+          { name = "luasnip"; }
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
+          { name = "calc"; }
+          { name = "git"; }
         ];
       };
 
       filetype.sh = {
-        sources = [
-          {name = "zsh";}
-        ];
+        sources = [ { name = "zsh"; } ];
       };
     };
 
@@ -767,9 +779,7 @@
     };
 
     extraPackages = with pkgs; [
-      /*
-      sca2d
-      */
+      # sca2d
       djlint
       muon
     ];

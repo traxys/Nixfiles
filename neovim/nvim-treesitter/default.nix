@@ -8,33 +8,30 @@
   wrapNeovimUnstable,
   stdenv,
   makeWrapper,
-}: let
-  neovimTs =
-    (neovimUtils.override {
-      neovim-unwrapped = upstream;
-    })
-    .makeNeovimConfig {
-      plugins = [vimPlugins.nvim-treesitter];
-    };
+}:
+let
+  neovimTs = (neovimUtils.override { neovim-unwrapped = upstream; }).makeNeovimConfig {
+    plugins = [ vimPlugins.nvim-treesitter ];
+  };
 in
-  stdenv.mkDerivation {
-    name = "update-nvim-treesitter";
-    src = ./update.py;
+stdenv.mkDerivation {
+  name = "update-nvim-treesitter";
+  src = ./update.py;
 
-    nativeBuildInputs = [makeWrapper];
+  nativeBuildInputs = [ makeWrapper ];
 
-    dontUnpack = true;
+  dontUnpack = true;
 
-    installPhase = ''
-      mkdir -p $out/bin
-      cat $src > $out/bin/update-nvim-treesitter
-      chmod +x $out/bin/update-nvim-treesitter
-      wrapProgram $out/bin/update-nvim-treesitter --set NVIM_TREESITTER "${vimPlugins.nvim-treesitter}" --prefix PATH : ${
-        lib.makeBinPath [
-          (wrapNeovimUnstable upstream neovimTs)
-          nurl
-          python3
-        ]
-      }
-    '';
-  }
+  installPhase = ''
+    mkdir -p $out/bin
+    cat $src > $out/bin/update-nvim-treesitter
+    chmod +x $out/bin/update-nvim-treesitter
+    wrapProgram $out/bin/update-nvim-treesitter --set NVIM_TREESITTER "${vimPlugins.nvim-treesitter}" --prefix PATH : ${
+      lib.makeBinPath [
+        (wrapNeovimUnstable upstream neovimTs)
+        nurl
+        python3
+      ]
+    }
+  '';
+}
