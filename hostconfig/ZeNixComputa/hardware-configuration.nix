@@ -7,15 +7,21 @@
   pkgs,
   modulesPath,
   ...
-}: {
-  imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-  ];
+}:
+{
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["dm-snapshot"];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/618a4ff8-5bbc-4d61-8c0f-0d963ac0931b";
@@ -37,7 +43,5 @@
     fsType = "btrfs";
   };
 
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/3d5336f6-63c8-47ef-91ed-8e605e4fb875";}
-  ];
+  swapDevices = [ { device = "/dev/disk/by-uuid/3d5336f6-63c8-47ef-91ed-8e605e4fb875"; } ];
 }

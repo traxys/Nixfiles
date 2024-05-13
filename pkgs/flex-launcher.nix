@@ -35,7 +35,7 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/complexlogic/flex-launcher";
     changelog = "https://github.com/complexlogic/flex-launcher/blob/${src.rev}/CHANGELOG";
     license = licenses.unlicense;
-    maintainers = with maintainers; [traxys];
+    maintainers = with maintainers; [ traxys ];
     mainProgram = "flex-launcher";
     platforms = platforms.all;
   };

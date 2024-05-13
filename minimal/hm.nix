@@ -2,12 +2,14 @@
   inputs,
   flake,
   extraInfo,
-}: {
+}:
+{
   pkgs,
   lib,
   config,
   ...
-}: {
+}:
+{
   options.programs.git.excludes = lib.mkOption {
     type = lib.types.lines;
     default = "";
@@ -63,8 +65,7 @@
 
       # Useful for pandoc to latex
       (texlive.combine {
-        inherit
-          (texlive)
+        inherit (texlive)
           scheme-medium
           fncychap
           wrapfig
@@ -153,7 +154,11 @@
       enableCompletion = true;
       oh-my-zsh = {
         enable = true;
-        plugins = ["git" "wd" "rust"];
+        plugins = [
+          "git"
+          "wd"
+          "rust"
+        ];
       };
       plugins = [
         {

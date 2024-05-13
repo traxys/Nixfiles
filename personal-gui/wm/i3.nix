@@ -5,34 +5,38 @@
   ...
 }:
 with builtins;
-with lib; let
+with lib;
+let
   cfg = config.wm;
-  common = import ./i3like-utils.nix {inherit config;};
+  common = import ./i3like-utils.nix { inherit config; };
 
   startupNotifications =
-    if cfg.notifications.enable
-    then [
-      {
-        command = "${config.services.dunst.package}/bin/dunst";
-        notification = false;
-        always = true;
-      }
-    ]
-    else [];
+    if cfg.notifications.enable then
+      [
+        {
+          command = "${config.services.dunst.package}/bin/dunst";
+          notification = false;
+          always = true;
+        }
+      ]
+    else
+      [ ];
 
   wallpaperSet =
-    if cfg.wallpaper != null
-    then [
-      {
-        command = "${pkgs.feh}/bin/feh --bg-scale ${cfg.wallpaper}";
-        always = true;
-        notification = false;
-      }
-    ]
-    else [];
+    if cfg.wallpaper != null then
+      [
+        {
+          command = "${pkgs.feh}/bin/feh --bg-scale ${cfg.wallpaper}";
+          always = true;
+          notification = false;
+        }
+      ]
+    else
+      [ ];
 
   startup = startupNotifications ++ wallpaperSet ++ cfg.startup;
-in {
+in
+{
   config = mkIf (cfg.enable && cfg.kind == "i3") {
     programs = {
       i3status-rust = {
@@ -70,9 +74,7 @@ in {
               player = "spotify";
               format = "{combo}";
             }
-            {
-              block = "time";
-            }
+            { block = "time"; }
           ];
         };
       };
@@ -83,7 +85,7 @@ in {
       settings = {
         global = {
           timeout = "${toString cfg.notifications.defaultTimeout}ms";
-          font = cfg.notifications.font;
+          inherit (cfg.notifications) font;
         };
       };
     };
@@ -97,11 +99,11 @@ in {
         enable = true;
         config = {
           inherit startup;
-          keybindings = common.keybindings;
-          workspaceOutputAssign = common.workspaceOutputAssign;
-          assigns = common.assigns;
+          inherit (common) keybindings;
+          inherit (common) workspaceOutputAssign;
+          inherit (common) assigns;
           fonts = common.mkFont cfg.font;
-          modifier = cfg.modifier;
+          inherit (cfg) modifier;
           bars = [
             {
               fonts = common.mkFont cfg.bar.font;

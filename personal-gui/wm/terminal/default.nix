@@ -5,7 +5,8 @@
   ...
 }:
 with lib;
-with builtins; let
+with builtins;
+let
   mkColor = mkOption {
     type = types.nullOr types.str;
     default = null;
@@ -16,8 +17,12 @@ with builtins; let
   };
   cfg = config.terminal;
   cCfg = cfg.colors;
-in {
-  imports = [./foot.nix ./kitty.nix];
+in
+{
+  imports = [
+    ./foot.nix
+    ./kitty.nix
+  ];
 
   options = {
     terminal = {
@@ -27,7 +32,10 @@ in {
         description = "Manage terminal";
       };
       kind = mkOption {
-        type = types.enum ["foot" "kitty"];
+        type = types.enum [
+          "foot"
+          "kitty"
+        ];
         default = "foot";
         description = "The terminal to be used";
       };

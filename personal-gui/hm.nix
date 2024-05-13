@@ -3,18 +3,17 @@
   lib,
   pkgs,
   ...
-}: {
-  imports = [./wm];
+}:
+{
+  imports = [ ./wm ];
 
   home.packages = with pkgs; [
     # Browsers
     firefox-wayland
-    (tor-browser-bundle-bin.override {
-      useHardenedMalloc = false;
-    })
+    (tor-browser-bundle-bin.override { useHardenedMalloc = false; })
 
     # IM
-    (discord.override {nss = pkgs.nss;})
+    (discord.override { inherit (pkgs) nss; })
     element-desktop
     signal-desktop
 
@@ -50,7 +49,7 @@
     BROWSER = "firefox";
     GTK_USE_PORTAL = 1;
     NIXOS_OZONE_WL = 1;
-    ANDROID_HOME="${config.home.sessionVariables.XDG_DATA_HOME}/android";
+    ANDROID_HOME = "${config.home.sessionVariables.XDG_DATA_HOME}/android";
   };
 
   programs.zathura.enable = true;

@@ -1,15 +1,12 @@
+{ config, pkgs, ... }:
 {
-  config,
-  pkgs,
-  ...
-}: {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "minus";
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [1234];
-  networking.firewall.allowedUDPPorts = [5353];
+  networking.firewall.allowedTCPPorts = [ 1234 ];
+  networking.firewall.allowedUDPPorts = [ 5353 ];
   networking.interfaces.enp1s0.wakeOnLan.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -44,7 +41,10 @@
   users.users."${config.extraInfo.username}" = {
     isNormalUser = true;
     description = "Quentin";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
   };
 
   services.flatpak.enable = true;
@@ -56,14 +56,15 @@
   environment.systemPackages = [
     pkgs.moonlight-qt
     pkgs.jstest-gtk
-    (pkgs.kodi.withPackages (p:
-      with p; [
+    (pkgs.kodi.withPackages (
+      p: with p; [
         jellyfin
         youtube
         inputstream-adaptive
         steam-launcher
         netflix
-      ]))
+      ]
+    ))
   ];
 
   services.xserver.enable = true;
