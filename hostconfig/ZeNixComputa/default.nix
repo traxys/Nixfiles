@@ -20,5 +20,6 @@
       personal-gui
       gaming
     ];
+    unfreePackages = [ "warcraftlogs" ];
   };
 }
