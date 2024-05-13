@@ -299,69 +299,71 @@
 
   outputs =
     inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { self, ... }:
+      {
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
 
-      debug = true;
+        debug = true;
 
-      imports = [
-        ./pkgs
-        ./neovim/pkg.nix
-        ./hostconfig
-        ./templates
-      ];
+        imports = [
+          ./pkgs
+          ./neovim/pkg.nix
+          ./hostconfig
+          ./templates
+        ];
 
-      perSystem =
-        {
-          inputs',
-          lib,
-          system,
-          ...
-        }:
-        {
-          _module.args = {
-            naersk' = inputs.naersk.lib.${system};
-          };
-          packages =
-            let
-              names = [
-                "glaurung"
-                "raclette"
-                "roaming_proxy"
-                "mujmap"
-                "attic"
-              ];
-            in
-            lib.genAttrs names (name: inputs'.${name}.packages.${name});
-        };
-
-      flake =
-        { self, ... }:
-        let
-          extraInfo = import ./extra_info.nix;
-        in
-        {
-          hmModules = {
-            minimal = import ./minimal/hm.nix {
-              inherit inputs extraInfo;
-              flake = self;
+        perSystem =
+          {
+            inputs',
+            lib,
+            system,
+            ...
+          }:
+          {
+            _module.args = {
+              naersk' = inputs.naersk.lib.${system};
             };
-            personal-cli = import ./personal-cli/hm.nix;
-            personal-gui = import ./personal-gui/hm.nix;
-            gaming = import ./gaming/hm.nix;
-            work = import ./hostconfig/thinkpad-nixos/work.nix;
+            packages =
+              let
+                names = [
+                  "glaurung"
+                  "raclette"
+                  "roaming_proxy"
+                  "mujmap"
+                  "attic"
+                ];
+              in
+              lib.genAttrs names (name: inputs'.${name}.packages.${name});
           };
 
-          nixosModules = {
-            minimal = import ./minimal/nixos.nix { inherit extraInfo; };
-            personal-cli = import ./personal-cli/nixos.nix;
-            personal-gui = import ./personal-gui/nixos.nix;
-            roaming = import ./roaming/nixos.nix;
-            gaming = import ./gaming/nixos.nix;
+        flake =
+          let
+            extraInfo = import ./extra_info.nix;
+          in
+          {
+            hmModules = {
+              minimal = import ./minimal/hm.nix {
+                inherit inputs extraInfo;
+                flake = self;
+              };
+              personal-cli = import ./personal-cli/hm.nix;
+              personal-gui = import ./personal-gui/hm.nix;
+              gaming = import ./gaming/hm.nix;
+              work = import ./hostconfig/thinkpad-nixos/work.nix;
+            };
+
+            nixosModules = {
+              minimal = import ./minimal/nixos.nix { inherit extraInfo; };
+              personal-cli = import ./personal-cli/nixos.nix;
+              personal-gui = import ./personal-gui/nixos.nix;
+              roaming = import ./roaming/nixos.nix;
+              gaming = import ./gaming/nixos.nix;
+            };
           };
-        };
-    };
+      }
+    );
 }
