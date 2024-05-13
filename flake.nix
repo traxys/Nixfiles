@@ -43,6 +43,8 @@
     attic.url = "github:zhaofengli/attic";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    flake-root.url = "github:srid/flake-root";
 
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
@@ -314,6 +316,8 @@
           ./neovim/pkg.nix
           ./hostconfig
           ./templates
+          inputs.treefmt-nix.flakeModule
+          inputs.flake-root.flakeModule
         ];
 
         perSystem =
@@ -321,6 +325,7 @@
             inputs',
             lib,
             system,
+            config,
             ...
           }:
           {
@@ -338,6 +343,17 @@
                 ];
               in
               lib.genAttrs names (name: inputs'.${name}.packages.${name});
+
+            formatter = config.treefmt.build.wrapper;
+
+            treefmt.config = {
+              inherit (config.flake-root) projectRootFile;
+
+              programs = {
+                nixfmt-rfc-style.enable = true;
+                statix.enable = true;
+              };
+            };
           };
 
         flake =
