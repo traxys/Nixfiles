@@ -5,7 +5,8 @@
   helpers,
   ...
 }:
-with lib; {
+with lib;
+{
   options.plugins.lsp_signature = {
     enable = mkEnableOption "lsp_signature, a plugin to show function signatures";
 
@@ -18,8 +19,8 @@ with lib; {
     debug = {
       enable = helpers.defaultNullOpts.mkBool false "set to true to enable debug logging";
       logPath =
-        helpers.defaultNullOpts.mkNullable types.str
-        ''vim.fn.stdpath("cache") .. "/lsp_signature.log"'' "log dir when debug is on";
+        helpers.defaultNullOpts.mkNullable types.str ''vim.fn.stdpath("cache") .. "/lsp_signature.log"''
+          "log dir when debug is on";
       verbose = helpers.defaultNullOpts.mkBool false "show debug line number";
     };
 
@@ -78,17 +79,22 @@ with lib; {
       scheme = helpers.defaultNullOpts.mkStr "String" "";
     };
 
-    hiParameter =
-      helpers.defaultNullOpts.mkStr "LspSignatureActiveParameter"
-      "how your parameter will be highlight";
+    hiParameter = helpers.defaultNullOpts.mkStr "LspSignatureActiveParameter" "how your parameter will be highlight";
 
     handlerOpts = {
-      border = let
-        bordersTy =
-          types.enum ["double" "rounded" "single" "shadow" "none"];
-      in
-        helpers.defaultNullOpts.mkNullable (types.either bordersTy (types.listOf bordersTy))
-        ''"rounded"'' "";
+      border =
+        let
+          bordersTy = types.enum [
+            "double"
+            "rounded"
+            "single"
+            "shadow"
+            "none"
+          ];
+        in
+        helpers.defaultNullOpts.mkNullable (types.either bordersTy (
+          types.listOf bordersTy
+        )) ''"rounded"'' "";
     };
 
     alwaysTrigger = helpers.defaultNullOpts.mkBool false ''
@@ -135,52 +141,55 @@ with lib; {
     '';
   };
 
-  config = let
-    cfg = config.plugins.lsp_signature;
-    setupOptions = {
-      debug = cfg.debug.enable;
-      log_path = cfg.debug.logPath;
-      verbose = cfg.debug.verbose;
+  config =
+    let
+      cfg = config.plugins.lsp_signature;
+      setupOptions = {
+        debug = cfg.debug.enable;
+        log_path = cfg.debug.logPath;
+        verbose = cfg.debug.verbose;
 
-      bind = cfg.bind;
-      doc_lines = cfg.docLines;
-      max_height = cfg.maxHeight;
-      noice = cfg.noice;
+        bind = cfg.bind;
+        doc_lines = cfg.docLines;
+        max_height = cfg.maxHeight;
+        noice = cfg.noice;
 
-      floating_window = cfg.floatingWindow.enable;
-      floating_window_above_cur_line = cfg.floatingWindow.aboveCurLine;
-      floating_window_off_x = cfg.floatingWindow.offX;
-      floating_window_off_y = cfg.floatingWindow.offY;
+        floating_window = cfg.floatingWindow.enable;
+        floating_window_above_cur_line = cfg.floatingWindow.aboveCurLine;
+        floating_window_off_x = cfg.floatingWindow.offX;
+        floating_window_off_y = cfg.floatingWindow.offY;
 
-      close_timeout = cfg.closeTimeout;
-      fix_pos = cfg.fixPos;
+        close_timeout = cfg.closeTimeout;
+        fix_pos = cfg.fixPos;
 
-      hint_enable = cfg.hint.enable;
-      hint_prefix = cfg.hint.prefix;
-      hint_scheme = cfg.hint.scheme;
+        hint_enable = cfg.hint.enable;
+        hint_prefix = cfg.hint.prefix;
+        hint_scheme = cfg.hint.scheme;
 
-      hi_parameter = cfg.hiParameter;
-      handle_opts = {border = cfg.handlerOpts.border;};
+        hi_parameter = cfg.hiParameter;
+        handle_opts = {
+          border = cfg.handlerOpts.border;
+        };
 
-      always_trigger = cfg.alwaysTrigger;
-      auto_close_after = cfg.autoCloseAfter;
-      extra_trigger_chars = cfg.extraTriggerChars;
-      zindex = cfg.zindex;
+        always_trigger = cfg.alwaysTrigger;
+        auto_close_after = cfg.autoCloseAfter;
+        extra_trigger_chars = cfg.extraTriggerChars;
+        zindex = cfg.zindex;
 
-      padding = cfg.padding;
+        padding = cfg.padding;
 
-      transparency = cfg.transparency;
-      shadow_blend = cfg.shadowBlend;
-      shadow_guibg = cfg.shadowGuibg;
-      timer_interval = cfg.timerInterval;
-      toggle_key = cfg.toggleKey;
+        transparency = cfg.transparency;
+        shadow_blend = cfg.shadowBlend;
+        shadow_guibg = cfg.shadowGuibg;
+        timer_interval = cfg.timerInterval;
+        toggle_key = cfg.toggleKey;
 
-      select_signature_key = cfg.selectSignatureKey;
-      move_cursor_key = cfg.moveCursorKey;
-    };
-  in
+        select_signature_key = cfg.selectSignatureKey;
+        move_cursor_key = cfg.moveCursorKey;
+      };
+    in
     mkIf cfg.enable {
-      extraPlugins = [cfg.package];
+      extraPlugins = [ cfg.package ];
 
       extraConfigLua = ''
         require("lsp_signature").setup(${helpers.toLuaObject setupOptions})

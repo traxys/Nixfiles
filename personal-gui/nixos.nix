@@ -1,8 +1,5 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   xdg = {
     portal = {
       enable = true;
@@ -54,7 +51,7 @@
     debug = false;
     mode = "challenge-response";
   };
-  services.udev.packages = [pkgs.yubikey-personalization];
+  services.udev.packages = with pkgs; [ yubikey-personalization ];
 
   security.pam.services.swaylock.text = ''
     auth include login
@@ -62,7 +59,11 @@
 
   services.printing = {
     enable = true;
-    drivers = [pkgs.hplip pkgs.gutenprint pkgs.cnijfilter2];
+    drivers = with pkgs; [
+      hplip
+      gutenprint
+      cnijfilter2
+    ];
   };
   hardware.sane.enable = true;
   services.avahi = {
@@ -76,5 +77,9 @@
     driSupport32Bit = true;
   };
 
-  users.users."${config.extraInfo.username}".extraGroups = ["adbusers" "scanner" "lp"];
+  users.users."${config.extraInfo.username}".extraGroups = [
+    "adbusers"
+    "scanner"
+    "lp"
+  ];
 }
