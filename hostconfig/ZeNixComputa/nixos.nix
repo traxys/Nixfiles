@@ -1,11 +1,11 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
   boot.initrd = {
     enable = true;
-    availableKernelModules = ["amdgpu" "r8169"];
+    availableKernelModules = [
+      "amdgpu"
+      "r8169"
+    ];
 
     # secrets = {
     #   "/etc/secrets/initrd/keyfile" = "/etc/secrets/initrd/keyfile";
@@ -40,8 +40,26 @@
         wakeOnLan.enable = true;
       };
     };
-    firewall.allowedTCPPorts = [8080 8085 5201 7777 24642 80 443 843 38202 38203];
-    firewall.allowedUDPPorts = [24642 80 443 843 38202 38203];
+    firewall.allowedTCPPorts = [
+      8080
+      8085
+      5201
+      7777
+      24642
+      80
+      443
+      843
+      38202
+      38203
+    ];
+    firewall.allowedUDPPorts = [
+      24642
+      80
+      443
+      843
+      38202
+      38203
+    ];
   };
 
   time.timeZone = "Europe/Paris";
@@ -58,12 +76,11 @@
 
   services.postgresql = {
     enable = true;
-    ensureUsers = [
-      {
-        name = "traxys";
-      }
+    ensureUsers = [ { name = "traxys"; } ];
+    ensureDatabases = [
+      "list"
+      "regalade"
     ];
-    ensureDatabases = ["list" "regalade"];
   };
 
   hardware.cpu.amd.updateMicrocode = true;
@@ -73,7 +90,7 @@
     keep-derivations = true
   '';
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

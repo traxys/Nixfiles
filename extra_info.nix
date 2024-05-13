@@ -1,6 +1,7 @@
-{lib, ...}:
+{ lib, ... }:
 with lib;
-with builtins; {
+with builtins;
+{
   options = {
     extraInfo.email = mkOption {
       type = types.str;
@@ -23,7 +24,7 @@ with builtins; {
     extraInfo.outputs = mkOption {
       type = types.attrsOf (types.attrsOf types.str);
       description = "Description of the outputs";
-      default = {};
+      default = { };
     };
   };
 }

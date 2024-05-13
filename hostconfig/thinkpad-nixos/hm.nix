@@ -3,28 +3,33 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   projects = {
-    btf = ["bxi-test-frameworks" "bxi-frameworks"];
-    bxi3 = ["bxi3"];
-    libs2 = ["bxi-jenkins-libs2"];
-    hps = ["bxi-hps"];
-    doc = ["bxi-doc"];
-    container = ["bxi-containers"];
-    flash-tools = ["bxi-flash-tools"];
-    gpumap = ["gpumap"];
-    ofi = ["libfabric-bxi-portals"];
-    lustre = ["lustre-ptl4lnd"];
-    ptlnet = ["ptlnet"];
-    openshmem = ["sandia-openshmem"];
-    bxi-base = ["bxi-base"];
-    bxi2-portals = ["bxi-portals"];
-    bxi2-mod = ["bxi-module"];
-    bxi2-ptltest = ["bxi-portals-tests"];
-    bxicomm = ["bxicomm"];
+    btf = [
+      "bxi-test-frameworks"
+      "bxi-frameworks"
+    ];
+    bxi3 = [ "bxi3" ];
+    libs2 = [ "bxi-jenkins-libs2" ];
+    hps = [ "bxi-hps" ];
+    doc = [ "bxi-doc" ];
+    container = [ "bxi-containers" ];
+    flash-tools = [ "bxi-flash-tools" ];
+    gpumap = [ "gpumap" ];
+    ofi = [ "libfabric-bxi-portals" ];
+    lustre = [ "lustre-ptl4lnd" ];
+    ptlnet = [ "ptlnet" ];
+    openshmem = [ "sandia-openshmem" ];
+    bxi-base = [ "bxi-base" ];
+    bxi2-portals = [ "bxi-portals" ];
+    bxi2-mod = [ "bxi-module" ];
+    bxi2-ptltest = [ "bxi-portals-tests" ];
+    bxicomm = [ "bxicomm" ];
   };
-in {
-  imports = [./work.nix];
+in
+{
+  imports = [ ./work.nix ];
 
   home.packages = with pkgs; [
     bear
@@ -43,9 +48,7 @@ in {
     sshfs
   ];
 
-  wm.startup = [
-    {command = "chromium --app=http://teams.microsoft.com";}
-  ];
+  wm.startup = [ { command = "chromium --app=http://teams.microsoft.com"; } ];
 
   wm.workspaces.definitions."".assign = [
     "Microsoft Teams"
@@ -101,36 +104,34 @@ in {
   programs.aerc = {
     enable = true;
     extraAccounts = {
-      work-t = let
-        workCfg = config.accounts.email.accounts.work.aerc;
-      in {
-        inherit
-          (workCfg.extraAccounts)
-          check-mail-cmd
-          check-mail-timeout
-          ;
-        from = "Quentin Boyer <${config.workAddr}>";
-        outgoing = "msmtpq --read-envelope-from --read-recipients";
-        default = "_unread";
-        postpone = "Drafts";
-        source = "notmuch://~/Maildir";
-        address-book-cmd = "${pkgs.notmuch-addrlookup}/bin/notmuch-addrlookup --format=aerc %s";
-        query-map = let
-          mkPatchDir = name: "patches/${name}=tag:${name}";
-          patchDirs = builtins.concatStringsSep "\n" (builtins.map mkPatchDir (
-            builtins.attrNames projects
-          ));
-        in "${pkgs.writeText "querymap" ''
-          inbox=tag:inbox and not tag:spammy
-          inflight=thread:{tag:inflight}
-          review=thread:{tag:review}
-          _unread=thread:{tag:unread}
-          _todo=thread:{tag:todo}
-          ext/iommu=tag:iommu
+      work-t =
+        let
+          workCfg = config.accounts.email.accounts.work.aerc;
+        in
+        {
+          inherit (workCfg.extraAccounts) check-mail-cmd check-mail-timeout;
+          from = "Quentin Boyer <${config.workAddr}>";
+          outgoing = "msmtpq --read-envelope-from --read-recipients";
+          default = "_unread";
+          postpone = "Drafts";
+          source = "notmuch://~/Maildir";
+          address-book-cmd = "${pkgs.notmuch-addrlookup}/bin/notmuch-addrlookup --format=aerc %s";
+          query-map =
+            let
+              mkPatchDir = name: "patches/${name}=tag:${name}";
+              patchDirs = builtins.concatStringsSep "\n" (builtins.map mkPatchDir (builtins.attrNames projects));
+            in
+            "${pkgs.writeText "querymap" ''
+              inbox=tag:inbox and not tag:spammy
+              inflight=thread:{tag:inflight}
+              review=thread:{tag:review}
+              _unread=thread:{tag:unread}
+              _todo=thread:{tag:todo}
+              ext/iommu=tag:iommu
 
-          ${patchDirs}
-        ''}";
-      };
+              ${patchDirs}
+            ''}";
+        };
     };
     extraConfig = {
       general.unsafe-accounts-conf = true;
@@ -280,42 +281,42 @@ in {
 
   programs.notmuch = {
     enable = true;
-    new.tags = ["new"];
+    new.tags = [ "new" ];
     hooks = {
       preNew = "${pkgs.isync}/bin/mbsync --all";
-      postNew = let
-        mkProjectMatch = project: "subject:'/PATCH\\s${project}\\s/'";
-        mkProjectMatches = labels: lib.concatStringsSep " or " (builtins.map mkProjectMatch labels);
+      postNew =
+        let
+          mkProjectMatch = project: "subject:'/PATCH\\s${project}\\s/'";
+          mkProjectMatches = labels: lib.concatStringsSep " or " (builtins.map mkProjectMatch labels);
 
-        mkProject = tag: labels: ''
-          notmuch tag +${tag} -unread -new -- tag:new and \( ${mkProjectMatches labels} \) and tag:me
-          notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \) and not tag:me
+          mkProject = tag: labels: ''
+            notmuch tag +${tag} -unread -new -- tag:new and \( ${mkProjectMatches labels} \) and tag:me
+            notmuch tag +${tag} +unread -new -- tag:new and \( ${mkProjectMatches labels} \) and not tag:me
+          '';
+
+          projectFilters = builtins.concatStringsSep "\n" (lib.attrsets.mapAttrsToList mkProject projects);
+
+          spammyFilters = [
+            "subject:'[confluence] Recommended in Confluence for Boyer, Quentin'"
+            "subject:'[PCI-SIG]'"
+            "from:enterprisedb.com"
+            "from:GIGA@***REMOVED***"
+          ];
+
+          spammySearch = lib.concatStringsSep " or " spammyFilters;
+        in
+        ''
+          notmuch tag +work -- tag:new and 'path:work/**'
+          notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
+          notmuch tag -unread -- tag:iommu and subject:'/^Re:/'
+          notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
+          notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
+          notmuch tag -unread +me -- tag:new and from:${config.workAddr}
+          notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
+          ${projectFilters}
+          notmuch tag +inbox +unread -new -- tag:new and not tag:me
+          notmuch tag +inbox -unread -new -- tag:new and tag:me
         '';
-
-        projectFilters =
-          builtins.concatStringsSep "\n"
-          (lib.attrsets.mapAttrsToList mkProject projects);
-
-        spammyFilters = [
-          "subject:'[confluence] Recommended in Confluence for Boyer, Quentin'"
-          "subject:'[PCI-SIG]'"
-          "from:enterprisedb.com"
-          "from:GIGA@***REMOVED***"
-        ];
-
-        spammySearch = lib.concatStringsSep " or " spammyFilters;
-      in ''
-        notmuch tag +work -- tag:new and 'path:work/**'
-        notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
-        notmuch tag -unread -- tag:iommu and subject:'/^Re:/'
-        notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
-        notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
-        notmuch tag -unread +me -- tag:new and from:${config.workAddr}
-        notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
-        ${projectFilters}
-        notmuch tag +inbox +unread -new -- tag:new and not tag:me
-        notmuch tag +inbox -unread -new -- tag:new and tag:me
-      '';
     };
   };
 
@@ -341,7 +342,10 @@ in {
           url = "http://localhost:1080/users/${config.workAddr}/calendar/";
           type = "caldav";
           userName = "${config.workAddr}";
-          passwordCommand = ["echo" "foobar"];
+          passwordCommand = [
+            "echo"
+            "foobar"
+          ];
         };
         khal = {
           enable = true;
@@ -395,7 +399,9 @@ in {
   };
 
   systemd.user.services.notmuch-new = {
-    Unit = {Description = "notmuch synchronization";};
+    Unit = {
+      Description = "notmuch synchronization";
+    };
 
     Service = {
       Type = "oneshot";
@@ -404,14 +410,18 @@ in {
   };
 
   systemd.user.timers.notmuch = {
-    Unit = {Description = "notmuch synchronization";};
+    Unit = {
+      Description = "notmuch synchronization";
+    };
 
     Timer = {
       OnCalendar = "*:0/5";
       Unit = "notmuch-new.service";
     };
 
-    Install = {WantedBy = ["default.target"];};
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   xdg.desktopEntries.teams = {

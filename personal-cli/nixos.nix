@@ -1,9 +1,9 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
-  environment.systemPackages = [config.boot.kernelPackages.perf pkgs.virt-manager];
+  environment.systemPackages = [
+    config.boot.kernelPackages.perf
+    pkgs.virt-manager
+  ];
 
   services.privoxy.enable = true;
 
@@ -15,7 +15,7 @@
       qemu.swtpm.enable = true;
       qemu.ovmf = {
         enable = true;
-        packages = [pkgs.OVMFFull.fd];
+        packages = [ pkgs.OVMFFull.fd ];
       };
     };
 

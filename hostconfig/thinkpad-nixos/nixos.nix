@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   boot.initrd = {
     luks.devices = {
       root = {
@@ -15,12 +16,15 @@
 
   environment.systemPackages = [
     (pkgs.davmail.overrideAttrs (old: {
-      nativeBuildInputs = old.nativeBuildInputs ++ [pkgs.swt];
+      nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.swt ];
     }))
     pkgs.virtiofsd
   ];
 
-  boot.kernelParams = ["intel_iommu=on" "iommu=pt"];
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
 
   networking = {
     hostName = "thinkpad-nixos";
@@ -38,7 +42,7 @@
       isSystemUser = true;
     };
     groups.sf-user.gid = 1100;
-    extraGroups.vboxusers.members = ["traxys"];
+    extraGroups.vboxusers.members = [ "traxys" ];
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -46,7 +50,11 @@
   virtualisation.containers = {
     enable = true;
     registries = {
-      search = ["registry.sf.bds.***REMOVED***" "docker.io" "quay.io"];
+      search = [
+        "registry.sf.bds.***REMOVED***"
+        "docker.io"
+        "quay.io"
+      ];
     };
   };
 
@@ -56,7 +64,7 @@
       ExecStart = "${pkgs.roaming_proxy}/bin/roaming_proxy --config ${./roaming.toml}";
       Restart = "on-failure";
     };
-    wantedBy = ["default.target"];
+    wantedBy = [ "default.target" ];
   };
   systemd.services.roaming_proxy.enable = true;
 
@@ -65,7 +73,7 @@
   # };
 
   services.tailscale.enable = true;
-  systemd.services.tailscaled.serviceConfig.Environment = ["http_proxy=http://localhost:8100"];
+  systemd.services.tailscaled.serviceConfig.Environment = [ "http_proxy=http://localhost:8100" ];
 
   security.sudo.extraConfig = ''Defaults env_keep += "*_proxy *_PROXY"'';
   networking.proxy = {

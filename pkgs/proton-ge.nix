@@ -1,7 +1,4 @@
-{
-  stdenv,
-  fetchFromGitHub,
-}:
+{ stdenv, fetchFromGitHub }:
 stdenv.mkDerivation rec {
   pname = "proton-ge";
   version = "9-4";

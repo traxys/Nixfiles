@@ -1,11 +1,8 @@
+{ config, pkgs, ... }:
 {
-  config,
-  pkgs,
-  ...
-}: {
   home.username = "${config.extraInfo.username}";
   home.homeDirectory = "/home/${config.extraInfo.username}";
-  home.packages = with pkgs; [cura];
+  home.packages = with pkgs; [ cura ];
 
   programs.git = {
     userName = "traxys";
@@ -13,8 +10,8 @@
   };
 
   wm.startup = [
-    {command = "${pkgs.wayvnc}/bin/waync 127.0.0.1 5800";}
-    {command = "${pkgs.ckb-next}/bin/ckb-next -b";}
+    { command = "${pkgs.wayvnc}/bin/waync 127.0.0.1 5800"; }
+    { command = "${pkgs.ckb-next}/bin/ckb-next -b"; }
   ];
 
   wm.workspaces.definitions = {
@@ -26,8 +23,8 @@
   services.mako.output = "DP-2";
 
   xdg.desktopEntries.teams = {
-  	name = "teams";
-	exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
+    name = "teams";
+    exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
   };
 
   # This value determines the Home Manager release that your

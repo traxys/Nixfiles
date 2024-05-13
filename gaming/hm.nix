@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     bottles
     heroic
@@ -26,7 +27,7 @@
   };
 
   home.activation = {
-    proton-ge = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    proton-ge = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       target="${config.home.homeDirectory}/.steam/root/compatibilitytools.d/Proton-${lib.getVersion pkgs.proton-ge}"
       if ! [ -d "$target" ]; then
         cp -R ${pkgs.proton-ge} "$target"

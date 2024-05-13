@@ -3,11 +3,10 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   options = {
-    workAddr = lib.mkOption {
-      type = lib.types.str;
-    };
+    workAddr = lib.mkOption { type = lib.types.str; };
   };
 
   config = {
@@ -26,7 +25,10 @@
     programs.git-series-manager = {
       enable = true;
       settings = {
-        sendmail_args = ["--sendmail-cmd=nwadminSendmail" "--to=dl-bxi-sw-ll-patches@***REMOVED***"];
+        sendmail_args = [
+          "--sendmail-cmd=nwadminSendmail"
+          "--to=dl-bxi-sw-ll-patches@***REMOVED***"
+        ];
         repo_url_base = "https://***REMOVED***/scm/bril/";
         ci_url = "https://sf.bds.***REMOVED***/jenkins/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
         editor = "nvim";

@@ -12,7 +12,7 @@ stdenv.mkDerivation {
   src = ./hbw.py;
 
   buildInputs = [
-    (python3.withPackages (ps: with ps; [pyotp]))
+    (python3.withPackages (ps: with ps; [ pyotp ]))
     bitwarden-cli
     makeWrapper
   ];
@@ -22,6 +22,6 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp $src $out/bin/hbw
-    wrapProgram $out/bin/hbw --prefix PATH : ${lib.makeBinPath [bitwarden-cli]}
+    wrapProgram $out/bin/hbw --prefix PATH : ${lib.makeBinPath [ bitwarden-cli ]}
   '';
 }

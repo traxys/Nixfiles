@@ -5,8 +5,12 @@
   ...
 }:
 with builtins;
-with lib; {
-  imports = [./i3.nix ./sway.nix];
+with lib;
+{
+  imports = [
+    ./i3.nix
+    ./sway.nix
+  ];
 
   options = {
     wm = {
@@ -16,7 +20,10 @@ with lib; {
         description = "Manage window Manager";
       };
       kind = mkOption {
-        type = types.enum ["i3" "sway"];
+        type = types.enum [
+          "i3"
+          "sway"
+        ];
         default = "sway";
         description = "WM to use";
       };
@@ -86,7 +93,7 @@ with lib; {
         command = mkOption {
           type = types.str;
           description = "Command to launch the menu";
-		  default = "${config.programs.rofi.package}/bin/rofi -show drun -show-icons";
+          default = "${config.programs.rofi.package}/bin/rofi -show drun -show-icons";
         };
       };
 
@@ -123,20 +130,22 @@ with lib; {
       };
 
       startup = mkOption {
-        type = types.listOf (types.submodule {
-          options = {
-            command = mkOption {
-              type = types.str;
-              description = "Command that will be executed on startup.";
-            };
+        type = types.listOf (
+          types.submodule {
+            options = {
+              command = mkOption {
+                type = types.str;
+                description = "Command that will be executed on startup.";
+              };
 
-            always = mkOption {
-              type = types.bool;
-              default = false;
-              description = "Whether to run command on each ${moduleName} restart.";
+              always = mkOption {
+                type = types.bool;
+                default = false;
+                description = "Whether to run command on each ${moduleName} restart.";
+              };
             };
-          };
-        });
+          }
+        );
       };
 
       wallpaper = mkOption {
@@ -146,26 +155,28 @@ with lib; {
 
       workspaces = {
         definitions = mkOption {
-          type = types.attrsOf (types.submodule {
-            options = {
-              key = mkOption {
-                type = types.str;
-                description = "Keybind for the workspace";
+          type = types.attrsOf (
+            types.submodule {
+              options = {
+                key = mkOption {
+                  type = types.str;
+                  description = "Keybind for the workspace";
+                };
+                output = mkOption {
+                  type = types.nullOr types.str;
+                  description = "Assign workspace to output";
+                  default = null;
+                };
+                assign = mkOption {
+                  type = types.listOf types.str;
+                  description = "Assign class elements";
+                  default = [ ];
+                };
               };
-              output = mkOption {
-                type = types.nullOr types.str;
-                description = "Assign workspace to output";
-                default = null;
-              };
-              assign = mkOption {
-                type = types.listOf types.str;
-                description = "Assign class elements";
-                default = [];
-              };
-            };
-          });
+            }
+          );
           description = "Workspace descriptions";
-          default = {};
+          default = { };
         };
         moveModifier = mkOption {
           type = types.str;

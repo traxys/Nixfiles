@@ -1,8 +1,5 @@
-{
-  naersk,
-  kabalist-src,
-}:
+{ naersk, kabalist-src }:
 naersk.buildPackage {
-  cargoBuildOptions = opts: opts ++ ["--package=kabalist_cli"];
+  cargoBuildOptions = opts: opts ++ [ "--package=kabalist_cli" ];
   root = kabalist-src;
 }

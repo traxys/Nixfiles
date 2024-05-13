@@ -17,5 +17,5 @@ stdenv.mkDerivation {
     cmake
     curl
   ];
-  nativeBuildInputs = [qt5.wrapQtAppsHook];
+  nativeBuildInputs = [ qt5.wrapQtAppsHook ];
 }

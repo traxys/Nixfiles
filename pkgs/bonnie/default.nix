@@ -24,6 +24,6 @@ rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/arctic-hen7/bonnie";
     changelog = "https://github.com/arctic-hen7/bonnie/blob/${src.rev}/CHANGELOG.md";
     license = licenses.mit;
-    maintainers = with maintainers; [];
+    maintainers = with maintainers; [ ];
   };
 }

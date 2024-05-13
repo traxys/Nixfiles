@@ -147,12 +147,12 @@ with lib;
       setupOptions = {
         debug = cfg.debug.enable;
         log_path = cfg.debug.logPath;
-        verbose = cfg.debug.verbose;
+        inherit (cfg.debug) verbose;
 
-        bind = cfg.bind;
+        inherit (cfg) bind;
         doc_lines = cfg.docLines;
         max_height = cfg.maxHeight;
-        noice = cfg.noice;
+        inherit (cfg) noice;
 
         floating_window = cfg.floatingWindow.enable;
         floating_window_above_cur_line = cfg.floatingWindow.aboveCurLine;
@@ -168,17 +168,17 @@ with lib;
 
         hi_parameter = cfg.hiParameter;
         handle_opts = {
-          border = cfg.handlerOpts.border;
+          inherit (cfg.handlerOpts) border;
         };
 
         always_trigger = cfg.alwaysTrigger;
         auto_close_after = cfg.autoCloseAfter;
         extra_trigger_chars = cfg.extraTriggerChars;
-        zindex = cfg.zindex;
+        inherit (cfg) zindex;
 
-        padding = cfg.padding;
+        inherit (cfg) padding;
 
-        transparency = cfg.transparency;
+        inherit (cfg) transparency;
         shadow_blend = cfg.shadowBlend;
         shadow_guibg = cfg.shadowGuibg;
         timer_interval = cfg.timerInterval;

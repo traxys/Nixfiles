@@ -18,8 +18,12 @@ stdenv.mkDerivation {
     hash = "sha256-ZRSgrQHnNdEF2PyaflmI5sUoKCxtZ0mQY/bb/9PH64c=";
   };
 
-  nativeBuildInputs = [pkg-config];
-  buildInputs = [libevdev xdotool xorg.libX11.dev];
+  nativeBuildInputs = [ pkg-config ];
+  buildInputs = [
+    libevdev
+    xdotool
+    xorg.libX11.dev
+  ];
 
   installPhase = ''
     runHook preInstall
@@ -34,7 +38,7 @@ stdenv.mkDerivation {
     description = "This fixes the inability to use push to talk in Discord when running Wayland";
     homepage = "https://github.com/Rush/wayland-push-to-talk-fix";
     license = licenses.mit;
-    maintainers = with maintainers; [traxys];
+    maintainers = with maintainers; [ traxys ];
     mainProgram = "wayland-push-to-talk-fix";
     platforms = platforms.all;
   };

@@ -1,12 +1,13 @@
-{ lib
-, stdenv
-, fetchFromGitHub
-, pkg-config
-, rustPlatform
-, openssl
-, zstd
-, darwin
-, bonnie
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  pkg-config,
+  rustPlatform,
+  openssl,
+  zstd,
+  darwin,
+  bonnie,
 }:
 
 stdenv.mkDerivation rec {
@@ -20,9 +21,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-0jGXoSZeAt+Fo08hGEHiYcookqean6qD7F6mhTGfb2M=";
   };
 
-  cargoDeps = rustPlatform.importCargoLock {
-    lockFile = ./Cargo.lock;
-  };
+  cargoDeps = rustPlatform.importCargoLock { lockFile = ./Cargo.lock; };
 
   postPatch = ''
     ln -s ${./Cargo.lock} Cargo.lock
@@ -40,14 +39,16 @@ stdenv.mkDerivation rec {
     rustPlatform.rust.rustc
   ];
 
-  buildInputs = [
-    openssl
-    zstd
-  ] ++ lib.optionals stdenv.isDarwin [
-    darwin.apple_sdk.frameworks.CoreFoundation
-    darwin.apple_sdk.frameworks.CoreServices
-    darwin.apple_sdk.frameworks.Security
-  ];
+  buildInputs =
+    [
+      openssl
+      zstd
+    ]
+    ++ lib.optionals stdenv.isDarwin [
+      darwin.apple_sdk.frameworks.CoreFoundation
+      darwin.apple_sdk.frameworks.CoreServices
+      darwin.apple_sdk.frameworks.Security
+    ];
 
   checkPhase = ''
     bonnie test cli

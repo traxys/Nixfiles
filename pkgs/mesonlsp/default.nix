@@ -14,7 +14,8 @@
   libunwind,
   python3,
   tomlplusplus,
-}: let
+}:
+let
   ada = fetchFromGitHub {
     owner = "ada-url";
     repo = "ada";
@@ -59,70 +60,68 @@
     hash = "sha256-k883mKwuP35f0WtwX8ybl9uYbvA3y6Vxtv2EJMpZDEs=";
   };
 in
-  stdenv.mkDerivation rec {
-    pname = "mesonlsp";
-    version = "4.2.2";
+stdenv.mkDerivation rec {
+  pname = "mesonlsp";
+  version = "4.2.2";
 
-    src = fetchFromGitHub {
-      owner = "JCWasmx86";
-      repo = "mesonlsp";
-      rev = "refs/tags/v${version}";
-      hash = "sha256-pN8MCqrRfVpmM8KWa7HPTghoegplM4bP/HRVJVs05iE=";
-    };
+  src = fetchFromGitHub {
+    owner = "JCWasmx86";
+    repo = "mesonlsp";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-pN8MCqrRfVpmM8KWa7HPTghoegplM4bP/HRVJVs05iE=";
+  };
 
-    postUnpack = ''
-      pushd "$sourceRoot/subprojects"
-      cp -R --no-preserve=mode,ownership ${tree-sitter} tree-sitter-${tsVersion}
-      cp -R --no-preserve=mode,ownership ${tree-sitter-meson} tree-sitter-meson
-      cp -R --no-preserve=mode,ownership ${tree-sitter-ini} tree-sitter-ini
-      cp -R --no-preserve=mode,ownership ${sha256} sha256
-      cp -R --no-preserve=mode,ownership ${ada} ada
-      cp -R --no-preserve=mode,ownership ${muon} muon
-      popd
-    '';
+  postUnpack = ''
+    pushd "$sourceRoot/subprojects"
+    cp -R --no-preserve=mode,ownership ${tree-sitter} tree-sitter-${tsVersion}
+    cp -R --no-preserve=mode,ownership ${tree-sitter-meson} tree-sitter-meson
+    cp -R --no-preserve=mode,ownership ${tree-sitter-ini} tree-sitter-ini
+    cp -R --no-preserve=mode,ownership ${sha256} sha256
+    cp -R --no-preserve=mode,ownership ${ada} ada
+    cp -R --no-preserve=mode,ownership ${muon} muon
+    popd
+  '';
 
-    mesonFlags = ["-Dbenchmarks=false"];
+  mesonFlags = [ "-Dbenchmarks=false" ];
 
-    patches = [
-      ./build_flags.patch
-    ];
+  patches = [ ./build_flags.patch ];
 
-    postPatch = ''
-      patchShebangs .
-      pushd subprojects
-      cp packagefiles/tree-sitter-${tsVersion}/* tree-sitter-${tsVersion}
-      cp packagefiles/tree-sitter-meson/* tree-sitter-meson
-      cp packagefiles/tree-sitter-ini/* tree-sitter-ini
-      cp packagefiles/sha256/* sha256
-      cp packagefiles/ada/* ada
-      popd
-    '';
+  postPatch = ''
+    patchShebangs .
+    pushd subprojects
+    cp packagefiles/tree-sitter-${tsVersion}/* tree-sitter-${tsVersion}
+    cp packagefiles/tree-sitter-meson/* tree-sitter-meson
+    cp packagefiles/tree-sitter-ini/* tree-sitter-ini
+    cp packagefiles/sha256/* sha256
+    cp packagefiles/ada/* ada
+    popd
+  '';
 
-    nativeBuildInputs = [
-      meson
-      ninja
-      python3
-      pkg-config
-    ];
+  nativeBuildInputs = [
+    meson
+    ninja
+    python3
+    pkg-config
+  ];
 
-    buildInputs = [
-      tomlplusplus
-      nlohmann_json
-      curl
-      libarchive
-      libuuid
-      libpkgconf
-      libunwind
-      gtest
-    ];
+  buildInputs = [
+    tomlplusplus
+    nlohmann_json
+    curl
+    libarchive
+    libuuid
+    libpkgconf
+    libunwind
+    gtest
+  ];
 
-    meta = with lib; {
-      description = "An unofficial, unendorsed language server for meson written in C";
-      homepage = "https://github.com/JCWasmx86/mesonlsp";
-      changelog = "https://github.com/JCWasmx86/mesonlsp/blob/${src.rev}/CHANGELOG.md";
-      license = licenses.gpl3Only;
-      maintainers = with maintainers; [traxys];
-      mainProgram = "mesonlsp";
-      platforms = platforms.all;
-    };
-  }
+  meta = with lib; {
+    description = "An unofficial, unendorsed language server for meson written in C";
+    homepage = "https://github.com/JCWasmx86/mesonlsp";
+    changelog = "https://github.com/JCWasmx86/mesonlsp/blob/${src.rev}/CHANGELOG.md";
+    license = licenses.gpl3Only;
+    maintainers = with maintainers; [ traxys ];
+    mainProgram = "mesonlsp";
+    platforms = platforms.all;
+  };
+}
