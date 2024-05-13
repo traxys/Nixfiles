@@ -1,7 +1,6 @@
 {
   self,
   inputs,
-  lib,
   flakeOverlays,
   ...
 }:
@@ -21,30 +20,33 @@
         user,
         nixosModules,
         hmModules,
-        ...
+        unfreePackages ? [ ],
       }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
         modules = nixosModules ++ [
           ../nixos/configuration.nix
           inputs.home-manager.nixosModules.home-manager
-          {
-            nixpkgs = {
-              overlays = flakeOverlays system;
-              config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "warcraftlogs" ];
-            };
+          (
+            { lib, ... }:
+            {
+              nixpkgs = {
+                overlays = flakeOverlays system;
+                config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) unfreePackages;
+              };
 
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user} = {
-                imports = hmModules ++ [ inputs.fioul.homeManagerModules.default ];
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.${user} = {
+                  imports = hmModules ++ [ inputs.fioul.homeManagerModules.default ];
+                };
+                extraSpecialArgs = {
+                  flake = self;
+                };
               };
-              extraSpecialArgs = {
-                flake = self;
-              };
-            };
-          }
+            }
+          )
         ];
       };
   };
