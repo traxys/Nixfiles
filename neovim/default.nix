@@ -729,6 +729,9 @@
         shiftwidth = 2;
         expandtab = true;
       };
+      extraConfigLua = ''
+        vim.lsp.inlay_hint.enable(true)
+      '';
     };
 
     files."ftplugin/markdown.lua" = {
