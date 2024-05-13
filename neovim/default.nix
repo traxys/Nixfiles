@@ -494,10 +494,10 @@
       };
 
       servers = {
-        nil_ls = {
+        nixd = {
           enable = true;
           settings = {
-            formatting.command = ["${pkgs.alejandra}/bin/alejandra" "--quiet"];
+            formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
           };
         };
         bashls.enable = true;
