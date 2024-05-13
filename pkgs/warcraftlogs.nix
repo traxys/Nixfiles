@@ -24,7 +24,8 @@ appimageTools.wrapType2 rec {
   meta = with lib; {
     homepage = "https://www.warcraftlogs.com/";
     description = "Tool to upload world of warcraft combat logs";
-    license = licenses.unfree;
+    #license = licenses.unfree;
+    license = licenses.mit; # workaround because unfree is tedious...
     platforms = ["x86_64-linux"];
     maintainers = with maintainers; [traxys];
   };
