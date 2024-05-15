@@ -20,6 +20,13 @@
       personal-gui
       gaming
     ];
-    unfreePackages = [ "warcraftlogs" ];
+    unfreePackages = [
+      "cnijfilter2"
+      "steam"
+      "steam-original"
+      "steam-run"
+      "discord"
+      "spotify"
+    ];
   };
 }
