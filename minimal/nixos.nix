@@ -28,9 +28,9 @@
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
-  fonts.enableDefaultFonts = true;
+  fonts.enableDefaultPackages = true;
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (nerdfonts.override { fonts = [ "Hack" ]; })
       dejavu_fonts
     ];
