@@ -1,4 +1,9 @@
-{ inputs, lib, ... }:
+{
+  inputs,
+  lib,
+  self,
+  ...
+}:
 let
   inputsMatching =
     prefix:
@@ -55,6 +60,9 @@ in
             module = {
               imports = [ ./default.nix ];
               package = inputs'.neovim-flake.packages.neovim;
+            };
+            extraSpecialArgs = {
+              flake = self;
             };
             pkgs = neovimPkgs;
           };

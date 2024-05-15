@@ -3,6 +3,7 @@
   config,
   helpers,
   lib,
+  flake,
   ...
 }:
 {
@@ -510,6 +511,14 @@
           enable = true;
           settings = {
             formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
+            options =
+              let
+                getFlake = ''(builtins.getFlake "${flake}")'';
+              in
+              {
+                nixos.expr = ''${getFlake}.nixosConfigurations.ZeNixComputa.options'';
+                nixvim.expr = ''${getFlake}.packages.${pkgs.system}.neovimTraxys.options'';
+              };
           };
         };
         bashls.enable = true;
