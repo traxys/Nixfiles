@@ -331,6 +331,10 @@
           {
             _module.args = {
               naersk' = inputs.naersk.lib.${system};
+              pkgs = import inputs.nixpkgs {
+                inherit system;
+                config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["warcraftlogs"];
+              };
             };
             packages =
               let
