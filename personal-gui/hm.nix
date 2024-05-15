@@ -10,7 +10,6 @@
   home.packages = with pkgs; [
     # Browsers
     firefox-wayland
-    (tor-browser-bundle-bin.override { useHardenedMalloc = false; })
 
     # IM
     (discord.override { inherit (pkgs) nss; })
