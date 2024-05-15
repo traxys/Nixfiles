@@ -13,7 +13,6 @@
         simulationcraft = pkgs.callPackage ./simulationcraft.nix {
           simulationcraft-src = inputs.simulationcraft;
         };
-        proton-ge = pkgs.callPackage ./proton-ge.nix { };
         hbw = pkgs.callPackage ./hbw { };
         kabalist_cli = pkgs.callPackage ./kabalist.nix {
           naersk = naersk';
