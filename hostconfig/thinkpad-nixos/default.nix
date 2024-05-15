@@ -1,7 +1,7 @@
 {
   self,
   makeMachine,
-  hostOverlays,
+  flakeOverlays,
   inputs,
   lib,
   ...
@@ -46,10 +46,16 @@
       pkgs = import inputs.nixpkgs rec {
         system = "x86_64-linux";
 
-        overlays = hostOverlays system;
-      };
+        overlays = flakeOverlays system;
 
-      config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ ];
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (lib.getName pkg) [
+            "slack"
+            "discord"
+            "spotify"
+          ];
+      };
     };
   };
 }
