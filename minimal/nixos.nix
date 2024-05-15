@@ -43,30 +43,6 @@
     };
   };
 
-  nixpkgs.overlays = [
-    (final: super: {
-      nixos-rebuild = super.nixos-rebuild.overrideAttrs (old: {
-        nativeBuildInputs = old.nativeBuildInputs ++ [ pkgs.makeWrapper ];
-
-        src = "${
-          final.runCommand "nixos-rebuild.sh" { } ''
-            mkdir -p $out
-
-            cp ${old.src} nixos-rebuild.sh
-
-            patch -p5 <${./nom-rebuild.patch}
-            mv nixos-rebuild.sh $out
-          ''
-        }/nixos-rebuild.sh";
-
-        postInstall = ''
-          ${old.postInstall}
-          wrapProgram $out/bin/nixos-rebuild --prefix PATH ${lib.makeBinPath [ pkgs.nix-output-monitor ]}
-        '';
-      });
-    })
-  ];
-
   nix = {
     package = pkgs.nixVersions.latest;
 
