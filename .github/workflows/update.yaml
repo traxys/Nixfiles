@@ -27,10 +27,3 @@ jobs:
         with:
           labels: automerge
           number: ${{ steps.update.outputs.pull-request-number }}
-      - name: Update nvim-treesitter
-        run: |
-          git checkout update_flake_lock_action
-          nix run .\#update-nvim-treesitter -- neovim/nvim-treesitter
-          git add neovim/nvim-treesitter
-          git commit -m "neovim: Update nvim-treesitter parsers"
-          git push
