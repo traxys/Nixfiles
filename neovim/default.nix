@@ -799,5 +799,6 @@
     markdown-preview-nvim
     vim-just
     ltex_extra-nvim
+    vim-wakatime
   ];
 }
