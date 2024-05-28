@@ -146,6 +146,7 @@
         rib = "!git ri $(git bb) $@";
         bb = "config --local --default master custom.base-branch";
         set-bb = "config --local custom.base-branch";
+        rv = ''!sh -c 'git commit --amend --no-edit --trailer "Reviewed-by: $*"' - '';
       };
     };
 
