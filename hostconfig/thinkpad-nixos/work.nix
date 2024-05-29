@@ -12,6 +12,15 @@
   config = {
     workAddr = "quentin.boyer@***REMOVED***";
 
+    extraNixvim = {
+      extraConfigLuaPre = ''
+        team_picker = dofile("${./telescope-team.lua}")
+      '';
+      commands = {
+        Review = "lua team_picker()";
+      };
+    };
+
     home.packages = [
       (pkgs.writeShellScriptBin "nwadminSendmail" ''
         #!/usr/bin/env sh
