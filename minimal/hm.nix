@@ -15,6 +15,11 @@
     default = "";
   };
 
+  options.extraNixvim = lib.mkOption {
+    type = lib.types.attrsOf lib.types.anything;
+    default = { };
+  };
+
   imports = [
     inputs.nix-index-database.hmModules.nix-index
     extraInfo
@@ -38,47 +43,48 @@
       WINEPREFIX = "${XDG_DATA_HOME}/wine";
     };
 
-    home.packages = with pkgs; [
-      bat
-      comma
-      fd
-      file
-      gdb
-      gnumake
-      jq
-      man-pages
-      neovimTraxys
-      nix-zsh-completions
-      oscclip
-      pandoc
-      raclette
-      ripgrep
-      rsync
-      tokei
-      unzip
-      wget
-      frg
-      nix-output-monitor
-      bat-extras.prettybat
-      just
-      bottom
+    home.packages =
+      (with pkgs; [
+        bat
+        comma
+        fd
+        file
+        gdb
+        gnumake
+        jq
+        man-pages
+        nix-zsh-completions
+        oscclip
+        pandoc
+        raclette
+        ripgrep
+        rsync
+        tokei
+        unzip
+        wget
+        frg
+        nix-output-monitor
+        bat-extras.prettybat
+        just
+        bottom
 
-      # Useful for pandoc to latex
-      (texlive.combine {
-        inherit (texlive)
-          scheme-medium
-          fncychap
-          wrapfig
-          capt-of
-          framed
-          upquote
-          needspace
-          tabulary
-          varwidth
-          titlesec
-          ;
-      })
-    ];
+        # Useful for pandoc to latex
+        (texlive.combine {
+          inherit (texlive)
+            scheme-medium
+            fncychap
+            wrapfig
+            capt-of
+            framed
+            upquote
+            needspace
+            tabulary
+            varwidth
+            titlesec
+            ;
+        })
+      ])
+      ++ [ (pkgs.neovimTraxys.nixvimExtend config.extraNixvim) ];
 
     nix.registry = {
       "my".flake = flake;
