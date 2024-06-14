@@ -128,6 +128,7 @@ in
               _unread=thread:{tag:unread}
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
+              stage=tag:stage
 
               ${patchDirs}
             ''}";
