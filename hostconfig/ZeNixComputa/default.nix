@@ -27,6 +27,7 @@
       "steam-run"
       "discord"
       "spotify"
+      "libXNVCtrl" # mangohud through bottles & heroic
     ];
   };
 }
