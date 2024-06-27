@@ -8,6 +8,7 @@
     freetube
     spotify
     streamlink-twitch-gui-bin
+    firefox
   ];
 
   services.spotifyd = {
