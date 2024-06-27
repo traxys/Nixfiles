@@ -128,7 +128,8 @@ in
               _unread=thread:{tag:unread}
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
-              stage=tag:stage
+              stage=thread:{tag:stage}
+              archi=thread:"{tag:'archi' or subject:'[NICIA] CR réunion architecture'}"
 
               ${patchDirs}
             ''}";
