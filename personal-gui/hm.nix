@@ -8,9 +8,6 @@
   imports = [ ./wm ];
 
   home.packages = with pkgs; [
-    # Browsers
-    firefox-wayland
-
     # IM
     (discord.override { inherit (pkgs) nss; })
     element-desktop
@@ -43,6 +40,11 @@
     waypipe
     glaurung
   ];
+
+  programs.firefox = {
+    enable = true;
+    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+  };
 
   home.sessionVariables = {
     BROWSER = "firefox";
