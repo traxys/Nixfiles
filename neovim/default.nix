@@ -184,12 +184,11 @@
       {
         key = "<leader>rn";
         mode = [ "n" ];
-        action = ''
+        action = helpers.mkRaw ''
           function()
           	return ":IncRename " .. vim.fn.expand("<cword>")
           end
         '';
-        lua = true;
         options.expr = true;
       }
     ];
@@ -566,7 +565,7 @@
   plugins.rustaceanvim = {
     enable = true;
 
-    server = {
+    settings.server = {
       settings = {
         cargo.features = "all";
         checkOnSave = true;
@@ -729,7 +728,7 @@
 
   plugins.zk = {
     enable = true;
-    picker = "telescope";
+    settings.picker = "telescope";
   };
 
   plugins.which-key.enable = true;
