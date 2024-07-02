@@ -342,6 +342,9 @@ in
           inherit (common) keybindings;
           inherit (common) workspaceOutputAssign;
           inherit (common) assigns;
+          seat."*" = {
+            xcursor_theme = "${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
+          };
         };
       };
     };

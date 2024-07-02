@@ -30,6 +30,14 @@
     };
   };
 
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    size = 24;
+    package = pkgs.gnome.adwaita-icon-theme;
+    name = "Adwaita";
+  };
+
   terminal = {
     enable = true;
     kind = "foot";
