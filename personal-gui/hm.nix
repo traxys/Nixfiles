@@ -7,6 +7,22 @@
 {
   imports = [ ./wm ];
 
+  xdg.portal = {
+    enable = true;
+    config = {
+      sway = {
+        default = "gtk";
+        "org.freedesktop.impl.portal.Screenshot" = "wlr";
+        "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+      };
+    };
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
+
   home.packages = with pkgs; [
     # IM
     (discord.override { inherit (pkgs) nss; })
@@ -48,7 +64,6 @@
 
   home.sessionVariables = {
     BROWSER = "firefox";
-    GTK_USE_PORTAL = 1;
     NIXOS_OZONE_WL = 1;
     ANDROID_HOME = "${config.home.sessionVariables.XDG_DATA_HOME}/android";
   };
