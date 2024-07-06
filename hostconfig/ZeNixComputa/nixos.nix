@@ -75,6 +75,7 @@
   hardware.ckb-next.enable = true;
 
   services.postgresql = {
+    package = pkgs.postgresql_16;
     enable = true;
     ensureUsers = [ { name = "traxys"; } ];
     ensureDatabases = [
