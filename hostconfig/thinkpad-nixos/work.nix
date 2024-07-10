@@ -29,6 +29,7 @@
         ssh nwadmin "/usr/sbin/sendmail -r ${config.workAddr} $*"
         exit $?
       '')
+      pkgs.python3.pkgs.tappy
     ];
 
     programs.git-series-manager = {
