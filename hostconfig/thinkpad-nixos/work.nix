@@ -22,10 +22,7 @@
           keymaps = [
             {
               key = "<leader>R";
-              mode = [
-                "n"
-                "i"
-              ];
+              mode = [ "n" ];
               action = helpers.mkRaw "team_picker";
             }
           ];
