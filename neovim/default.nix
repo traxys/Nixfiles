@@ -372,18 +372,6 @@
     };
   };
 
-  extraFiles."queries/rust/injections.scm" = ''
-    ;; extends
-
-    (
-      (macro_invocation
-        macro: ((scoped_identifier) @_sql_def)
-        (token_tree (string_literal) @sql))
-
-      (#eq? @_sql_def "sqlx::query")
-    )
-  '';
-
   plugins.treesitter = {
     enable = true;
     indent = true;
