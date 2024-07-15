@@ -16,8 +16,8 @@
   };
 
   options.extraNixvim = lib.mkOption {
-    type = lib.types.attrsOf lib.types.anything;
-    default = { };
+    type = lib.types.listOf lib.types.anything;
+    default = [ ];
   };
 
   imports = [
@@ -84,7 +84,7 @@
             ;
         })
       ])
-      ++ [ (pkgs.neovimTraxys.nixvimExtend config.extraNixvim) ];
+      ++ [ (pkgs.neovimTraxys.extend { imports = config.extraNixvim; }) ];
 
     nix.registry = {
       "my".flake = flake;
