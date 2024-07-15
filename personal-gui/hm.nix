@@ -47,7 +47,8 @@
 
     # Misc
     gnome.eog
-    freecad
+    # Broken as of 15 July
+    # freecad
     plasma5Packages.kdeconnect-kde
     wdisplays
     wl-clipboard
