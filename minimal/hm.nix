@@ -133,7 +133,10 @@
           enabled = true;
           autoUpdate = true;
         };
-        rebase.autosquash = true;
+        rebase = {
+          autosquash = true;
+          updateRefs = true;
+        };
         branch.sort = "-committerdate";
         column.ui = "auto";
         diff = {
