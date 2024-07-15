@@ -729,7 +729,7 @@
 
   plugins.yanky = {
     enable = true;
-    picker.telescope = {
+    settings.picker.telescope = {
       useDefaultMappings = true;
       enable = true;
     };
