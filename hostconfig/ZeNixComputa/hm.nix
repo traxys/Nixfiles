@@ -2,7 +2,7 @@
 {
   home.username = "${config.extraInfo.username}";
   home.homeDirectory = "/home/${config.extraInfo.username}";
-  home.packages = with pkgs; [ cura ];
+  home.packages = with pkgs; [ cura-appimage ];
 
   programs.git = {
     userName = "traxys";
