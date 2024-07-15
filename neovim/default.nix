@@ -374,7 +374,11 @@
 
   plugins.treesitter = {
     enable = true;
-    indent = true;
+
+    settings = {
+      indent.enable = true;
+      highlight.enable = true;
+    };
 
     nixvimInjections = true;
 
