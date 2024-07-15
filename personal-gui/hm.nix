@@ -46,7 +46,7 @@
     libreoffice
 
     # Misc
-    gnome.eog
+    eog
     # Broken as of 15 July
     # freecad
     plasma5Packages.kdeconnect-kde
