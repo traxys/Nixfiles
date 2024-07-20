@@ -1391,6 +1391,7 @@
         "simulationcraft": "simulationcraft",
         "treefmt-nix": "treefmt-nix_2",
         "vim-headerguard": "vim-headerguard",
+        "wiki.vim": "wiki.vim",
         "zsh-nix-shell": "zsh-nix-shell"
       }
     },
@@ -1857,6 +1858,22 @@
       "original": {
         "owner": "drmikehenry",
         "repo": "vim-headerguard",
+        "type": "github"
+      }
+    },
+    "wiki.vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1720569608,
+        "narHash": "sha256-5BrfNhD8SPZrObNCFCdrrMPdFpy0Vov+W/ojAxM2v1I=",
+        "owner": "lervag",
+        "repo": "wiki.vim",
+        "rev": "d65fcef243d273787106a1328ff5cad5b1e2a918",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lervag",
+        "repo": "wiki.vim",
         "type": "github"
       }
     },
