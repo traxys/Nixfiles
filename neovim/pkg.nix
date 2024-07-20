@@ -27,6 +27,11 @@
                     src = inputs.vim-headerguard;
                     version = inputs.vim-headerguard.shortRev;
                   };
+                  wiki-vim = prev.vimUtils.buildVimPlugin {
+                    pname = "wiki.vim";
+                    src = inputs."wiki.vim";
+                    version = inputs."wiki.vim".shortRev;
+                  };
                 }
               );
             }

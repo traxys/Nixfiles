@@ -101,6 +101,10 @@
       url = "github:drmikehenry/vim-headerguard";
       flake = false;
     };
+    "wiki.vim" = {
+      url = "github:lervag/wiki.vim";
+      flake = false;
+    };
   };
 
   outputs =
