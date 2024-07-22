@@ -372,6 +372,7 @@
         { name = "buffer"; }
         { name = "calc"; }
         { name = "git"; }
+        { name = "omni"; }
       ];
     };
 
