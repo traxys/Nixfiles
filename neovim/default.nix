@@ -23,6 +23,15 @@
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
     {
+      event = [ "User" ];
+      pattern = [ "WikiBufferInitialized" ];
+      callback = helpers.mkRaw ''
+        function()
+          vim.diagnostic.disable(0)
+        end
+      '';
+    }
+    {
       event = [
         "BufNewFile"
         "BufRead"
