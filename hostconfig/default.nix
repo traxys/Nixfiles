@@ -56,6 +56,6 @@
     ./ZeNixComputa
     ./minus
     ./thinkpad-nixos
-    ./laptop
+    ./gandalf
   ];
 }

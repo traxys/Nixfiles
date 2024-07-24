@@ -3,7 +3,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amd_pstate=active" ];
 
-  networking.hostName = "laptop";
+  networking.hostName = "gandalf";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Paris";

@@ -1,6 +1,6 @@
 { self, makeMachine, ... }:
 {
-  flake.nixosConfigurations.laptop = makeMachine {
+  flake.nixosConfigurations.gandalf = makeMachine {
     system = "x86_64-linux";
     user = "traxys";
     nixosModules = with self.nixosModules; [
