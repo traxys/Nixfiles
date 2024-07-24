@@ -1,5 +1,12 @@
 { pkgs, config, ... }:
 {
+  systemd.oomd = {
+    enable = true;
+    enableUserSlices = true;
+    enableRootSlice = true;
+    enableSystemSlice = true;
+  };
+
   services.gnome.gnome-keyring.enable = true;
   services.flatpak.enable = true;
   xdg.portal = {

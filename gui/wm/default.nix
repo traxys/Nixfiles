@@ -139,6 +139,7 @@
       };
 
       startup = [
+        { command = lib.getExe pkgs.sway-assign-cgroups; }
         { command = "signal-desktop"; }
         { command = "discord"; }
         { command = "firefox"; }
