@@ -23,7 +23,7 @@
   security.pam.yubico = {
     enable = true;
     debug = false;
-    module = "challenge-response";
+    mode = "challenge-response";
   };
   services.udev.packages = with pkgs; [ yubikey-personalization ];
 
