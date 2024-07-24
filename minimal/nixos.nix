@@ -43,6 +43,8 @@
     };
   };
 
+  hardware.enableRedistributableFirmware = true;
+
   nix = {
     package = pkgs.nixVersions.latest;
 
