@@ -56,5 +56,6 @@
     ./ZeNixComputa
     ./minus
     ./thinkpad-nixos
+    ./laptop
   ];
 }
