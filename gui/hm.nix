@@ -74,14 +74,4 @@
     theme = "solarized_alternate";
     terminal = "${config.terminal.command}";
   };
-
-  xdg.desktopEntries.zklist = {
-    name = "zklist";
-    exec = ''${pkgs.foot}/bin/foot nvim "+ZkNotes"'';
-  };
-
-  xdg.desktopEntries.zksearch = {
-    name = "zksearch";
-    exec = ''${pkgs.foot}/bin/foot nvim "+ZkNotes { match = { vim.fn.input('Search: ') } }"'';
-  };
 }
