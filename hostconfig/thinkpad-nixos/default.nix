@@ -17,14 +17,14 @@
         ./nixos.nix
         minimal
         personal-cli
-        personal-gui
+        gui
       ];
       hmModules = with self.hmModules; [
         ./extra_info.nix
         ./hm.nix
         minimal
         personal-cli
-        personal-gui
+        gui
       ];
     };
 
@@ -34,7 +34,7 @@
           minimal
           work
           personal-cli
-          personal-gui
+          gui
         ])
         ++ [
           ./extra_info.nix

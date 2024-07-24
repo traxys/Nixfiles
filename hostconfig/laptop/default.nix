@@ -9,6 +9,7 @@
       ./hardware-configuration.nix
       minimal
       personal-cli
+      gui
       personal-gui
     ];
     hmModules = with self.hmModules; [
@@ -16,6 +17,7 @@
       ./hm.nix
       minimal
       personal-cli
+      gui
       personal-gui
     ];
     unfreePackages = [
