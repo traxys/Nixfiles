@@ -128,6 +128,7 @@ in
               _unread=thread:{tag:unread}
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
+              ext/qemu=tag:qemu
               stage=thread:{tag:stage}
               archi=thread:"{tag:'archi' or subject:'[NICIA] CR réunion architecture'}"
 
@@ -310,7 +311,9 @@ in
         ''
           notmuch tag +work -- tag:new and 'path:work/**'
           notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
+          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and subject:'/\[PATCH/'
           notmuch tag -unread -- tag:iommu and subject:'/^Re:/'
+          notmuch tag -unread -- tag:qemu and subject:'/^Re:/'
           notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag -unread +me -- tag:new and from:${config.workAddr}
