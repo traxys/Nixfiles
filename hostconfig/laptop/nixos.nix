@@ -1,6 +1,7 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "amd_pstate=active" ];
 
   networking.hostName = "laptop";
   networking.networkmanager.enable = true;
