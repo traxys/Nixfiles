@@ -3,6 +3,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amd_pstate=active" ];
 
+  boot.resumeDevice = "/dev/disk/by-uuid/6993932f-5b29-4207-915a-2f185ec9f485";
+
   powerManagement = {
     enable = true;
     powertop.enable = true;
