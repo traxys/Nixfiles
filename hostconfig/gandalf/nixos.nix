@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amd_pstate=active" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.resumeDevice = "/dev/disk/by-uuid/6993932f-5b29-4207-915a-2f185ec9f485";
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1h
+  '';
 
   powerManagement = {
     enable = true;
