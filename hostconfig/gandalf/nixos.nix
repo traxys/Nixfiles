@@ -7,6 +7,7 @@
 
   boot.resumeDevice = "/dev/disk/by-uuid/6993932f-5b29-4207-915a-2f185ec9f485";
 
+  services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1h
   '';
