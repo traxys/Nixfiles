@@ -20,6 +20,17 @@
     enable = true;
   };
 
+  performance = {
+    combinePlugins = {
+      enable = true;
+      standalonePlugins = [
+        "openscad.nvim"
+        "yanky.nvim"
+        "zsh"
+      ];
+    };
+  };
+
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
     {
