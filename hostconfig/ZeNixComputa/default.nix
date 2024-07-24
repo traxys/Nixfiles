@@ -9,6 +9,7 @@
       ./nixos.nix
       minimal
       personal-cli
+      gui
       personal-gui
       gaming
     ];
@@ -17,6 +18,7 @@
       ./hm.nix
       minimal
       personal-cli
+      gui
       personal-gui
       gaming
     ];

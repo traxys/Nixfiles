@@ -8,7 +8,7 @@
       ./nixos.nix
       minimal
       personal-cli
-      personal-gui
+      gui
       gaming
     ];
     hmModules = with self.hmModules; [
@@ -16,7 +16,7 @@
       ./hm.nix
       minimal
       personal-cli
-      personal-gui
+      gui
       gaming
     ];
   };
