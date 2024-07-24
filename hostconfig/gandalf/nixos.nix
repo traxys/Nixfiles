@@ -3,6 +3,26 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amd_pstate=active" ];
 
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+  };
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        energy_performance_preference = "power";
+        turbo = "never";
+      };
+      charger = {
+        governor = "performance";
+        energy_performance_preference = "performance";
+        turbo = "auto";
+      };
+    };
+  };
+
   networking.hostName = "gandalf";
   networking.networkmanager.enable = true;
 
