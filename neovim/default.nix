@@ -39,6 +39,7 @@
       pattern = [ "WikiBufferInitialized" ];
       callback = helpers.mkRaw ''
         function()
+          vim.opt.conceallevel = 2
           vim.diagnostic.disable(0)
         end
       '';
