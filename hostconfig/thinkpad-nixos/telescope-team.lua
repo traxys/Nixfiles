@@ -19,6 +19,7 @@ local team_picker = function(opts)
 					[[Damien Bergamini "<damien.bergamini@eviden.com>"]],
 					[[Pedro Martins Basso "<pedro.martinsbasso@eviden.com>"]],
 					[[Yoann Heitz "<yoann.heitz@eviden.com>"]],
+					[[Clément Mathieu--Drif "<clement.mathieu--drif@eviden.com>"]],
 				},
 			}),
 			sorter = conf.generic_sorter(opts),
