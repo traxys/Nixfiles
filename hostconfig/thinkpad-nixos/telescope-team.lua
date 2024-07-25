@@ -19,6 +19,7 @@ local team_picker = function(opts)
 					[[Damien Bergamini "<damien.bergamini@***REMOVED***>"]],
 					[[Pedro Martins Basso "<pedro.martinsbasso@***REMOVED***>"]],
 					[[Yoann Heitz "<yoann.heitz@***REMOVED***>"]],
+					[[Clément Mathieu--Drif "<clement.mathieu--drif@***REMOVED***>"]],
 				},
 			}),
 			sorter = conf.generic_sorter(opts),
