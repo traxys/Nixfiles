@@ -85,6 +85,7 @@
   ];
 
   globals = {
+    wiki_global_load = 0;
     wiki_root = "~/wiki";
     neo_tree_remove_legacy_commands = 1;
     mapleader = " ";
