@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  cec-ctl = lib.getExe' pkgs.v4l-utils "cec-ctl";
+in
 {
   boot.extraModulePackages = [
     (pkgs.pulse8-cec.override { inherit (config.boot.kernelPackages) kernel; })
@@ -64,6 +67,12 @@
     SUBSYSTEM=="tty" ACTION=="add" \
       ATTRS{manufacturer}=="Pulse-Eight" ATTRS{product}=="CEC Adapter" \
       TAG+="systemd" ENV{SYSTEMD_WANTS}="pulse8-cec-attach@$devnode.service"
+
+    SUBSYSTEM=="cec" KERNEL=="cec0" ACTION=="add" \
+      TAG+="systemd" ENV{SYSTEMD_WANTS}="cec0-configure@card1-HDMI-A-1.service"
+
+    SUBSYSTEM=="cec" KERNEL == "cec0" ACTION=="add" \
+      RUN+="${cec-ctl} '--device=$devpath' '--osd-name=minus' --playback"
   '';
 
   systemd.services."pulse8-cec-attach@" = {
@@ -84,6 +93,21 @@
         Type = "forking";
         ExecStart = "${lib.getExe' systemdLinuxConsoleTools "inputattach"} --daemon --pulse8-cec %I";
       };
+  };
+
+  systemd.services."cec0-configure@" = {
+    description = "Configure CEC adapter cec0 assuming it runs on output %i";
+    unitConfig = {
+      AssertPathExists = "/sys/class/drm/%i/edid";
+      BindsTo = "dev-cec0.device";
+    };
+
+    serviceConfig = {
+      Type = "exec";
+      ExecStart = ''
+        ${cec-ctl} --device=0 "--osd-name=%H" --playback "--phys-addr-from-edid-poll=/sys/class/drm/%i/edid"
+      '';
+    };
   };
 
   environment.systemPackages = with pkgs; [
