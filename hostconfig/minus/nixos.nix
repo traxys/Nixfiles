@@ -1,5 +1,13 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  boot.extraModulePackages = [
+    (pkgs.pulse8-cec.override { inherit (config.boot.kernelPackages) kernel; })
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -28,7 +36,6 @@
     xkbVariant = "dvp";
   };
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -53,10 +60,37 @@
     enable = true;
   };
 
-  environment.systemPackages = [
-    pkgs.moonlight-qt
-    pkgs.jstest-gtk
-    (pkgs.kodi.withPackages (
+  services.udev.extraRules = ''
+    SUBSYSTEM=="tty" ACTION=="add" \
+      ATTRS{manufacturer}=="Pulse-Eight" ATTRS{product}=="CEC Adapter" \
+      TAG+="systemd" ENV{SYSTEMD_WANTS}="pulse8-cec-attach@$devnode.service"
+  '';
+
+  systemd.services."pulse8-cec-attach@" = {
+    description = "Configure USB Pulse-Eight serial device at %I";
+
+    unitConfig = {
+      ConditionPathExists = "%I";
+    };
+
+    serviceConfig =
+      let
+        systemdLinuxConsoleTools = pkgs.linuxConsoleTools.overrideAttrs (oa: {
+          makeFlags = oa.makeFlags ++ [ "SYSTEMD_SUPPORT=1" ];
+          buildInputs = oa.buildInputs ++ (with pkgs; [ systemdLibs ]);
+        });
+      in
+      {
+        Type = "forking";
+        ExecStart = "${lib.getExe' systemdLinuxConsoleTools "inputattach"} --daemon --pulse8-cec %I";
+      };
+  };
+
+  environment.systemPackages = with pkgs; [
+    moonlight-qt
+    jstest-gtk
+    libcec
+    (kodi.withPackages (
       p: with p; [
         jellyfin
         youtube
