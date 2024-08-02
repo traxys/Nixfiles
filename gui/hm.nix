@@ -39,11 +39,12 @@
     spotify
     vlc
 
-    # Libreoffice
+    # Office suite
     hunspell
     hunspellDicts.fr-any
     hyphen
     libreoffice
+    onlyoffice-bin_latest
 
     # Misc
     eog
