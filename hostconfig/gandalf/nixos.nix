@@ -71,5 +71,18 @@
     ];
   };
 
+  services.postgresql = {
+    enable = true;
+    ensureUsers = [
+      {
+        name = "traxys";
+        ensureClauses = {
+          superuser = true;
+          createdb = true;
+        };
+      }
+    ];
+  };
+
   system.stateVersion = "24.05";
 }
