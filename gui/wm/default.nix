@@ -24,6 +24,13 @@
     };
   };
 
+  home.packages = with pkgs; [ kdePackages.breeze ];
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+  };
+
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
