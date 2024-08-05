@@ -129,6 +129,9 @@
       '';
 
       extraConfig = {
+        sendemail = {
+          composeEncoding = "utf-8";
+        };
         rerere = {
           enabled = true;
           autoUpdate = true;
