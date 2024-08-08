@@ -151,6 +151,7 @@ in
         "message/rfc822" = "colorize";
         "text/html" = "html | colorize";
         "subject,~^\\[PATCH" = "delta";
+        "subject,~^\\[RFC" = "delta";
       };
 
       openers = {
