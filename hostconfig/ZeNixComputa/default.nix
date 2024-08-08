@@ -13,6 +13,7 @@
       personal-gui
       gaming
       wm
+      de
     ];
     hmModules = with self.hmModules; [
       ./extra_info.nix
