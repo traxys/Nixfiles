@@ -9,17 +9,6 @@
     userEmail = config.extraInfo.email;
   };
 
-  wm.startup = [
-    { command = "${pkgs.wayvnc}/bin/waync 127.0.0.1 5800"; }
-    { command = "${pkgs.ckb-next}/bin/ckb-next -b"; }
-  ];
-
-  wm.workspaces.definitions = {
-    "2:".output = "HDMI-A-1";
-    "".output = "DP-2";
-    "".output = "DP-2";
-  };
-
   services.mako.output = "DP-2";
 
   xdg.desktopEntries.teams = {
