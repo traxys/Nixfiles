@@ -18,6 +18,7 @@
         minimal
         personal-cli
         gui
+        wm
       ];
       hmModules = with self.hmModules; [
         ./extra_info.nix
@@ -25,6 +26,7 @@
         minimal
         personal-cli
         gui
+        wm
       ];
     };
 
@@ -35,6 +37,7 @@
           work
           personal-cli
           gui
+          wm
         ])
         ++ [
           ./extra_info.nix

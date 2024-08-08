@@ -5,23 +5,7 @@
   ...
 }:
 {
-  imports = [ ./wm ];
-
-  xdg.portal = {
-    enable = true;
-    config = {
-      sway = {
-        default = "gtk";
-        "org.freedesktop.impl.portal.Screenshot" = "wlr";
-        "org.freedesktop.impl.portal.ScreenCast" = "wlr";
-      };
-    };
-
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
-  };
+  imports = [ ./terminal ];
 
   home.packages = with pkgs; [
     # IM
@@ -69,10 +53,4 @@
   };
 
   programs.zathura.enable = true;
-
-  programs.rofi = {
-    enable = true;
-    theme = "solarized_alternate";
-    terminal = "${config.terminal.command}";
-  };
 }

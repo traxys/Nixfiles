@@ -12,6 +12,7 @@
       gui
       personal-gui
       gaming
+      wm
     ];
     hmModules = with self.hmModules; [
       ./extra_info.nix
@@ -21,6 +22,7 @@
       gui
       personal-gui
       gaming
+      wm
     ];
     unfreePackages = [
       "cnijfilter2"
