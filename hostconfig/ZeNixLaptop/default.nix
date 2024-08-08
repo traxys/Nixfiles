@@ -9,6 +9,7 @@
       minimal
       personal-cli
       gui
+      wm
       gaming
     ];
     hmModules = with self.hmModules; [
@@ -17,6 +18,7 @@
       minimal
       personal-cli
       gui
+      wm
       gaming
     ];
   };

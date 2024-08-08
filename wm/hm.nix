@@ -5,10 +5,23 @@
   ...
 }:
 {
-  imports = [
-    ./terminal
-    ./i3like.nix
-  ];
+  xdg.portal = {
+    enable = true;
+    config = {
+      sway = {
+        default = "gtk";
+        "org.freedesktop.impl.portal.Screenshot" = "wlr";
+        "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+      };
+    };
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
+
+  imports = [ ./i3like.nix ];
 
   gtk = {
     enable = true;
@@ -98,6 +111,12 @@
 
   home.sessionVariables = {
     EXA_COLORS = "xx=38;5;8";
+  };
+
+  programs.rofi = {
+    enable = true;
+    theme = "solarized_alternate";
+    terminal = "${config.terminal.command}";
   };
 
   wm =

@@ -180,6 +180,7 @@
               };
               personal-cli = import ./personal-cli/hm.nix;
               gui = import ./gui/hm.nix;
+              wm = import ./wm/hm.nix;
               personal-gui = import ./personal-gui/hm.nix;
               gaming = import ./gaming/hm.nix;
               work = import ./hostconfig/thinkpad-nixos/work.nix;
@@ -189,6 +190,7 @@
               minimal = import ./minimal/nixos.nix { inherit extraInfo; };
               personal-cli = import ./personal-cli/nixos.nix;
               gui = import ./gui/nixos.nix;
+              wm = import ./wm/nixos.nix;
               personal-gui = import ./personal-gui/nixos.nix;
               roaming = import ./roaming/nixos.nix;
               gaming = import ./gaming/nixos.nix;

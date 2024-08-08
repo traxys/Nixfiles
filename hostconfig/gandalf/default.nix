@@ -10,6 +10,7 @@
       minimal
       personal-cli
       gui
+      wm
       personal-gui
     ];
     hmModules = with self.hmModules; [
@@ -18,6 +19,7 @@
       minimal
       personal-cli
       gui
+      wm
       personal-gui
     ];
     unfreePackages = [
