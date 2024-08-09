@@ -1,5 +1,9 @@
-nixos-cosmic: {
+nixos-cosmic:
+{ pkgs, ... }:
+{
   imports = [ nixos-cosmic.nixosModules.default ];
+
+  environment.systemPackages = with pkgs; [ playerctl ];
 
   nix.settings = {
     substituters = [ "https://cosmic.cachix.org/" ];
