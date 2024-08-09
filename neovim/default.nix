@@ -483,6 +483,7 @@
     # sca2d
     djlint
     muon
+    gh
   ];
 
   extraPlugins = with pkgs.vimPlugins; [
