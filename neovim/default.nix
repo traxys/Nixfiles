@@ -464,6 +464,11 @@
     '';
   };
 
+  files."ftdetect/sql.lua" = {
+    globals.omni_sql_no_default_maps = 0;
+    globals.omni_sql_default_compl_type = "syntax";
+  };
+
   extraPackages = with pkgs; [
     # sca2d
     djlint
