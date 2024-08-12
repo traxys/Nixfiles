@@ -11,7 +11,6 @@
       
     ./modules/commands.nix
 
-    ./plugins/firenvim.nix
     ./plugins/headerguard.nix
     ./plugins/lsp-signature.nix
   ];
@@ -213,7 +212,7 @@
   plugins.gitsigns.enable = true;
   plugins.gitmessenger.enable = true;
 
-  plugins.firenvim.enable = false;
+  # plugins.firenvim.enable = false;
 
   extraConfigLuaPre = ''
     local has_words_before = function()
