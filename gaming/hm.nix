@@ -13,6 +13,7 @@
     warcraftlogs
     wine-tkg
     winetricks
+    weakauras-companion
     wowup
     xivlauncher
     obs-studio
