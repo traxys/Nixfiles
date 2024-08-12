@@ -8,7 +8,7 @@
 {
   imports = [
     ./lsp.nix
-      
+
     ./modules/commands.nix
 
     ./plugins/headerguard.nix
@@ -21,9 +21,17 @@
   };
 
   performance = {
+    byteCompileLua = {
+      enable = true;
+      nvimRuntime = true;
+      configs = true;
+      plugins = true;
+    };
     combinePlugins = {
       enable = true;
       standalonePlugins = [
+        "vimplugin-treesitter-grammar-nix"
+        "nvim-treesitter"
         "openscad.nvim"
         "yanky.nvim"
         "zsh"
