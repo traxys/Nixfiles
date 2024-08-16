@@ -46,7 +46,6 @@
       pattern = [ "WikiBufferInitialized" ];
       callback = helpers.mkRaw ''
         function()
-          vim.opt.conceallevel = 2
           vim.diagnostic.disable(0)
         end
       '';
@@ -210,6 +209,10 @@
         options.expr = true;
       }
     ];
+
+  plugins.markview = {
+    enable = true;
+  };
 
   plugins.nvim-osc52 = {
     enable = true;
