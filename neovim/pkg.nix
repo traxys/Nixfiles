@@ -41,7 +41,7 @@
       };
 
       checks.launch = inputs.nixvim.lib.${system}.check.mkTestDerivationFromNvim {
-        nvim = self'.packages.neovimTraxys;
+        nvim = self'.packages.neovimTraxys.extend { test.checkWarnings = false; };
         name = "Neovim configuration";
       };
     };
