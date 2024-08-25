@@ -175,7 +175,6 @@
             "$os"
             " "
             "$directory"
-            " "
             "$git_branch"
             "$git_status"
             "](bg:${background})"
@@ -205,7 +204,7 @@
 
           git_branch = {
             symbol = " ";
-            format = "[$symbol$branch]($style) ";
+            format = " [$symbol$branch]($style) ";
             style = "bold purple bg:${background}";
           };
 
