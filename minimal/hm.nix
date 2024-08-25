@@ -282,11 +282,7 @@
       enableCompletion = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [
-          "git"
-          "wd"
-          "rust"
-        ];
+        plugins = [ ];
       };
       plugins = [
         {
