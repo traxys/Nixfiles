@@ -159,6 +159,112 @@
       };
     };
 
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings =
+        let
+          background = "#3e3e3e";
+        in
+        {
+          add_newline = true;
+
+          format = lib.concatStrings [
+            "["
+            "[](${background})"
+            "$os"
+            " "
+            "$directory"
+            " "
+            "$git_branch"
+            "$git_status"
+            "](bg:${background})"
+            "[](${background})"
+            "$fill"
+            "[](${background})"
+            "["
+            " "
+            "$status"
+            "$cmd_duration"
+            "$time"
+            "](bg:${background})"
+            "[](${background})"
+            "\n"
+            " $character"
+          ];
+
+          fill = {
+            symbol = "·";
+            style = background;
+          };
+
+          directory = {
+            style = "bold cyan bg:${background}";
+            read_only_style = "fg:red bg:${background}";
+          };
+
+          git_branch = {
+            symbol = " ";
+            format = "[$symbol$branch]($style) ";
+            style = "bold purple bg:${background}";
+          };
+
+          git_status =
+            let
+              red = "#ee311a";
+            in
+            {
+              format = "[$conflicted$stashed$staged$ahead_behind$deleted$renamed$modified$untracked]($style)";
+              style = "bg:${background}";
+              ahead = "[$count](green bg:${background}) ";
+              behind = "[$count](green bg:${background}) ";
+              stashed = "*$count ";
+              renamed = "~$count ";
+              staged = "+ ";
+              untracked = "?$count ";
+              diverged = "[$ahead_count$behind_count](green bg:${background}) ";
+              conflicted = "[$count](${red} bg:${background}) ";
+              modified = "!$count ";
+              deleted = "[✘$count ](${red} bg:${background})";
+            };
+
+          os = {
+            disabled = false;
+            style = "bg:${background}";
+            symbols = rec {
+              NixOS = " ";
+              Redhat = " ";
+              RedHatEnterprise = Redhat;
+              Fedora = " ";
+            };
+          };
+
+          time = {
+            disabled = false;
+            style = "bold yellow bg:${background}";
+            format = "$time ";
+          };
+
+          cmd_duration = {
+            disabled = false;
+            format = "[$duration ]($style)  ";
+            style = "bold yellow bg:${background}";
+          };
+
+          status = {
+            disabled = false;
+            format = "[$symbol$status( $signal_name)]($style)  ";
+            pipestatus_segment_format = "[$symbol$status]($style)";
+            pipestatus_format = "\\[$pipestatus\\] [$symbol$signal_name]($style)  ";
+            pipestatus_separator = " | ";
+            style = "bold red bg:#3e3e3e";
+            map_symbol = true;
+            pipestatus = true;
+            sigint_symbol = "";
+          };
+        };
+    };
+
     programs.zsh = {
       enable = true;
       enableCompletion = true;
@@ -192,8 +298,6 @@
 
       initExtra = ''
         export PATH="$PATH:$HOME/bin";
-        source ${./p10k.zsh}
-        source ${inputs.powerlevel10k}/powerlevel10k.zsh-theme
         if [ -f "$HOME/.zvars" ]; then
           source "$HOME/.zvars"
         fi

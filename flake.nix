@@ -77,10 +77,6 @@
       url = "github:chisui/zsh-nix-shell";
       flake = false;
     };
-    powerlevel10k = {
-      url = "github:romkatv/powerlevel10k";
-      flake = false;
-    };
     fast-syntax-highlighting = {
       url = "github:zdharma-continuum/fast-syntax-highlighting";
       flake = false;

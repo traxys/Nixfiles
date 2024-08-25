@@ -1419,22 +1419,6 @@
         "type": "github"
       }
     },
-    "powerlevel10k": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1724223745,
-        "narHash": "sha256-H7DYDLNANFnws3pCANnMJAQIMDXCf9S+ggUOGUy1oO0=",
-        "owner": "romkatv",
-        "repo": "powerlevel10k",
-        "rev": "a42e374e25226d2032a38b38fc544ec1d65b0d01",
-        "type": "github"
-      },
-      "original": {
-        "owner": "romkatv",
-        "repo": "powerlevel10k",
-        "type": "github"
-      }
-    },
     "raclette": {
       "inputs": {
         "flake-utils": "flake-utils_12",
@@ -1511,7 +1495,6 @@
         "nixpkgs-traxys": "nixpkgs-traxys",
         "nixvim": "nixvim",
         "nur": "nur",
-        "powerlevel10k": "powerlevel10k",
         "raclette": "raclette",
         "roaming_proxy": "roaming_proxy",
         "rust-overlay": "rust-overlay_8",
