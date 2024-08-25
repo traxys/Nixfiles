@@ -185,6 +185,7 @@
             " "
             "$status"
             "$cmd_duration"
+            "($username$hostname  )"
             "$time"
             "](bg:${background})"
             "[](${background})"
@@ -248,6 +249,18 @@
             disabled = false;
             format = "[$duration ]($style)  ";
             style = "bold yellow bg:${background}";
+          };
+
+          username = {
+            format = "[$user]($style)";
+            style_root = "bold red bg:${background}";
+            style_user = "bold dimmed green bg:${background}";
+          };
+
+          hostname = {
+            ssh_only = true;
+            format = "[@$hostname]($style)";
+            style = "bold dimmed green bg:${background}";
           };
 
           status = {
