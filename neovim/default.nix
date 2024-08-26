@@ -349,6 +349,8 @@
       vim
       vimdoc
       yaml
+      mermaid
+      fish
     ];
   };
 
