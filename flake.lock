@@ -111,22 +111,6 @@
         "type": "github"
       }
     },
-    "fast-syntax-highlighting": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1688591419,
-        "narHash": "sha256-RVX9ZSzjBW3LpFs2W86lKI6vtcvDWP6EPxzeTcRZua4=",
-        "owner": "zdharma-continuum",
-        "repo": "fast-syntax-highlighting",
-        "rev": "cf318e06a9b7c9f2219d78f41b46fa6e06011fd9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zdharma-continuum",
-        "repo": "fast-syntax-highlighting",
-        "type": "github"
-      }
-    },
     "fioul": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -751,22 +735,6 @@
       "original": {
         "owner": "sharkdp",
         "repo": "hyperfine",
-        "type": "github"
-      }
-    },
-    "jq-zsh-plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1724402792,
-        "narHash": "sha256-XYDIDThQbnr9O9cOIFPz9qqSFjxovcCqb4j6LFVlL5w=",
-        "owner": "reegnz",
-        "repo": "jq-zsh-plugin",
-        "rev": "ded47a1e51303fb2cb331288e134e18f637274a6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reegnz",
-        "repo": "jq-zsh-plugin",
         "type": "github"
       }
     },
@@ -1474,14 +1442,12 @@
       "inputs": {
         "attic": "attic",
         "comma": "comma",
-        "fast-syntax-highlighting": "fast-syntax-highlighting",
         "fioul": "fioul",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
         "glaurung": "glaurung",
         "gsm": "gsm",
         "home-manager": "home-manager",
-        "jq-zsh-plugin": "jq-zsh-plugin",
         "kabalist": "kabalist",
         "meson-syntax": "meson-syntax",
         "mujmap": "mujmap",
@@ -1501,9 +1467,7 @@
         "simulationcraft": "simulationcraft",
         "treefmt-nix": "treefmt-nix_3",
         "vim-headerguard": "vim-headerguard",
-        "wiki.vim": "wiki.vim",
-        "zsh-history-substring-search": "zsh-history-substring-search",
-        "zsh-nix-shell": "zsh-nix-shell"
+        "wiki.vim": "wiki.vim"
       }
     },
     "rust-overlay": {
@@ -2043,38 +2007,6 @@
       "original": {
         "owner": "lervag",
         "repo": "wiki.vim",
-        "type": "github"
-      }
-    },
-    "zsh-history-substring-search": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1717563893,
-        "narHash": "sha256-1+w0AeVJtu1EK5iNVwk3loenFuIyVlQmlw8TWliHZGI=",
-        "owner": "zsh-users",
-        "repo": "zsh-history-substring-search",
-        "rev": "87ce96b1862928d84b1afe7c173316614b30e301",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zsh-users",
-        "repo": "zsh-history-substring-search",
-        "type": "github"
-      }
-    },
-    "zsh-nix-shell": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1704028593,
-        "narHash": "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=",
-        "owner": "chisui",
-        "repo": "zsh-nix-shell",
-        "rev": "82ca15e638cc208e6d8368e34a1625ed75e08f90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chisui",
-        "repo": "zsh-nix-shell",
         "type": "github"
       }
     }

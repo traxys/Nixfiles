@@ -42,6 +42,7 @@
       RUSTUP_HOME = "${XDG_DATA_HOME}/rustup";
       WINEPREFIX = "${XDG_DATA_HOME}/wine";
       DELTA_PAGER = "less -+X";
+      EDITOR = "nvim";
     };
 
     home.packages =
@@ -54,7 +55,6 @@
         gnumake
         jq
         man-pages
-        nix-zsh-completions
         oscclip
         pandoc
         raclette
@@ -94,7 +94,6 @@
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableZshIntegration = true;
     };
 
     programs.home-manager.enable = true;
@@ -165,7 +164,8 @@
 
     programs.starship = {
       enable = true;
-      enableZshIntegration = true;
+      enableTransience = true;
+      enableFishIntegration = true;
       settings =
         let
           background = "#3e3e3e";
@@ -281,55 +281,100 @@
         };
     };
 
-    programs.zsh = {
+    programs.fish = {
       enable = true;
+
+      shellInit = ''
+        fish_add_path /nix/var/nix/profiles/default/bin
+
+        if [ -f "$HOME/.zvars" ]
+          source "$HOME/.zvars"
+        end
+
+        function up-or-search-prefix -d "Search (by prefix) back or move cursor up 1 line"
+          # If we are already in search mode, continue
+          if commandline --search-mode
+            commandline -f history-search-backward
+            return
+          end
+
+          # If we are navigating the pager, then up always navigates
+          if commandline --paging-mode
+              commandline -f up-line
+              return
+          end
+
+          # We are not already in search mode.
+          # If we are on the top line, start search mode,
+          # otherwise move up
+          set -l lineno (commandline -L)
+
+          switch $lineno
+              case 1
+                  commandline -f history-prefix-search-backward
+          
+              case '*'
+                  commandline -f up-line
+          end
+        end
+
+        function down-or-search-prefix -d "search (by prefix) forward or move down 1 line"
+          # If we are already in search mode, continue
+          if commandline --search-mode
+              commandline -f history-search-forward
+              return
+          end
+          
+          # If we are navigating the pager, then up always navigates
+          if commandline --paging-mode
+              commandline -f down-line
+              return
+          end
+          
+          
+          # We are not already in search mode.
+          # If we are on the bottom line, start search mode,
+          # otherwise move down
+          set -l lineno (commandline -L)
+          set -l line_count (count (commandline))
+          
+          switch $lineno
+              case $line_count
+                  commandline -f history-prefix-search-forward
+          
+              case '*'
+                  commandline -f down-line
+          end
+        end
+
+        bind --preset \e\A up-or-search-prefix
+        bind --preset \e\B down-or-search-prefix
+      '';
+
+      shellInitLast = ''
+        ${pkgs.fortune}/bin/fortune \
+          | ${pkgs.cowsay}/bin/cowsay \
+          | ${pkgs.dotacat}/bin/dotacat
+      '';
+
+      shellAliases = {
+        cat = "${pkgs.bat}/bin/bat -p";
+        ls = "${pkgs.eza}/bin/eza --icons";
+        man = "${lib.getExe pkgs.bat-extras.batman}";
+        gss = "git status -s";
+        glo = "git log --oneline";
+        gp = "git push";
+        gl = "git pull";
+      };
+    };
+
+    programs.zsh = {
+      enable = false;
 
       enableCompletion = true;
 
-      plugins = [
-        {
-          name = "fast-syntax-highlighting";
-          file = "fast-syntax-highlighting.plugin.zsh";
-          src = inputs.fast-syntax-highlighting;
-        }
-        {
-          name = "zsh-nix-shell";
-          file = "nix-shell.plugin.zsh";
-          src = inputs.zsh-nix-shell;
-        }
-        {
-          name = "jq-zsh-plugin";
-          file = "jq.plugin.zsh";
-          src = inputs.jq-zsh-plugin;
-        }
-        {
-          name = "history-substring-search";
-          file = "zsh-history-substring-search.zsh";
-          src = inputs.zsh-history-substring-search;
-        }
-      ];
-
-      envExtra = "export EDITOR=nvim";
-
       initExtra = ''
         bindkey -e
-
-        export PATH="$PATH:$HOME/bin";
-        if [ -f "$HOME/.zvars" ]; then
-          source "$HOME/.zvars"
-        fi
-
-        if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-           SESSION_TYPE=remote/ssh
-        else
-          case $(ps -o comm= -p "$PPID") in
-            sshd|*/sshd) SESSION_TYPE=remote/ssh;;
-          esac
-        fi
-
-        if [[ $SESSION_TYPE = remote/ssh ]]; then
-          title_prefix="$(whoami)@$(hostname) - "
-        fi
 
         DISABLE_AUTO_TITLE="true"
 
@@ -354,20 +399,7 @@
         HISTORY_SUBSTRING_SEARCH_PREFIXED=1
         bindkey "^[[A" history-substring-search-up
         bindkey "^[[B" history-substring-search-down
-
-        ${pkgs.fortune}/bin/fortune \
-          | ${pkgs.cowsay}/bin/cowsay \
-          | ${pkgs.dotacat}/bin/dotacat
       '';
-      shellAliases = {
-        cat = "${pkgs.bat}/bin/bat -p";
-        ls = "${pkgs.eza}/bin/eza --icons";
-        man = "${lib.getExe pkgs.bat-extras.batman}";
-        gss = "git status -s";
-        glo = "git log --oneline";
-        gp = "git push";
-        gl = "git pull";
-      };
     };
 
     home.file = {

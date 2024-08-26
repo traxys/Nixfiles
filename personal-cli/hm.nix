@@ -25,9 +25,6 @@ in
   services.syncthing.enable = true;
 
   programs.ssh.enable = true;
-  programs.zsh.initExtraBeforeCompInit = ''
-    fpath+="$HOME/.zfunc"
-  '';
 
   services.nextcloud-client = {
     enable = true;
@@ -101,10 +98,6 @@ in
   home.file = {
     bin = {
       source = ./scripts;
-      recursive = true;
-    };
-    ".zfunc" = {
-      source = ./zfunc;
       recursive = true;
     };
   };

@@ -15,11 +15,11 @@
   users.users."${config.extraInfo.username}" = {
     isNormalUser = true;
     home = "/home/${config.extraInfo.username}";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     extraGroups = [ "wheel" ];
   };
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
@@ -27,7 +27,6 @@
     keyMap = "dvorak-programmer";
   };
 
-  environment.pathsToLink = [ "/share/zsh" ];
   fonts.enableDefaultPackages = true;
   fonts = {
     packages = with pkgs; [
