@@ -351,6 +351,9 @@
         cat = "${pkgs.bat}/bin/bat -p";
         ls = "${pkgs.eza}/bin/eza --icons";
         man = "${lib.getExe pkgs.bat-extras.batman}";
+        gss = "git status -s";
+        glo = "git log --oneline";
+        gp = "git push";
       };
     };
 
