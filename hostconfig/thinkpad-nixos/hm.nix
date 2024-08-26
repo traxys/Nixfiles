@@ -326,7 +326,7 @@ in
     };
   };
 
-  programs.zsh.shellAliases = {
+  programs.fish.shellAliases = {
     "khal-today" = "khal list today today -f '{start-time}-{end-time}: {title}'";
   };
 

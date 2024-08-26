@@ -57,7 +57,7 @@
       };
     };
 
-    programs.zsh.shellAliases = {
+    programs.fish.shellAliases = {
       gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@***REMOVED***"'';
     };
   };

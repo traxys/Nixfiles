@@ -34,7 +34,6 @@
         "nvim-treesitter"
         "openscad.nvim"
         "yanky.nvim"
-        "zsh"
       ];
     };
   };
@@ -289,10 +288,6 @@
         { name = "git"; }
         { name = "omni"; }
       ];
-    };
-
-    filetype.sh = {
-      sources = [ { name = "zsh"; } ];
     };
   };
 
