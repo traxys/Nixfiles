@@ -1502,6 +1502,7 @@
         "treefmt-nix": "treefmt-nix_3",
         "vim-headerguard": "vim-headerguard",
         "wiki.vim": "wiki.vim",
+        "zsh-history-substring-search": "zsh-history-substring-search",
         "zsh-nix-shell": "zsh-nix-shell"
       }
     },
@@ -2042,6 +2043,22 @@
       "original": {
         "owner": "lervag",
         "repo": "wiki.vim",
+        "type": "github"
+      }
+    },
+    "zsh-history-substring-search": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1717563893,
+        "narHash": "sha256-1+w0AeVJtu1EK5iNVwk3loenFuIyVlQmlw8TWliHZGI=",
+        "owner": "zsh-users",
+        "repo": "zsh-history-substring-search",
+        "rev": "87ce96b1862928d84b1afe7c173316614b30e301",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zsh-users",
+        "repo": "zsh-history-substring-search",
         "type": "github"
       }
     },

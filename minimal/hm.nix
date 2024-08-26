@@ -282,7 +282,9 @@
 
     programs.zsh = {
       enable = true;
+
       enableCompletion = true;
+
       plugins = [
         {
           name = "fast-syntax-highlighting";
@@ -298,6 +300,11 @@
           name = "jq-zsh-plugin";
           file = "jq.plugin.zsh";
           src = inputs.jq-zsh-plugin;
+        }
+        {
+          name = "history-substring-search";
+          file = "zsh-history-substring-search.zsh";
+          src = inputs.zsh-history-substring-search;
         }
       ];
 
@@ -338,6 +345,11 @@
         compdef batman=man
 
         zmodload zsh/zpty
+
+        zstyle ':completion:*' menu select
+        HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=""
+        bindkey "^[[A" history-substring-search-up
+        bindkey "^[[B" history-substring-search-down
 
         ${pkgs.fortune}/bin/fortune \
           | ${pkgs.cowsay}/bin/cowsay \
