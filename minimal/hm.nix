@@ -285,8 +285,6 @@
       enable = true;
 
       shellInit = ''
-        fish_add_path /nix/var/nix/profiles/default/bin
-
         if [ -f "$HOME/.zvars" ]
           source "$HOME/.zvars"
         end
@@ -294,7 +292,7 @@
         function up-or-search-prefix -d "Search (by prefix) back or move cursor up 1 line"
           # If we are already in search mode, continue
           if commandline --search-mode
-            commandline -f history-search-backward
+            commandline -f history-prefix-search-backward
             return
           end
 
@@ -321,7 +319,7 @@
         function down-or-search-prefix -d "search (by prefix) forward or move down 1 line"
           # If we are already in search mode, continue
           if commandline --search-mode
-              commandline -f history-search-forward
+              commandline -f history-prefix-search-forward
               return
           end
           
