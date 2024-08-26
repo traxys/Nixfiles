@@ -284,72 +284,84 @@
     programs.fish = {
       enable = true;
 
+      functions = {
+        fish_user_key_bindings = ''
+          bind -k up up-or-search-prefix
+          bind \eOA up-or-search-prefix
+          bind \e\[A up-or-search-prefix
+          bind -k down down-or-search-prefix
+          bind \eOB down-or-search-prefix
+          bind \e\[B down-or-search-prefix
+        '';
+        up-or-search-prefix = {
+          description = "Search (by prefix) back or move cursor up 1 line";
+          body = ''
+            # If we are already in search mode, continue
+            if commandline --search-mode
+              commandline -f history-prefix-search-backward
+              return
+            end
+
+            # If we are navigating the pager, then up always navigates
+            if commandline --paging-mode
+                commandline -f up-line
+                return
+            end
+
+            # We are not already in search mode.
+            # If we are on the top line, start search mode,
+            # otherwise move up
+            set -l lineno (commandline -L)
+
+            switch $lineno
+                case 1
+                    commandline -f history-prefix-search-backward
+
+                case '*'
+                    commandline -f up-line
+            end
+          '';
+        };
+        down-or-search-prefix = {
+          description = "Search (by prefix) forward or move down 1 line";
+          body = ''
+            # If we are already in search mode, continue
+            if commandline --search-mode
+                commandline -f history-prefix-search-forward
+                return
+            end
+
+            # If we are navigating the pager, then up always navigates
+            if commandline --paging-mode
+                commandline -f down-line
+                return
+            end
+
+            # We are not already in search mode.
+            # If we are on the bottom line, start search mode,
+            # otherwise move down
+            set -l lineno (commandline -L)
+            set -l line_count (count (commandline))
+
+            switch $lineno
+                case $line_count
+                    commandline -f history-prefix-search-forward
+
+                case '*'
+                    commandline -f down-line
+            end
+          '';
+        };
+      };
+
       shellInit = ''
         if [ -f "$HOME/.zvars" ]
           source "$HOME/.zvars"
         end
-
-        function up-or-search-prefix -d "Search (by prefix) back or move cursor up 1 line"
-          # If we are already in search mode, continue
-          if commandline --search-mode
-            commandline -f history-prefix-search-backward
-            return
-          end
-
-          # If we are navigating the pager, then up always navigates
-          if commandline --paging-mode
-              commandline -f up-line
-              return
-          end
-
-          # We are not already in search mode.
-          # If we are on the top line, start search mode,
-          # otherwise move up
-          set -l lineno (commandline -L)
-
-          switch $lineno
-              case 1
-                  commandline -f history-prefix-search-backward
-          
-              case '*'
-                  commandline -f up-line
-          end
-        end
-
-        function down-or-search-prefix -d "search (by prefix) forward or move down 1 line"
-          # If we are already in search mode, continue
-          if commandline --search-mode
-              commandline -f history-prefix-search-forward
-              return
-          end
-          
-          # If we are navigating the pager, then up always navigates
-          if commandline --paging-mode
-              commandline -f down-line
-              return
-          end
-          
-          
-          # We are not already in search mode.
-          # If we are on the bottom line, start search mode,
-          # otherwise move down
-          set -l lineno (commandline -L)
-          set -l line_count (count (commandline))
-          
-          switch $lineno
-              case $line_count
-                  commandline -f history-prefix-search-forward
-          
-              case '*'
-                  commandline -f down-line
-          end
-        end
-
-        bind --preset \e\A up-or-search-prefix
-        bind --preset \e\B down-or-search-prefix
       '';
 
       shellInitLast = ''
+
         ${pkgs.fortune}/bin/fortune \
           | ${pkgs.cowsay}/bin/cowsay \
           | ${pkgs.dotacat}/bin/dotacat
