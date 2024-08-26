@@ -41,6 +41,7 @@
       PYTHONSTARTUP = "${XDG_CONFIG_HOME}/python/pythonrc";
       RUSTUP_HOME = "${XDG_DATA_HOME}/rustup";
       WINEPREFIX = "${XDG_DATA_HOME}/wine";
+      DELTA_PAGER = "less -+X";
     };
 
     home.packages =
@@ -311,6 +312,8 @@
       envExtra = "export EDITOR=nvim";
 
       initExtra = ''
+        bindkey -e
+
         export PATH="$PATH:$HOME/bin";
         if [ -f "$HOME/.zvars" ]; then
           source "$HOME/.zvars"
@@ -348,6 +351,7 @@
 
         zstyle ':completion:*' menu select
         HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=""
+        HISTORY_SUBSTRING_SEARCH_PREFIXED=1
         bindkey "^[[A" history-substring-search-up
         bindkey "^[[B" history-substring-search-down
 
