@@ -180,6 +180,7 @@
             "$directory"
             "$git_branch"
             "$git_status"
+            "$git_state"
             "](bg:${background})"
             "[](${background})"
             "$fill"
@@ -230,6 +231,17 @@
               modified = "!$count ";
               deleted = "[✘$count ](${red} bg:${background})";
             };
+
+          git_state = rec {
+            style = "bold red bg:${background}";
+            rebase = "";
+            merge = "";
+            revert = "󰜱";
+            cherry_pick = "";
+            bisect = "󰝔";
+            am = "";
+            am_or_rebase = "${am}/${rebase}";
+          };
 
           os = {
             disabled = false;
