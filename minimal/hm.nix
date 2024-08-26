@@ -362,6 +362,7 @@
         gss = "git status -s";
         glo = "git log --oneline";
         gp = "git push";
+        gl = "git pull";
       };
     };
 
