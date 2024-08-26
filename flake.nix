@@ -81,6 +81,10 @@
       url = "github:zdharma-continuum/fast-syntax-highlighting";
       flake = false;
     };
+    zsh-history-substring-search = {
+      url = "github:zsh-users/zsh-history-substring-search";
+      flake = false;
+    };
     jq-zsh-plugin = {
       url = "github:reegnz/jq-zsh-plugin";
       flake = false;
