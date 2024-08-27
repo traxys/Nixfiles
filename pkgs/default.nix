@@ -27,6 +27,7 @@
         push-to-talk = pkgs.callPackage ./push-to-talk.nix { };
         pulse8-cec = pkgs.callPackage ./pulse8-cec.nix { };
         weakauras-companion = pkgs.callPackage ./weakauras-companion.nix { };
+        wow-note = pkgs.callPackage ./wow-note { };
       };
     };
 }

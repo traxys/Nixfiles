@@ -18,6 +18,7 @@
     xivlauncher
     obs-studio
     pulseaudio
+    wow-note
   ];
 
   home.file = {
