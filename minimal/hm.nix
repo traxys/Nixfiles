@@ -204,6 +204,8 @@
 
           directory = {
             style = "bold cyan bg:${background}";
+            truncate_to_repo = false;
+            fish_style_pwd_dir_length = 1;
             read_only_style = "fg:red bg:${background}";
           };
 
