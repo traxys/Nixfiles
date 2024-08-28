@@ -299,6 +299,11 @@
       enable = true;
 
       functions = {
+        fish_greeting = ''
+          ${pkgs.fortune}/bin/fortune \
+            | ${pkgs.cowsay}/bin/cowsay \
+            | ${pkgs.dotacat}/bin/dotacat
+        '';
         fish_user_key_bindings = ''
           bind -k up up-or-search-prefix
           bind \eOA up-or-search-prefix
@@ -380,10 +385,6 @@
             and status is-interactive
           keychain --eval $SSH_KEYS_TO_AUTOLOAD | source
         end
-
-        ${pkgs.fortune}/bin/fortune \
-          | ${pkgs.cowsay}/bin/cowsay \
-          | ${pkgs.dotacat}/bin/dotacat
       '';
 
       shellAliases = {
