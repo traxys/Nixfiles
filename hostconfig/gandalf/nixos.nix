@@ -1,16 +1,30 @@
 { pkgs, ... }:
+let
+  swap = "/dev/disk/by-uuid/66d89c4f-6d79-4bb5-8d83-d53ea07a5fb0";
+in
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amd_pstate=active" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.resumeDevice = "/dev/disk/by-uuid/6993932f-5b29-4207-915a-2f185ec9f485";
+  boot.resumeDevice = swap;
 
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1h
   '';
+
+  swapDevices = [
+    {
+      device = swap;
+      encrypted = {
+        enable = true;
+        label = "swap-dev";
+        blkDev = "/dev/disk/by-uuid/54642cf7-2f34-4a75-9a6b-82a0df72d2bb";
+      };
+    }
+  ];
 
   powerManagement = {
     enable = true;
