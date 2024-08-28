@@ -426,7 +426,6 @@
     };
 
     home.file = {
-      ".zprofile".source = ./zprofile;
       ".config/python/pythonrc".text = ''
         import os
         import atexit
