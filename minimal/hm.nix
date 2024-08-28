@@ -68,6 +68,7 @@
         bat-extras.prettybat
         just
         bottom
+        keychain
 
         # Useful for pandoc to latex
         (texlive.combine {
@@ -374,6 +375,11 @@
       '';
 
       shellInitLast = ''
+        # Use set -Ua SSH_KEYS_TO_AUTOLOAD <key> to add a key
+        if status is-login
+            and status is-interactive
+          keychain --eval $SSH_KEYS_TO_AUTOLOAD | source
+        end
 
         ${pkgs.fortune}/bin/fortune \
           | ${pkgs.cowsay}/bin/cowsay \
