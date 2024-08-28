@@ -8,6 +8,7 @@
 {
   imports = [
     ./lsp.nix
+    ./notes.nix
 
     ./modules/commands.nix
 
@@ -40,15 +41,6 @@
 
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
-    {
-      event = [ "User" ];
-      pattern = [ "WikiBufferInitialized" ];
-      callback = helpers.mkRaw ''
-        function()
-          vim.diagnostic.disable(0)
-        end
-      '';
-    }
     {
       event = "BufReadPost";
       pattern = [
@@ -91,8 +83,6 @@
   ];
 
   globals = {
-    wiki_global_load = 0;
-    wiki_root = "~/wiki";
     neo_tree_remove_legacy_commands = 1;
     mapleader = " ";
   };
@@ -208,10 +198,6 @@
         options.expr = true;
       }
     ];
-
-  plugins.markview = {
-    enable = true;
-  };
 
   plugins.nvim-osc52 = {
     enable = true;
@@ -484,10 +470,8 @@
   ];
 
   extraPlugins = with pkgs.vimPlugins; [
-    wiki-vim
     telescope-ui-select-nvim
     vim-snippets
-    markdown-preview-nvim
     vim-just
     ltex_extra-nvim
     vim-wakatime
