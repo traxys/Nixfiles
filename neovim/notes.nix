@@ -12,6 +12,15 @@
     }
   ];
 
+  files."after/ftplugin/markdown.lua" = {
+    autoCmd = [
+      {
+        event = [ "InsertEnter" ];
+        command = "Markview disable";
+      }
+    ];
+  };
+
   globals = {
     wiki_global_load = 0;
     wiki_root = "~/wiki";
