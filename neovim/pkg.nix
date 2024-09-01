@@ -32,6 +32,11 @@
                     src = inputs."wiki.vim";
                     version = inputs."wiki.vim".shortRev;
                   };
+                  diagram-nvim = prev.vimUtils.buildVimPlugin {
+                    pname = "diagram.nvim";
+                    src = inputs."diagram.nvim";
+                    version = inputs."diagram.nvim".shortRev;
+                  };
                 }
               );
             }
