@@ -94,6 +94,10 @@
       url = "github:lervag/wiki.vim";
       flake = false;
     };
+    "diagram.nvim" = {
+      url = "github:3rd/diagram.nvim/feature/toggle";
+      flake = false;
+    };
   };
 
   outputs =

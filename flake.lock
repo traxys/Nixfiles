@@ -112,6 +112,23 @@
         "type": "github"
       }
     },
+    "diagram.nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724882438,
+        "narHash": "sha256-FH9i/I2DiCBpU1b8aTHCNDviBIS7IBng2D30OQH29RU=",
+        "owner": "3rd",
+        "repo": "diagram.nvim",
+        "rev": "1022def2b5b2c70895e381f13a75abee6327a23c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "3rd",
+        "ref": "feature/toggle",
+        "repo": "diagram.nvim",
+        "type": "github"
+      }
+    },
     "fioul": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -1464,6 +1481,7 @@
       "inputs": {
         "attic": "attic",
         "comma": "comma",
+        "diagram.nvim": "diagram.nvim",
         "fioul": "fioul",
         "flake-parts": "flake-parts_2",
         "flake-root": "flake-root",

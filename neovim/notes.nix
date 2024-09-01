@@ -16,7 +16,12 @@
     autoCmd = [
       {
         event = [ "InsertEnter" ];
-        command = "Markview disable";
+        callback = helpers.mkRaw ''
+          function()
+            vim.cmd("Markview disable")
+            vim.cmd("DiagramBuf disable")
+          end
+        '';
       }
     ];
   };
@@ -30,8 +35,38 @@
     enable = true;
   };
 
+  plugins.image = {
+    enable = true;
+    backend = "ueberzug";
+
+    integrations.markdown = {
+      clearInInsertMode = true;
+      enabled = true;
+    };
+  };
+
+  extraConfigLua =
+    let
+      cfg.renderer_options = {
+        mermaid = {
+          background = "transparent";
+          theme = "dark";
+        };
+      };
+    in
+    ''
+      require('diagram').setup(${helpers.toLuaObject cfg})
+    '';
+
+  extraPackages = with pkgs; [
+    mermaid-cli
+    d2
+    plantuml
+  ];
+
   extraPlugins = with pkgs.vimPlugins; [
     wiki-vim
     markdown-preview-nvim
+    diagram-nvim
   ];
 }
