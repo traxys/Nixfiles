@@ -165,12 +165,13 @@
 
     programs.starship = {
       enable = true;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
       settings =
         let
           background = "#3e3e3e";
         in
         {
+          command_timeout = 3000;
           add_newline = true;
 
           format = lib.concatStrings [
@@ -298,6 +299,13 @@
     programs.fish = {
       enable = true;
 
+      plugins = [
+        {
+          name = "fish-async-prompt";
+          src = inputs.fish-async-prompt;
+        }
+      ];
+
       functions = {
         fish_greeting = ''
           ${pkgs.fortune}/bin/fortune \
@@ -384,6 +392,8 @@
         if status is-login
           keychain --eval $SSH_KEYS_TO_AUTOLOAD | source
         end
+
+        starship init fish | source
       '';
 
       shellAliases = {
