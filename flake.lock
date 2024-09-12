@@ -106,22 +106,6 @@
         "type": "github"
       }
     },
-    "fish-async-prompt": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1707036484,
-        "narHash": "sha256-J7y3BjqwuEH4zDQe4cWylLn+Vn2Q5pv0XwOSPwhw/Z0=",
-        "owner": "acomagu",
-        "repo": "fish-async-prompt",
-        "rev": "316aa03c875b58e7c7f7d3bc9a78175aa47dbaa8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "acomagu",
-        "repo": "fish-async-prompt",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -1367,7 +1351,6 @@
         "comma": "comma",
         "diagram.nvim": "diagram.nvim",
         "fioul": "fioul",
-        "fish-async-prompt": "fish-async-prompt",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
         "glaurung": "glaurung",

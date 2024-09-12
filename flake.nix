@@ -78,11 +78,6 @@
     };
     fioul.url = "github:traxys/fioul";
 
-    fish-async-prompt = {
-      url = "github:acomagu/fish-async-prompt";
-      flake = false;
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       #url = "/home/traxys/Documents/nixvim";
