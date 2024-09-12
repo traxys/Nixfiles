@@ -146,8 +146,17 @@
         diff = {
           algorithm = "histogram";
         };
+        feature = {
+          manyFiles = true;
+        };
+        fetch = {
+          writeCommitGraph = true;
+        };
         core = {
           excludesfile = "${pkgs.writeText "gitignore" config.programs.git.excludes}";
+          untrackedCache = true;
+          fsmonitor = true;
+          commitGraph = true;
         };
       };
 
