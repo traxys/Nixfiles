@@ -46,7 +46,14 @@
       };
 
       checks.launch = inputs.nixvim.lib.${system}.check.mkTestDerivationFromNvim {
-        nvim = self'.packages.neovimTraxys.extend { test.checkWarnings = false; };
+        nvim = self'.packages.neovimTraxys.extend (
+          { lib, ... }:
+          {
+            test.checkWarnings = false;
+            plugins.image.enable = lib.mkForce false;
+            plugins.diagram-nvim.enable = lib.mkForce false;
+          }
+        );
         name = "Neovim configuration";
       };
     };
