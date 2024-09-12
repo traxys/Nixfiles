@@ -45,7 +45,7 @@
         };
       };
 
-      checks.launch = inputs.nixvim.lib.${system}.check.mkTestDerivationFromNvim {
+      checks.launch-neovim = inputs.nixvim.lib.${system}.check.mkTestDerivationFromNvim {
         nvim = self'.packages.neovimTraxys.extend (
           { lib, ... }:
           {
