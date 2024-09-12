@@ -19,7 +19,7 @@ in
     nixpkgs-review
     nix-init
     mujmap
-    attic
+    attic-client
   ];
 
   services.syncthing.enable = true;
