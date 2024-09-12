@@ -40,7 +40,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gsm.url = "github:traxys/git-series-manager";
-    attic.url = "github:zhaofengli/attic";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -149,7 +148,6 @@
                   "raclette"
                   "roaming_proxy"
                   "mujmap"
-                  "attic"
                 ];
               in
               lib.genAttrs names (name: inputs'.${name}.packages.${name});
