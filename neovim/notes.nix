@@ -45,18 +45,18 @@
     };
   };
 
-  extraConfigLua =
-    let
-      cfg.renderer_options = {
+  plugins.diagram-nvim = {
+    enable = true;
+
+    settings = {
+      renderer_options = {
         mermaid = {
           background = "transparent";
           theme = "dark";
         };
       };
-    in
-    ''
-      require('diagram').setup(${helpers.toLuaObject cfg})
-    '';
+    };
+  };
 
   extraPackages = with pkgs; [
     mermaid-cli

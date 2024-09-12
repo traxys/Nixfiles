@@ -14,6 +14,7 @@
 
     ./plugins/headerguard.nix
     ./plugins/lsp-signature.nix
+    ./plugins/diagram-nvim.nix
   ];
 
   colorschemes.tokyonight = {
