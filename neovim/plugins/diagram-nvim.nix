@@ -1,15 +1,12 @@
 {
   lib,
-  helpers,
-  config,
-  pkgs,
   ...
 }:
-helpers.neovim-plugin.mkNeovimPlugin config {
+lib.nixvim.neovim-plugin.mkNeovimPlugin {
   name = "diagram-nvim";
   originalName = "diagram.nvim";
   luaName = "diagram";
-  defaultPackage = pkgs.vimPlugins.diagram-nvim;
+  package = "diagram-nvim";
 
   maintainers = [ lib.maintainers.traxys ];
 }
