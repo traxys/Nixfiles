@@ -19,7 +19,7 @@
         callback = helpers.mkRaw ''
           function()
             vim.cmd("Markview disable")
-            vim.cmd("DiagramBuf disable")
+            -- vim.cmd("DiagramBuf disable")
           end
         '';
       }
@@ -46,7 +46,8 @@
   };
 
   plugins.diagram-nvim = {
-    enable = true;
+    /* This does seem to work too well with the markdown preview */
+    enable = false;
 
     settings = {
       renderer_options = {
