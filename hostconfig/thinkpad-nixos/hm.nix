@@ -32,6 +32,7 @@ in
   imports = [ ./work.nix ];
 
   home.packages = with pkgs; [
+    teams-for-linux
     bear
     clang-analyzer
     clang-tools
@@ -47,8 +48,6 @@ in
     slack
     sshfs
   ];
-
-  wm.startup = [ { command = "chromium --app=http://teams.microsoft.com"; } ];
 
   wm.workspaces.definitions."".assign = [
     "Microsoft Teams"
@@ -428,11 +427,6 @@ in
     Install = {
       WantedBy = [ "default.target" ];
     };
-  };
-
-  xdg.desktopEntries.teams = {
-    name = "teams";
-    exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
   };
 
   home.homeDirectory = "/home/boyerq";
