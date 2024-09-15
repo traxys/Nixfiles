@@ -9,6 +9,8 @@
   imports = [ extraInfo ];
 
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages;
+  boot.plymouth.enable = true;
+  boot.initrd.systemd.enable = true;
 
   programs.nix-ld.enable = true;
 
