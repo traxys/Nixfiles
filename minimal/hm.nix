@@ -69,6 +69,7 @@
         just
         bottom
         keychain
+        rclone
 
         # Useful for pandoc to latex
         (texlive.combine {
