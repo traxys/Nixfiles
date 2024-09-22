@@ -20,6 +20,7 @@ in
     nix-init
     mujmap
     attic-client
+    gh
   ];
 
   services.syncthing.enable = true;
