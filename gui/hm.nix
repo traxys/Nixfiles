@@ -89,6 +89,9 @@
     };
   };
 
+  services.playerctld = {
+    enable = true;
+  };
 
   programs.firefox = {
     enable = true;
