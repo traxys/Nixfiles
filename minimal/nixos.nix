@@ -10,7 +10,14 @@
 
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages;
   boot.plymouth.enable = true;
-  boot.initrd.systemd.enable = true;
+  boot.initrd = {
+    services.lvm.enable = true;
+    supportedFilesystems = [ "btrfs" ];
+    systemd = {
+      enable = true;
+      emergencyAccess = false;
+    };
+  };
 
   programs.nix-ld.enable = true;
 
@@ -25,6 +32,7 @@
 
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
+    earlySetup = true;
     font = "Lat2-Terminus16";
     keyMap = "dvorak-programmer";
   };
