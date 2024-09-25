@@ -3,9 +3,10 @@
   boot.initrd = {
     enable = true;
     availableKernelModules = [
-      "amdgpu"
       "r8169"
     ];
+
+    kernelModules = [ "amdgpu" ];
 
     # secrets = {
     #   "/etc/secrets/initrd/keyfile" = "/etc/secrets/initrd/keyfile";
