@@ -65,39 +65,6 @@
     }
   '';
 
-  autoCmd = [
-    {
-      event = [
-        "BufNewFile"
-        "BufRead"
-      ];
-      pattern = [
-        "meson.build"
-        "meson_options.txt"
-        "meson.options"
-      ];
-      callback =
-        let
-          settings = { };
-        in
-        helpers.mkRaw ''
-          function(args)
-            local match = vim.fs.find(
-              {"meson_options.txt", "meson.options", ".git"},
-              {path = args.file, upward = true}
-            )[1]
-            local root_dir = match and vim.fn.fnamemodify(match, ":p:h") or nil
-            vim.lsp.start({
-              name = "mesonlsp",
-              cmd = {"${lib.getExe pkgs.mesonlsp}", "--lsp"},
-              root_dir = root_dir,
-              settings = ${helpers.toLuaObject settings},
-            })
-          end
-        '';
-    }
-  ];
-
   plugins.efmls-configs = {
     enable = true;
 
@@ -129,9 +96,6 @@
           "cbfmt"
           "mdformat"
         ];
-      };
-      python = {
-        formatter = "black";
       };
       nix = {
         linter = "statix";
@@ -198,8 +162,7 @@
       bashls.enable = true;
       dartls.enable = true;
       clangd.enable = true;
-      # TODO: re-enable when fixed
-      typst-lsp.enable = false;
+      tinymist.enable = true;
       tsserver.enable = true;
       efm.extraOptions = {
         init_options = {
@@ -211,6 +174,15 @@
       };
       taplo.enable = true;
       lemminx.enable = true;
+      basedpyright.enable = true;
+      ruff.enable = true;
+      # TODO: Find a package
+      # bitbake_ls.enable = true;
+      # TODO: Find a package
+      # ginko_ls.enable = true;
+      mesonlsp.enable = true;
+      yamlls.enable = true;
+      harper_ls.enable = true;
       ltex = {
         enable = true;
         onAttach.function = ''
