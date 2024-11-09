@@ -25,6 +25,7 @@
     unfreePackages = [
       "steam"
       "steam-original"
+      "steam-unwrapped"
       "cnijfilter2"
       "spotify"
       "discord"
