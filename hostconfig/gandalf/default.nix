@@ -23,6 +23,8 @@
       personal-gui
     ];
     unfreePackages = [
+      "steam"
+      "steam-original"
       "cnijfilter2"
       "spotify"
       "discord"
