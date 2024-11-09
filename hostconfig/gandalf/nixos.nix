@@ -85,6 +85,8 @@ in
     ];
   };
 
+  programs.steam.enable = true;
+
   services.postgresql = {
     enable = true;
     ensureUsers = [
