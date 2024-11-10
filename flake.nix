@@ -97,6 +97,10 @@
       url = "github:3rd/diagram.nvim/feature/toggle";
       flake = false;
     };
+    "blink.compat" = {
+      url = "github:saghen/blink.compat";
+      flake = false;
+    };
   };
 
   outputs =
