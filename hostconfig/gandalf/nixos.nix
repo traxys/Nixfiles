@@ -49,7 +49,7 @@ in
   networking.hostName = "gandalf";
   networking.networkmanager.enable = true;
 
-  services.automatic-timezoned.enable = true;
+  time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_GB.UTF-8";
 
