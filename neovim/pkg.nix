@@ -37,6 +37,11 @@
                     src = inputs."diagram.nvim";
                     version = inputs."diagram.nvim".shortRev;
                   };
+                  blink-compat = prev.vimUtils.buildVimPlugin {
+                    pname = "blink.compat";
+                    src = inputs."blink.compat";
+                    version = inputs."blink.compat".shortRev;
+                  };
                 }
               );
             }
