@@ -97,6 +97,7 @@
     scrolloff = 7;
     signcolumn = "yes";
     cmdheight = 2;
+    pumheight = 15;
     cot = [
       "menu"
       "menuone"
