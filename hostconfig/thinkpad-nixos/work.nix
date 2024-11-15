@@ -48,6 +48,13 @@
       enable = true;
       settings = {
         sendmail_args = [
+          # Davmail
+          # "--from=${config.workAddr}"
+          # "--smtp-server=127.0.0.1"
+          # "--smtp-user=${config.workAddr}"
+          # "--smtp-pass=aaaa"
+          # "--smtp-encryption=plain"
+          # "--smtp-server-port=1025"
           "--sendmail-cmd=nwadminSendmail"
           "--to=dl-bxi-sw-ll-patches@eviden.com"
         ];
