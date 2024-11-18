@@ -4,6 +4,10 @@
   config,
   ...
 }:
+let
+  rhelVersion = "9";
+  bxiImageVersion = "0.6.2";
+in
 {
   options = {
     workAddr = lib.mkOption { type = lib.types.str; };
@@ -59,6 +63,27 @@
         fi
 
         meson compile -C "$BUILD_DIR" "$@"
+      '')
+      (pkgs.writeShellScriptBin "podman-bxilint" ''
+        #!/usr/bin/env bash
+
+        cd "$(git rev-parse --show-toplevel)" || {
+          echo "can't cd to toplevel"
+          exit 255
+        }
+
+        kernel_path=$(meson introspect build --buildoptions | jq -r '.[] | select(.name == "kernel_path") | .value')
+
+        if [[ -z $kernel_path ]]; then
+          kernel_path=/usr/src/kernels/$(uname -r)
+        fi
+
+        kernel_path=$(realpath "$kernel_path")
+        curdir=$(realpath .)
+
+        podman run -it --rm -v "$curdir:$curdir" -v "$kernel_path:$kernel_path" -w "$curdir" \
+          registry.sf.bds.atos.net/bril-docker-release/bxi-rhel${rhelVersion}:${bxiImageVersion} \
+          bxilint "$@"
       '')
       pkgs.python3.pkgs.tappy
     ];
