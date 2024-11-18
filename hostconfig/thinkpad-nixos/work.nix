@@ -41,6 +41,25 @@
         ssh nwadmin "/usr/sbin/sendmail -r ${config.workAddr} $*"
         exit $?
       '')
+      (pkgs.writeShellScriptBin "mgit" ''
+        #!/usr/bin/env bash
+
+        if [[ -z $BUILD_DIR ]]; then
+          BUILD_DIR=build
+        fi
+
+        cd "$(git rev-parse --show-toplevel)" || {
+          echo "can't cd to toplevel"
+          exit 255
+        }
+
+        if [[ ! -d $BUILD_DIR ]]; then
+          echo "build directory '$BUILD_DIR' not found"
+          exit 1
+        fi
+
+        meson compile -C "$BUILD_DIR" "$@"
+      '')
       pkgs.python3.pkgs.tappy
     ];
 
