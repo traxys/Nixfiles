@@ -29,27 +29,28 @@
           "fallback"
         ];
       };
-      completion.enabled_providers = [
-        "lsp"
-        "buffer"
-        "path"
-        "git"
-        "calc"
-        "omni"
-      ];
-      # Does not seem to work
-      providers = {
-        git = {
-          name = "git";
-          module = "blink.compat.source";
-        };
-        calc = {
-          name = "calc";
-          module = "blink.compat.source";
-        };
-        omni = {
-          name = "omni";
-          module = "blink.compat.source";
+      sources = {
+        completion.enabled_providers = [
+          "lsp"
+          "buffer"
+          "path"
+          "git"
+          "calc"
+          "omni"
+        ];
+        providers = {
+          git = {
+            name = "git";
+            module = "blink.compat.source";
+          };
+          calc = {
+            name = "calc";
+            module = "blink.compat.source";
+          };
+          omni = {
+            name = "omni";
+            module = "blink.compat.source";
+          };
         };
       };
     };
@@ -63,6 +64,4 @@
   plugins.cmp-omni.enable = true;
   plugins.cmp-git.enable = true;
   plugins.cmp-calc.enable = true;
-
-  performance.combinePlugins.standalonePlugins = [ "nvim-cmp" ];
 }

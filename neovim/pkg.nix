@@ -42,6 +42,8 @@
                     src = inputs."blink.compat";
                     version = inputs."blink.compat".shortRev;
                   };
+
+                  nvim-cmp = final'.blink-compat;
                 }
               );
             }
