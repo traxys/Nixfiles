@@ -180,7 +180,13 @@
       # bitbake_ls.enable = true;
       # TODO: Find a package
       # ginko_ls.enable = true;
-      mesonlsp.enable = true;
+      mesonlsp = {
+        enable = true;
+        rootDir = # lua
+          ''
+            require'lspconfig.util'.root_pattern('meson_options.txt', 'meson.options', '.git', 'meson.build')
+          '';
+      };
       yamlls.enable = true;
       harper_ls.enable = true;
       ltex = {
