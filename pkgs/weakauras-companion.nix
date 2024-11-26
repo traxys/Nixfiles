@@ -5,11 +5,11 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "WeakAuras-Companion";
-  version = "5.2.4";
+  version = "5.2.7";
 
   src = fetchurl {
     url = "https://github.com/WeakAuras/WeakAuras-Companion/releases/download/v${version}/WeakAuras-Companion-${version}.AppImage";
-    sha256 = "sha256-r+XwfjrL8QBV+malPj9r4aDVTeNAvsLdBfEIltGmdGU=";
+    sha256 = "sha256-7Fxinx2fpqwU9KVgFdZ4cdK4Yw23VPjvaMed7WuGTq8=";
   };
 
   extraInstallCommands =
