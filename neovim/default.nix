@@ -23,6 +23,12 @@
     enable = true;
   };
 
+  plugins.mini = {
+    enable = true;
+    modules.icons = { };
+    mockDevIcons = true;
+  };
+
   performance = {
     byteCompileLua = {
       enable = true;
