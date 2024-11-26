@@ -59,12 +59,6 @@
     };
   };
 
-  extraPackages = with pkgs; [
-    mermaid-cli
-    d2
-    plantuml
-  ];
-
   extraPlugins = with pkgs.vimPlugins; [
     wiki-vim
     markdown-preview-nvim
