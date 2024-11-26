@@ -17,10 +17,10 @@ appimageTools.wrapType2 rec {
       appimageContents = appimageTools.extractType2 { inherit pname version src; };
     in
     ''
-        install -m 444 -D ${appimageContents}/wowup-cf.desktop $out/share/applications/wowup-cf.desktop
-        substituteInPlace $out/share/applications/wowup-cf.desktop --replace 'Exec=AppRun' 'Exec=${pname}'
-        install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/512x512/apps/wowup-cf.png \
-      $out/share/icons/hicolor/512x512/apps/wowup-cf.png
+      install -m 444 -D ${appimageContents}/wowup-cf.desktop $out/share/applications/wowup-cf.desktop
+      substituteInPlace $out/share/applications/wowup-cf.desktop --replace-fail 'Exec=AppRun' 'Exec=${pname}'
+      install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/128x128/apps/wowup-cf.png \
+        $out/share/icons/hicolor/512x512/apps/wowup-cf.png
     '';
 
   meta = with lib; {
