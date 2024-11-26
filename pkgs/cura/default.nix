@@ -5,11 +5,11 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "cura-appimage";
-  version = "5.7.1";
+  version = "5.9.0";
 
   src = fetchurl {
     url = "https://github.com/Ultimaker/Cura/releases/download/${version}/UltiMaker-Cura-${version}-linux-X64.AppImage";
-    sha256 = "sha256-LZMD0fo8TSlDEJspvTka724lYq5EgrOlDkwMktXqATw=";
+    sha256 = "sha256-STtVeM4Zs+PVSRO3cI0LxnjRDhOxSlttZF+2RIXnAp4=";
   };
 
   extraInstallCommands =
