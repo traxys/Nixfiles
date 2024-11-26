@@ -5,11 +5,11 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "wowup-cf";
-  version = "2.11.1";
+  version = "2.20.0";
 
   src = fetchurl {
     url = "https://github.com/WowUp/WowUp.CF/releases/download/v${version}/WowUp-CF-${version}.AppImage";
-    sha256 = "sha256-jc9e+0zPJufZaIMhQ8nSFJwKFikuTyDLAxBWaOHf9qI=";
+    sha256 = "sha256-Fu0FqeWJip0cXSifu1QDktu73SsxGpkEU3cuYbFghxc=";
   };
 
   extraInstallCommands =
