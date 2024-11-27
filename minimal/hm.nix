@@ -100,6 +100,11 @@
       nix-direnv.enable = true;
     };
 
+    programs.tealdeer = {
+      enable = true;
+      settings.auto_update = true;
+    };
+
     programs.home-manager.enable = true;
     programs.bat = {
       enable = true;
