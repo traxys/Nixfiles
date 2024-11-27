@@ -50,6 +50,8 @@
         bat
         comma
         fd
+        sd
+        choose
         file
         gdb
         gnumake
