@@ -187,6 +187,9 @@
         "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify next";
         "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl -p spotify previous";
 
+        "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} set 10%-";
+        "XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} set 10%+";
+
         "${mod}+space" = "exec foot nvim +WikiIndex";
         "${mod}+Shift+space" = "exec foot nvim +WikiPages";
 
