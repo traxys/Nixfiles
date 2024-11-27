@@ -190,6 +190,8 @@
         "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} set 10%-";
         "XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} set 10%+";
 
+        "XF86Display" = "exec ${lib.getExe' pkgs.wl-mirror "wl-present"} mirror";
+
         "${mod}+space" = "exec foot nvim +WikiIndex";
         "${mod}+Shift+space" = "exec foot nvim +WikiPages";
 
