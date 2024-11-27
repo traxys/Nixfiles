@@ -72,6 +72,7 @@
         bottom
         keychain
         rclone
+        nix-du
 
         # Useful for pandoc to latex
         (texlive.combine {

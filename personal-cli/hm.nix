@@ -20,6 +20,7 @@ in
     nix-init
     mujmap
     attic-client
+    nix-tree
     gh
   ];
 
