@@ -373,7 +373,7 @@ in
           subFolders = "Verbatim";
           extraConfig.account = {
             AuthMechs = "LOGIN";
-            Timeout = 60;
+            Timeout = 0;
           };
         };
         passwordCommand = "echo foobar";
