@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let 
+  inherit (import ../../str-obf.nix lib) decode;
+  oldWorkDomain = "hsid.xls";
+in 
 {
   boot.initrd = {
     luks.devices = {
@@ -51,7 +55,7 @@
     enable = true;
     registries = {
       search = [
-        "registry.sf.bds.***REMOVED***"
+        "registry.sf.bds.${decode oldWorkDomain}"
         "docker.io"
         "quay.io"
       ];

@@ -1,5 +1,8 @@
-{
-  extraInfo.email = "quentin.boyer@***REMOVED***";
+{lib, ...}: let 
+  inherit (import ../../str-obf.nix lib) decode;
+  workDomain = "lenmlx.ziy";
+in {
+  extraInfo.email = "quentin.boyer@${decode workDomain}";
 
   extraInfo.username = "traxys";
 

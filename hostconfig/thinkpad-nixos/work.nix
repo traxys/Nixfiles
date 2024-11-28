@@ -7,6 +7,10 @@
 let
   rhelVersion = "9";
   bxiImageVersion = "0.6.2";
+  inherit (import ../../str-obf.nix lib) decode;
+  workDomain = "lenmlx.ziy";
+  oldWorkDomain = "hsid.xls";
+  scmDomain = "gnsgrzwlsgmdjf.jdz.hsid-dlfenzld.xls";
 in
 {
   options = {
@@ -14,7 +18,7 @@ in
   };
 
   config = {
-    workAddr = "quentin.boyer@***REMOVED***";
+    workAddr = "quentin.boyer@${decode workDomain}";
 
     extraNixvim = [
       (
@@ -82,11 +86,15 @@ in
         curdir=$(realpath .)
 
         podman run -it --rm -v "$curdir:$curdir" -v "$kernel_path:$kernel_path" -w "$curdir" \
-          registry.sf.bds.***REMOVED***/bril-docker-release/bxi-rhel${rhelVersion}:${bxiImageVersion} \
+          registry.sf.bds.${decode oldWorkDomain}/bril-docker-release/bxi-rhel${rhelVersion}:${bxiImageVersion} \
           bxilint "$@"
       '')
       pkgs.python3.pkgs.tappy
     ];
+
+    home.sessionVariables = {
+      WORK_DOMAIN = decode workDomain;
+    };
 
     programs.git-series-manager = {
       enable = true;
@@ -100,16 +108,16 @@ in
           # "--smtp-encryption=plain"
           # "--smtp-server-port=1025"
           "--sendmail-cmd=nwadminSendmail"
-          "--to=dl-bxi-sw-ll-patches@***REMOVED***"
+          "--to=dl-bxi-sw-ll-patches@${decode workDomain}"
         ];
-        repo_url_base = "https://***REMOVED***/scm/bril/";
-        ci_url = "https://sf.bds.***REMOVED***/jenkins/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
+        repo_url_base = "https://${decode scmDomain}/scm/bril/";
+        ci_url = "https://sf.bds.${decode oldWorkDomain}/jenkins/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
         editor = "nvim";
       };
     };
 
     programs.fish.shellAliases = {
-      gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@***REMOVED***"'';
+      gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@${decode workDomain}"'';
     };
   };
 }

@@ -303,7 +303,6 @@ in
             "subject:'[confluence] Recommended in Confluence for Boyer, Quentin'"
             "subject:'[PCI-SIG]'"
             "from:enterprisedb.com"
-            "from:GIGA@***REMOVED***"
           ];
 
           spammySearch = lib.concatStringsSep " or " spammyFilters;
@@ -362,7 +361,7 @@ in
 
     email = {
       accounts.work = rec {
-        address = "quentin.boyer@***REMOVED***";
+        address = config.workAddr;
         imap = {
           host = "localhost";
           port = 1143;

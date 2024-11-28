@@ -4,23 +4,25 @@ local conf = require("telescope.config").values
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 
+local work_domain = vim.env.WORK_DOMAIN
+
 local team_picker = function(opts)
 	opts = opts or {}
 	return pickers
 		.new(opts, {
 			prompt_title = "Team member",
 			finder = finders.new_table({
-				results = {
-					[[Quentin Boyer "<quentin.boyer@***REMOVED***>"]],
-					[[Mathieu Barbe "<mathieu.barbe@***REMOVED***>"]],
-					[[Philippe Dutrueux "<philippe.dutrueux@***REMOVED***>"]],
-					[[Sylvain Goudeau "<sylvain.goudeau@***REMOVED***>"]],
-					[[Jonathan Espié--Caullet "<jonathan.espiecaullet@***REMOVED***>"]],
-					[[Damien Bergamini "<damien.bergamini@***REMOVED***>"]],
-					[[Pedro Martins Basso "<pedro.martinsbasso@***REMOVED***>"]],
-					[[Yoann Heitz "<yoann.heitz@***REMOVED***>"]],
-					[[Clément Mathieu--Drif "<clement.mathieu--drif@***REMOVED***>"]],
-				},
+				results = vim.tbl_map(function(s) return string.format(s, work_domain) end, {
+					[[Quentin Boyer "<quentin.boyer@%s>"]],
+					[[Mathieu Barbe "<mathieu.barbe@%s>"]],
+					[[Philippe Dutrueux "<philippe.dutrueux@%s>"]],
+					[[Sylvain Goudeau "<sylvain.goudeau@%s>"]],
+					[[Jonathan Espié--Caullet "<jonathan.espiecaullet@%s>"]],
+					[[Damien Bergamini "<damien.bergamini@%s>"]],
+					[[Pedro Martins Basso "<pedro.martinsbasso@%s>"]],
+					[[Yoann Heitz "<yoann.heitz@%s>"]],
+					[[Clément Mathieu--Drif "<clement.mathieu--drif@%s>"]],
+				}),
 			}),
 			sorter = conf.generic_sorter(opts),
 			attach_mappings = function(prompt_bufnr, map)
