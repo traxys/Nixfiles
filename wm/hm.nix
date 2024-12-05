@@ -117,7 +117,17 @@
       };
 
       startup = [
-        { command = lib.getExe pkgs.sway-assign-cgroups; }
+        {
+          command = lib.getExe (
+            pkgs.sway-assign-cgroups.override {
+              python3Packages = pkgs.python3Packages // {
+                dbus-next = pkgs.python3Packages.dbus-next.overridePythonAttrs (_: {
+                  doCheck = false;
+                });
+              };
+            }
+          );
+        }
         { command = "signal-desktop"; }
         { command = "discord"; }
         { command = "firefox"; }
