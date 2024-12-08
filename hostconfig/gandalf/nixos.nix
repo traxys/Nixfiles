@@ -10,10 +10,7 @@ in
 
   boot.resumeDevice = swap;
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
-  '';
+  services.logind.lidSwitch = "suspend";
 
   swapDevices = [
     {
