@@ -4,8 +4,8 @@
 }:
 lib.nixvim.neovim-plugin.mkNeovimPlugin {
   name = "diagram-nvim";
-  originalName = "diagram.nvim";
-  luaName = "diagram";
+  packPathName = "diagram.nvim";
+  moduleName = "diagram";
   package = "diagram-nvim";
 
   maintainers = [ lib.maintainers.traxys ];
