@@ -47,6 +47,8 @@
     };
   };
 
+  plugins.lz-n.enable = true;
+
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
     {
@@ -339,6 +341,7 @@
 
   plugins.trouble = {
     enable = true;
+    lazyLoad.settings.cmd = "Trouble";
   };
 
   plugins.noice = {
