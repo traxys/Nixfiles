@@ -38,7 +38,7 @@
   };
 
   plugins.image = {
-    enable = true;
+    enable = false;
     backend = "ueberzug";
 
     integrations.markdown = {
