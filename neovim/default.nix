@@ -372,6 +372,18 @@
     keymaps.enable = true;
   };
 
+  plugins.snacks.enable = true;
+
+  extraConfigLuaPre = lib.mkBefore ''
+    if vim.env.PROF then
+      require("snacks.profiler").startup({
+        startup = {
+          event = "VimEnter"
+        }
+      })
+    end
+  '';
+
   extraConfigLuaPost = ''
     require("luasnip.loaders.from_snipmate").lazy_load()
 
