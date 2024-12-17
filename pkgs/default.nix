@@ -10,7 +10,6 @@
     {
       packages = {
         wowup = pkgs.callPackage ./wowup.nix { };
-        cura-appimage = pkgs.callPackage ./cura { };
         simulationcraft = pkgs.callPackage ./simulationcraft.nix {
           simulationcraft-src = inputs.simulationcraft;
         };
