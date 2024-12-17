@@ -7,7 +7,7 @@
 {
   _module.args = {
     flakeOverlays = system: [
-      inputs.nur.overlay
+      inputs.nur.overlays.default
       inputs.rust-overlay.overlays.default
       inputs.comma.overlays.default
       (final: prev: self.packages.${system})
