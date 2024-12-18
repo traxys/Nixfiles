@@ -316,7 +316,7 @@ in
           notmuch tag +work -- tag:new and 'path:work/**'
           notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
           notmuch tag +iommu +non-patch -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
-          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and subject:'/\[PATCH/' or subject:'/\[RFC/' or subject:'/\[PULL/'
+          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and '(subject:"/\[PATCH/" OR subject:"/\[RFC/" OR subject:"/\[PULL/")'
           notmuch tag +qemu +non-patch -new -- tag:new and to:qemu-devel@nongnu.org
           notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
