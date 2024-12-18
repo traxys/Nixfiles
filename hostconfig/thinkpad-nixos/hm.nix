@@ -128,8 +128,10 @@ in
               _unread=thread:{tag:unread} and not tag:iommu and not tag:qemu
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
+              ext/iommu/non-patch=tag:iommu and tag:non-patch
               ext/iommu/unread=tag:iommu and thread:{tag:unread}
               ext/qemu=tag:qemu
+              ext/qemu/non-patch=tag:qemu and tag:non-patch
               ext/qemu/unread=tag:qemu and thread:{tag:unread}
               archi=thread:"{tag:'archi' or subject:'[NICIA] CR réunion architecture'}"
 
@@ -313,7 +315,9 @@ in
         ''
           notmuch tag +work -- tag:new and 'path:work/**'
           notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
-          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and subject:'/\[PATCH/'
+          notmuch tag +iommu +non-patch -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
+          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and subject:'/\[PATCH/' or subject:'/\[RFC/' or subject:'/\[PULL/'
+          notmuch tag +qemu +non-patch -new -- tag:new and to:qemu-devel@nongnu.org
           notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag -unread +me -- tag:new and from:${config.workAddr}
