@@ -14,6 +14,7 @@ let
     libs2 = [ "bxi-jenkins-libs2" ];
     hps = [ "bxi-hps" ];
     doc = [ "bxi-doc" ];
+    qemu-bxi = [ "qemu" ];
     container = [ "bxi-containers" ];
     flash-tools = [ "bxi-flash-tools" ];
     gpumap = [ "gpumap" ];
@@ -124,11 +125,12 @@ in
               inbox=tag:inbox and not tag:spammy
               inflight=thread:{tag:inflight}
               review=thread:{tag:review}
-              _unread=thread:{tag:unread}
+              _unread=thread:{tag:unread} and not tag:iommu and not tag:qemu
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
+              ext/iommu/unread=tag:iommu and thread:{tag:unread}
               ext/qemu=tag:qemu
-              stage=thread:{tag:stage}
+              ext/qemu/unread=tag:qemu and thread:{tag:unread}
               archi=thread:"{tag:'archi' or subject:'[NICIA] CR réunion architecture'}"
 
               ${patchDirs}
@@ -311,8 +313,6 @@ in
           notmuch tag +work -- tag:new and 'path:work/**'
           notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
           notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and subject:'/\[PATCH/'
-          notmuch tag -unread -- tag:iommu and subject:'/^Re:/'
-          notmuch tag -unread -- tag:qemu and subject:'/^Re:/'
           notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag -unread +me -- tag:new and from:${config.workAddr}
