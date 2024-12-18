@@ -143,6 +143,7 @@ in
       ui = {
         mouse-enabled = true;
         threading-enabled = true;
+        dirlist-tree = true;
       };
 
       filters = {
