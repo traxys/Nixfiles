@@ -6,5 +6,14 @@
     glaurung
     nur.repos.xeals.cura5
     anki-bin
+    rmview
   ];
+
+  home.sessionVariables = {
+    RMVIEW_CONF = pkgs.writers.writeJSON "rmview.json" {
+      ssh.auth_method = "key";
+      backend = "screenshare";
+      orientation = "portrait";
+    };
+  };
 }

@@ -2,6 +2,7 @@
 {
   networking.firewall = {
     enable = true;
+    allowedUDPPorts = [ 5901 ];
     allowedTCPPortRanges = [
       {
         # KDE connect
