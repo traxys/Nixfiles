@@ -7,6 +7,7 @@
     nur.repos.xeals.cura5
     anki-bin
     rmview
+    rmc
   ];
 
   home.sessionVariables = {

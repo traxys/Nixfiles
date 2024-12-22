@@ -27,6 +27,7 @@
         pulse8-cec = pkgs.callPackage ./pulse8-cec.nix { };
         weakauras-companion = pkgs.callPackage ./weakauras-companion.nix { };
         wow-note = pkgs.callPackage ./wow-note { };
+        rmc = pkgs.callPackage ./rmc.nix { };
       };
     };
 }
