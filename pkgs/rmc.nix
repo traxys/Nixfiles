@@ -2,6 +2,8 @@
   lib,
   python3,
   fetchFromGitHub,
+  inkscape,
+  makeWrapper,
 }:
 
 python3.pkgs.buildPythonApplication rec {
@@ -21,6 +23,7 @@ python3.pkgs.buildPythonApplication rec {
   ];
 
   dependencies = with python3.pkgs; [
+    makeWrapper
     click
     rmscene
   ];
@@ -28,6 +31,10 @@ python3.pkgs.buildPythonApplication rec {
   pythonImportsCheck = [
     "rmc"
   ];
+
+  postInstall = ''
+    wrapProgram $out/bin/rmc --prefix PATH : ${lib.makeBinPath [ inkscape ]}
+  '';
 
   meta = {
     description = "Convert to/from v6 .rm files from the reMarkable tablet";
