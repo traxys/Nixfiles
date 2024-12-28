@@ -30,7 +30,7 @@
     drivers = with pkgs; [
       hplip
       gutenprint
-      cnijfilter2
+      # cnijfilter2
     ];
   };
   hardware.sane.enable = true;
