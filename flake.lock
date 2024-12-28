@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "blink.compat": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1735162247,
-        "narHash": "sha256-tFQeKyqdo3mvptYnWxKhTpI4ROFNQ6u3P8cLqtlsozw=",
-        "owner": "saghen",
-        "repo": "blink.compat",
-        "rev": "5ca8848c8cc32abdc980e5db4f0eb7bb8fbf84dc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saghen",
-        "repo": "blink.compat",
-        "type": "github"
-      }
-    },
     "cargo2nix": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1339,7 +1323,6 @@
     },
     "root": {
       "inputs": {
-        "blink.compat": "blink.compat",
         "comma": "comma",
         "diagram.nvim": "diagram.nvim",
         "fioul": "fioul",

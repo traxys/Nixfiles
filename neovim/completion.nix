@@ -2,12 +2,9 @@
 {
   extraPlugins = [ pkgs.vimPlugins.blink-compat ];
 
-  plugins.blink-cmp = {
-    luaConfig.pre = # lua
-      ''
-        require('blink.compat').setup({debug = true})
-      '';
+  plugins.blink-compat.enable = true;
 
+  plugins.blink-cmp = {
     enable = true;
     settings = {
       keymap = {
@@ -29,8 +26,9 @@
           "fallback"
         ];
       };
+      completion.list.selection = "manual";
       sources = {
-        completion.enabled_providers = [
+        default = [
           "lsp"
           "buffer"
           "path"

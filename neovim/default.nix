@@ -303,9 +303,9 @@
   };
 
   plugins.vim-matchup = {
-    treesitterIntegration = {
+    treesitter = {
       enable = true;
-      includeMatchWords = true;
+      include_match_words = true;
     };
     enable = true;
   };
@@ -370,9 +370,10 @@
   };
 
   plugins.openscad = {
-    enable = true;
-    loadSnippets = true;
-    keymaps.enable = true;
+    enable = false;
+    settings = {
+      load_snippets = true;
+    };
   };
 
   plugins.snacks.enable = true;
