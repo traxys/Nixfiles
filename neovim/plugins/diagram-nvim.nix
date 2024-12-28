@@ -2,7 +2,7 @@
   lib,
   ...
 }:
-lib.nixvim.neovim-plugin.mkNeovimPlugin {
+lib.nixvim.plugins.neovim.mkNeovimPlugin {
   name = "diagram-nvim";
   packPathName = "diagram.nvim";
   moduleName = "diagram";
