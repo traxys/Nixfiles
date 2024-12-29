@@ -392,6 +392,12 @@
     require("luasnip.loaders.from_snipmate").lazy_load()
 
     require("cmp_git").setup({})
+
+    -- debug.sethook(function()
+    --     local file = io.open("/home/traxys/nvim_bt", "a")
+    --     file:write(debug.traceback("backtrace"))
+    --     file:close()
+    -- end, "c", 43)
   '';
 
   plugins.which-key.enable = true;
