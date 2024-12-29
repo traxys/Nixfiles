@@ -946,21 +946,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
       }
     },
-    "nixpkgs-master": {
-      "locked": {
-        "lastModified": 1735430145,
-        "narHash": "sha256-+8O2vjWnfqNLDmHSwWQvce5KlRSo1wWee1523Aq3JRc=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "0d7cc712dea63b116baa1869ba7fe6f91f2c3905",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1735141468,
@@ -977,18 +962,18 @@
         "type": "github"
       }
     },
-    "nixpkgs-traxys": {
+    "nixpkgs-staging": {
       "locked": {
-        "lastModified": 1692884435,
-        "narHash": "sha256-ykp+yuy2FpK4oMlbCCeLBVAKa4pjqu24yUox7kgMpXY=",
-        "owner": "traxys",
+        "lastModified": 1735513553,
+        "narHash": "sha256-gy0yBLs9Y6fNe7E5Rh+mFdU29XqjfyIaaHsZFlsOudQ=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c335eeb76ffdeb38fe295b86f0bbf71a4e558a4a",
+        "rev": "84758abe5ac20edd899ad048e586d18ea1e8c911",
         "type": "github"
       },
       "original": {
-        "owner": "traxys",
-        "ref": "inflight",
+        "owner": "nixos",
+        "ref": "staging",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1340,8 +1325,7 @@
         "nix-ld": "nix-ld",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_11",
-        "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-traxys": "nixpkgs-traxys",
+        "nixpkgs-staging": "nixpkgs-staging",
         "nixvim": "nixvim",
         "nur": "nur",
         "raclette": "raclette",
