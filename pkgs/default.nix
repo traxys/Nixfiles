@@ -9,7 +9,6 @@
     }:
     {
       packages = {
-        wowup = pkgs.callPackage ./wowup.nix { };
         simulationcraft = pkgs.callPackage ./simulationcraft.nix {
           simulationcraft-src = inputs.simulationcraft;
         };

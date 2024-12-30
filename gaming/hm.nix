@@ -14,7 +14,7 @@
     wine-tkg
     winetricks
     weakauras-companion
-    wowup
+    wowup-cf
     xivlauncher
     obs-studio
     pulseaudio
