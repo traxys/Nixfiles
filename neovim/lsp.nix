@@ -172,6 +172,7 @@
         };
       };
       taplo.enable = true;
+      lua_ls.enable = true;
       lemminx.enable = true;
       basedpyright.enable = true;
       ruff.enable = true;
