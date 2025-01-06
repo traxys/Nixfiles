@@ -231,6 +231,20 @@
     };
   };
 
+  extraFiles."queries/rust/injections.scm".text = ''
+    ;; extends
+
+    (call_expression
+      function: ((identifier) @_func (#eq? @_func "JS"))
+      arguments: (arguments (raw_string_literal (string_content) @injection.content))
+      (#set! injection.language "javascript"))
+
+    (token_tree
+      (identifier) @_func (#eq? @_func "JS")
+      (token_tree (raw_string_literal (string_content) @injection.content))
+      (#set! injection.language "javascript"))
+  '';
+
   plugins.treesitter = {
     enable = true;
 
@@ -262,6 +276,7 @@
       groovy
       html
       ini
+      javascript
       json
       just
       lalrpop

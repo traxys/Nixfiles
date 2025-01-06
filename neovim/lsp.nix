@@ -53,6 +53,9 @@
         nargs = 1,
         force = true,
     })
+
+    -- rust-analyzer overrides injections
+    vim.api.nvim_set_hl(0, "@lsp.type.string.rust", {})
   '';
 
   # Language Servers
