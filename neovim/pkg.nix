@@ -20,7 +20,7 @@
           pkgs = pkgs.extend (
             final: prev:
             {
-              inherit (inputs'.nixpkgs-staging.legacyPackages) tree-sitter;
+              inherit (inputs'.nixpkgs-ts.legacyPackages) tree-sitter;
               vimPlugins = prev.vimPlugins.extend (
                 final': prev': {
                   vim-headerguard = prev.vimUtils.buildVimPlugin {

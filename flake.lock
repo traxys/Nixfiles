@@ -962,18 +962,18 @@
         "type": "github"
       }
     },
-    "nixpkgs-staging": {
+    "nixpkgs-ts": {
       "locked": {
-        "lastModified": 1735513553,
-        "narHash": "sha256-gy0yBLs9Y6fNe7E5Rh+mFdU29XqjfyIaaHsZFlsOudQ=",
-        "owner": "nixos",
+        "lastModified": 1736195135,
+        "narHash": "sha256-k3Q/Gn8T51qv88d86yeOg/UE/H3Vka4IWslAtinMp0s=",
+        "owner": "traxys",
         "repo": "nixpkgs",
-        "rev": "84758abe5ac20edd899ad048e586d18ea1e8c911",
+        "rev": "a1c7c71d3840135700a23eb143094aae17d25f66",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "staging",
+        "owner": "traxys",
+        "ref": "ts",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1325,7 +1325,7 @@
         "nix-ld": "nix-ld",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_11",
-        "nixpkgs-staging": "nixpkgs-staging",
+        "nixpkgs-ts": "nixpkgs-ts",
         "nixvim": "nixvim",
         "nur": "nur",
         "raclette": "raclette",
