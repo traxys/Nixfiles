@@ -243,7 +243,9 @@
 
     grammarPackages = with config.plugins.treesitter.package.passthru.builtGrammars; [
       arduino
+      asm
       bash
+      bitbake
       c
       cpp
       cuda
@@ -251,6 +253,8 @@
       devicetree
       diff
       dockerfile
+      editorconfig
+      fish
       gitattributes
       gitcommit
       gitignore
@@ -259,15 +263,19 @@
       html
       ini
       json
+      just
       lalrpop
       latex
+      linkerscript
       lua
       make
       markdown
       markdown_inline
+      mermaid
       meson
       ninja
       nix
+      printf
       python
       regex
       rst
@@ -276,11 +284,12 @@
       sql
       tlaplus
       toml
+      typst
       vim
       vimdoc
+      xml
       yaml
-      mermaid
-      fish
+      zig
     ];
   };
 
