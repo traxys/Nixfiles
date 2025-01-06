@@ -187,7 +187,10 @@
           '';
       };
       yamlls.enable = true;
-      harper_ls.enable = true;
+      harper_ls = {
+        enable = true;
+        autostart = false;
+      };
       ltex = {
         enable = true;
         onAttach.function = ''
