@@ -118,13 +118,13 @@ in
           address-book-cmd = "${pkgs.notmuch-addrlookup}/bin/notmuch-addrlookup --format=aerc %s";
           query-map =
             let
-              mkPatchDir = name: "patches/${name}=tag:${name}";
+              mkPatchDir = name: "projects/${name}=tag:${name}";
               patchDirs = builtins.concatStringsSep "\n" (builtins.map mkPatchDir (builtins.attrNames projects));
             in
             "${pkgs.writeText "querymap" ''
               inbox=tag:inbox and not tag:spammy
-              inflight=thread:{tag:inflight}
-              review=thread:{tag:review}
+              _patches/inflight=thread:{tag:inflight}
+              _patches/review=thread:{tag:review}
               _unread=thread:{tag:unread} and not tag:iommu and not tag:qemu
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
@@ -133,7 +133,6 @@ in
               ext/qemu=tag:qemu
               ext/qemu/non-patch=tag:qemu and tag:non-patch
               ext/qemu/unread=tag:qemu and thread:{tag:unread}
-              archi=thread:"{tag:'archi' or subject:'[NICIA] CR réunion architecture'}"
 
               ${patchDirs}
             ''}";
@@ -214,8 +213,8 @@ in
         "tdt" = ":tag -todo<Enter>:select 0<Enter>";
 
         "zI" = ":cf inbox<Enter>";
-        "zi" = ":cf inflight<Enter>";
-        "zr" = ":cf review<Enter>";
+        "zi" = ":cf _patches/inflight<Enter>";
+        "zr" = ":cf _patches/review<Enter>";
         "zu" = ":cf _unread<Enter>";
         "zt" = ":cf _todo<Enter>";
         "zT" = ":cf tag:";
