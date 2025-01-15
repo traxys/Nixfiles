@@ -31,6 +31,7 @@
       "steam-run"
       "discord"
       "spotify"
+      "wowup-cf"
       "libXNVCtrl" # mangohud through bottles & heroic
     ];
   };
