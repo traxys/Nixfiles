@@ -144,7 +144,10 @@
                   "mujmap"
                 ];
               in
-              lib.genAttrs names (name: inputs'.${name}.packages.${name});
+              (lib.genAttrs names (name: inputs'.${name}.packages.${name}))
+              // {
+                inherit (inputs'.nixpkgs-ts.legacyPackages) umu-launcher;
+              };
 
             formatter = config.treefmt.build.wrapper;
 

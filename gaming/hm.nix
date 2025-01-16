@@ -19,6 +19,7 @@
     obs-studio
     pulseaudio
     wow-note
+    umu-launcher
   ];
 
   home.file = {

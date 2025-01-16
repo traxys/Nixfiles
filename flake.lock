@@ -960,11 +960,11 @@
     },
     "nixpkgs-ts": {
       "locked": {
-        "lastModified": 1736195135,
-        "narHash": "sha256-k3Q/Gn8T51qv88d86yeOg/UE/H3Vka4IWslAtinMp0s=",
+        "lastModified": 1736967369,
+        "narHash": "sha256-YA2KbrsbY9R42tZAqnn6Q24k2ZNzd506MF/gEEwfj+w=",
         "owner": "traxys",
         "repo": "nixpkgs",
-        "rev": "a1c7c71d3840135700a23eb143094aae17d25f66",
+        "rev": "f0295438e6f868544142c466fee83bb0fc9471ca",
         "type": "github"
       },
       "original": {
