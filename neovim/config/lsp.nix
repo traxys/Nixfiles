@@ -237,23 +237,23 @@
     enable = true;
     enableOffsetEncodingWorkaround = true;
 
-    ast = {
-      roleIcons = {
+    settings.ast = {
+      role_icons = {
         type = "";
         declaration = "";
         expression = "";
         specifier = "";
         statement = "";
-        templateArgument = "";
+        "template argument" = "";
       };
-      kindIcons = {
-        compound = "";
-        recovery = "";
-        translationUnit = "";
-        packExpansion = "";
-        templateTypeParm = "";
-        templateTemplateParm = "";
-        templateParamObject = "";
+      kind_icons = {
+        Compound = "";
+        Recovery = "";
+        TranslationUnit = "";
+        PackExpansion = "";
+        TemplateTypeParm = "";
+        TemplateTemplateParm = "";
+        TemplateParamObject = "";
       };
     };
   };
