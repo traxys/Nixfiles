@@ -15,13 +15,9 @@
     default = "";
   };
 
-  options.extraNixvim = lib.mkOption {
-    type = lib.types.listOf lib.types.anything;
-    default = [ ];
-  };
-
   imports = [
     inputs.nix-index-database.hmModules.nix-index
+    inputs.nixvim.homeManagerModules.nixvim
     extraInfo
   ];
 
@@ -45,52 +41,55 @@
       EDITOR = "nvim";
     };
 
-    home.packages =
-      (with pkgs; [
-        bat
-        comma
-        fd
-        sd
-        choose
-        file
-        gdb
-        gnumake
-        jq
-        man-pages
-        oscclip
-        pandoc
-        raclette
-        ripgrep
-        rsync
-        tokei
-        unzip
-        wget
-        frg
-        nix-output-monitor
-        bat-extras.prettybat
-        just
-        bottom
-        keychain
-        rclone
-        nix-du
+    programs.nixvim = _: {
+      enable = true;
+      imports = [ flake.nixvimModules.neovimTraxys ];
+    };
 
-        # Useful for pandoc to latex
-        (texlive.combine {
-          inherit (texlive)
-            scheme-medium
-            fncychap
-            wrapfig
-            capt-of
-            framed
-            upquote
-            needspace
-            tabulary
-            varwidth
-            titlesec
-            ;
-        })
-      ])
-      ++ [ (pkgs.neovimTraxys.extend { imports = config.extraNixvim; }) ];
+    home.packages = with pkgs; [
+      bat
+      comma
+      fd
+      sd
+      choose
+      file
+      gdb
+      gnumake
+      jq
+      man-pages
+      oscclip
+      pandoc
+      raclette
+      ripgrep
+      rsync
+      tokei
+      unzip
+      wget
+      frg
+      nix-output-monitor
+      bat-extras.prettybat
+      just
+      bottom
+      keychain
+      rclone
+      nix-du
+
+      # Useful for pandoc to latex
+      (texlive.combine {
+        inherit (texlive)
+          scheme-medium
+          fncychap
+          wrapfig
+          capt-of
+          framed
+          upquote
+          needspace
+          tabulary
+          varwidth
+          titlesec
+          ;
+      })
+    ];
 
     nix.registry = {
       "my".flake = flake;

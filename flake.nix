@@ -88,14 +88,6 @@
       url = "github:drmikehenry/vim-headerguard";
       flake = false;
     };
-    "wiki.vim" = {
-      url = "github:lervag/wiki.vim";
-      flake = false;
-    };
-    "diagram.nvim" = {
-      url = "github:3rd/diagram.nvim/feature/toggle";
-      flake = false;
-    };
   };
 
   outputs =
@@ -112,9 +104,9 @@
 
         imports = [
           ./pkgs
-          ./neovim/pkg.nix
           ./hostconfig
           ./templates
+          ./neovim
           inputs.treefmt-nix.flakeModule
           inputs.flake-root.flakeModule
         ];

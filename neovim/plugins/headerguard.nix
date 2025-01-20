@@ -1,3 +1,4 @@
+{ vim-headerguard }:
 {
   config,
   lib,
@@ -17,7 +18,21 @@ with lib;
       cfg = config.plugins.headerguard;
     in
     mkIf cfg.enable {
-      extraPlugins = with pkgs.vimPlugins; [ vim-headerguard ];
+      nixpkgs.overlays = [
+        (final: prev: {
+          vimPlugins = prev.vimPlugins.extend (
+            final': prev': {
+              vim-headerguard = prev.vimUtils.buildVimPlugin {
+                pname = "vim-headerguard";
+                src = vim-headerguard;
+                version = vim-headerguard.shortRev;
+              };
+            }
+          );
+        })
+      ];
+
+      extraPlugins = [ pkgs.vimPlugins.vim-headerguard ];
 
       globals.headerguard_use_cpp_comments = cfg.useCppComment;
     };

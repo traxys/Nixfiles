@@ -20,26 +20,23 @@ in
   config = {
     workAddr = "quentin.boyer@${decode workDomain}";
 
-    extraNixvim = [
-      (
-        { helpers, ... }:
-        {
-          extraConfigLuaPre = ''
-            team_picker = dofile("${./telescope-team.lua}")
-          '';
-          keymaps = [
-            {
-              key = "<leader>R";
-              mode = [ "n" ];
-              action = helpers.mkRaw "team_picker";
-            }
-          ];
-          commands = {
-            Review = "lua team_picker()";
-          };
-        }
-      )
-    ];
+    programs.nixvim =
+      { lib, ... }:
+      {
+        extraConfigLuaPre = ''
+          team_picker = dofile("${./telescope-team.lua}")
+        '';
+        keymaps = [
+          {
+            key = "<leader>R";
+            mode = [ "n" ];
+            action = lib.nixvim.mkRaw "team_picker";
+          }
+        ];
+        commands = {
+          Review = "lua team_picker()";
+        };
+      };
 
     home.packages = [
       (pkgs.writeShellScriptBin "nwadminSendmail" ''

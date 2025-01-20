@@ -68,23 +68,6 @@
         "type": "github"
       }
     },
-    "diagram.nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1724882438,
-        "narHash": "sha256-FH9i/I2DiCBpU1b8aTHCNDviBIS7IBng2D30OQH29RU=",
-        "owner": "3rd",
-        "repo": "diagram.nvim",
-        "rev": "1022def2b5b2c70895e381f13a75abee6327a23c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "3rd",
-        "ref": "feature/toggle",
-        "repo": "diagram.nvim",
-        "type": "github"
-      }
-    },
     "fioul": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -505,11 +488,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735882644,
-        "narHash": "sha256-3FZAG+pGt3OElQjesCAWeMkQ7C/nB1oTHLRQ8ceP110=",
+        "lastModified": 1737043064,
+        "narHash": "sha256-I/OuxGwXwRi5gnFPsyCvVR+IfFstA+QXEpHu1hvsgD8=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "a5a961387e75ae44cc20f0a57ae463da5e959656",
+        "rev": "94ee657f6032d913fe0ef49adaa743804635b0bb",
         "type": "github"
       },
       "original": {
@@ -610,11 +593,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736089250,
-        "narHash": "sha256-/LPWMiiJGPHGd7ZYEgmbE2da4zvBW0acmshUjYC3WG4=",
+        "lastModified": 1737075266,
+        "narHash": "sha256-u1gk5I1an975FOAMMdS6oBKnSIsZza5ZKhaeBZAskVo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "172b91bfb2b7f5c4a8c6ceac29fd53a01ef07196",
+        "rev": "12851ae7467bad8ef422b20806ab4d6d81e12d29",
         "type": "github"
       },
       "original": {
@@ -805,11 +788,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736085891,
-        "narHash": "sha256-bTl9fcUo767VaSx4Q5kFhwiDpFQhBKna7lNbGsqCQiA=",
+        "lastModified": 1736819234,
+        "narHash": "sha256-deQVtIH4UJueELJqluAICUtX7OosD9paTP+5FgbiSwI=",
         "owner": "lnl7",
         "repo": "nix-darwin",
-        "rev": "ba9b3173b0f642ada42b78fb9dfc37ca82266f6c",
+        "rev": "bd921223ba7cdac346477d7ea5204d6f4736fcc6",
         "type": "github"
       },
       "original": {
@@ -1193,11 +1176,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1736219611,
-        "narHash": "sha256-osQC3uZOQQrTPTlhEBE6mesPCkYDDOSLsJNNATQZqmw=",
+        "lastModified": 1737385899,
+        "narHash": "sha256-/zyvdstDpPhc5lhFMtKgyQdU2oXGXDb0cg4BY91NKvg=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "a352bb89b0cd180f5c767689c4cc310109cd4ad8",
+        "rev": "115994f18e439a1cca9cdaaf15c004870256814d",
         "type": "github"
       },
       "original": {
@@ -1305,7 +1288,6 @@
     "root": {
       "inputs": {
         "comma": "comma",
-        "diagram.nvim": "diagram.nvim",
         "fioul": "fioul",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
@@ -1329,8 +1311,7 @@
         "rust-overlay": "rust-overlay_8",
         "simulationcraft": "simulationcraft",
         "treefmt-nix": "treefmt-nix_3",
-        "vim-headerguard": "vim-headerguard",
-        "wiki.vim": "wiki.vim"
+        "vim-headerguard": "vim-headerguard"
       }
     },
     "rust-overlay": {
@@ -1715,11 +1696,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736115332,
-        "narHash": "sha256-FBG9d7e0BTFfxVdw4b5EmNll2Mv7hfRc54hbB4LrKko=",
+        "lastModified": 1737054102,
+        "narHash": "sha256-saLiCRQ5RtdTnznT/fja7GxcYRAzeY3k8S+IF/2s/2A=",
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "rev": "1788ca5acd4b542b923d4757d4cfe4183cc6a92d",
+        "rev": "97871d416166803134ba64597a1006f3f670fbde",
         "type": "github"
       },
       "original": {
@@ -1823,22 +1804,6 @@
       "original": {
         "owner": "drmikehenry",
         "repo": "vim-headerguard",
-        "type": "github"
-      }
-    },
-    "wiki.vim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1735084629,
-        "narHash": "sha256-GL0++z5mmBkJ1SpM6jbvkVQQMgWTtqHpwagc7Jn1BVs=",
-        "owner": "lervag",
-        "repo": "wiki.vim",
-        "rev": "80bb6dd1684a6cf13025733e4d810e36ad0ae9f3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lervag",
-        "repo": "wiki.vim",
         "type": "github"
       }
     }
