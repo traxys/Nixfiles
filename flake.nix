@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-ts.url = "github:traxys/nixpkgs/ts";
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -136,10 +135,7 @@
                   "mujmap"
                 ];
               in
-              (lib.genAttrs names (name: inputs'.${name}.packages.${name}))
-              // {
-                inherit (inputs'.nixpkgs-ts.legacyPackages) umu-launcher;
-              };
+              lib.genAttrs names (name: inputs'.${name}.packages.${name});
 
             formatter = config.treefmt.build.wrapper;
 

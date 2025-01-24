@@ -941,22 +941,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ts": {
-      "locked": {
-        "lastModified": 1736967369,
-        "narHash": "sha256-YA2KbrsbY9R42tZAqnn6Q24k2ZNzd506MF/gEEwfj+w=",
-        "owner": "traxys",
-        "repo": "nixpkgs",
-        "rev": "f0295438e6f868544142c466fee83bb0fc9471ca",
-        "type": "github"
-      },
-      "original": {
-        "owner": "traxys",
-        "ref": "ts",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_10": {
       "locked": {
         "lastModified": 1682600000,
@@ -975,11 +959,11 @@
     },
     "nixpkgs_11": {
       "locked": {
-        "lastModified": 1736012469,
-        "narHash": "sha256-/qlNWm/IEVVH7GfgAIyP6EsVZI6zjAx1cV5zNyrs+rI=",
+        "lastModified": 1737632463,
+        "narHash": "sha256-38J9QfeGSej341ouwzqf77WIHAScihAKCt8PQJ+NH28=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8f3e1f807051e32d8c95cd12b9b421623850a34d",
+        "rev": "0aa475546ed21629c4f5bbf90e38c846a99ec9e9",
         "type": "github"
       },
       "original": {
@@ -1303,7 +1287,6 @@
         "nix-ld": "nix-ld",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_11",
-        "nixpkgs-ts": "nixpkgs-ts",
         "nixvim": "nixvim",
         "nur": "nur",
         "raclette": "raclette",

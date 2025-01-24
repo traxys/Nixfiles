@@ -24,8 +24,6 @@
         {
           nixpkgs.overlays = [
             (final: prev: {
-              # Wait for staging tree-sitter upgrade to avoid freezes
-              inherit (inputs.nixpkgs-ts.legacyPackages.${prev.system}) tree-sitter;
             })
           ];
         }
