@@ -11,7 +11,6 @@ in
   home.packages = with pkgs; [
     bitwarden-cli
     hbw
-    kabalist_cli
     tokei
     xdg-ninja
     zk

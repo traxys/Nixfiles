@@ -4,7 +4,6 @@
     {
       pkgs,
       self',
-      naersk',
       ...
     }:
     {
@@ -13,10 +12,6 @@
           simulationcraft-src = inputs.simulationcraft;
         };
         hbw = pkgs.callPackage ./hbw { };
-        kabalist_cli = pkgs.callPackage ./kabalist.nix {
-          naersk = naersk';
-          kabalist-src = inputs.kabalist;
-        };
         warcraftlogs = pkgs.callPackage ./warcraftlogs.nix { };
         frg = pkgs.callPackage ./frg.nix { };
         bonnie = pkgs.callPackage ./bonnie { };
