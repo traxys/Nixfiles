@@ -26,7 +26,10 @@
           "fallback"
         ];
       };
-      completion.list.selection = "manual";
+      completion.list.selection = {
+        preselect = false;
+        auto_insert = true;
+      };
       sources = {
         default = [
           "lsp"
