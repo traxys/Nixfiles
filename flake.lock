@@ -650,22 +650,6 @@
         "type": "github"
       }
     },
-    "kabalist": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737500455,
-        "narHash": "sha256-mVmUys9GiRGVqcnfrvmc8b2UnPHzFEPLsgeZxlPxWjQ=",
-        "owner": "traxys",
-        "repo": "kabalist",
-        "rev": "54b644210a8eed7b5e5a29223833e9e1d34172be",
-        "type": "github"
-      },
-      "original": {
-        "owner": "traxys",
-        "repo": "kabalist",
-        "type": "github"
-      }
-    },
     "meson-syntax": {
       "flake": false,
       "locked": {
@@ -1277,7 +1261,6 @@
         "glaurung": "glaurung",
         "gsm": "gsm",
         "home-manager": "home-manager",
-        "kabalist": "kabalist",
         "meson-syntax": "meson-syntax",
         "mujmap": "mujmap",
         "naersk": "naersk_4",

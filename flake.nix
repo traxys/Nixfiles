@@ -61,10 +61,6 @@
       url = "github:simulationcraft/simc";
       flake = false;
     };
-    kabalist = {
-      url = "github:traxys/kabalist";
-      flake = false;
-    };
     roaming_proxy = {
       url = "github:traxys/roaming_proxy";
       inputs.naersk.follows = "naersk";
