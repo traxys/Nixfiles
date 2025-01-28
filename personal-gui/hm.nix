@@ -4,7 +4,7 @@
     plasma5Packages.kdeconnect-kde
     kdePackages.kdenlive
     glaurung
-    nur.repos.xeals.cura5
+    cura-appimage
     anki-bin
     rmview
     sieve-editor-gui
