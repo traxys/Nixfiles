@@ -163,7 +163,6 @@
         core = {
           excludesfile = "${pkgs.writeText "gitignore" config.programs.git.excludes}";
           untrackedCache = true;
-          fsmonitor = "${lib.getExe pkgs.rs-git-fsmonitor}";
           commitGraph = true;
         };
       };
