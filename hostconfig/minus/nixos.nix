@@ -35,8 +35,8 @@ in
   };
 
   services.xserver = {
-    layout = "us";
-    xkbVariant = "dvp";
+    layout = "fr";
+    xkbVariant = "ergol";
   };
 
   hardware.pulseaudio.enable = false;

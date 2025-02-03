@@ -147,32 +147,32 @@
         moveModifier = "Shift";
         definitions = {
           "1:" = {
-            key = "ampersand";
+            key = "1";
           };
           "2:" = {
-            key = "bracketleft";
+            key = "2";
           };
           "3:" = {
-            key = "braceleft";
+            key = "3";
           };
           "4" = {
-            key = "braceright";
+            key = "4";
           };
           "5" = {
-            key = "parenleft";
+            key = "5";
           };
           "6" = {
-            key = "equal";
+            key = "6";
           };
           "7" = {
-            key = "asterisk";
+            key = "7";
           };
           "" = {
-            key = "parenright";
+            key = "8";
             assign = [ "Spotify" ];
           };
           "" = {
-            key = "w";
+            key = "g";
             assign = [
               "Element"
               "Signal"
@@ -180,7 +180,7 @@
             ];
           };
           "" = {
-            key = "m";
+            key = "h";
             assign = [ "Thunderbird" ];
           };
         };
@@ -229,7 +229,7 @@
         "${mod}+comma" = "layout tabbed";
 
         # Misc
-        "${mod}+Shift+semicolon" = "kill";
+        "${mod}+Shift+Q" = "kill";
         "${mod}+Shift+J" = "reload";
         "${mod}+Return" = "exec ${config.terminal.command}";
         "${mod}+p" = "mode resize";

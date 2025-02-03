@@ -317,7 +317,7 @@ in
                 {
                   name = "type:keyboard";
                   value = {
-                    xkb_layout = "us(dvp),us";
+                    xkb_layout = "fr(ergol),us";
                     xkb_options = "compose:102";
                   };
                 }

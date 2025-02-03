@@ -19,8 +19,8 @@
   nixpkgs.overlays = [
     (self: super: {
       cage = pkgs.writeShellScriptBin "cage" ''
-        export XKB_DEFAULT_LAYOUT=us
-        export XKB_DEFAULT_VARIANT=dvp
+        export XKB_DEFAULT_LAYOUT=fr
+        export XKB_DEFAULT_VARIANT=ergol
         exec ${self.lib.getExe super.cage} "$@"
       '';
     })
