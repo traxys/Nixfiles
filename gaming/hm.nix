@@ -20,6 +20,7 @@
     pulseaudio
     wow-note
     umu-launcher
+    cage
   ];
 
   home.file = {
