@@ -22,6 +22,7 @@
       gui
       personal-gui
       gaming
+      de
     ];
     unfreePackages = [
       "cnijfilter2"
