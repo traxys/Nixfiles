@@ -5,6 +5,7 @@
     kdePackages.kdenlive
     glaurung
     cura-appimage
+    orca-slicer
     anki-bin
     rmview
     sieve-editor-gui
