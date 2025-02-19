@@ -1,11 +1,17 @@
 {
+  wayland-pipewire-idle-inhibit,
+}:
+{
   config,
   lib,
   pkgs,
   ...
 }:
 {
-  imports = [ ./terminal ];
+  imports = [
+    ./terminal
+    wayland-pipewire-idle-inhibit
+  ];
 
   home.packages = with pkgs; [
     # IM
@@ -96,6 +102,15 @@
   programs.firefox = {
     enable = true;
     nativeMessagingHosts = [ pkgs.firefoxpwa ];
+  };
+
+  services.wayland-pipewire-idle-inhibit = {
+    enable = true;
+    settings = {
+      verbosity = "INFO";
+      media_minimum_duration = 10;
+      idle_inhibitor = "wayland";
+    };
   };
 
   home.sessionVariables = {

@@ -37,6 +37,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wayland-pipewire-idle-inhibit = {
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     gsm.url = "github:traxys/git-series-manager";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
@@ -156,7 +160,9 @@
                 flake = self;
               };
               personal-cli = import ./personal-cli/hm.nix;
-              gui = import ./gui/hm.nix;
+              gui = import ./gui/hm.nix {
+                wayland-pipewire-idle-inhibit = inputs.wayland-pipewire-idle-inhibit.homeModules.default;
+              };
               wm = import ./wm/hm.nix;
               personal-gui = import ./personal-gui/hm.nix;
               gaming = import ./gaming/hm.nix;
