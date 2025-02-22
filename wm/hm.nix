@@ -225,8 +225,8 @@
         "${mod}+Shift+Up" = "move up";
 
         # Layout
-        "${mod}+u" = "fullscreen toggle";
-        "${mod}+comma" = "layout tabbed";
+        "${mod}+n" = "fullscreen toggle";
+        "${mod}+o" = "layout tabbed";
 
         # Misc
         "${mod}+Shift+Q" = "kill";
