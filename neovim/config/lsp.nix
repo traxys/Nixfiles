@@ -164,7 +164,13 @@
       };
       bashls.enable = true;
       dartls.enable = true;
-      clangd.enable = true;
+      clangd = {
+        enable = true;
+        cmd = [
+          "clangd"
+          "--header-insertion=never"
+        ];
+      };
       tinymist.enable = true;
       efm.extraOptions = {
         init_options = {
