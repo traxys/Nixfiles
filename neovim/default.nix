@@ -42,12 +42,6 @@
           inherit system;
           modules = [
             self.nixvimModules.neovimTraxys
-            {
-              test.warnings = expect: [
-                (expect "count" 1)
-                (expect "any" "As of Neovim 0.10, native support for OSC52 has been added.")
-              ];
-            }
           ];
         };
       };

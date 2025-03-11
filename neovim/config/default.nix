@@ -181,18 +181,6 @@
         '';
         options.desc = "search in wiki";
       };
-      "<leader>Y" = {
-        action = helpers.mkRaw ''
-          function ()
-            vim.go.operatorfunc = "v:lua.osc52_yank_cb";
-            local yank = require('vim.ui.clipboard.osc52').copy('+')
-          end
-        '';
-        options = {
-          desc = "yank through osc52";
-          expr = true;
-        };
-      };
     })
     ++ [
       {
@@ -208,7 +196,7 @@
     ];
 
   plugins.nvim-osc52 = {
-    enable = true;
+    enable = false;
     package = pkgs.vimPlugins.nvim-osc52;
     keymaps.enable = true;
   };
@@ -400,12 +388,33 @@
   plugins.snacks.enable = true;
 
   extraConfigLuaPre = lib.mkBefore ''
-    if vim.env.PROF then
-      require("snacks.profiler").startup({
-        startup = {
-          event = "VimEnter"
+      if vim.env.PROF then
+        require("snacks.profiler").startup({
+          startup = {
+            event = "VimEnter"
+          }
+        })
+      end
+
+      local function paste()
+        return {
+          vim.split(vim.fn.getreg('''), '\n'),
+          vim.fn.getregtype('''),
         }
-      })
+      end
+
+      if vim.env.SSH_TTY then
+        vim.g.clipboard = {
+          name = 'OSC 52',
+          copy = {
+            ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+            ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+          },
+          paste = {
+            ['+'] = paste,
+            ['*'] = paste,
+          },
+        }
     end
   '';
 
