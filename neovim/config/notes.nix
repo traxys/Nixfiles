@@ -64,6 +64,5 @@
   extraPlugins = with pkgs.vimPlugins; [
     wiki-vim
     markdown-preview-nvim
-    diagram-nvim
   ];
 }
