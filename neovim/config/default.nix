@@ -40,6 +40,7 @@
         "nvim-treesitter"
         "openscad.nvim"
         "yanky.nvim"
+        "blink.cmp"
       ];
     };
   };
