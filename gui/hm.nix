@@ -38,8 +38,7 @@
 
     # Misc
     eog
-    # Broken as of 15 July
-    # freecad
+    freecad
     wdisplays
     wl-clipboard
     xdg-utils
