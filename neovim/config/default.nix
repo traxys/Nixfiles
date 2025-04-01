@@ -50,6 +50,16 @@
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
     {
+      event = "BufWinEnter";
+      pattern = "*";
+      command = "call matchadd('BreakspaceChar', ' ')";
+    }
+    {
+      event = "BufWinEnter";
+      pattern = "*";
+      command = "highlight BreakspaceChar ctermbg=red guibg=#f92672";
+    }
+    {
       event = "BufReadPost";
       pattern = [
         "*.md"
