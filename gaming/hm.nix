@@ -23,6 +23,10 @@
     cage
   ];
 
+  programs.mangohud = {
+    enable = true;
+  };
+
   home.file = {
     ".config/heroic/tools/wine/wine-system" = {
       source = pkgs.wine-tkg;
