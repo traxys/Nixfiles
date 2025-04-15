@@ -33,9 +33,11 @@
   i18n.defaultLocale = "en_GB.UTF-8";
   console = {
     earlySetup = true;
+    useXkbConfig = true;
     font = "Lat2-Terminus16";
-    keyMap = "dvorak-programmer";
   };
+  services.xserver.xkb.layout = "fr";
+  services.xserver.xkb.variant = "ergol";
 
   fonts.enableDefaultPackages = true;
   fonts = {
