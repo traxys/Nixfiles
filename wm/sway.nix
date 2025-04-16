@@ -293,9 +293,14 @@ in
 
       wayland.windowManager.sway = {
         enable = true;
-        extraConfig = mkIf (cfg.wallpaper != null) ''
-          output "*" bg ${cfg.wallpaper} fill
-        '';
+        extraConfig = mkMerge [
+          (mkIf (cfg.wallpaper != null) ''
+            output "*" bg ${cfg.wallpaper} fill
+          '')
+          ''
+            for_window [app_id="discord"] border none
+          ''
+        ];
         config = {
           inherit startup;
           inherit (cfg) modifier;
