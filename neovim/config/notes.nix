@@ -39,11 +39,13 @@
 
   plugins.image = {
     enable = false;
-    backend = "ueberzug";
+    settings = {
+      backend = "ueberzug";
 
-    integrations.markdown = {
-      clearInInsertMode = true;
-      enabled = true;
+      integrations.markdown = {
+        clearInInsertMode = true;
+        enabled = true;
+      };
     };
   };
 
