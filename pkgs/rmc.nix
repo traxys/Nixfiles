@@ -32,6 +32,10 @@ python3.pkgs.buildPythonApplication rec {
     "rmc"
   ];
 
+  pythonRelaxDeps = [
+    "rmscene"
+  ];
+
   postInstall = ''
     wrapProgram $out/bin/rmc --prefix PATH : ${lib.makeBinPath [ inkscape ]}
   '';
