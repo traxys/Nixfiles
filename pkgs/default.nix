@@ -13,7 +13,6 @@
         hbw = pkgs.callPackage ./hbw { };
         warcraftlogs = pkgs.callPackage ./warcraftlogs.nix { };
         frg = pkgs.callPackage ./frg.nix { };
-        flex-launcher = pkgs.callPackage ./flex-launcher.nix { };
         push-to-talk = pkgs.callPackage ./push-to-talk.nix { };
         pulse8-cec = pkgs.callPackage ./pulse8-cec.nix { };
         weakauras-companion = pkgs.callPackage ./weakauras-companion.nix { };
