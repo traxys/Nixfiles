@@ -21,6 +21,7 @@
     wow-note
     umu-launcher
     cage
+    owmods-gui
   ];
 
   programs.mangohud = {
