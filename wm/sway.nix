@@ -257,13 +257,14 @@ in
 
       services.mako = mkIf cfg.notifications.enable {
         enable = true;
-        inherit (cfg.notifications) font;
-        margin = "20,20,5,5";
-        inherit (cfg.notifications) defaultTimeout;
-        extraConfig = ''
-          [mode=do-not-disturb]
-          invisible=1
-        '';
+        settings = {
+          inherit (cfg.notifications) font;
+          margin = "20,20,5,5";
+          default-timeout = cfg.notifications.defaultTimeout;
+          "mode=do-not-disturb" = {
+            invisible = 1;
+          };
+        };
       };
 
       programs = {
