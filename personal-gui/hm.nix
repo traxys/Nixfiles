@@ -10,6 +10,8 @@
     rmview
     sieve-editor-gui
     rmc
+    rawtherapee
+    darktable
   ];
 
   home.sessionVariables = {
