@@ -27,6 +27,7 @@ let
     bxi2-mod = [ "bxi-module" ];
     bxi2-ptltest = [ "bxi-portals-tests" ];
     bxicomm = [ "bxicomm" ];
+    bxi3lnd = [ "lustre-release-bxi3" ];
   };
 in
 {
