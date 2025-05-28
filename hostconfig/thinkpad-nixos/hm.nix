@@ -125,7 +125,7 @@ in
               inbox=tag:inbox and not tag:spammy
               _patches/inflight=thread:{tag:inflight}
               _patches/review=thread:{tag:review}
-              _unread=thread:{tag:unread} and not tag:iommu and not tag:qemu
+              _unread=thread:{tag:unread} and not tag:iommu and not tag:qemu and not tag:kvm
               _todo=thread:{tag:todo}
               ext/iommu=tag:iommu
               ext/iommu/non-patch=tag:iommu and tag:non-patch
@@ -133,6 +133,9 @@ in
               ext/qemu=tag:qemu
               ext/qemu/non-patch=tag:qemu and tag:non-patch
               ext/qemu/unread=tag:qemu and thread:{tag:unread}
+              ext/kvm=tag:kvm
+              ext/kvm/non-patch=tag:kvm and tag:non-patch
+              ext/kvm/unread=tag:kvm and thread:{tag:unread}
 
               ${patchDirs}
             ''}";
@@ -313,9 +316,11 @@ in
         in
         ''
           notmuch tag +work -- tag:new and 'path:work/**'
-          notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
-          notmuch tag +iommu +non-patch -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[PATCH/'
-          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and '(subject:"/\[PATCH/" OR subject:"/\[RFC/" OR subject:"/\[PULL/")'
+          notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[.*PATCH/'
+          notmuch tag +iommu +non-patch -new -- tag:new and to:iommu@lists.linux.dev
+          notmuch tag +kvm -new -- tag:new and to:kvm@vger.kernel.org and subject:'/\[.*PATCH/'
+          notmuch tag +kvm +non-patch -new -- tag:new and to:kvm@vger.kernel.org
+          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and '(subject:"/\[PATCH/" OR subject:"/\[RFC/" OR subject:"/\[PULL/" or subject:"/\[Stable/")'
           notmuch tag +qemu +non-patch -new -- tag:new and to:qemu-devel@nongnu.org
           notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
