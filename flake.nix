@@ -50,11 +50,6 @@
     nix-index-database.url = "github:Mic92/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Extra Package Sources
     meson-syntax = {
       url = "github:Monochrome-Sauce/sublime-meson";
@@ -175,7 +170,7 @@
               personal-cli = import ./personal-cli/nixos.nix;
               gui = import ./gui/nixos.nix;
               wm = import ./wm/nixos.nix;
-              de = import ./de/nixos.nix inputs.nixos-cosmic;
+              de = import ./de/nixos.nix;
               personal-gui = import ./personal-gui/nixos.nix;
               roaming = import ./roaming/nixos.nix;
               gaming = import ./gaming/nixos.nix;
