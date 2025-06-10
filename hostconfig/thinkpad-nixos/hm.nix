@@ -29,6 +29,31 @@ let
     bxicomm = [ "bxicomm" ];
     bxi3lnd = [ "lustre-release-bxi3" ];
   };
+
+  mailingLists = {
+    iommu = {
+      mail = "iommu@lists.linux.dev";
+      tags = [
+        "PATCH"
+        "RFC"
+      ];
+    };
+    kvm = {
+      mail = "kvm@vger.kernel.org";
+      tags = [
+        "PATCH"
+        "RFC"
+      ];
+    };
+    qemu = {
+      mail = "qemu-devel@nongnu.org";
+      tags = [
+        "PATCH"
+        "RFC"
+        "Stable"
+      ];
+    };
+  };
 in
 {
   imports = [ ./work.nix ];
@@ -121,22 +146,31 @@ in
             let
               mkPatchDir = name: "projects/${name}=tag:${name}";
               patchDirs = builtins.concatStringsSep "\n" (builtins.map mkPatchDir (builtins.attrNames projects));
+
+              mkListDirs = name: ''
+                ext/${name}=tag:${name}
+                ext/${name}/non-patch=tag:${name} and tag:non-patch
+                ext/${name}/unread=tag:${name} and thread:{tag:unread}
+              '';
+              listDirs = lib.pipe mailingLists [
+                builtins.attrNames
+                (builtins.map mkListDirs)
+                (builtins.concatStringsSep "\n")
+              ];
+              listIgnores = lib.pipe mailingLists [
+                builtins.attrNames
+                (builtins.map (nm: "and not tag:${nm}"))
+                (builtins.concatStringsSep " ")
+              ];
             in
             "${pkgs.writeText "querymap" ''
               inbox=tag:inbox and not tag:spammy
               _patches/inflight=thread:{tag:inflight}
               _patches/review=thread:{tag:review}
-              _unread=thread:{tag:unread} and not tag:iommu and not tag:qemu and not tag:kvm
+              _unread=thread:{tag:unread} ${listIgnores}
               _todo=thread:{tag:todo}
-              ext/iommu=tag:iommu
-              ext/iommu/non-patch=tag:iommu and tag:non-patch
-              ext/iommu/unread=tag:iommu and thread:{tag:unread}
-              ext/qemu=tag:qemu
-              ext/qemu/non-patch=tag:qemu and tag:non-patch
-              ext/qemu/unread=tag:qemu and thread:{tag:unread}
-              ext/kvm=tag:kvm
-              ext/kvm/non-patch=tag:kvm and tag:non-patch
-              ext/kvm/unread=tag:kvm and thread:{tag:unread}
+
+              ${listDirs}
 
               ${patchDirs}
             ''}";
@@ -314,15 +348,27 @@ in
           ];
 
           spammySearch = lib.concatStringsSep " or " spammyFilters;
+
+          mkList =
+            tag: info:
+            let
+              subjects = lib.pipe info.tags [
+                (builtins.map (tag: "subject:\"/\\[${tag}/\""))
+                (builtins.concatStringsSep " OR ")
+              ];
+            in
+            ''
+              notmuch tag +${tag} -new -- tag:new and to:${info.mail} and '(${subjects})'
+              notmuch tag +${tag} +non-patch -new -- tag:new and to:${info.mail}
+            '';
+          tagLists = lib.pipe mailingLists [
+            (lib.mapAttrsToList mkList)
+            (builtins.concatStringsSep "\n")
+          ];
         in
         ''
           notmuch tag +work -- tag:new and 'path:work/**'
-          notmuch tag +iommu -new -- tag:new and to:iommu@lists.linux.dev and subject:'/\[.*PATCH/'
-          notmuch tag +iommu +non-patch -new -- tag:new and to:iommu@lists.linux.dev
-          notmuch tag +kvm -new -- tag:new and to:kvm@vger.kernel.org and subject:'/\[.*PATCH/'
-          notmuch tag +kvm +non-patch -new -- tag:new and to:kvm@vger.kernel.org
-          notmuch tag +qemu -new -- tag:new and to:qemu-devel@nongnu.org and '(subject:"/\[PATCH/" OR subject:"/\[RFC/" OR subject:"/\[PULL/" or subject:"/\[Stable/")'
-          notmuch tag +qemu +non-patch -new -- tag:new and to:qemu-devel@nongnu.org
+          ${tagLists}
           notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
           notmuch tag -unread +me -- tag:new and from:${config.workAddr}
