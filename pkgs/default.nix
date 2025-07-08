@@ -6,7 +6,7 @@
       ...
     }:
     {
-      packages = {
+      packages = rec {
         simulationcraft = pkgs.callPackage ./simulationcraft.nix {
           simulationcraft-src = inputs.simulationcraft;
         };
@@ -18,6 +18,9 @@
         weakauras-companion = pkgs.callPackage ./weakauras-companion.nix { };
         wow-note = pkgs.callPackage ./wow-note { };
         rmc = pkgs.callPackage ./rmc.nix { };
+        sarc = pkgs.callPackage ./sarc.nix { inherit rstb; };
+        rstb = pkgs.callPackage ./rstb.nix { inherit oead; };
+        oead = pkgs.callPackage ./oead.nix { };
       };
     };
 }
