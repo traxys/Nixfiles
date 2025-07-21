@@ -21,6 +21,8 @@
         sarc = pkgs.callPackage ./sarc.nix { inherit rstb; };
         rstb = pkgs.callPackage ./rstb.nix { inherit oead; };
         oead = pkgs.callPackage ./oead.nix { };
+        msbt = pkgs.python3.pkgs.callPackage ./msbt.nix { };
+        msbt-python = pkgs.python3.withPackages (_: [ msbt ]);
       };
     };
 }
