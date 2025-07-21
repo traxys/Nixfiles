@@ -45,6 +45,8 @@
 
   hardware.bluetooth.enable = true;
 
+  services.mullvad-vpn.enable = true;
+
   services.avahi = {
     nssmdns4 = true;
     enable = true;
