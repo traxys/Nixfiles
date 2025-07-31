@@ -6,7 +6,7 @@
 }:
 let
   rhelVersion = "9";
-  bxiImageVersion = "0.6.2";
+  bxiImageVersion = "0.7.1";
   inherit (import ../../str-obf.nix lib) decode;
   workDomain = "lenmlx.ziy";
   oldWorkDomain = "hsid.xls";
