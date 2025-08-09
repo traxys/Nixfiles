@@ -12,6 +12,7 @@
     rmc
     rawtherapee
     darktable
+    audacity
   ];
 
   home.sessionVariables = {
