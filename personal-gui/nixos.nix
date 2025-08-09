@@ -19,15 +19,6 @@
     ];
   };
 
-  fileSystems."/home/traxys/Photos/D3500" = {
-    device = "/dev/disk/by-label/NIKON\\x20D3500";
-    options = [
-      "defaults"
-      "noauto"
-      "x-systemd.automount"
-    ];
-  };
-
   hardware.keyboard.qmk.enable = true;
 
   programs.adb.enable = true;
