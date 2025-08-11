@@ -3,6 +3,7 @@
   pkgs,
   helpers,
   flake,
+  config,
   ...
 }:
 {
@@ -131,20 +132,34 @@
     };
   };
 
-  plugins.lsp = {
-    enable = true;
-
-    keymaps = {
-      silent = true;
-
-      lspBuf = {
-        "gd" = "definition";
-        "gD" = "declaration";
-        "ca" = "code_action";
-        "ff" = "format";
-        "K" = "hover";
-      };
-    };
+  plugins.lspconfig.enable = true;
+  lsp = {
+    keymaps = lib.map (o: o // { options.silent = true; }) [
+      {
+        key = "gd";
+        lspBufAction = "definition";
+      }
+      {
+        key = "gD";
+        lspBufAction = "declaration";
+      }
+      {
+        key = "ca";
+        lspBufAction = "code_action";
+      }
+      {
+        key = "ff";
+        lspBufAction = "format";
+      }
+      {
+        key = "K";
+        lspBufAction = "hover";
+      }
+      {
+        key = "gd";
+        lspBufAction = "definition";
+      }
+    ];
 
     servers = {
       nixd = {
@@ -166,18 +181,22 @@
       dartls.enable = true;
       clangd = {
         enable = true;
-        cmd = [
+        settings.cmd = [
           "clangd"
           "--header-insertion=never"
         ];
       };
       tinymist.enable = true;
-      efm.extraOptions = {
-        init_options = {
-          documentFormatting = true;
-        };
+      efm = {
+        enable = true;
         settings = {
-          logLevel = 1;
+          init_options = {
+            documentFormatting = true;
+          };
+          settings = {
+            logLevel = 1;
+            inherit (config.plugins.lsp.servers.efm.extraOptions.settings) languages;
+          };
         };
       };
       taplo.enable = true;
@@ -201,31 +220,31 @@
         ];
       };
       yamlls.enable = true;
-      harper_ls = {
-        enable = true;
-        autostart = false;
-      };
       ltex = {
         enable = true;
-        onAttach.function = ''
-          require("ltex_extra").setup{
-            load_langs = { "en-US", "fr-FR" },
-            path = ".ltex",
-          }
-        '';
-        filetypes = [
-          "bib"
-          "gitcommit"
-          "markdown"
-          "org"
-          "plaintex"
-          "rst"
-          "rnoweb"
-          "tex"
-          "pandoc"
-          "typst"
-          #"mail"
-        ];
+        settings = {
+          on_attach = helpers.mkRaw ''
+            function(client, bufnr)
+              require("ltex_extra").setup{
+                load_langs = { "en-US", "fr-FR" },
+                path = ".ltex",
+              }
+            end
+          '';
+          filetypes = [
+            "bib"
+            "gitcommit"
+            "markdown"
+            "org"
+            "plaintex"
+            "rst"
+            "rnoweb"
+            "tex"
+            "pandoc"
+            "typst"
+            #"mail"
+          ];
+        };
       };
     };
   };
