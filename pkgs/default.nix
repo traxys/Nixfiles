@@ -23,6 +23,7 @@
         oead = pkgs.callPackage ./oead.nix { };
         msbt = pkgs.python3.pkgs.callPackage ./msbt.nix { };
         msbt-python = pkgs.python3.withPackages (_: [ msbt ]);
+        bars-to-bwav = pkgs.callPackage ./bars-to-bwav.nix { };
       };
     };
 }
