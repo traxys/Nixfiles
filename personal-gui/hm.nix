@@ -21,4 +21,6 @@
       orientation = "portrait";
     };
   };
+
+  services.gpg-agent.pinentry.package = pkgs.pinentry-rofi;
 }
