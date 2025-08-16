@@ -164,8 +164,7 @@
     servers = {
       nixd = {
         enable = true;
-        settings = {
-          formatting.command = [ (lib.getExe pkgs.nixfmt-rfc-style) ];
+        settings.settings = {
           options =
             let
               getFlake = ''(builtins.getFlake "${flake}")'';
@@ -248,6 +247,10 @@
       };
     };
   };
+
+  extraPackages = with pkgs; [
+    nixfmt
+  ];
 
   plugins.rustaceanvim = {
     enable = true;
