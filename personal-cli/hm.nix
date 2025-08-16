@@ -23,6 +23,15 @@ in
     gh
   ];
 
+  programs.gpg = {
+    enable = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   services.syncthing.enable = true;
 
   programs.ssh.enable = true;
