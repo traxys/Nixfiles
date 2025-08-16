@@ -39,7 +39,14 @@
 
   networking.networkmanager.enable = true;
 
+  security.tpm2 = {
+    enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+  };
+
   users.users."${config.extraInfo.username}".extraGroups = [
+    "tss"
     "networkmanager"
     "libvirtd"
     "kvm"
