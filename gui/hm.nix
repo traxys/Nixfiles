@@ -28,6 +28,7 @@
     pavucontrol
     spotify
     vlc
+    mpv
 
     # Office suite
     hunspell
