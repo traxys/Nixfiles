@@ -22,5 +22,5 @@
     };
   };
 
-  services.gpg-agent.pinentry.package = pkgs.pinentry-rofi;
+  services.gpg-agent.pinentry.package = pkgs.pinentry-rofi.override {rofi = pkgs.rofi-wayland;};
 }
