@@ -5,6 +5,15 @@
     pkgs.virt-manager
   ];
 
+  networking.nameservers = [ 
+    "familleboyer.net"
+  ];
+
+  services.resolved = {
+    enable = true;
+    dnsovertls = "opportunistic";
+  };
+
   services.privoxy.enable = true;
 
   services.fwupd.enable = true;
