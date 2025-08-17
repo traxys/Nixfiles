@@ -19,7 +19,6 @@
       personal-cli
       gui
       wm
-      waybar
       gaming
     ];
   };

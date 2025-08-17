@@ -26,7 +26,6 @@
         minimal
         personal-cli
         gui
-        waybar
         wm
       ];
     };
@@ -38,7 +37,6 @@
           work
           personal-cli
           gui
-          waybar
           wm
         ])
         ++ [

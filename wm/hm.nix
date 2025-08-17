@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ ./sway.nix ];
+  imports = [
+    ./sway.nix
+    ./waybar/hm.nix
+  ];
 
   options = {
     traxys.wm = lib.mkOption {
