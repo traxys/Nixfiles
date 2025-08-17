@@ -37,6 +37,8 @@
     };
   };
 
+  traxys.wm = "sway";
+
   traxys.waybar.modules.battery.enable = true;
   traxys.waybar.modules."network#wifi" = {
     enable = true;
