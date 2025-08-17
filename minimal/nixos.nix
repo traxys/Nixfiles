@@ -69,10 +69,12 @@
       substituters = [
         "https://nix-gaming.cachix.org"
         "https://traxys.cachix.org"
+        "https://niri.cachix.org"
       ];
       trusted-public-keys = [
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         "traxys.cachix.org-1:8Qir8lQJdhzUaw5AE7ICom/IB25wgdheZFxdMln7Qgg="
+        "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       ];
     };
   };
