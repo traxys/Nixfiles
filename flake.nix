@@ -159,6 +159,7 @@
                 wayland-pipewire-idle-inhibit = inputs.wayland-pipewire-idle-inhibit.homeModules.default;
               };
               wm = import ./wm/hm.nix;
+              waybar = import ./waybar/hm.nix;
               de = import ./de/hm.nix;
               personal-gui = import ./personal-gui/hm.nix;
               gaming = import ./gaming/hm.nix;

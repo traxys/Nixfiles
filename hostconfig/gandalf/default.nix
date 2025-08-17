@@ -20,6 +20,7 @@
       personal-cli
       gui
       wm
+      waybar
       personal-gui
     ];
     unfreePackages = [
