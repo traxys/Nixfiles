@@ -42,6 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     gsm.url = "github:traxys/git-series-manager";
+    niri.url = "github:sodiboo/niri-flake";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -158,7 +159,9 @@
               gui = import ./gui/hm.nix {
                 wayland-pipewire-idle-inhibit = inputs.wayland-pipewire-idle-inhibit.homeModules.default;
               };
-              wm = import ./wm/hm.nix;
+              wm = import ./wm/hm.nix {
+                inherit (inputs) niri;
+              };
               de = import ./de/hm.nix;
               personal-gui = import ./personal-gui/hm.nix;
               gaming = import ./gaming/hm.nix;
@@ -169,7 +172,7 @@
               minimal = import ./minimal/nixos.nix { inherit extraInfo; };
               personal-cli = import ./personal-cli/nixos.nix;
               gui = import ./gui/nixos.nix;
-              wm = import ./wm/nixos.nix;
+              wm = import ./wm/nixos.nix { inherit (inputs) niri; };
               de = import ./de/nixos.nix;
               personal-gui = import ./personal-gui/nixos.nix;
               roaming = import ./roaming/nixos.nix;

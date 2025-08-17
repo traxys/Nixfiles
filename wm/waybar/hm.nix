@@ -123,6 +123,13 @@
             };
           };
 
+          "niri/workspaces" = moduleOpt {
+            enable = false;
+            side = "left";
+            priority = 20;
+            settings = { };
+          };
+
           "sway/mode" = moduleOpt {
             enable = false;
             side = "left";
@@ -141,6 +148,13 @@
             settings = {
               max-length = 50;
             };
+          };
+
+          "niri/window" = moduleOpt {
+            enable = false;
+            side = "center";
+            priority = 10;
+            settings = { };
           };
 
           #

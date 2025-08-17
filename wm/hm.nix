@@ -1,3 +1,4 @@
+{ niri }:
 {
   config,
   lib,
@@ -8,11 +9,24 @@
   imports = [
     ./sway.nix
     ./waybar/hm.nix
+    niri.homeModules.niri
+    ./niri.nix
   ];
 
   options = {
     traxys.wm = lib.mkOption {
-      type = lib.types.enum [ "sway" ];
+      type = lib.types.enum [
+        "sway"
+        "niri"
+      ];
+    };
+    traxys.pkgs.niri-unstable = lib.mkOption {
+      type = lib.types.package;
+      default = niri.packages.${pkgs.system}.niri-unstable;
+    };
+    traxys.pkgs.xwayland-satellite-unstable = lib.mkOption {
+      type = lib.types.package;
+      default = niri.packages.${pkgs.system}.xwayland-satellite-unstable;
     };
   };
 
