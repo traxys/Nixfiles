@@ -55,8 +55,22 @@
 
     programs.rofi = {
       enable = true;
+      package = pkgs.rofi-wayland;
       theme = "solarized_alternate";
       terminal = "${config.terminal.command}";
     };
+
+    services.mako = {
+      enable = true;
+      settings = {
+        font = "hack nerd font 10";
+        margin = "20,20,5,5";
+        default-timeout = 7000;
+        "mode=do-not-disturb" = {
+          invisible = 1;
+        };
+      };
+    };
+
   };
 }

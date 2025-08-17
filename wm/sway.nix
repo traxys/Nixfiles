@@ -33,20 +33,6 @@ lib.mkIf (config.traxys.wm == "sway") {
     _JAVA_AWT_WM_NONREPARENTING = 1;
   };
 
-  programs.rofi.package = pkgs.rofi-wayland;
-
-  services.mako = {
-    enable = true;
-    settings = {
-      font = "hack nerd font 10";
-      margin = "20,20,5,5";
-      default-timeout = 7000;
-      "mode=do-not-disturb" = {
-        invisible = 1;
-      };
-    };
-  };
-
   traxys.waybar.enable = true;
   traxys.waybar.modules."sway/workspaces".enable = true;
   traxys.waybar.modules."sway/mode".enable = true;
