@@ -50,13 +50,6 @@
       name = "Adwaita";
     };
 
-    programs.foot.settings.colors."16" = "ff9e64";
-    programs.foot.settings.colors."17" = "db4b4b";
-
-    home.sessionVariables = {
-      EXA_COLORS = "xx=38;5;8";
-    };
-
     programs.rofi = {
       enable = true;
       theme = "solarized_alternate";

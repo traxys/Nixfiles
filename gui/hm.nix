@@ -95,6 +95,9 @@
     };
   };
 
+  programs.foot.settings.colors."16" = "ff9e64";
+  programs.foot.settings.colors."17" = "db4b4b";
+
   services.playerctld = {
     enable = true;
   };
@@ -117,6 +120,7 @@
     BROWSER = "firefox";
     NIXOS_OZONE_WL = 1;
     ANDROID_HOME = "${config.home.sessionVariables.XDG_DATA_HOME}/android";
+    EXA_COLORS = "xx=38;5;8";
   };
 
   programs.zathura.enable = true;
