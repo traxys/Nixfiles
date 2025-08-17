@@ -97,7 +97,7 @@ in
   };
 
   networking.firewall.allowedTCPPorts = [ 9080 4713 ];
-  traxys.wm = "sway";
+  traxys.wm = "niri";
 
   system.stateVersion = "24.05";
 }
