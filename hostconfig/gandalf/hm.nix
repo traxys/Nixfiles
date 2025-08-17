@@ -38,5 +38,9 @@
   };
 
   traxys.waybar.modules.battery.enable = true;
+  traxys.waybar.modules."network#wifi" = {
+    enable = true;
+    interface = "wlp2s0";
+  };
   home.stateVersion = "24.11";
 }
