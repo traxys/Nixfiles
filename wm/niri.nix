@@ -192,10 +192,14 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
             "Mod+C".action = center-column;
             "Mod+Shift+C".action = center-visible-columns;
 
-            "Mod+Minus".action = set-column-width "-10%";
-            "Mod+Plus".action = set-column-width "+10%";
-            "Mod+Shift+Minus".action = set-window-height "-10%";
-            "Mod+Shift+Plus".action = set-window-height "+10%";
+            "Mod+minus".action = set-column-width "-10%";
+            "Mod+plus".action = set-column-width "+10%";
+            "Mod+Shift+question".action = set-window-height "-10%";
+            "Mod+Shift+plusminus".action = set-window-height "+10%";
+            "Mod+KP_Subtract".action = set-column-width "-10%";
+            "Mod+KP_Add".action = set-column-width "+10%";
+            "Mod+Shift+KP_Subtract".action = set-window-height "-10%";
+            "Mod+Shift+KP_Add".action = set-window-height "+10%";
 
             # Media Keys
             "XF86AudioRaiseVolume" = {
