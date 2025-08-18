@@ -94,8 +94,8 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
               focus-window-down
               move-column-left
               move-column-right
-              move-window-up
-              move-window-down
+              move-window-up-or-to-workspace-up
+              move-window-down-or-to-workspace-down
               move-column-to-monitor-left
               move-column-to-monitor-right
               move-column-to-monitor-up
@@ -163,13 +163,13 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
             "Mod+Down".action = focus-window-down;
             "Mod+Shift+Left".action = move-column-left;
             "Mod+Shift+Right".action = move-column-right;
-            "Mod+Shift+Up".action = move-window-up;
-            "Mod+Shift+Down".action = move-window-down;
+            "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
+            "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
 
-            "Mod+Shift+Ctrl+Left".action = move-column-to-monitor-left;
-            "Mod+Shift+Ctrl+Right".action = move-column-to-monitor-right;
-            "Mod+Shift+Ctrl+Up".action = move-column-to-monitor-up;
-            "Mod+Shift+Ctrl+Down".action = move-column-to-monitor-down;
+            "Mod+Ctrl+Left".action = move-column-to-monitor-left;
+            "Mod+Ctrl+Right".action = move-column-to-monitor-right;
+            "Mod+Ctrl+Up".action = move-column-to-monitor-up;
+            "Mod+Ctrl+Down".action = move-column-to-monitor-down;
 
             "Mod+Page_Down".action = focus-workspace-down;
             "Mod+Page_Up".action = focus-workspace-up;
