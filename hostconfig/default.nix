@@ -10,6 +10,7 @@
       inputs.nur.overlays.default
       inputs.rust-overlay.overlays.default
       inputs.comma.overlays.default
+      inputs.nixgl.overlays.default
       (final: prev: self.packages.${system})
       (final: prev: inputs.nix-gaming.packages.${system})
     ];

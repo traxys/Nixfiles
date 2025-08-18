@@ -43,6 +43,7 @@
     };
     gsm.url = "github:traxys/git-series-manager";
     niri.url = "github:sodiboo/niri-flake";
+    nixgl.url = "github:nix-community/nixGL";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
