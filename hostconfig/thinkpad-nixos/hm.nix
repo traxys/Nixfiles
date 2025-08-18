@@ -427,9 +427,14 @@ in
           enable = true;
           create = "maildir";
           subFolders = "Verbatim";
-          extraConfig.account = {
-            AuthMechs = "LOGIN";
-            Timeout = 0;
+          extraConfig = {
+            account = {
+              AuthMechs = "LOGIN";
+              Timeout = 0;
+            };
+            channel = {
+              Sync = ["Pull" "New" "Upgrade"];
+            };
           };
         };
         passwordCommand = "echo foobar";
