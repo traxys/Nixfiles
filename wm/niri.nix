@@ -69,6 +69,18 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
           }
         ];
 
+        window-rules = [
+          {
+            matches = [
+              { app-id = "teams-for-linux"; }
+              { app-id = "discord"; }
+              { app-id = "signal"; }
+            ];
+
+            block-out-from = "screencast";
+          }
+        ];
+
         binds =
           let
             inherit (config.lib.niri.actions)
