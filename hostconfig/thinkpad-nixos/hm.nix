@@ -74,11 +74,7 @@ in
     shfmt
     slack
     sshfs
-  ];
-
-  wm.workspaces.definitions."".assign = [
-    "Microsoft Teams"
-    "Chromium-browser"
+    nixgl.nixGLIntel
   ];
 
   programs.git = {
@@ -493,8 +489,7 @@ in
   home.username = "boyerq";
   home.stateVersion = "21.11";
 
+  traxys.wm = "niri";
+
   wayland.windowManager.sway.extraConfig = "exec /usr/libexec/polkit-gnome-authentication-agent-1";
-  wm.keybindings = {
-    "${config.wm.modifier}+Shift+l" = lib.mkForce "exec /usr/bin/swaylock";
-  };
 }
