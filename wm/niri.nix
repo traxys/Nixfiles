@@ -117,6 +117,8 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
               set-column-width
               set-window-height
               screenshot
+              focus-monitor-right
+              focus-monitor-left
               ;
           in
           {
@@ -165,6 +167,8 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
             "Mod+Shift+Right".action = move-column-right;
             "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
             "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
+            "Mod+Alt+Left".action = focus-monitor-left;
+            "Mod+Alt+Right".action = focus-monitor-right;
 
             "Mod+Ctrl+Left".action = move-column-to-monitor-left;
             "Mod+Ctrl+Right".action = move-column-to-monitor-right;
