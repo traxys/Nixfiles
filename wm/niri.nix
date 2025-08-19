@@ -13,7 +13,7 @@ lib.mkIf (config.traxys.wm == "niri") {
   services.gnome-keyring.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gnome];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
     configPackages = [ config.programs.niri.package ];
   };
 
