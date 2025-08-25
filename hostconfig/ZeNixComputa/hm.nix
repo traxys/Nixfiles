@@ -8,6 +8,10 @@
     userEmail = config.extraInfo.email;
   };
 
+  home.packages = with pkgs; [
+    vintagestory
+  ];
+
   services.mako.output = "DP-2";
 
   xdg.desktopEntries.teams = {

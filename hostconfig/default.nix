@@ -22,6 +22,7 @@
         nixosModules,
         hmModules,
         unfreePackages ? [ ],
+        permittedInsecurePackages ? [ ],
       }:
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
@@ -33,7 +34,10 @@
             {
               nixpkgs = {
                 overlays = flakeOverlays system;
-                config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) unfreePackages;
+                config = {
+                  allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) unfreePackages;
+                  inherit permittedInsecurePackages;
+                };
               };
 
               home-manager = {

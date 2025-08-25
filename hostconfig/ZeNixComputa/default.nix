@@ -34,6 +34,11 @@
       "spotify"
       "wowup-cf"
       "libXNVCtrl" # mangohud through bottles & heroic
+      "vintagestory"
+    ];
+    permittedInsecurePackages = [
+      # vintagestory
+      "dotnet-runtime-7.0.20"
     ];
   };
 }
