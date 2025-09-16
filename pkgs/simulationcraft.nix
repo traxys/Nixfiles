@@ -1,7 +1,7 @@
 {
   simulationcraft-src,
   stdenv,
-  qt5,
+  qt6,
   cmake,
   curl,
 }:
@@ -12,10 +12,10 @@ stdenv.mkDerivation {
   src = simulationcraft-src;
 
   buildInputs = [
-    qt5.qtbase
-    qt5.qtwebengine
+    qt6.qtbase
+    qt6.qtwebengine
     cmake
     curl
   ];
-  nativeBuildInputs = [ qt5.wrapQtAppsHook ];
+  nativeBuildInputs = [ qt6.wrapQtAppsHook ];
 }
