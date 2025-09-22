@@ -52,6 +52,11 @@
       843
       38202
       38203
+      8554
+      1935
+      8888
+      8889
+      8890
     ];
     firewall.allowedUDPPorts = [
       24642
@@ -60,6 +65,10 @@
       843
       38202
       38203
+      8000
+      8001
+      8002
+      8003
     ];
   };
 
@@ -70,6 +79,37 @@
     guest = {
       isNormalUser = true;
       home = "/home/guest";
+    };
+  };
+
+  services.mediamtx = {
+    enable = true;
+    settings = {
+      authMethod = "internal";
+      authInternalUsers = [
+        {
+          user = "any";
+          pass = "";
+          ips = [ ];
+          permissions = [
+            {
+              action = "publish";
+              path = "";
+            }
+            {
+              action = "read";
+              path = "";
+            }
+            {
+              action = "playback";
+              path = "";
+            }
+          ];
+        }
+      ];
+      paths = {
+        traxys = { };
+      };
     };
   };
 
