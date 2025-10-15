@@ -52,7 +52,7 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
           { command = [ "firefox" ]; }
           { command = [ "element-desktop" ]; }
           { command = [ "thunderbird" ]; }
-          { command = [ "${pkgs.plasma5Packages.kdeconnect-kde}/libexec/kdeconnectd" ]; }
+          { command = [ "${pkgs.kdePackages.kdeconnect-kde}/libexec/kdeconnectd" ]; }
           {
             command = [
               "swaybg"
