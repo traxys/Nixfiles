@@ -331,6 +331,7 @@
 
   plugins.neo-tree = {
     enable = true;
+    settings.log_to_file = false;
   };
 
   plugins.plantuml-syntax.enable = true;
