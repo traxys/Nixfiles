@@ -49,20 +49,6 @@
     };
   };
 
-  plugins.diagram-nvim = {
-    /* This does seem to work too well with the markdown preview */
-    enable = false;
-
-    settings = {
-      renderer_options = {
-        mermaid = {
-          background = "transparent";
-          theme = "dark";
-        };
-      };
-    };
-  };
-
   extraPlugins = with pkgs.vimPlugins; [
     wiki-vim
     markdown-preview-nvim
