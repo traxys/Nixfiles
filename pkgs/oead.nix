@@ -18,6 +18,8 @@ python311.pkgs.buildPythonApplication rec {
     fetchSubmodules = true;
   };
 
+  CMAKE_POLICY_VERSION_MINIMUM = "3.5";
+
   dontUseCmakeConfigure = true;
 
   build-system = [
