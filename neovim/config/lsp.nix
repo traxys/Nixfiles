@@ -164,7 +164,7 @@
     servers = {
       nixd = {
         enable = true;
-        settings.settings = {
+        config.settings = {
           options =
             let
               getFlake = ''(builtins.getFlake "${flake}")'';
@@ -180,7 +180,7 @@
       dartls.enable = true;
       clangd = {
         enable = true;
-        settings.cmd = [
+        config.cmd = [
           "clangd"
           "--header-insertion=never"
         ];
@@ -188,7 +188,7 @@
       tinymist.enable = true;
       efm = {
         enable = true;
-        settings = {
+        config = {
           init_options = {
             documentFormatting = true;
           };
@@ -209,7 +209,7 @@
       # ginko_ls.enable = true;
       mesonlsp = {
         enable = true;
-        settings.root_markers = [
+        config.root_markers = [
           [
             "meson_options.txt"
             "meson.options"
@@ -221,7 +221,7 @@
       yamlls.enable = true;
       ltex = {
         enable = true;
-        settings = {
+        config = {
           on_attach = helpers.mkRaw ''
             function(client, bufnr)
               require("ltex_extra").setup{
