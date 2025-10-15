@@ -206,12 +206,6 @@
       }
     ];
 
-  plugins.nvim-osc52 = {
-    enable = false;
-    package = pkgs.vimPlugins.nvim-osc52;
-    keymaps.enable = true;
-  };
-
   plugins.gitsigns.enable = true;
   plugins.gitmessenger.enable = true;
 
