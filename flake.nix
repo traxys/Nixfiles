@@ -86,6 +86,7 @@
           ./neovim
           inputs.treefmt-nix.flakeModule
           inputs.flake-root.flakeModule
+          inputs.home-manager.flakeModules.home-manager
         ];
 
         perSystem =
