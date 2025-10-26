@@ -438,6 +438,17 @@
 
   plugins.which-key.enable = true;
 
+  plugins.tiny-inline-diagnostic = {
+    enable = true;
+    settings = {
+      preset = "powerline";
+      options = {
+        show_source.if_many = true;
+        multilines.enabled = true;
+      };
+    };
+  };
+
   plugins.leap.enable = true;
 
   plugins.yanky = {
