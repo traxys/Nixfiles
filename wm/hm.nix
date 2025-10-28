@@ -69,7 +69,6 @@
 
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi-wayland;
       theme = "solarized_alternate";
       terminal = "${config.terminal.command}";
     };
