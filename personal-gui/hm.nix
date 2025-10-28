@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    plasma5Packages.kdeconnect-kde
+    kdePackages.kdeconnect-kde
     kdePackages.kdenlive
     glaurung
     cura-appimage
