@@ -270,6 +270,7 @@
             symbols = rec {
               NixOS = " ";
               Redhat = " ";
+              AlmaLinux = " ";
               RedHatEnterprise = Redhat;
               Fedora = " ";
             };
@@ -301,6 +302,7 @@
 
           status = {
             disabled = false;
+            symbol = " ";
             format = "[$symbol$status( $signal_name)]($style)  ";
             pipestatus_segment_format = "[$symbol$status]($style)";
             pipestatus_format = "\\[$pipestatus\\] [$symbol$signal_name]($style)  ";
