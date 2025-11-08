@@ -62,11 +62,6 @@
       url = "github:simulationcraft/simc";
       flake = false;
     };
-    roaming_proxy = {
-      url = "github:traxys/roaming_proxy";
-      inputs.naersk.follows = "naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     mujmap = {
       url = "github:elizagamedev/mujmap";
       #inputs.nixpkgs.follows = "nixpkgs";
@@ -128,7 +123,6 @@
                 names = [
                   "glaurung"
                   "raclette"
-                  "roaming_proxy"
                   "mujmap"
                 ];
               in
