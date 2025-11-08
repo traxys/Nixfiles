@@ -194,7 +194,6 @@
           };
           settings = {
             logLevel = 1;
-            inherit (config.plugins.lsp.servers.efm.extraOptions.settings) languages;
           };
         };
       };
