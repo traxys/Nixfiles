@@ -116,7 +116,6 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
               center-visible-columns
               set-column-width
               set-window-height
-              screenshot
               focus-monitor-right
               focus-monitor-left
               ;
@@ -125,7 +124,7 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
             # "Print".action = spawn "sh" "-c" ''
             #   ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
             # '';
-            "Print".action = screenshot;
+            "Print".action.screenshot = [];
             "Mod+Shift+l" = {
               action = spawn "${pkgs.swaylock-fancy}/bin/swaylock-fancy";
               hotkey-overlay.title = "Lock the screen";
