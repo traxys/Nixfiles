@@ -22,11 +22,11 @@
     };
     traxys.pkgs.niri-unstable = lib.mkOption {
       type = lib.types.package;
-      default = niri.packages.${pkgs.system}.niri-unstable;
+      default = niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
     };
     traxys.pkgs.xwayland-satellite-unstable = lib.mkOption {
       type = lib.types.package;
-      default = niri.packages.${pkgs.system}.xwayland-satellite-unstable;
+      default = niri.packages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite-unstable;
     };
   };
 
