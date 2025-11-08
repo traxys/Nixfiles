@@ -30,7 +30,6 @@
     };
     raclette = {
       url = "github:traxys/raclette";
-      inputs.naersk.follows = "naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
