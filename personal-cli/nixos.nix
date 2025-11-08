@@ -1,7 +1,6 @@
 { pkgs, config, ... }:
 {
   environment.systemPackages = [
-    config.boot.kernelPackages.perf
     pkgs.virt-manager
   ];
 

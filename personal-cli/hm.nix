@@ -21,6 +21,7 @@ in
     attic-client
     nix-tree
     gh
+    perf
   ];
 
   programs.gpg = {
