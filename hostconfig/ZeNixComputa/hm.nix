@@ -4,8 +4,8 @@
   home.homeDirectory = "/home/${config.extraInfo.username}";
 
   programs.git = {
-    userName = "traxys";
-    userEmail = config.extraInfo.email;
+    settings.user.name = "traxys";
+    settings.user.email = config.extraInfo.email;
   };
 
   home.packages = with pkgs; [

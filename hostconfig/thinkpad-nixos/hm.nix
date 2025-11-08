@@ -78,8 +78,8 @@ in
   ];
 
   programs.git = {
-    userName = "Quentin Boyer";
-    userEmail = config.workAddr;
+    settings.user.name = "Quentin Boyer";
+    settings.user.email = config.workAddr;
     includes = [
       {
         condition = "gitdir:~/Perso/";

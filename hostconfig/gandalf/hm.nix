@@ -6,8 +6,8 @@
 }:
 {
   programs.git = {
-    userName = "Quentin Boyer";
-    userEmail = config.extraInfo.email;
+    settings.user.name = "Quentin Boyer";
+    settings.user.email = config.extraInfo.email;
   };
 
   systemd.user.services = {

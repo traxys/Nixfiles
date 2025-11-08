@@ -139,7 +139,7 @@
         compile_commands.json
       '';
 
-      extraConfig = {
+      settings = {
         sendemail = {
           composeEncoding = "utf-8";
         };
@@ -167,17 +167,17 @@
           untrackedCache = true;
           commitGraph = true;
         };
-      };
 
-      aliases = {
-        fpush = "push --force-with-lease";
-        ri = "rebase -i";
-        fix = "commit --fixup";
-        amend = "commit --amend";
-        rib = "!git ri $(git bb) $@";
-        bb = "config --local --default master custom.base-branch";
-        set-bb = "config --local custom.base-branch";
-        rv = ''!sh -c 'git commit --amend --no-edit --trailer "Reviewed-by: $*"' - '';
+        alias = {
+          fpush = "push --force-with-lease";
+          ri = "rebase -i";
+          fix = "commit --fixup";
+          amend = "commit --amend";
+          rib = "!git ri $(git bb) $@";
+          bb = "config --local --default master custom.base-branch";
+          set-bb = "config --local custom.base-branch";
+          rv = ''!sh -c 'git commit --amend --no-edit --trailer "Reviewed-by: $*"' - '';
+        };
       };
     };
 
