@@ -10,7 +10,7 @@ in
 
   boot.resumeDevice = swap;
 
-  services.logind.lidSwitch = "suspend";
+  services.logind.settings.Login.HandleLidSwitch = "suspend";
 
   swapDevices = [
     {
