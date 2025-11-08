@@ -35,7 +35,7 @@
     hunspellDicts.fr-any
     hyphen
     libreoffice
-    onlyoffice-bin_latest
+    onlyoffice-desktopeditors
 
     # Misc
     eog
