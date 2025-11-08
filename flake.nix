@@ -61,10 +61,6 @@
       url = "github:simulationcraft/simc";
       flake = false;
     };
-    mujmap = {
-      url = "github:elizagamedev/mujmap";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
     fioul.url = "github:traxys/fioul";
 
     nixvim = {
@@ -122,7 +118,6 @@
                 names = [
                   "glaurung"
                   "raclette"
-                  "mujmap"
                 ];
               in
               lib.genAttrs names (name: inputs'.${name}.packages.${name});

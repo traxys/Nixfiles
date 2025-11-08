@@ -17,7 +17,6 @@ in
     nixpkgs-fmt
     nixpkgs-review
     nix-init
-    mujmap
     attic-client
     nix-tree
     gh
