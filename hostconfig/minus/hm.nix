@@ -4,7 +4,6 @@
   home.homeDirectory = "/home/${config.extraInfo.username}";
 
   home.packages = with pkgs; [
-    jellyfin-media-player
     freetube
     spotify
     streamlink-twitch-gui-bin
