@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-REMOTE=root@192.168.1.65
+REMOTE=root@192.168.1.127
 CONFIG=minus
 
 nixos-rebuild switch \
