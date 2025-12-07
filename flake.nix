@@ -56,7 +56,7 @@
       url = "github:Monochrome-Sauce/sublime-meson";
       flake = false;
     };
-    glaurung.url = "git+https://gitea.familleboyer.net/traxys/Glaurung";
+    glaurung.url = "git+https://forgejo.familleboyer.net/traxys/Glaurung";
     simulationcraft = {
       url = "github:simulationcraft/simc";
       flake = false;

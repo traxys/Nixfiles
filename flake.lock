@@ -397,11 +397,11 @@
         "rev": "8cc79d23311dbaee5edec3a471039535d2686f21",
         "revCount": 51,
         "type": "git",
-        "url": "https://gitea.familleboyer.net/traxys/Glaurung"
+        "url": "https://forgejo.familleboyer.net/traxys/Glaurung"
       },
       "original": {
         "type": "git",
-        "url": "https://gitea.familleboyer.net/traxys/Glaurung"
+        "url": "https://forgejo.familleboyer.net/traxys/Glaurung"
       }
     },
     "gsm": {
