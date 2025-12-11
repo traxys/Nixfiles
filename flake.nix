@@ -40,7 +40,7 @@
       url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    gsm.url = "github:traxys/git-series-manager";
+    gsm.url = "git+https://forgejo.familleboyer.net/traxys/git-series-manager.git";
     niri.url = "github:sodiboo/niri-flake";
     nixgl.url = "github:nix-community/nixGL";
 
