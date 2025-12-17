@@ -195,7 +195,7 @@
       taplo.enable = true;
       lua_ls.enable = true;
       lemminx.enable = true;
-      basedpyright.enable = true;
+      ty.enable = true;
       ruff.enable = true;
       # TODO: Find a package
       # bitbake_ls.enable = true;
