@@ -83,7 +83,7 @@
       ]
     );
 
-    setup = {
+    languages = {
       sh = {
         #linter = "shellcheck";
         formatter = "shfmt";
