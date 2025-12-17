@@ -25,10 +25,6 @@
     settings.autocmd.enabled = true;
   };
 
-  plugins.lsp_signature = {
-    #enable = true;
-  };
-
   plugins.inc-rename = {
     enable = true;
   };
