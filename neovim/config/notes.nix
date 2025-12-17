@@ -1,10 +1,10 @@
-{ helpers, pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   autoCmd = [
     {
       event = [ "User" ];
       pattern = [ "WikiBufferInitialized" ];
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
           vim.diagnostic.disable(0)
         end
@@ -16,7 +16,7 @@
     autoCmd = [
       {
         event = [ "InsertEnter" ];
-        callback = helpers.mkRaw ''
+        callback = lib.nixvim.mkRaw ''
           function()
             vim.cmd("Markview disable")
             -- vim.cmd("DiagramBuf disable")

@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  helpers,
   flake,
   config,
   ...
@@ -106,11 +105,11 @@
       html = {
         formatter = [
           "prettier"
-          (helpers.mkRaw "djlint_fmt")
+          (lib.nixvim.mkRaw "djlint_fmt")
         ];
       };
       htmldjango = {
-        formatter = [ (helpers.mkRaw "djlint_fmt") ];
+        formatter = [ (lib.nixvim.mkRaw "djlint_fmt") ];
         linter = "djlint";
       };
       json = {
@@ -217,7 +216,7 @@
       ltex = {
         enable = true;
         config = {
-          on_attach = helpers.mkRaw ''
+          on_attach = lib.nixvim.mkRaw ''
             function(client, bufnr)
               require("ltex_extra").setup{
                 load_langs = { "en-US", "fr-FR" },

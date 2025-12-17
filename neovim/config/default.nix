@@ -2,7 +2,6 @@
 {
   pkgs,
   config,
-  helpers,
   lib,
   ...
 }:
@@ -80,7 +79,7 @@
         ".cph"
       ];
       group = "BigFileOptimizer";
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function(auEvent)
           local bufferCurrentLinesCount = vim.api.nvim_buf_line_count(0)
 
@@ -153,7 +152,7 @@
         );
       nm = modeKeys [ "n" ];
     in
-    helpers.keymaps.mkKeymaps { options.silent = true; } (nm {
+    lib.nixvim.keymaps.mkKeymaps { options.silent = true; } (nm {
       "ft" = "<cmd>Neotree<CR>";
       "fG" = "<cmd>Neotree git_status<CR>";
       "fR" = "<cmd>Neotree remote<CR>";
@@ -182,7 +181,7 @@
         options.desc = "history";
       };
       "<leader>wS" = {
-        action = helpers.mkRaw ''
+        action = lib.nixvim.mkRaw ''
           function()
             require('telescope.builtin').live_grep({
               cwd = "~/wiki",
@@ -197,7 +196,7 @@
       {
         key = "<leader>rn";
         mode = [ "n" ];
-        action = helpers.mkRaw ''
+        action = lib.nixvim.mkRaw ''
           function()
           	return ":IncRename " .. vim.fn.expand("<cword>")
           end
