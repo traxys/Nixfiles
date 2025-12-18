@@ -394,11 +394,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1766072477,
-        "narHash": "sha256-db/HJGEGXFNFiFPjekUUviWl7R7iqE4AnGvyQ0Cx+EE=",
+        "lastModified": 1766077602,
+        "narHash": "sha256-FV5T46svb0ADYS/zfu7DL5sZKMryAMDj1fwyRaO72os=",
         "ref": "refs/heads/master",
-        "rev": "b7f3fa081cdd2f47d945615ed24d66aee0ab4410",
-        "revCount": 21,
+        "rev": "e05cab4e64e073bb3b77dd5ab8d91cbd5a785755",
+        "revCount": 22,
         "type": "git",
         "url": "https://forgejo.familleboyer.net/traxys/git-series-manager.git"
       },
