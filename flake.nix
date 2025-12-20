@@ -23,11 +23,6 @@
       url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    comma = {
-      url = "github:nix-community/comma";
-      inputs.naersk.follows = "naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     raclette = {
       url = "github:traxys/raclette";
       inputs.nixpkgs.follows = "nixpkgs";
