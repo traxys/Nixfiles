@@ -35,7 +35,7 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
 
         input = {
           keyboard = {
-            xkb.layout = "fr(ergol),us";
+            xkb.layout = "fr(ergol),us,fr";
             xkb.options = "compose:102";
             numlock = true;
           };
