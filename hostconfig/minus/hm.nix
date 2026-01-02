@@ -8,6 +8,7 @@
     spotify
     streamlink-twitch-gui-bin
     firefox
+    deezer-enhanced
   ];
 
   services.spotifyd = {

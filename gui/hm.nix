@@ -27,6 +27,7 @@
     krita
     pavucontrol
     spotify
+    deezer-enhanced
     vlc
     mpv
 
