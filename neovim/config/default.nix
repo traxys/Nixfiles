@@ -40,6 +40,7 @@
         "openscad.nvim"
         "yanky.nvim"
         "blink.cmp"
+        "snacks.nvim"
       ];
     };
   };
