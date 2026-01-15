@@ -73,6 +73,7 @@
       keychain
       rclone
       nix-du
+      glow
 
       # Useful for pandoc to latex
       (texlive.combine {
