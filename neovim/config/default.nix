@@ -297,22 +297,6 @@
     ];
   };
 
-  plugins.treesitter-refactor = {
-    enable = true;
-    settings = {
-      highlight_definitions = {
-        enable = true;
-        clear_on_cursor_move = true;
-      };
-      smart_rename = {
-        enable = true;
-      };
-      navigation = {
-        enable = true;
-      };
-    };
-  };
-
   plugins.treesitter-context = {
     enable = true;
   };
