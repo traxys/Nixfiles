@@ -28,5 +28,30 @@
     NIXOS_OZONE_WL = 1;
   };
 
+  systemd.user.services.waydroid-session = {
+    Unit = {
+      Description = "Waydroid Session Service";
+      After = "default.target";
+      Requires = "default.target";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+
+    Service =
+      let
+        exe = "/run/current-system/sw/bin/waydroid";
+      in
+      {
+        Type = "simple";
+        ExecStart = "${exe} session start";
+        ExecStop = "${exe} session stop";
+        Restart = "always";
+        RestartSec = "1s";
+        WorkingDirectory = "/home/%u";
+      };
+  };
+
   home.stateVersion = "23.11";
 }
