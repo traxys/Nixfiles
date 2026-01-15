@@ -119,7 +119,7 @@
               inherit (config.flake-root) projectRootFile;
 
               programs = {
-                nixfmt-rfc-style.enable = true;
+                nixfmt.enable = true;
                 statix.enable = true;
               };
             };
