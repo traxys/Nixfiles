@@ -326,8 +326,8 @@
             | ${pkgs.dotacat}/bin/dotacat
         '';
         fish_user_key_bindings = ''
-          bind up,\eOA,\e\[A up-or-search-prefix
-          bind down,\eOB,\e\[B down-or-search-prefix
+          bind up up-or-search-prefix
+          bind down down-or-search-prefix
         '';
         up-or-search-prefix = {
           description = "Search (by prefix) back or move cursor up 1 line";
