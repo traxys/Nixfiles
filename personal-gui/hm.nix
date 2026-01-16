@@ -8,7 +8,7 @@
     orca-slicer
     anki-bin
     rmview
-    sieve-editor-gui
+    #sieve-editor-gui
     rmc
     rawtherapee
     darktable
