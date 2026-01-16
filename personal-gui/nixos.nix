@@ -21,8 +21,6 @@
 
   hardware.keyboard.qmk.enable = true;
 
-  programs.adb.enable = true;
-
   security.pam.yubico = {
     enable = true;
     debug = false;

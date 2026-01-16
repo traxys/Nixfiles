@@ -13,6 +13,7 @@
     rawtherapee
     darktable
     audacity
+    android-tools
   ];
 
   home.sessionVariables = {
