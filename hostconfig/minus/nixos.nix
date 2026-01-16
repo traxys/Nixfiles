@@ -154,4 +154,17 @@ in
   hardware.bluetooth.enable = true;
 
   hardware.enableRedistributableFirmware = true;
+
+  virtualisation.oci-containers.containers.archiver = {
+    pull = "always";
+    image = "atdr.meo.ws/archiveteam/warrior-dockerfile";
+    ports = [ "63541:8001" ];
+    environment = {
+      DOWNLOADER = "traxys";
+      SELECTED_PROJECT = "auto";
+      CONCURRENT_ITEMS = "2";
+      WARRIOR_ID = "minus-traxys";
+    };
+  };
+
 }
