@@ -10,7 +10,10 @@
   };
 
   flake.nixvimModules = {
-    config = import ./config { flake = self; };
+    config = import ./config {
+      flake = self;
+      inherit (inputs) tree-sitter-vvk;
+    };
     plugins = import ./plugins {
       inherit (inputs) vim-headerguard;
     };

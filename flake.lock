@@ -324,6 +324,24 @@
         "type": "github"
       }
     },
+    "flake-utils_7": {
+      "inputs": {
+        "systems": "systems_8"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "glaurung": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -736,6 +754,21 @@
     },
     "nixpkgs_13": {
       "locked": {
+        "lastModified": 1768756095,
+        "narHash": "sha256-oyzGWvIdnU+qXBn5pgtLozyZEZMqxrMqyGtHVELwY3s=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f621f1f21a27200b249df16dd8e99d17337060cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_14": {
+      "locked": {
         "lastModified": 1767364772,
         "narHash": "sha256-fFUnEYMla8b7UKjijLnMe+oVFOz6HjijGGNS1l7dYaQ=",
         "owner": "nixos",
@@ -963,6 +996,7 @@
         "raclette": "raclette",
         "rust-overlay": "rust-overlay_4",
         "simulationcraft": "simulationcraft",
+        "tree-sitter-vvk": "tree-sitter-vvk",
         "treefmt-nix": "treefmt-nix",
         "vim-headerguard": "vim-headerguard",
         "wayland-pipewire-idle-inhibit": "wayland-pipewire-idle-inhibit"
@@ -1200,6 +1234,21 @@
     },
     "systems_8": {
       "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_9": {
+      "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
         "owner": "nix-systems",
@@ -1213,9 +1262,28 @@
         "type": "github"
       }
     },
+    "tree-sitter-vvk": {
+      "inputs": {
+        "flake-utils": "flake-utils_7",
+        "nixpkgs": "nixpkgs_13"
+      },
+      "locked": {
+        "lastModified": 1768772541,
+        "narHash": "sha256-udlc/UQtPo8GwJcdBAV3JGw4no0r42ISMN6eMS40z5M=",
+        "ref": "refs/heads/master",
+        "rev": "29710a61d71c9fd763c87aa94c5ee7d832c60e09",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://forgejo.familleboyer.net/traxys/tree-sitter-vvk"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://forgejo.familleboyer.net/traxys/tree-sitter-vvk"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_13"
+        "nixpkgs": "nixpkgs_14"
       },
       "locked": {
         "lastModified": 1768158989,
@@ -1274,7 +1342,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_8",
+        "systems": "systems_9",
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {

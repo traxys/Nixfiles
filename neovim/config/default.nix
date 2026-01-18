@@ -1,4 +1,4 @@
-{ flake }:
+{ flake, tree-sitter-vvk }:
 {
   pkgs,
   config,
@@ -140,6 +140,7 @@
     };
     extension = {
       lalrpop = "lalrpop";
+      vvk = "vvk";
     };
   };
 
@@ -235,6 +236,34 @@
       (#set! injection.language "javascript"))
   '';
 
+  extraFiles."queries/vvk//highlights.scm".text = ''
+    (comment) @comment
+
+    [
+         "["
+         "]"
+         "{"
+         "}"
+    ] @punctuation.bracket
+
+    [
+        "mod"
+    ] @keyword.import
+
+    (directive) @keyword.modifier
+
+    (string_literal) @string
+
+    (target 
+        name: (identifier) @function.call)
+
+    (assign_statement
+        name: (identifier) @variable)
+
+    (argument
+        name: (identifier) @variable.member)
+  '';
+
   plugins.treesitter = {
     enable = true;
 
@@ -245,57 +274,68 @@
 
     nixvimInjections = true;
 
-    grammarPackages = with config.plugins.treesitter.package.passthru.builtGrammars; [
-      arduino
-      asm
-      bash
-      bitbake
-      c
-      cpp
-      cuda
-      dart
-      devicetree
-      diff
-      dockerfile
-      editorconfig
-      fish
-      gitattributes
-      gitcommit
-      gitignore
-      git_rebase
-      groovy
-      html
-      ini
-      javascript
-      json
-      just
-      lalrpop
-      latex
-      linkerscript
-      lua
-      make
-      markdown
-      markdown_inline
-      mermaid
-      meson
-      ninja
-      nix
-      printf
-      python
-      regex
-      rst
-      rust
-      slint
-      sql
-      tlaplus
-      toml
-      typst
-      vim
-      vimdoc
-      xml
-      yaml
-      zig
-    ];
+    grammarPackages =
+      let
+        ts = config.plugins.treesitter.package.passthru;
+      in
+      [
+        (pkgs.tree-sitter.buildGrammar {
+          language = "vvk";
+          version = tree-sitter-vvk.rev;
+          src = tree-sitter-vvk;
+        })
+      ]
+      ++ (with ts.builtGrammars; [
+        arduino
+        asm
+        bash
+        bitbake
+        c
+        cpp
+        cuda
+        dart
+        devicetree
+        diff
+        dockerfile
+        editorconfig
+        fish
+        gitattributes
+        gitcommit
+        gitignore
+        git_rebase
+        groovy
+        html
+        ini
+        javascript
+        json
+        just
+        lalrpop
+        latex
+        linkerscript
+        lua
+        make
+        markdown
+        markdown_inline
+        mermaid
+        meson
+        ninja
+        nix
+        printf
+        python
+        regex
+        rst
+        rust
+        slint
+        sql
+        tlaplus
+        toml
+        typst
+        vim
+        vimdoc
+        xml
+        yaml
+        zig
+      ]);
   };
 
   plugins.treesitter-context = {
