@@ -9,6 +9,7 @@
     streamlink-twitch-gui-bin
     firefox
     deezer-enhanced
+    jellyfin-desktop
   ];
 
   services.spotifyd = {
