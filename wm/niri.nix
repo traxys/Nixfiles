@@ -8,6 +8,7 @@ lib.mkIf (config.traxys.wm == "niri") {
   home.packages = with pkgs; [
     swaybg
     config.traxys.pkgs.xwayland-satellite-unstable
+    wl-mirror
   ];
 
   services.gnome-keyring.enable = true;
@@ -85,6 +86,7 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
           let
             inherit (config.lib.niri.actions)
               spawn
+              spawn-sh
               close-window
               show-hotkey-overlay
               toggle-overview
@@ -199,6 +201,8 @@ ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
             "Mod+KP_Add".action = set-column-width "+10%";
             "Mod+Shift+KP_Subtract".action = set-window-height "-10%";
             "Mod+Shift+KP_Add".action = set-window-height "+10%";
+
+            "Mod+P".action = spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)";
 
             # Media Keys
             "XF86AudioRaiseVolume" = {
