@@ -47,7 +47,12 @@ in
   };
 
   networking.hostName = "gandalf";
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+  };
 
   time.timeZone = "Europe/Paris";
 
