@@ -39,7 +39,7 @@
     onlyoffice-desktopeditors
 
     # Misc
-    eog
+    loupe
     freecad
     wdisplays
     wl-clipboard
