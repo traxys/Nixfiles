@@ -74,6 +74,8 @@
       rclone
       nix-du
       glow
+      nnd
+      cgdb
 
       # Useful for pandoc to latex
       (texlive.combine {
