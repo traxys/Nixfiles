@@ -464,6 +464,20 @@ in
     };
   };
 
+  systemd.user.services.ssh-vm = {
+    Unit.Description = "SSH tunnel to the VM";
+    Service = {
+      ExecStart = "/usr/bin/ssh -o 'ServerAliveInterval=10' -NT vm -R 1025:localhost:1025";
+
+      RestartSec = 5;
+      Restart = "always";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
   systemd.user.services.notmuch-new = {
     Unit = {
       Description = "notmuch synchronization";
