@@ -61,5 +61,6 @@
     ./minus
     ./thinkpad-nixos
     ./gandalf
+    ./fabrial
   ];
 }
