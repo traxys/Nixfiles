@@ -35,7 +35,7 @@
     hunspell
     hunspellDicts.fr-any
     hyphen
-    libreoffice
+    # libreoffice
     onlyoffice-desktopeditors
 
     # Misc
