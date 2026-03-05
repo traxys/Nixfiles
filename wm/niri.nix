@@ -28,8 +28,7 @@ lib.mkIf (config.traxys.wm == "niri") {
 
     settings =
       let
-        wallpaper = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/ba
-ckgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
+        wallpaper = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
       in
       {
         xwayland-satellite.path = lib.getExe config.traxys.pkgs.xwayland-satellite-unstable;
