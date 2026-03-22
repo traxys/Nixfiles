@@ -26,6 +26,7 @@ in
     umu-launcher
     cage
     owmods-gui
+    prismlauncher
   ];
 
   programs.mangohud = {
