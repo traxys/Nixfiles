@@ -8,5 +8,7 @@
     };
   };
 
+  programs.foot.settings.main.pad = "0x0x0x8";
+
   xdg.configFile."gtk-4.0/gtk.css".force = true;
 }
