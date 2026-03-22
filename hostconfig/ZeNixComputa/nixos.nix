@@ -130,6 +130,22 @@
     ];
   };
 
+  services.nginx.enable = true;
+  services.nginx.virtualHosts."atw-dash" = {
+    listen = [
+      {
+        addr = "127.0.0.1";
+        port = 63542;
+      }
+    ];
+
+    root = pkgs.fetchgit {
+      url = "https://forge.hackers.town/antijingoist/atw-dashboard.git";
+      rev = "03fa6a4a9ccb18844060e44ba9869b1a80922090";
+      hash = "sha256-RAMRfHV6pB2jgmw/iBr3cj2AsNOQxaT69fk61sgutPQ=";
+    };
+  };
+
   hardware.cpu.amd.updateMicrocode = true;
 
   nix.extraOptions = ''
