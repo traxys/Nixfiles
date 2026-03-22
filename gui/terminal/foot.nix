@@ -16,7 +16,7 @@ in
     programs.foot = {
       enable = true;
       settings = {
-        colors =
+        colors-dark =
           let
             colorCfg = value: mkIf (value != null) value;
             colorCfgNormal = color: colorCfg color.normal;
