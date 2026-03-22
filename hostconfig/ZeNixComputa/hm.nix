@@ -12,7 +12,7 @@
     vintagestory
   ];
 
-  services.mako.output = "DP-2";
+  services.mako.settings.output = "DP-2";
 
   xdg.desktopEntries.teams = {
     name = "teams";
