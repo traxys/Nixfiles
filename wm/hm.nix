@@ -31,6 +31,9 @@
   };
 
   config = {
+    services.network-manager-applet = {
+      enable = true;
+    };
 
     gtk = {
       enable = true;
