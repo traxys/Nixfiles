@@ -96,8 +96,8 @@
     };
   };
 
-  programs.foot.settings.colors."16" = "ff9e64";
-  programs.foot.settings.colors."17" = "db4b4b";
+  programs.foot.settings.colors-dark."16" = "ff9e64";
+  programs.foot.settings.colors-dark."17" = "db4b4b";
 
   services.playerctld = {
     enable = true;
