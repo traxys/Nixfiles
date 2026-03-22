@@ -2,8 +2,12 @@
   pkgs,
   config,
   lib,
+  flake,
   ...
 }:
+let
+  inherit (flake.inputs.nix-gaming.packages.${pkgs.system}) wine-tkg;
+in
 {
   home.packages = with pkgs; [
     bottles
@@ -30,7 +34,7 @@
 
   home.file = {
     ".config/heroic/tools/wine/wine-system" = {
-      source = pkgs.wine-tkg;
+      source = wine-tkg;
       #recursive = true;
     };
   };

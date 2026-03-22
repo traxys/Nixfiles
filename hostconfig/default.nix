@@ -11,7 +11,6 @@
       inputs.rust-overlay.overlays.default
       inputs.nixgl.overlays.default
       (final: prev: self.packages.${system})
-      (final: prev: inputs.nix-gaming.packages.${system})
     ];
 
     makeMachine =
