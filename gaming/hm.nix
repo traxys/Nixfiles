@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (flake.inputs.nix-gaming.packages.${pkgs.system}) wine-tkg;
+  inherit (flake.inputs.nix-gaming.packages.${pkgs.stdenv.hostPlatform.system}) wine-tkg;
 in
 {
   home.packages = with pkgs; [
