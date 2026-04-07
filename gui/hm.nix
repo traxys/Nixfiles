@@ -46,6 +46,8 @@
     xdg-utils
     fzf
     waypipe
+    plantuml
+    d2
   ];
 
   terminal = {
