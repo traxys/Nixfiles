@@ -1,6 +1,6 @@
 {lib, ...}: let 
   inherit (import ../../str-obf.nix lib) decode;
-  workDomain = "lenmlx.ziy";
+  workDomain = "grbb.ziy";
 in {
   extraInfo.email = "quentin.boyer@${decode workDomain}";
 

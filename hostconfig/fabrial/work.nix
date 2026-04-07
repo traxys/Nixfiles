@@ -8,7 +8,7 @@ let
   rhelVersion = "9";
   bxiImageVersion = "0.7.2";
   inherit (import ../../str-obf.nix lib) decode;
-  workDomain = "lenmlx.ziy";
+  workDomain = "grbb.ziy";
   oldWorkDomain = "hsid.xls";
   scmDomain = "gnsgrzwlsgmdjf.jdz.hsid-dlfenzld.xls";
 in
