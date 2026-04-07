@@ -76,6 +76,7 @@
       glow
       nnd
       cgdb
+      jaq
 
       # Useful for pandoc to latex
       (texlive.combine {
