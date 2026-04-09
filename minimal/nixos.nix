@@ -57,7 +57,7 @@
   hardware.enableRedistributableFirmware = true;
 
   nix = {
-    package = pkgs.nixVersions.latest;
+    package = pkgs.lixPackageSets.latest.lix;
 
     extraOptions = ''
       experimental-features = nix-command flakes
