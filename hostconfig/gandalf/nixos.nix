@@ -11,9 +11,9 @@ in
   boot.resumeDevice = swap;
 
   services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1h
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "1h";
+  };
 
   swapDevices = [
     {
