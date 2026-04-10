@@ -10,14 +10,10 @@
 
   home.packages = with pkgs; [
     vintagestory
+    teams-for-linux
   ];
 
   services.mako.settings.output = "DP-2";
-
-  xdg.desktopEntries.teams = {
-    name = "teams";
-    exec = "${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com";
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
