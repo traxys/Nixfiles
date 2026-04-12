@@ -104,7 +104,6 @@
       };
       html = {
         formatter = [
-          "prettier"
           (lib.nixvim.mkRaw "djlint_fmt")
         ];
       };
@@ -113,13 +112,10 @@
         linter = "djlint";
       };
       json = {
-        formatter = "prettier";
-      };
-      css = {
-        formatter = "prettier";
+        formatter = "biome";
       };
       ts = {
-        formatter = "prettier";
+        formatter = "biome";
       };
       gitcommit = {
         linter = "gitlint";
