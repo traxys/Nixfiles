@@ -9,6 +9,7 @@ lib.mkIf (config.traxys.wm == "niri") {
     swaybg
     config.traxys.pkgs.xwayland-satellite-unstable
     wl-mirror
+    nautilus
   ];
 
   services.gnome-keyring.enable = true;
