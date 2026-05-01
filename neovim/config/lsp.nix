@@ -252,6 +252,7 @@
         checkOnSave = true;
         check.command = "clippy";
         rustc.source = "discover";
+        procMacro.server = lib.nixvim.mkRaw "vim.env.RA_PROC_MACRO_SRV";
       };
     };
   };
