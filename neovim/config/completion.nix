@@ -36,16 +36,11 @@
           "buffer"
           "path"
           "git"
-          "calc"
           "omni"
         ];
         providers = {
           git = {
             name = "git";
-            module = "blink.compat.source";
-          };
-          calc = {
-            name = "calc";
             module = "blink.compat.source";
           };
           omni = {
@@ -64,5 +59,4 @@
 
   plugins.cmp-omni.enable = true;
   plugins.cmp-git.enable = true;
-  plugins.cmp-calc.enable = true;
 }
