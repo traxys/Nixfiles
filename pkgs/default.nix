@@ -25,6 +25,7 @@
         msbt-python = pkgs.python3.withPackages (_: [ msbt ]);
         bars-to-bwav = pkgs.callPackage ./bars-to-bwav.nix { };
         vdo-ninja = pkgs.callPackage ./vdo-ninja.nix { };
+        ctcache = pkgs.callPackage ./ctcache.nix { };
       };
     };
 }
