@@ -219,6 +219,22 @@
         mode = [ "n" ];
         action = "<Plug>(leap-from-window)";
       }
+      {
+        key = "gs";
+        mode = [
+          "n"
+          "o"
+        ];
+        action = "<Plug>(leap-remote)";
+      }
+      {
+        key = "gS";
+        mode = [
+          "n"
+          "o"
+        ];
+        action = "<Plug>(leap-remote-linewise)";
+      }
     ];
 
   plugins.gitsigns.enable = true;
