@@ -361,7 +361,7 @@
       enable = true;
       include_match_words = true;
     };
-    enable = true;
+    enable = false;
   };
   plugins.headerguard.enable = true;
 
