@@ -205,6 +205,20 @@
         '';
         options.expr = true;
       }
+      {
+        key = "s";
+        mode = [
+          "n"
+          "x"
+          "o"
+        ];
+        action = "<Plug>(leap)";
+      }
+      {
+        key = "S";
+        mode = [ "n" ];
+        action = "<Plug>(leap-from-window)";
+      }
     ];
 
   plugins.gitsigns.enable = true;
