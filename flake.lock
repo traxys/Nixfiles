@@ -455,11 +455,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778248595,
-        "narHash": "sha256-dhFgEjoeJMYN/7OY6xfxS799YB4IjbbYXTjyGIJyLpc=",
+        "lastModified": 1778365864,
+        "narHash": "sha256-ImoT/wqmgMImf2dAC+E0MverAdA4QXsedOeES9B7Ezw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "fdb2ccba9d5e1238d32e0c4a3ec1a277efa80c1d",
+        "rev": "2f419037039a152448c5f4ae9494154753d1b399",
         "type": "github"
       },
       "original": {
@@ -989,11 +989,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778317397,
-        "narHash": "sha256-x/UWq8bJm4AU9byOc0tvyOm2oi7I56d+3oVKNr8S0BA=",
+        "lastModified": 1778369349,
+        "narHash": "sha256-sRgsc80R4+M2yVBnVp/d3lPmnC/wDxsXJARIicBF7yM=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d26f93f8e595f14879fc960c3e87e9ee5c9b5693",
+        "rev": "41d0988119a9298ca0b94aec6d00b5da2446c633",
         "type": "github"
       },
       "original": {
@@ -1164,11 +1164,11 @@
     "simulationcraft": {
       "flake": false,
       "locked": {
-        "lastModified": 1778285549,
-        "narHash": "sha256-YLLNbf0TCnFvDnOQxiSVfHaoFVmpHn0/5zLCdeAElMA=",
+        "lastModified": 1778365279,
+        "narHash": "sha256-oxX51Qaq7sO0v1NlC6NWTjI6Ag/aOO+DlqtmXDzmIeI=",
         "owner": "simulationcraft",
         "repo": "simc",
-        "rev": "419a4ad95da6f762eed7b14b87fe8fbc932184bc",
+        "rev": "5759a595ce0f6dcf5af2419749f7efe4943e16c4",
         "type": "github"
       },
       "original": {
