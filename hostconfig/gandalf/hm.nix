@@ -10,32 +10,51 @@
     settings.user.email = config.extraInfo.email;
   };
 
-  systemd.user.services = {
-    "rclone-boh-articles" = {
-      Unit = {
-        Description = "rclone: BoH website articles";
-        Documentation = "man:rclone(1)";
-        After = "network-online.target";
-        Wants = "network-online.target";
+  systemd.user.services =
+    let
+      mkRclone =
+        {
+          name,
+          path,
+          remote,
+        }:
+        {
+          Unit = {
+            Description = "rclone: ${name}";
+            Documentation = "man:rclone(1)";
+            After = "network-online.target";
+            Wants = "network-online.target";
+          };
+          Service = {
+            Type = "notify";
+            ExecStartPre = "-${lib.getExe' pkgs.coreutils "mkdir"} -p %h/${path}";
+            ExecStart = ''
+              ${lib.getExe pkgs.rclone} \
+                --config=%h/.config/rclone/rclone.conf \
+                --log-level INFO \
+                mount ${remote} %h/${path} \
+                --drive-shared-with-me
+            '';
+            ExecStop = "/run/wrappers/bin/fusermount -u %h/${path}";
+            Environment = [ "PATH=/run/wrappers/bin/:$PATH" ];
+          };
+          Install = {
+            WantedBy = [ "default.target" ];
+          };
+        };
+    in
+    {
+      "rclone-boh-articles" = mkRclone {
+        name = "BoH website articles";
+        path = "mnt/boh-articles";
+        remote = "drive:Traxys";
       };
-      Service = {
-        Type = "notify";
-        ExecStartPre = "-${lib.getExe' pkgs.coreutils "mkdir"} -p %h/mnt/boh-articles";
-        ExecStart = ''
-          ${lib.getExe pkgs.rclone} \
-            --config=%h/.config/rclone/rclone.conf \
-            --log-level INFO \
-            mount drive:Traxys %h/mnt/boh-articles \
-            --drive-shared-with-me
-        '';
-        ExecStop = "/run/wrappers/bin/fusermount -u %h/mnt/boh-articles";
-        Environment = [ "PATH=/run/wrappers/bin/:$PATH" ];
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
+      "rclone-nextcloud" = mkRclone {
+        name = "Nextcloud";
+        path = "mnt/nextcloud";
+        remote = "nextcloud:";
       };
     };
-  };
 
   traxys.wm = "niri";
 
