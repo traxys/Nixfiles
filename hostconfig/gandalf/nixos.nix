@@ -93,6 +93,7 @@ in
 
   services.postgresql = {
     enable = true;
+    extensions = ps: [ ps.postgis ];
     ensureUsers = [
       {
         name = "traxys";
