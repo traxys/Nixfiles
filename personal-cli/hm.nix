@@ -21,6 +21,7 @@ in
     nix-tree
     gh
     perf
+    git-crypt
   ];
 
   programs.gpg = {
