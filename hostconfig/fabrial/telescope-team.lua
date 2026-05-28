@@ -14,12 +14,12 @@ local team_picker = function(opts)
 			finder = finders.new_table({
 				results = vim.tbl_map(function(s) return string.format(s, work_domain) end, {
 					[[Quentin Boyer "<quentin.boyer@%s>"]],
-					[[Philippe Dutrueux "<philippe.dutrueux@%s>"]],
 					[[Sylvain Goudeau "<sylvain.goudeau@%s>"]],
 					[[Jonathan Espié--Caullet "<jonathan.espiecaullet@%s>"]],
 					[[Damien Bergamini "<damien.bergamini@%s>"]],
 					[[Clément Mathieu--Drif "<clement.mathieu--drif@%s>"]],
 					[[Marie Badaroux "<marie.badaroux@%s>"]],
+					[[Ali Baydoun "<ali.baydoun@%s>"]],
 				}),
 			}),
 			sorter = conf.generic_sorter(opts),
