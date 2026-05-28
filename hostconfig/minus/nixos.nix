@@ -8,6 +8,8 @@ let
   cec-ctl = lib.getExe' pkgs.v4l-utils "cec-ctl";
 in
 {
+  imports = [ ./home-assitant.nix ];
+
   boot.extraModulePackages = [
     (pkgs.pulse8-cec.override { inherit (config.boot.kernelPackages) kernel; })
   ];
@@ -16,11 +18,26 @@ in
 
   networking.hostName = "minus";
   networking.networkmanager.enable = true;
+  networking.firewall.trustedInterfaces = [ config.services.tailscale.interfaceName ];
   networking.firewall.allowedTCPPorts = [ 1234 ];
   networking.firewall.allowedUDPPorts = [ 5353 ];
   networking.interfaces.enp1s0.wakeOnLan.enable = true;
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_GB.UTF-8";
+
+  services.oidentd.enable = true;
+
+  services.mosquitto = {
+    enable = true;
+
+    listeners = [
+      {
+        acl = [ "pattern readwrite #" ];
+        omitPasswordAuth = true;
+        settings.allow_anonymous = true;
+      }
+    ];
+  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
@@ -131,10 +148,7 @@ in
   };
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   services.xserver.displayManager.autoLogin.enable = true;
