@@ -21,7 +21,7 @@
           ./extra_info.nix
           ./hm.nix
           inputs.fioul.homeManagerModules.default
-          inputs.gsm.homeManagerModules.default
+          inputs.git-series-manager.homeManagerModules.default
         ];
 
       pkgs = import inputs.nixpkgs rec {
