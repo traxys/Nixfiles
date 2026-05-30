@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     kdePackages.kdeconnect-kde
@@ -14,6 +14,10 @@
     darktable
     audacity
     android-tools
+
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    ricty
   ];
 
   home.sessionVariables = {
@@ -25,4 +29,21 @@
   };
 
   services.gpg-agent.pinentry.package = pkgs.pinentry-rofi;
+
+  fonts.fontconfig.defaultFonts =
+    let
+      langs = [
+        "JP"
+        "KR"
+        "TC"
+        "TK"
+        "SC"
+      ];
+      mkLangs = s: lib.map (l: lib.replaceString "{}" l s) langs;
+    in
+    {
+      sansSerif = lib.mkAfter (mkLangs "Noto Sans CJK {}");
+      serif = lib.mkAfter (mkLangs "Noto Serif CJK {}");
+      monospace = lib.mkAfter [ "ricty" ];
+    };
 }

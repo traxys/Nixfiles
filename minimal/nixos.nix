@@ -40,20 +40,6 @@
   services.xserver.xkb.variant = "ergol";
 
   fonts.enableDefaultPackages = true;
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts.hack
-      dejavu_fonts
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "DejaVu" ];
-        sansSerif = [ "DejaVu Sans" ];
-        monospace = [ "Hack" ];
-      };
-    };
-  };
-
   hardware.enableRedistributableFirmware = true;
 
   nix = {

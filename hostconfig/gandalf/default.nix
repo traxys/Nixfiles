@@ -29,6 +29,7 @@
       "cnijfilter2"
       "spotify"
       "discord"
+      "ricty"
     ];
   };
 }

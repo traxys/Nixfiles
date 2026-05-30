@@ -77,6 +77,8 @@
       nnd
       cgdb
       jaq
+      nerd-fonts.hack
+      dejavu_fonts
 
       # Useful for pandoc to latex
       (texlive.combine {
@@ -472,6 +474,16 @@
 
         atexit.register(write_history)
       '';
+    };
+
+    fonts.fontconfig = {
+      enable = true;
+
+      defaultFonts = {
+        serif = [ "DejaVu" ];
+        sansSerif = [ "DejaVu Sans" ];
+        monospace = [ "Hack Nerd Font Mono" ];
+      };
     };
   };
 }

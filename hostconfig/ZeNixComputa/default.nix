@@ -35,6 +35,7 @@
       "wowup-cf"
       "libXNVCtrl" # mangohud through bottles & heroic
       "vintagestory"
+      "ricty"
     ];
     permittedInsecurePackages = [
       # vintagestory
