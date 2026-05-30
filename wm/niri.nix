@@ -80,7 +80,7 @@ lib.mkIf (config.traxys.wm == "niri") {
 
         layer-rules = [
           {
-            matches = [ { namespace = "^notifications$"; } ];
+            matches = [ { namespace = "^noctalia-notifications"; } ];
             block-out-from = "screencast";
           }
         ];
