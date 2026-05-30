@@ -1,4 +1,4 @@
-{ niri }:
+{ niri, noctalia }:
 {
   config,
   lib,
@@ -10,6 +10,7 @@
     ./sway.nix
     ./waybar/hm.nix
     niri.homeModules.niri
+    noctalia.homeModules.default
     ./niri.nix
   ];
 

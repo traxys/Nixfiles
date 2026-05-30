@@ -4,12 +4,16 @@
   lib,
   ...
 }:
+let
+  wallpaper = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
+in
 lib.mkIf (config.traxys.wm == "niri") {
   home.packages = with pkgs; [
     swaybg
     config.traxys.pkgs.xwayland-satellite-unstable
     wl-mirror
     nautilus
+    evolution-data-server
   ];
 
   services.gnome-keyring.enable = true;
@@ -19,9 +23,29 @@ lib.mkIf (config.traxys.wm == "niri") {
     configPackages = [ config.programs.niri.package ];
   };
 
-  traxys.waybar.enable = true;
+  traxys.waybar.enable = false;
   traxys.waybar.modules."niri/window".enable = true;
   traxys.waybar.modules."niri/workspaces".enable = true;
+
+  home.file.".cache/noctalia/wallpapers.json" = {
+    text = builtins.toJSON {
+      defaultWallpaper = wallpaper;
+    };
+  };
+
+  programs.noctalia-shell = {
+    enable = true;
+
+    package = pkgs.noctalia-shell.override { calendarSupport = true; };
+
+    settings = lib.importJSON ./noctalia-cfg.json;
+  };
+
+  services.network-manager-applet.enable = lib.mkForce false;
+  services.mako.enable = lib.mkForce false;
+
+  dbus.packages = [ pkgs.evolution-data-server ];
+  systemd.user.packages = [ pkgs.evolution-data-server ];
 
   programs.niri = {
     enable = true;
@@ -29,7 +53,6 @@ lib.mkIf (config.traxys.wm == "niri") {
 
     settings =
       let
-        wallpaper = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
       in
       {
         xwayland-satellite.path = lib.getExe config.traxys.pkgs.xwayland-satellite-unstable;
@@ -46,21 +69,13 @@ lib.mkIf (config.traxys.wm == "niri") {
         };
 
         spawn-at-startup = [
-          { command = [ "waybar" ]; }
-          { command = [ "${pkgs.mako}/bin/mako" ]; }
+          { command = [ "noctalia-shell" ]; }
           { command = [ "signal-desktop" ]; }
           { command = [ "discord" ]; }
           { command = [ "firefox" ]; }
           { command = [ "element-desktop" ]; }
           { command = [ "thunderbird" ]; }
           { command = [ "${pkgs.kdePackages.kdeconnect-kde}/libexec/kdeconnectd" ]; }
-          {
-            command = [
-              "swaybg"
-              "--image"
-              wallpaper
-            ];
-          }
         ];
 
         layer-rules = [
@@ -81,6 +96,10 @@ lib.mkIf (config.traxys.wm == "niri") {
             block-out-from = "screencast";
           }
         ];
+
+        debug = {
+          honor-xdg-activation-with-invalid-serial = [ ];
+        };
 
         binds =
           let
@@ -121,18 +140,25 @@ lib.mkIf (config.traxys.wm == "niri") {
               focus-monitor-right
               focus-monitor-left
               ;
+            noctalia = cmd: spawn "noctalia-shell" "ipc" "call" cmd;
           in
           {
             # "Print".action = spawn "sh" "-c" ''
             #   ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
             # '';
-            "Print".action.screenshot = [];
+            "Print".action.screenshot = [ ];
             "Mod+Shift+l" = {
-              action = spawn "${pkgs.swaylock-fancy}/bin/swaylock-fancy";
+              action = noctalia [
+                "lockScreen"
+                "lock"
+              ];
               hotkey-overlay.title = "Lock the screen";
             };
             "Mod+e" = {
-              action = spawn "${config.programs.rofi.package}/bin/rofi" "-show" "drun" "-show-icons";
+              action = noctalia [
+                "launcher"
+                "toggle"
+              ];
               hotkey-overlay.title = "Run a program";
             };
             "Mod+Return" = {
@@ -206,30 +232,62 @@ lib.mkIf (config.traxys.wm == "niri") {
 
             # Media Keys
             "XF86AudioRaiseVolume" = {
-              action = spawn "${pkgs.pulseaudio}/bin/pactl" "set-sink-volume" "@DEFAULT_SINK@" "'+10%'";
+              action = noctalia [
+                "volume"
+                "increase"
+              ];
               allow-when-locked = true;
             };
             "XF86AudioLowerVolume" = {
-              action = spawn "${pkgs.pulseaudio}/bin/pactl" "set-sink-volume" "@DEFAULT_SINK@" "'-10%'";
+              action = noctalia [
+                "volume"
+                "decrease"
+              ];
               allow-when-locked = true;
             };
             "XF86AudioMute" = {
-              action = spawn "${pkgs.pulseaudio}/bin/pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle";
+              action = noctalia [
+                "volume"
+                "muteOutput"
+              ];
               allow-when-locked = true;
             };
             "XF86AudioPlay" = {
-              action = spawn "${pkgs.playerctl}/bin/playerctl" "-p" "spotify" "play-pause";
+              action = noctalia [
+                "media"
+                "playPause"
+              ];
               allow-when-locked = true;
             };
-            "XF86AudioNext".action = spawn "${pkgs.playerctl}/bin/playerctl" "-p" "spotify" "next";
-            "XF86AudioPrev".action = spawn "${pkgs.playerctl}/bin/playerctl" "-p" "spotify" "previous";
+            "XF86AudioNext".action = noctalia [
+              "media"
+              "next"
+            ];
+            "XF86AudioPrev".action = noctalia [
+              "media"
+              "previous"
+            ];
+
+            "XF86AudioMicMute" = {
+              action = noctalia [
+                "volume"
+                "muteInput"
+              ];
+              allow-when-locked = true;
+            };
 
             "XF86MonBrightnessDown" = {
-              action = spawn (lib.getExe pkgs.brightnessctl) "set" "10%-";
+              action = noctalia [
+                "brightness"
+                "decrease"
+              ];
               allow-when-locked = true;
             };
             "XF86MonBrightnessUp" = {
-              action = spawn (lib.getExe pkgs.brightnessctl) "set" "10%+";
+              action = noctalia [
+                "brightness"
+                "increase"
+              ];
               allow-when-locked = true;
             };
 

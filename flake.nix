@@ -34,6 +34,10 @@
     git-series-manager.url = "git+https://forgejo.familleboyer.net/traxys/git-series-manager.git";
     niri.url = "github:sodiboo/niri-flake";
     nixgl.url = "github:nix-community/nixGL";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
@@ -143,7 +147,7 @@
                 wayland-pipewire-idle-inhibit = inputs.wayland-pipewire-idle-inhibit.homeModules.default;
               };
               wm = import ./wm/hm.nix {
-                inherit (inputs) niri;
+                inherit (inputs) niri noctalia;
               };
               de = import ./de/hm.nix;
               personal-gui = import ./personal-gui/hm.nix;
