@@ -47,7 +47,7 @@
 
   plugins.lz-n.enable = true;
 
-  plugins.fcitx.enable = true;
+  plugins.fcitx.enable = lib.nixvim.enableExceptInTests;
 
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
