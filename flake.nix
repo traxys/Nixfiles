@@ -69,6 +69,10 @@
       url = "github:drmikehenry/vim-headerguard";
       flake = false;
     };
+    "fcitx.nvim" = {
+      url = "github:junyixu/fcitx.nvim";
+      flake = false;
+    };
     tree-sitter-vvk.url = "git+https://forgejo.familleboyer.net/traxys/tree-sitter-vvk";
   };
 

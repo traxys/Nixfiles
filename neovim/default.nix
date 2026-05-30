@@ -16,6 +16,7 @@
     };
     plugins = import ./plugins {
       inherit (inputs) vim-headerguard;
+      fcitx = inputs."fcitx.nvim";
     };
     modules = ./modules;
 

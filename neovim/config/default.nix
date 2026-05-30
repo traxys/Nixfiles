@@ -47,6 +47,8 @@
 
   plugins.lz-n.enable = true;
 
+  plugins.fcitx.enable = true;
+
   autoGroups.BigFileOptimizer = { };
   autoCmd = [
     {

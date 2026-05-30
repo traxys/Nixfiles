@@ -30,6 +30,22 @@
         "type": "github"
       }
     },
+    "fcitx.nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765559812,
+        "narHash": "sha256-P0T63jEmvEHtKVSjCuC5IJ6wSklBUQqnJb0PL+ONfuo=",
+        "owner": "junyixu",
+        "repo": "fcitx.nvim",
+        "rev": "250e7f3b697f1b3bba45252543ae23f8cc2585fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "junyixu",
+        "repo": "fcitx.nvim",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -1029,6 +1045,7 @@
     },
     "root": {
       "inputs": {
+        "fcitx.nvim": "fcitx.nvim",
         "fioul": "fioul",
         "flake-parts": "flake-parts",
         "flake-root": "flake-root",
