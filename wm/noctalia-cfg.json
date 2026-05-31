@@ -47,6 +47,9 @@
 					"useCustomFont": false
 				},
 				{
+					"id": "plugin:weekly-calendar"
+				},
+				{
 					"compactMode": true,
 					"diskPath": "/",
 					"iconColor": "none",

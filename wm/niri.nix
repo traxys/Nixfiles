@@ -38,6 +38,23 @@ lib.mkIf (config.traxys.wm == "niri") {
 
     package = pkgs.noctalia-shell.override { calendarSupport = true; };
 
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        weekly-calendar = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 2;
+    };
+
     settings = lib.importJSON ./noctalia-cfg.json;
   };
 

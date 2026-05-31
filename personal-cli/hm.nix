@@ -67,8 +67,15 @@ in
   };
 
   programs.khal = {
-    locale.timeformat = "%H:%M";
     enable = true;
+
+    locale = {
+      timeformat = "%H:%M";
+      dateformat = "%Y-%m-%d";
+      longdateformat = "%Y-%m-%d";
+      datetimeformat = "%Y-%m-%d %H:%M";
+      longdatetimeformat = "%Y-%m-%d %H:%M";
+    };
   };
   programs.vdirsyncer.enable = true;
   services.vdirsyncer.enable = true;
