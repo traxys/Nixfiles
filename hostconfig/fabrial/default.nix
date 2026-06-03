@@ -22,6 +22,7 @@
           ./hm.nix
           inputs.fioul.homeManagerModules.default
           inputs.git-series-manager.homeManagerModules.default
+          inputs.pam_shim.homeModules.default
         ];
 
       pkgs = import inputs.nixpkgs rec {

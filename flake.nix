@@ -69,6 +69,8 @@
       flake = false;
     };
     tree-sitter-vvk.url = "git+https://forgejo.familleboyer.net/traxys/tree-sitter-vvk";
+
+    pam_shim.url = "github:Cu3PO42/pam_shim";
   };
 
   outputs =

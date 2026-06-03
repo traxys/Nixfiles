@@ -58,6 +58,14 @@ in
 {
   imports = [ ./work.nix ];
 
+  pamShim.enable = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      noctalia-qs = prev.noctalia-qs.override { pam = config.pamShim.package; };
+    })
+  ];
+
   home.packages = with pkgs; [
     teams-for-linux
     bear
@@ -509,9 +517,6 @@ in
   home.stateVersion = "21.11";
 
   traxys.wm = "niri";
-  programs.niri.settings.binds."Mod+Shift+l".action = lib.mkForce (
-    config.lib.niri.actions.spawn "/usr/bin/swaylock"
-  );
 
   wayland.windowManager.sway.extraConfig = "exec /usr/libexec/polkit-gnome-authentication-agent-1";
 
