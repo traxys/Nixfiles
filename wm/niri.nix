@@ -108,6 +108,10 @@ lib.mkIf (config.traxys.wm == "niri") {
               { app-id = "teams-for-linux"; }
               { app-id = "discord"; }
               { app-id = "signal"; }
+              {
+                app-id = "foot";
+                title = "aerc";
+              }
             ];
 
             block-out-from = "screencast";
