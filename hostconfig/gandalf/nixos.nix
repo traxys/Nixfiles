@@ -127,5 +127,11 @@ in
   ];
   traxys.wm = "niri";
 
+  # Remap right control to katakanahiragana
+  services.udev.extraHwdb = ''
+    evdev:atkbd:*
+      KEYBOARD_KEY_9d=muhenkan
+  '';
+
   system.stateVersion = "24.05";
 }
