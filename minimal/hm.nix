@@ -70,7 +70,6 @@
       bat-extras.prettybat
       just
       bottom
-      keychain
       rclone
       nix-du
       glow
@@ -405,7 +404,6 @@
         # Use set -Ua SSH_KEYS_TO_AUTOLOAD <key> to add a key
         if status is-interactive
           set -lx SHELL fish
-          keychain --eval $SSH_KEYS_TO_AUTOLOAD | source
         end
       '';
 
@@ -418,6 +416,10 @@
         gp = "git push";
         gl = "git pull";
       };
+    };
+
+    services.ssh-agent = {
+      enable = true;
     };
 
     programs.zsh = {
