@@ -38,6 +38,7 @@
   perSystem =
     {
       system,
+      pkgs,
       ...
     }:
     {
@@ -45,6 +46,7 @@
         neovimTraxys = inputs.nixvim.lib.evalNixvim {
           inherit system;
           modules = [
+            { nixpkgs.pkgs = pkgs; }
             self.nixvimModules.neovimTraxys
           ];
         };

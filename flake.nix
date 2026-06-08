@@ -58,12 +58,7 @@
     };
     fioul.url = "github:traxys/fioul";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      #url = "/home/traxys/Documents/nixvim";
-      #url = "github:traxys/nixvim?ref=dev";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixvim.url = "github:nix-community/nixvim";
 
     "vim-headerguard" = {
       url = "github:drmikehenry/vim-headerguard";
