@@ -661,7 +661,7 @@
 		"fadeDuration": 5,
 		"screenOffCommand": "",
 		"lockCommand": "",
-		"suspendCommand": "",
+		"suspendCommand": "systemctl suspend-then-hibernate",
 		"resumeScreenOffCommand": "",
 		"resumeLockCommand": "",
 		"resumeSuspendCommand": "",
