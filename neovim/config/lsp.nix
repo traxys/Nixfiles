@@ -139,10 +139,6 @@
         lspBufAction = "code_action";
       }
       {
-        key = "ff";
-        lspBufAction = "format";
-      }
-      {
         key = "K";
         lspBufAction = "hover";
       }

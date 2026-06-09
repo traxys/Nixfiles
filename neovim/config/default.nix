@@ -174,6 +174,10 @@
       "ge" = "<cmd>Telescope diagnostics bufnr=0<CR>";
       "gE" = "<cmd>Telescope diagnostics<CR>";
 
+      "ff".action = lib.nixvim.mkRaw ''
+        function() require("conform").format() end
+      '';
+
       "<leader>h" = {
         action = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>";
         options = {
@@ -482,6 +486,42 @@
     end
   '';
 
+  plugins.conform-nvim = {
+    enable = true;
+
+    settings = {
+      formatters = {
+        muon = {
+          command = "muon";
+          args = [
+            "fmt"
+            "-"
+          ];
+        };
+      };
+      formatters_by_ft = {
+        sh = [ "shfmt" ];
+        bash = [ "shfmt" ];
+        c = [ "clang-format" ];
+        markdown = [ "mdformat" ];
+        lua = [ "stylua" ];
+        html = [ "djlint" ];
+        htmldjango = [ "djlint" ];
+        json = [ "biome" ];
+        ts = [ "biome" ];
+        python = [ "ruff_format" ];
+        rust = [ "rustfmt" ];
+        just = [ "just" ];
+        meson = [ "muon" ];
+        nix = [ "nixfmt" ];
+        sql = [ "sqlfluff" ];
+        toml = [ "taplo" ];
+        xml = [ "xmllint" ];
+        "*" = [ "injected" ];
+      };
+    };
+  };
+
   extraConfigLuaPost = ''
     require("luasnip.loaders.from_snipmate").lazy_load()
 
@@ -538,6 +578,7 @@
     djlint
     muon
     gh
+    rustfmt
   ];
 
   extraPlugins = with pkgs.vimPlugins; [
