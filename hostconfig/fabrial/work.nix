@@ -109,7 +109,7 @@ in
           "--to=dl-bxi-sw-ll-patches@${decode intermediaryWorkDomain}"
         ];
         repo_url_base = "https://${decode scmDomain}/scm/bril/";
-        ci_url = "https://sf.bds.${decode oldWorkDomain}/jenkins/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
+        ci_url = "https://jenkins.sf.${decode workDomain}/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
         editor = "nvim";
       };
     };
