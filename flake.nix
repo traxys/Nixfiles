@@ -57,6 +57,10 @@
       flake = false;
     };
     fioul.url = "github:traxys/fioul";
+    phonto = {
+      url = "github:museslabs/phonto";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixvim.url = "github:nix-community/nixvim";
 
@@ -119,6 +123,7 @@
                     "glaurung"
                     "raclette"
                     "git-series-manager"
+                    "phonto"
                   ];
                 in
                 lib.genAttrs names (name: inputs'.${name}.packages.${name})
