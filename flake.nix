@@ -35,7 +35,7 @@
     niri.url = "github:sodiboo/niri-flake";
     nixgl.url = "github:nix-community/nixGL";
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
