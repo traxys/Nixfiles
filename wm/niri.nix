@@ -4,9 +4,6 @@
   lib,
   ...
 }:
-let
-  wallpaper = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray}/share/backgrounds/nixos/nix-wallpaper-simple-dark-gray.png";
-in
 lib.mkIf (config.traxys.wm == "niri") {
   home.packages = with pkgs; [
     swaybg
@@ -26,12 +23,6 @@ lib.mkIf (config.traxys.wm == "niri") {
   traxys.waybar.enable = false;
   traxys.waybar.modules."niri/window".enable = true;
   traxys.waybar.modules."niri/workspaces".enable = true;
-
-  home.file.".cache/noctalia/wallpapers.json" = {
-    text = builtins.toJSON {
-      defaultWallpaper = wallpaper;
-    };
-  };
 
   xdg.configFile."phonto/config.toml".source = pkgs.writers.writeTOML "phonto-config.toml" {
     search_paths = [
@@ -102,6 +93,14 @@ lib.mkIf (config.traxys.wm == "niri") {
           { command = [ "element-desktop" ]; }
           { command = [ "thunderbird" ]; }
           { command = [ "${pkgs.kdePackages.kdeconnect-kde}/libexec/kdeconnectd" ]; }
+          {
+            command = [
+              (lib.getExe pkgs.phonto)
+              "--rand"
+              "--pause-below"
+              "30"
+            ];
+          }
         ];
 
         layer-rules = [

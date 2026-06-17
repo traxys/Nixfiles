@@ -288,7 +288,7 @@
 		]
 	},
 	"wallpaper": {
-		"enabled": true,
+		"enabled": false,
 		"overviewEnabled": false,
 		"directory": "/home/traxys/Pictures/Wallpapers",
 		"monitorDirectories": [],
