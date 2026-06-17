@@ -101,6 +101,7 @@
             lib,
             system,
             config,
+            pkgs,
             ...
           }:
           {
@@ -112,14 +113,23 @@
               };
             };
             packages =
-              let
-                names = [
-                  "glaurung"
-                  "raclette"
-                  "git-series-manager"
-                ];
-              in
-              lib.genAttrs names (name: inputs'.${name}.packages.${name});
+              (
+                let
+                  names = [
+                    "glaurung"
+                    "raclette"
+                    "git-series-manager"
+                  ];
+                in
+                lib.genAttrs names (name: inputs'.${name}.packages.${name})
+              )
+              // {
+                video-wallpapers = pkgs.fetchzip {
+                  url = "https://nextcloud.familleboyer.net/public.php/dav/files/NPK6ENy5pBo3tt9/?accept=zip";
+                  extension = "zip";
+                  hash = "sha256-1DVl+Z/DIApxrIsMfxDZVSxpLaffJjFZ8vqbCnb6E4U=";
+                };
+              };
 
             formatter = config.treefmt.build.wrapper;
 
