@@ -33,6 +33,15 @@ lib.mkIf (config.traxys.wm == "niri") {
     };
   };
 
+  xdg.configFile."phonto/config.toml".source = pkgs.writers.writeTOML "phonto-config.toml" {
+    search_paths = [
+      {
+        path = pkgs.video-wallpapers;
+        depth = 1;
+      }
+    ];
+  };
+
   programs.noctalia-shell = {
     enable = true;
 
