@@ -132,7 +132,7 @@
                 video-wallpapers = pkgs.fetchzip {
                   url = "https://nextcloud.familleboyer.net/public.php/dav/files/NPK6ENy5pBo3tt9/?accept=zip";
                   extension = "zip";
-                  hash = "sha256-1DVl+Z/DIApxrIsMfxDZVSxpLaffJjFZ8vqbCnb6E4U=";
+                  hash = "sha256-UxVP+nbWNsiiGXb/byFTsUzA10sc+Cg69KGP3pZJ5ek=";
                 };
               };
 
