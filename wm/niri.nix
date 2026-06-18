@@ -124,6 +124,10 @@ lib.mkIf (config.traxys.wm == "niri") {
 
             block-out-from = "screencast";
           }
+          {
+            opacity = 0.96;
+            draw-border-with-background = false;
+          }
         ];
 
         debug = {
