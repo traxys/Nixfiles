@@ -93,14 +93,7 @@ lib.mkIf (config.traxys.wm == "niri") {
           { command = [ "element-desktop" ]; }
           { command = [ "thunderbird" ]; }
           { command = [ "${pkgs.kdePackages.kdeconnect-kde}/libexec/kdeconnectd" ]; }
-          {
-            command = [
-              (lib.getExe pkgs.phonto)
-              "--rand"
-              "--pause-below"
-              "30"
-            ];
-          }
+          { command = [ (lib.getExe pkgs.phonto-slideshow) ]; }
         ];
 
         layer-rules = [
