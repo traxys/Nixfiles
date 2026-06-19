@@ -2,29 +2,27 @@
   description = "A basic flake with a shell";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
-  inputs.naersk.url = "github:nix-community/naersk";
-  inputs.rust-overlay.url = "github:oxalica/rust-overlay";
+  inputs.crane.url = "github:ipetkov/crane";
+  inputs.fenix = {
+    url = "github:nix-community/fenix";
+    inputs.nixpkgs.follows = "nixpkgs";
+    inputs.rust-analyzer-src.follows = "";
+  };
 
   outputs =
     {
       self,
       nixpkgs,
       flake-utils,
-      naersk,
-      rust-overlay,
+      crane,
+      fenix,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ (import rust-overlay) ];
-        };
-        rust = pkgs.rust-bin.stable.latest.default;
-        naersk' = pkgs.callPackage naersk {
-          cargo = rust;
-          rustc = rust;
-        };
+        pkgs = nixpkgs.legacyPackages.${system};
+        rust = fenix.packages.${system}.stable.defaultToolchain;
+        craneLib = (crane.mkLib pkgs).overrideToolchain rust;
       in
       {
         devShell = pkgs.mkShell {
@@ -33,7 +31,7 @@
           RUST_DOC_PATH = "${rust}/share/doc/rust/html/std/index.html";
         };
 
-        defaultPackage = naersk'.buildPackage ./.;
+        packages.default = craneLib.buildPackage { src = ./.; };
       }
     );
 }
