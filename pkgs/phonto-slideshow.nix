@@ -18,6 +18,7 @@ writeShellScriptBin "phonto-slideshow" ''
 
   while true; do
     ${lib.getExe phonto} --rand --pause-below 30 &
+    cur=$!
     sleep 0.1
 
     kill_prev
