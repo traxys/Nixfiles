@@ -30,6 +30,7 @@
       "spotify"
       "discord"
       "ricty"
+      "slack"
     ];
   };
 }
