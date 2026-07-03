@@ -28,6 +28,7 @@
         vdo-ninja = pkgs.callPackage ./vdo-ninja.nix { };
         ctcache = pkgs.callPackage ./ctcache.nix { };
         phonto-slideshow = pkgs.callPackage ./phonto-slideshow.nix { inherit (self'.packages) phonto; };
+        ucteng = pkgs.callPackage ./ucteng.nix { };
       };
     };
 }
