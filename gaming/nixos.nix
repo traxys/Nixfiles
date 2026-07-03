@@ -4,14 +4,6 @@
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ ];
   };
 
-  nixpkgs.overlays = [
-    (_: prev: {
-      openldap = prev.openldap.overrideAttrs {
-        doCheck = !prev.stdenv.hostPlatform.isi686;
-      };
-    })
-  ];
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
