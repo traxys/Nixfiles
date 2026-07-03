@@ -27,6 +27,14 @@
     "video=DP-2:1920x1080@75"
   ];
 
+  programs.droidcam.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+    plugins = with pkgs.obs-studio-plugins; [ droidcam-obs ];
+  };
+
   services.sunshine = {
     enable = true;
     openFirewall = true;
