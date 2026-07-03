@@ -45,4 +45,12 @@
   };
 
   users.users.${config.extraInfo.username}.extraGroups = [ "adbusers" ];
+
+  services.xserver.xkb.extraLayouts = {
+    ucteng = {
+      description = "Tengwar";
+      symbolsFile = pkgs.ucteng;
+      languages = [ "art" ];
+    };
+  };
 }
