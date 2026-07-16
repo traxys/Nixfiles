@@ -80,9 +80,8 @@
       dejavu_fonts
 
       # Useful for pandoc to latex
-      (texlive.combine {
-        inherit (texlive)
-          scheme-medium
+      (texliveMedium.withPackages (
+        p: with p; [
           fncychap
           wrapfig
           capt-of
@@ -92,8 +91,8 @@
           tabulary
           varwidth
           titlesec
-          ;
-      })
+        ]
+      ))
     ];
 
     nix.registry = {
