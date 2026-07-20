@@ -408,7 +408,7 @@
 
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat -p";
-        ls = "${pkgs.eza}/bin/eza --icons";
+        ls = "${pkgs.eza}/bin/eza --icons auto";
         man = "${lib.getExe pkgs.bat-extras.batman}";
         gss = "git status -s";
         glo = "git log --oneline";
