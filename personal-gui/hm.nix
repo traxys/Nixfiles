@@ -12,6 +12,7 @@
     rmc
     rawtherapee
     darktable
+    hugin
     audacity
     android-tools
 
