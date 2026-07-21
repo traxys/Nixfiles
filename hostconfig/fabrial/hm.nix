@@ -374,8 +374,8 @@ in
         ''
           notmuch tag +work -- tag:new and 'path:work/**'
           ${tagLists}
-          notmuch tag +inflight -- tag:new and from:${config.workAddr} and subject:'/^\[PATCH/'
-          notmuch tag +review -- tag:new and not from:${config.workAddr} and subject:'/^\[PATCH/'
+          notmuch tag +inflight -- tag:new and from:${config.workAddr} and \( subject:'/^\[PATCH/' or subject:'/^\[RFC/' \)
+          notmuch tag +review -- tag:new and not from:${config.workAddr} and \( subject:'/^\[PATCH/' or subject:'/^\[RFC/' \)
           notmuch tag -unread +me -- tag:new and from:${config.workAddr}
           notmuch tag -unread -new +spammy -- tag:new and \( ${spammySearch} \)
           ${projectFilters}
