@@ -10,7 +10,6 @@ let
   inherit (import ../../str-obf.nix lib) decode;
   workDomain = "grbb.ziy";
   oldWorkDomain = "hsid.xls";
-  intermediaryWorkDomain = "lenmlx.ziy";
   scmDomain = "gnsgrzwlsgmdjf.jdz.hsid-dlfenzld.xls";
 in
 {
@@ -106,7 +105,7 @@ in
           "--smtp-encryption=plain"
           "--smtp-server-port=1025"
           #"--sendmail-cmd=nwadminSendmail"
-          "--to=dl-bxi-sw-ll-patches@${decode intermediaryWorkDomain}"
+          "--to=dl-bxi-sw-ll-patches@${decode workDomain}"
         ];
         repo_url_base = "https://${decode scmDomain}/scm/bril/";
         ci_url = "https://jenkins.sf.${decode workDomain}/job/BRIL/job/\${component}/job/\${branch}/\${ci_job}";
@@ -115,7 +114,7 @@ in
     };
 
     programs.fish.shellAliases = {
-      gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@${decode intermediaryWorkDomain}"'';
+      gemail = ''git send-email --sendmail-cmd="nwadminSendmail" --to="dl-bxi-sw-ll-patches@${decode workDomain}"'';
     };
   };
 }
