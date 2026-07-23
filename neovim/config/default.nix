@@ -503,6 +503,7 @@
         sh = [ "shfmt" ];
         bash = [ "shfmt" ];
         c = [ "clang-format" ];
+        cpp = [ "clang-format" ];
         markdown = [ "mdformat" ];
         lua = [ "stylua" ];
         html = [ "djlint" ];
