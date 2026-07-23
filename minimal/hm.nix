@@ -331,6 +331,7 @@
         fish_user_key_bindings = ''
           bind up up-or-search-prefix
           bind down down-or-search-prefix
+          bind ctrl-backspace backward-kill-word
         '';
         up-or-search-prefix = {
           description = "Search (by prefix) back or move cursor up 1 line";
