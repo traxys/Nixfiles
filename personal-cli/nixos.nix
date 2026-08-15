@@ -13,6 +13,8 @@
     settings.Resolve.DNSOverTLS = "opportunistic";
   };
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   services.privoxy.enable = true;
 
   services.fwupd.enable = true;
