@@ -47,7 +47,7 @@
       "rclone-boh-articles" = mkRclone {
         name = "BoH website articles";
         path = "mnt/boh-articles";
-        remote = "drive:Traxys";
+        remote = "drive:Quentin";
       };
       "rclone-nextcloud" = mkRclone {
         name = "Nextcloud";
