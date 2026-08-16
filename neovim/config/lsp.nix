@@ -70,10 +70,10 @@
     toolPackages.mdformat = pkgs.mdformat.withPlugins (
       ps: with ps; [
         # TODO: broken with update of mdformat
-        # mdformat-gfm
+        mdformat-gfm
         mdformat-frontmatter
         mdformat-footnote
-        mdformat-tables
+        # mdformat-tables
         mdit-py-plugins
       ]
     );
