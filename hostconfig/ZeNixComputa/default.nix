@@ -36,6 +36,7 @@
       "libXNVCtrl" # mangohud through bottles & heroic
       "vintagestory"
       "ricty"
+      "discord-unwrapped"
     ];
     permittedInsecurePackages = [
       # vintagestory

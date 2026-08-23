@@ -31,6 +31,7 @@
       "discord"
       "ricty"
       "slack"
+      "discord-unwrapped"
     ];
   };
 }

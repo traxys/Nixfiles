@@ -35,6 +35,7 @@
           builtins.elem (lib.getName pkg) [
             "slack"
             "discord"
+            "discord-unwrapped"
             "spotify"
           ];
       };

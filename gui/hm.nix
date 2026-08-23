@@ -15,7 +15,7 @@
 
   home.packages = with pkgs; [
     # IM
-    (discord.override { inherit (pkgs) nss; })
+    discord
     element-desktop
     signal-desktop
 
