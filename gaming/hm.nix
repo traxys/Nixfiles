@@ -27,6 +27,7 @@ in
     cage
     owmods-gui
     prismlauncher
+    arx-libertatis
   ];
 
   programs.mangohud = {
