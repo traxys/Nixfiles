@@ -1098,11 +1098,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789310643,
-        "narHash": "sha256-2/YuItvX3WkNEw+ZpEz2sJbaRzO47Y+vGfwiV1N/1Qo=",
+        "lastModified": 1789317688,
+        "narHash": "sha256-XZmSnYnF2J58QAv6OjAr17iCQaHjGN1/LSVXBGf2BaA=",
         "owner": "traxys",
         "repo": "raclette",
-        "rev": "9092801810b7fc683cad9ca2ab4894342ee31f93",
+        "rev": "238dd190934ad13bd0a72f7fbac067ad4ad25708",
         "type": "github"
       },
       "original": {
