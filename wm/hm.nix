@@ -21,13 +21,13 @@
         "niri"
       ];
     };
-    traxys.pkgs.niri-unstable = lib.mkOption {
+    traxys.pkgs.niri = lib.mkOption {
       type = lib.types.package;
-      default = niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-unstable;
+      default = pkgs.niri;
     };
-    traxys.pkgs.xwayland-satellite-unstable = lib.mkOption {
+    traxys.pkgs.xwayland-satellite = lib.mkOption {
       type = lib.types.package;
-      default = niri.packages.${pkgs.stdenv.hostPlatform.system}.xwayland-satellite-unstable;
+      default = pkgs.xwayland-satellite;
     };
   };
 

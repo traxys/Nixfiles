@@ -37,7 +37,7 @@
         (lib.mkIf (config.traxys.wm == "niri") (with pkgs; [ xdg-desktop-portal-gnome ]))
       ];
 
-      configPackages = lib.mkIf (config.traxys.wm == "niri") [ pkgs.niri-unstable ];
+      configPackages = lib.mkIf (config.traxys.wm == "niri") [ pkgs.niri ];
     };
 
     nixpkgs.overlays = [
@@ -69,7 +69,7 @@
 
     services.displayManager.sessionPackages =
       (lib.optional (config.traxys.wm == "sway") pkgs.sway)
-      ++ (lib.optional (config.traxys.wm == "niri") pkgs.niri-unstable);
+      ++ (lib.optional (config.traxys.wm == "niri") pkgs.niri);
 
     programs.regreet = {
       enable = true;

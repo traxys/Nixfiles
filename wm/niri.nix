@@ -7,7 +7,7 @@
 lib.mkIf (config.traxys.wm == "niri") {
   home.packages = with pkgs; [
     swaybg
-    config.traxys.pkgs.xwayland-satellite-unstable
+    config.traxys.pkgs.xwayland-satellite
     wl-mirror
     nautilus
     evolution-data-server
@@ -66,13 +66,13 @@ lib.mkIf (config.traxys.wm == "niri") {
 
   programs.niri = {
     enable = true;
-    package = config.traxys.pkgs.niri-unstable;
+    package = config.traxys.pkgs.niri;
 
     settings =
       let
       in
       {
-        xwayland-satellite.path = lib.getExe config.traxys.pkgs.xwayland-satellite-unstable;
+        xwayland-satellite.path = lib.getExe config.traxys.pkgs.xwayland-satellite;
 
         input = {
           keyboard = {
