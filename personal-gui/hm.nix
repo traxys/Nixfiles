@@ -30,6 +30,12 @@
     };
   };
 
+  programs.noctalia.settings.calendar.account.personal = {
+    calendars = ["personal/quentin" "personal/anniversaire"];
+    path = "/home/traxys/.calendar";
+    type = "vdir";
+  };
+
   services.gpg-agent.pinentry.package = pkgs.pinentry-rofi;
 
   fonts.fontconfig.defaultFonts =

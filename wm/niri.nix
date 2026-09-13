@@ -33,29 +33,69 @@ lib.mkIf (config.traxys.wm == "niri") {
     ];
   };
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
 
-    package = pkgs.noctalia-shell.override { calendarSupport = true; };
+    package = pkgs.noctalia;
 
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
+    settings = {
+      bar.default.start = [
+        "launcher"
+        "workspaces"
+        "active_window"
       ];
-      states = {
-        weekly-calendar = {
+
+      battery.warning_threshold = 20;
+
+      calendar.enabled = true;
+
+      idle = {
+        behavior_order = [
+          "lock"
+          "screen-off"
+          "lock and hibernate"
+        ];
+
+        behavior.lock = {
+          action = "lock";
           enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          timeout = 300.0;
+        };
+
+        behavior."lock and hibernate" = {
+          action = "command";
+          command = "systemctl suspend-then-hibernate";
+          enabled = true;
+          timeout = 1800.0;
+        };
+
+        behavior.screen-off = {
+          action = "screen_off";
+          enabled = true;
+          timeout = 360.0;
         };
       };
-      version = 2;
-    };
 
-    settings = lib.importJSON ./noctalia-cfg.json;
+      location.auto_locate = true;
+
+      lockscreen = {
+        blurred_desktop = true;
+        blur_intensity = 0.70;
+        tint_intensity = 0.50;
+      };
+
+      shell.telemetry_enabled = true;
+      theme.builtin = "Tokyo-Night";
+      wallpaper.enabled = false;
+
+      widget = {
+        active_window.max_length = 360;
+        battery = {
+          display_mode = "graphic";
+          show_label = false;
+        };
+      };
+    };
   };
 
   services.network-manager-applet.enable = lib.mkForce false;
@@ -86,7 +126,7 @@ lib.mkIf (config.traxys.wm == "niri") {
         };
 
         spawn-at-startup = [
-          { command = [ "noctalia-shell" ]; }
+          { command = [ "noctalia" ]; }
           { command = [ "signal-desktop" ]; }
           { command = [ "discord" ]; }
           { command = [ "firefox" ]; }
@@ -166,7 +206,7 @@ lib.mkIf (config.traxys.wm == "niri") {
               focus-monitor-right
               focus-monitor-left
               ;
-            noctalia = cmd: spawn "noctalia-shell" "ipc" "call" cmd;
+            noctalia = cmd: spawn "noctalia" "msg" cmd;
           in
           {
             # "Print".action = spawn "sh" "-c" ''
@@ -175,15 +215,15 @@ lib.mkIf (config.traxys.wm == "niri") {
             "Print".action.screenshot = [ ];
             "Mod+Shift+l" = {
               action = noctalia [
-                "lockScreen"
+                "session"
                 "lock"
               ];
               hotkey-overlay.title = "Lock the screen";
             };
             "Mod+e" = {
               action = noctalia [
+                "panel-toggle"
                 "launcher"
-                "toggle"
               ];
               hotkey-overlay.title = "Run a program";
             };
@@ -259,29 +299,26 @@ lib.mkIf (config.traxys.wm == "niri") {
             # Media Keys
             "XF86AudioRaiseVolume" = {
               action = noctalia [
-                "volume"
-                "increase"
+                "volume-up"
               ];
               allow-when-locked = true;
             };
             "XF86AudioLowerVolume" = {
               action = noctalia [
-                "volume"
-                "decrease"
+                "volume-down"
               ];
               allow-when-locked = true;
             };
             "XF86AudioMute" = {
               action = noctalia [
-                "volume"
-                "muteOutput"
+                "volume-mute"
               ];
               allow-when-locked = true;
             };
             "XF86AudioPlay" = {
               action = noctalia [
                 "media"
-                "playPause"
+                "toggle"
               ];
               allow-when-locked = true;
             };
@@ -296,23 +333,20 @@ lib.mkIf (config.traxys.wm == "niri") {
 
             "XF86AudioMicMute" = {
               action = noctalia [
-                "volume"
-                "muteInput"
+                "mic-mute"
               ];
               allow-when-locked = true;
             };
 
             "XF86MonBrightnessDown" = {
               action = noctalia [
-                "brightness"
-                "decrease"
+                "brightness-down"
               ];
               allow-when-locked = true;
             };
             "XF86MonBrightnessUp" = {
               action = noctalia [
-                "brightness"
-                "increase"
+                "brightness-up"
               ];
               allow-when-locked = true;
             };
