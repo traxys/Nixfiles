@@ -71,19 +71,10 @@
       (lib.optional (config.traxys.wm == "sway") pkgs.sway)
       ++ (lib.optional (config.traxys.wm == "niri") pkgs.niri);
 
-    programs.regreet = {
+    services.displayManager.noctalia-greeter = {
       enable = true;
-
-      theme.package = pkgs.canta-theme;
-
       settings = {
-        background.path = pkgs.fetchurl {
-          url = "https://lesmondaines.com/wp-content/uploads/2018/07/lac-crozet-rando-2.jpg";
-          hash = "sha256-s35RoLnAyGhDNJh5+qbDEqCM7gF3U2Tyzx4X7jzhT70=";
-        };
-        GTK = {
-          application_prefer_dark_theme = true;
-        };
+        keyboard.layout = "fr(ergol)";
       };
     };
   };
