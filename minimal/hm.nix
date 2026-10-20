@@ -422,40 +422,6 @@
       enable = true;
     };
 
-    programs.zsh = {
-      enable = false;
-
-      enableCompletion = true;
-
-      initExtra = ''
-        bindkey -e
-
-        DISABLE_AUTO_TITLE="true"
-
-        preexec() {
-          cmd=$1
-          if [[ -n $cmd ]]; then
-            print -Pn "\e]0;$title_prefix$cmd\a"
-          fi
-        }
-
-        precmd() {
-          dir=$(pwd | sed "s:$HOME:~:")
-          print -Pn "\e]0;$(whoami)@$(hostname):$dir\a"
-        }
-
-        compdef batman=man
-
-        zmodload zsh/zpty
-
-        zstyle ':completion:*' menu select
-        HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=""
-        HISTORY_SUBSTRING_SEARCH_PREFIXED=1
-        bindkey "^[[A" history-substring-search-up
-        bindkey "^[[B" history-substring-search-down
-      '';
-    };
-
     home.file = {
       ".config/python/pythonrc".text = ''
         import os
