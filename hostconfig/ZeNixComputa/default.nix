@@ -25,6 +25,7 @@
       de
     ];
     unfreePackages = [
+      "lsfg-vk"
       "cnijfilter2"
       "steam"
       "steam-original"
