@@ -1,11 +1,11 @@
 {
   lib,
-  python311,
+  python3,
   fetchFromGitHub,
   oead,
 }:
 
-python311.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonApplication rec {
   pname = "rstb";
   version = "1.2.2";
   pyproject = true;
@@ -17,14 +17,21 @@ python311.pkgs.buildPythonApplication rec {
     hash = "sha256-wd+kR+bQqaD9VNMSO3SNkA6uUe/6SFje8VmhbkJD0xg=";
   };
 
-  nativeBuildInputs = [ python311.pkgs.pythonRelaxDepsHook ];
+  postPatch = ''
+    rm versioneer.py
+  '';
+
+  nativeBuildInputs = [ python3.pkgs.pythonRelaxDepsHook ];
 
   build-system = [
-    python311.pkgs.setuptools
-    python311.pkgs.wheel
+    python3.pkgs.setuptools
+    python3.pkgs.wheel
   ];
 
-  dependencies = [ oead ];
+  dependencies = [
+    oead
+    python3.pkgs.versioneer
+  ];
 
   pythonRelaxDeps = [ "oead" ];
 
