@@ -1,11 +1,11 @@
 {
   lib,
-  python311,
+  python3,
   fetchFromGitHub,
   rstb,
 }:
 
-python311.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonApplication rec {
   pname = "sarc";
   version = "2.0.5";
   pyproject = true;
@@ -18,11 +18,11 @@ python311.pkgs.buildPythonApplication rec {
   };
 
   build-system = [
-    python311.pkgs.setuptools
-    python311.pkgs.wheel
+    python3.pkgs.setuptools
+    python3.pkgs.wheel
   ];
 
-  nativeBuildInputs = [ python311.pkgs.pythonRelaxDepsHook ];
+  nativeBuildInputs = [ python3.pkgs.pythonRelaxDepsHook ];
 
   dependencies = [ rstb ];
 
@@ -30,7 +30,10 @@ python311.pkgs.buildPythonApplication rec {
     "sarc"
   ];
 
-  pythonRelaxDeps = [ "oead" ];
+  pythonRelaxDeps = [
+    "oead"
+    "rstb"
+  ];
 
   meta = {
     description = "Nintendo SARC archive reader and writer";
