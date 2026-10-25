@@ -1,31 +1,34 @@
 {
   lib,
-  python311,
+  python3,
   fetchFromGitHub,
   cmake,
+  ninja,
 }:
 
-python311.pkgs.buildPythonApplication rec {
+python3.pkgs.buildPythonApplication rec {
   pname = "oead";
-  version = "1.2.9-4";
+  version = "1.3.0";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "zeldamods";
     repo = "oead";
     rev = "v${version}";
-    hash = "sha256-rBzXs5OaSssCjakOmGRsvL0OSq1EApllRN59lFaRNrU=";
+    hash = "sha256-lpXDN0gJ3mBO0UgH7J473qkvwjN2Tt6dP1RjDbeskOY=";
     fetchSubmodules = true;
   };
 
-  CMAKE_POLICY_VERSION_MINIMUM = "3.5";
-
   dontUseCmakeConfigure = true;
 
-  build-system = [
-    python311.pkgs.setuptools
-    python311.pkgs.wheel
+  nativeBuildInputs = [
     cmake
+    ninja
+  ];
+
+  build-system = [
+    python3.pkgs.scikit-build-core
+    python3.pkgs.setuptools-scm
   ];
 
   pythonImportsCheck = [
