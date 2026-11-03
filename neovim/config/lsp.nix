@@ -205,7 +205,7 @@
         ];
       };
       yamlls.enable = true;
-      ltex = {
+      ltex_plus = {
         enable = true;
         config = {
           on_attach = lib.nixvim.mkRaw ''
