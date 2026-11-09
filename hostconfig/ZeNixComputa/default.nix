@@ -38,10 +38,13 @@
       "vintagestory"
       "ricty"
       "discord-unwrapped"
+      "xone-dongle-firmware"
     ];
     permittedInsecurePackages = [
       # vintagestory
       "dotnet-runtime-7.0.20"
+      # deezer
+      "nwjs-0.102.1"
     ];
   };
 }
