@@ -14,7 +14,6 @@
     services.lvm.enable = true;
     supportedFilesystems = [ "btrfs" ];
     systemd = {
-      enable = true;
       emergencyAccess = false;
     };
   };
