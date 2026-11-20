@@ -1,4 +1,9 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  lib,
+  ...
+}:
 {
   imports = [
     inputs.nixvim.flakeModules.default
@@ -12,13 +17,12 @@
   flake.nixvimModules = {
     config = import ./config {
       flake = self;
-      inherit (inputs) tree-sitter-vvk;
     };
     plugins = import ./plugins {
       inherit (inputs) vim-headerguard;
       fcitx = inputs."fcitx.nvim";
     };
-    modules = ./modules;
+    modules = lib.modules.importApply ./modules { inherit (inputs) tree-sitter-vvk; };
 
     neovimTraxys = {
       imports = [

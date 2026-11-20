@@ -1,4 +1,4 @@
-{ flake, tree-sitter-vvk }:
+{ flake }:
 {
   pkgs,
   config,
@@ -272,33 +272,7 @@
       (#set! injection.language "javascript"))
   '';
 
-  extraFiles."queries/vvk//highlights.scm".text = ''
-    (comment) @comment
-
-    [
-         "["
-         "]"
-         "{"
-         "}"
-    ] @punctuation.bracket
-
-    [
-        "mod"
-    ] @keyword.import
-
-    (directive) @keyword.modifier
-
-    (string_literal) @string
-
-    (target 
-        name: (identifier) @function.call)
-
-    (assign_statement
-        name: (identifier) @variable)
-
-    (argument
-        name: (identifier) @variable.member)
-  '';
+  traxys.vvk.enable = true;
 
   plugins.treesitter = {
     enable = true;
@@ -314,14 +288,8 @@
       let
         ts = config.plugins.treesitter.package.passthru;
       in
+      with ts.builtGrammars;
       [
-        (pkgs.tree-sitter.buildGrammar {
-          language = "vvk";
-          version = tree-sitter-vvk.rev;
-          src = tree-sitter-vvk;
-        })
-      ]
-      ++ (with ts.builtGrammars; [
         arduino
         asm
         bash
@@ -373,7 +341,7 @@
         xml
         yaml
         zig
-      ]);
+      ];
   };
 
   plugins.treesitter-context = {
