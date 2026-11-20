@@ -327,6 +327,7 @@
         bash
         bitbake
         c
+        cmake
         cpp
         cuda
         dart
@@ -345,6 +346,7 @@
         javascript
         json
         just
+        kdl
         lalrpop
         latex
         linkerscript
