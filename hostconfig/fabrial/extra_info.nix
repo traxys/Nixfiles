@@ -4,7 +4,7 @@
 in {
   extraInfo.email = "quentin.boyer@${decode workDomain}";
 
-  extraInfo.username = "traxys";
+  extraInfo.username = "boyerq";
 
   extraInfo.inputs.touchpad = "2:7:SynPS/2_Synaptics_TouchPad";
 }

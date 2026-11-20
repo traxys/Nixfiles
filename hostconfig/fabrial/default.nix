@@ -7,38 +7,25 @@
   ...
 }:
 {
-  flake = {
-    homeConfigurations."boyerq@fabrial" = inputs.home-manager.lib.homeManagerConfiguration {
-      modules =
-        (with self.hmModules; [
-          minimal
-          work
-          personal-cli
-          gui
-          wm
-        ])
-        ++ [
-          ./extra_info.nix
-          ./hm.nix
-          inputs.fioul.homeManagerModules.default
-          inputs.git-series-manager.homeManagerModules.default
-          inputs.pam_shim.homeModules.default
-        ];
+    flake.nixosConfigurations.fabrial = makeMachine {
+      system = "x86_64-linux";
+      user = "boyerq";
 
-      pkgs = import inputs.nixpkgs rec {
-        system = "x86_64-linux";
+      nixosModules = with self.nixosModules; [
+	inputs.wsl.nixosModules.default
+	./extra_info.nix
+        ./nixos.nix
+	minimal
+	gui
+	wm
+      ];
 
-        overlays = flakeOverlays system;
-
-        config.allowUnfreePredicate =
-          pkg:
-          builtins.elem (lib.getName pkg) [
-            "slack"
-            "discord"
-            "discord-unwrapped"
-            "spotify"
-          ];
-      };
+      hmModules = with self.hmModules; [
+	./extra_info.nix
+        ./hm.nix
+	minimal
+	gui
+	wm
+      ];
     };
-  };
 }
