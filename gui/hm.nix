@@ -14,20 +14,10 @@
   ];
 
   home.packages = with pkgs; [
-    # IM
-    discord
-    element-desktop
-    signal-desktop
-
-    # Mail
-    thunderbird
-
     # Media
     gromit-mpx
     krita
     pavucontrol
-    spotify
-    deezer-enhanced
     vlc
     mpv
 

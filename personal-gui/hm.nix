@@ -1,6 +1,18 @@
 { pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
+    # IM
+    discord
+    element-desktop
+    signal-desktop
+
+    # Mail
+    thunderbird
+
+    # Media
+    spotify
+    deezer-enhanced
+
     kdePackages.kdeconnect-kde
     kdePackages.kdenlive
     glaurung
