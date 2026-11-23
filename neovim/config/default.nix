@@ -188,16 +188,9 @@
         action = "<Cmd>Telescope yank_history<CR>";
         options.desc = "history";
       };
-      "<leader>wS" = {
-        action = lib.nixvim.mkRaw ''
-          function()
-            require('telescope.builtin').live_grep({
-              cwd = "~/wiki",
-              glob_pattern = "*.md"
-            })
-          end
-        '';
-        options.desc = "search in wiki";
+      "<leader>A" = {
+        action = "<Cmd>CodeCompanionChat Toggle<CR>";
+        options.desc = "AI assistant";
       };
     })
     ++ [
@@ -542,6 +535,22 @@
   files."ftdetect/sql.lua" = {
     globals.omni_sql_no_default_maps = 0;
     globals.omni_sql_default_compl_type = "syntax";
+  };
+
+  plugins.codecompanion = {
+    enable = true;
+
+    settings = {
+      display = {
+        chat = {
+          window = {
+            layout = "horizontal";
+            position = "bottom";
+            height = 0.4;
+          };
+        };
+      };
+    };
   };
 
   extraPackages = with pkgs; [

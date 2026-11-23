@@ -15,6 +15,22 @@
 
   services.mako.settings.output = "DP-2";
 
+  programs.nixvim = {
+    plugins.codecompanion.settings = {
+      interactions =
+        let
+          adapter = {
+            name = "ollama";
+            model = "qwen3.5:9b";
+          };
+        in
+        {
+          chat = { inherit adapter; };
+          inline = { inherit adapter; };
+        };
+    };
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
