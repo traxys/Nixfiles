@@ -39,6 +39,7 @@
       "ricty"
       "discord-unwrapped"
       "xone-dongle-firmware"
+      "mongodb"
     ];
     permittedInsecurePackages = [
       # vintagestory

@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   boot.initrd = {
     enable = true;
@@ -152,6 +157,56 @@
       rev = "03fa6a4a9ccb18844060e44ba9869b1a80922090";
       hash = "sha256-RAMRfHV6pB2jgmw/iBr3cj2AsNOQxaT69fk61sgutPQ=";
     };
+  };
+
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-rocm;
+    loadModels = [ "qwen3.5:9b" ];
+  };
+
+  services.meilisearch = {
+    enable = true;
+    masterKeyFile = "/var/lib/secrets/meilisearch";
+  };
+
+  services.librechat = {
+    enable = true;
+    enableLocalDB = true;
+
+    credentials = {
+      CREDS_IV = "/var/lib/secrets/librechat_creds_iv";
+      CREDS_KEY = "/var/lib/secrets/librechat_creds_key";
+      JWT_SECRET = "/var/lib/secrets/librechat_jwt_secret";
+      JWT_REFRESH_SECRET = "/var/lib/secrets/librechat_jwt_refresh_secret";
+    };
+
+    env = {
+      ALLOW_REGISTRATION = false;
+    };
+
+    settings = {
+      version = "1.3.19";
+
+      endpoints = {
+        custom = [
+          {
+            name = "Ollama";
+            apiKey = "ollama";
+            baseURL = "http://localhost:11434/v1/";
+            models = {
+              default = config.services.ollama.loadModels;
+              fetch = false;
+            };
+            titleConvo = true;
+            titleModel = "current_model";
+            modelDisplayName = "ZeNixComputa";
+          }
+        ];
+      };
+    };
+
+    meilisearch.enable = true;
   };
 
   hardware.cpu.amd.updateMicrocode = true;
